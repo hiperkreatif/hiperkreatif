@@ -1,0 +1,50 @@
+---
+import { NAV_LOGO, NAV_MENU, NAV_CTA } from '../constants/navbar.ts';
+import { SEO } from '../constants/seo.ts';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{SEO.title}</title>
+    <meta name="description" content={SEO.description} />
+    <meta name="keywords" content={SEO.keywords} />
+    <meta name="author" content={SEO.author} />
+    <meta property="og:title" content={SEO.title} />
+    <meta property="og:description" content={SEO.description} />
+    <meta property="og:image" content={SEO.ogImage} />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-white text-gray-900">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow-sm">
+      <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
+        <div class="flex items-center gap-2">
+          <img src="../src/assets/logo/logo.png" alt="Logo" class="h-8 w-8 md:h-10 md:w-10" />
+          <span class="font-medium text-xl md:text-2xl tracking-tight text-black">{NAV_LOGO}</span>
+        </div>
+        <div class="flex items-center gap-4">
+          {NAV_MENU.map(item => (
+            <a
+              href={item.href}
+              class="text-sm md:text-base text-gray-800 hover:text-black font-medium px-2 py-1 rounded transition-colors"
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener" : undefined}
+            >{item.label}</a>
+          ))}
+          <a
+            href={NAV_CTA.href}
+            class="ml-2 bg-black text-white font-medium text-sm md:text-base px-4 py-2 rounded shadow hover:bg-gray-900 transition-colors"
+          >{NAV_CTA.label}</a>
+        </div>
+      </div>
+    </nav>
+    <div class="max-w-6xl mx-auto text-center">
+     <slot />
+    </div>
+    <footer class="mt-12 py-6 border-t border-gray-200 bg-white text-center text-sm text-gray-500">
+      &copy; {new Date().getFullYear()} Hiperkreatif. All rights reserved.
+    </footer>
+  </body>
+</html>
