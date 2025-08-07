@@ -11,34 +11,61 @@ export const PRODUCTS: Product[] = [
     title:
       "Workflow CS AI: n8n + WhatsApp Official + Gemini AI + Google Sheet (CRM)",
     description:
-      "Otomatisasi customer service dengan integrasi n8n, WhatsApp Official API, Gemini AI, dan Google Sheet untuk CRM. Cocok untuk bisnis yang ingin efisiensi dan respons cepat.",
+      "Auto-reply WhatsApp 24/7 pakai AI, tanpa repot training CS. Workflow ini gabungkan n8n, WhatsApp Official, Gemini AI, dan Google Sheet — bikin bisnis lo responsif, hemat waktu, dan siap scale tanpa drama.",
     url: "#",
     thumbnail: "https://placehold.co/400x200?text=Workflow+CS+AI",
     tags: ["Workflow", "AI", "WhatsApp", "CRM", "Automation"],
   },
   {
-    title: "Jasa Pembuatan Website / Aplikasi Mobile / Digital Solution",
+    title: "Jasa Pembuatan Website & Aplikasi Digital Berbasis AI",
     description:
-      "Solusi pembuatan website, aplikasi mobile, dan digital solution custom sesuai kebutuhan bisnis Anda. Didukung tim berpengalaman dan teknologi terbaru.",
+      "Bangun website atau aplikasi custom yang nggak cuma keren, tapi juga cerdas. Solusi digital siap scale dengan fitur AI terintegrasi — bantu bisnis lo dapet leads, closing, dan repeat otomatis. Teknologi terbaru, hasil nyata, tanpa ribet.",
     url: "#",
     thumbnail: "https://placehold.co/400x200?text=Web+Mobile+App",
-    tags: ["Jasa", "Website", "Mobile App", "Digital Solution"],
-  },
-  {
-    title: "UI/UX Design Website & Aplikasi",
-    description:
-      "Layanan desain UI/UX profesional untuk website dan aplikasi mobile. Mulai dari riset, wireframe, hingga prototyping dengan tampilan modern dan user-friendly, meningkatkan konversi dan pengalaman pengguna.",
-    url: "#",
-    thumbnail: "https://placehold.co/400x200?text=UIUX+Design+Service",
-    tags: ["Jasa", "UI/UX", "Desain", "Website", "Aplikasi"],
+    tags: ["Jasa", "Website", "Mobile App", "Digital Solution", "AI"],
   },
   {
     title:
-      "Ebook: Membuat Aplikasi Company Profile dengan Laravel 12 + Filament",
+      "Ebook: Bikin Web Company Profile Modern pakai Laravel 12 + Filament",
     description:
-      "Panduan lengkap step-by-step membuat aplikasi company profile profesional menggunakan Laravel 12 dan Filament. Cocok untuk pemula maupun developer yang ingin mempercepat workflow pembuatan web modern.",
+      "Step-by-step guide bikin aplikasi company profile yang kelihatan pro, pakai Laravel 12 dan Filament. Tanpa ribet nulis dari nol — tinggal ikuti, langsung bisa diubah jadi proyek klien atau portofolio.",
     url: "#",
     thumbnail: "https://placehold.co/400x200?text=Ebook+Laravel+Filament",
-    tags: ["Ebook", "Laravel", "Filament", "Company Profile", "Web"],
+    tags: ["Ebook", "Laravel", "Filament", "Company Profile", "Website"],
+  },
+  {
+    title: "Bundle Hemat: Ebook + Source Code Kasir Online + Menu Digital + AI Integrated",
+
+    description:
+      "Bangun sistem kasir modern cuma sekali, langsung bisa jalanin bisnis 24/7. Bundle ini berisi tutorial lengkap + source code kasir berbasis web yang sudah terintegrasi menu digital (QR) dan AI untuk customer service. Siap pakai, bisa dimodif, dan bisa lo jual ulang. Harga normal Rp399.000 — sekarang cuma Rp149.000 untuk 100 pembeli tercepat.",
+    url: "#",
+    thumbnail: "https://placehold.co/400x200?text=Kasir+Online+AI",
+    tags: [
+      "Ebook",
+      "Source Code",
+      "Menu Digital",
+      "AI",
+      "CS Bot",
+      "F&B",
+      "Automation",
+      "Digital Product",
+    ],
+  },
+  {
+    title: "Source Code Kasir Online + Menu Digital + CS AI",
+    description:
+      "Source code sistem kasir modern berbasis web — lengkap dengan menu QR digital dan chatbot AI buat CS. Bisa langsung pakai, bebas modif, dan cocok dijual ulang buat klien F&B. Efisien, scalable, dan anti ribet.",
+    url: "#",
+    thumbnail: "https://placehold.co/400x200?text=Source+Code+Kasir+AI",
+    tags: [
+      "Source Code",
+      "Kasir",
+      "Menu Digital",
+      "AI",
+      "CS Bot",
+      "F&B",
+      "Automation",
+      "Digital Product",
+    ],
   },
 ];
