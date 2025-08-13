@@ -45,23 +45,19 @@ const bg = await getImage({
       <script type="module" src="/scripts/tagFilter.js"></script>
 
       <!-- Tag Filter -->
-      <div class="relative w-full mb-8">
-        <div id="tag-filter" class="flex gap-3 overflow-x-auto pb-4 scrollbar-none md:flex-wrap md:justify-center md:overflow-visible">
-          {Array.from(new Set(PRODUCTS.flatMap(p => p.tags))).map(tag => (
-            <button
-              class={`px-5 py-2 rounded-full border-2 text-sm font-semibold transition-all duration-300 whitespace-nowrap
-                bg-white/80 backdrop-blur-sm text-gray-700 border-gray-200 hover:border-gray-900 hover:text-gray-900
-                data-[selected=true]:bg-gray-900 data-[selected=true]:text-white data-[selected=true]:border-gray-900 data-[selected=true]:shadow-lg
-                shrink-0`}
-              type="button"
-              data-tag={tag}
-              data-selected="false"
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-        <div class="absolute left-0 right-0 bottom-0 h-4 pointer-events-none bg-gradient-to-t from-white to-transparent md:hidden"/>
+      <div id="tag-filter" class="flex flex-wrap gap-3 mb-8 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent md:justify-center md:overflow-visible">
+        {Array.from(new Set(PRODUCTS.flatMap(p => p.tags))).map(tag => (
+          <button
+            class={`px-5 py-2 rounded-full border-2 text-sm font-semibold transition-all duration-300 whitespace-nowrap
+              bg-white/80 backdrop-blur-sm text-gray-700 border-gray-200 hover:border-gray-900 hover:text-gray-900
+              data-[selected=true]:bg-gray-900 data-[selected=true]:text-white data-[selected=true]:border-gray-900 data-[selected=true]:shadow-lg`}
+            type="button"
+            data-tag={tag}
+            data-selected="false"
+          >
+            {tag}
+          </button>
+        ))}
       </div>
 
       <!-- Product List -->
