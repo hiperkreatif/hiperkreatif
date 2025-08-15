@@ -32,6 +32,14 @@
 
 @font-face {
   font-family: 'Manrope';
+  src: url('/src/assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
   src: url('/src/assets/fonts/Manrope-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
