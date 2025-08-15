@@ -1,16 +1,22 @@
 ---
 import LandingPageLayout from "../layouts/LandingPageLayout.astro";
 ---
+
 <LandingPageLayout>
   <main class="max-w-6xl mx-auto">
     <section class="sm:mt-36 mt-24 px-6 relative space-y-12">
       {/* Hero Section */}
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-900 tracking-tight leading-tight">
+        <h1
+          class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-900 tracking-tight leading-tight"
+        >
           STOP! Buang Uang untuk Biaya Marketplace yang Mahal!
         </h1>
         <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-          Marketplace mengambil 5-15% dari setiap penjualan Anda. Untuk omset 50 juta/bulan, Anda kehilangan <span class="font-bold text-red-600">2.5-7.5 JUTA rupiah</span> setiap bulannya!
+          Marketplace mengambil 4–16% dari setiap penjualan Anda. Untuk omset 50
+          juta/bulan, Anda kehilangan <span class="font-bold text-red-600"
+            >2.5-7.5 JUTA rupiah</span
+          > setiap bulannya!
         </p>
         <!-- <a href="/cost-comparison" class="inline-block bg-red-600 text-white text-lg font-bold px-8 py-4 rounded-lg hover:bg-red-700 transition-colors">
           Bandingkan Biaya Sekarang
@@ -24,184 +30,341 @@ import LandingPageLayout from "../layouts/LandingPageLayout.astro";
         </h2>
         <div class="space-y-6">
           <p class="text-gray-700">
-            "Saya masih ingat bagaimana rasanya melihat laporan bulanan. Setiap bulan, jutaan rupiah lenyap begitu saja ke kantong marketplace. Padahal uang itu bisa untuk mengembangkan bisnis atau tabungan masa depan keluarga saya." - Budi, pemilik toko fashion online
+            "Saya masih ingat bagaimana rasanya melihat laporan bulanan. Setiap
+            bulan, jutaan rupiah lenyap begitu saja ke kantong marketplace.
+            Padahal uang itu bisa untuk mengembangkan bisnis atau tabungan masa
+            depan keluarga saya." - Budi, pemilik toko fashion online
           </p>
           <p class="text-gray-700">
-            Seperti Budi, mungkin Anda juga merasakan bagaimana marketplace perlahan-lahan menggerogoti keuntungan bisnis Anda. Setiap transaksi, setiap rupiah yang masuk, marketplace mengambil bagiannya. Ini bukan cara untuk membangun bisnis yang berkelanjutan.
+            Seperti Budi, mungkin Anda juga merasakan bagaimana marketplace
+            perlahan-lahan menggerogoti keuntungan bisnis Anda. Setiap
+            transaksi, setiap rupiah yang masuk, marketplace mengambil
+            bagiannya. Ini bukan cara untuk membangun bisnis yang berkelanjutan.
           </p>
         </div>
       </div>
 
-      <!-- {/* Warning Section */}
-      <div class="bg-red-50 rounded-xl p-8 max-w-4xl mx-auto border-2 border-red-200">
+      {/* Warning Section (REAL DATA, ID MARKETPLACES, per 15 Aug 2025) */}
+      <div
+        class="bg-red-50 rounded-xl p-8 max-w-4xl mx-auto border-2 border-red-200"
+      >
         <div class="flex flex-col md:flex-row items-center gap-8">
           <div class="flex-1">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center md:text-left">
-              PERINGATAN: Biaya Marketplace Indonesia Menggerus Profit Anda!
+            <h2
+              class="text-3xl font-bold text-gray-900 mb-4 text-center md:text-left"
+            >
+              PERINGATAN: Potongan Marketplace Indonesia Bisa Tembus Belasan
+              Persen
             </h2>
             <p class="text-xl text-gray-700 mb-6 text-center md:text-left">
-              Marketplace Indonesia memotong <span class="font-bold text-red-600">5-20%</span> dari SETIAP transaksi penjualan Anda
+              Tanpa iklan, total potongan platform umumnya di kisaran
+              <span class="font-bold text-red-600"> ±4–16%</span> tergantung kategori
+              & program. Jika ikut semua program internal (ongkir/promo), puncaknya
+              bisa mendekati
+              <span class="font-bold text-red-600"> ~17–18%</span> (lihat rincian
+              per platform di bawah).
             </p>
           </div>
 
           <div class="hidden md:block w-px h-40 bg-red-200"></div>
 
           <div class="flex-1">
-            <h3 class="font-semibold text-xl text-gray-800 mb-4">Biaya yang Harus Anda Tanggung:</h3>
+            <h3 class="font-semibold text-xl text-gray-800 mb-4">
+              Rincian Singkat per Platform (Indonesia):
+            </h3>
             <ul class="text-gray-700 space-y-4">
-              {[
-                {icon: "💰", text: "Shopee: <span class='font-bold text-red-600'>5-7%</span> + biaya layanan 1%"},
-                {icon: "🛍️", text: "Tokopedia: <span class='font-bold text-red-600'>5-9%</span> + biaya payment 2%"},
-                {icon: "📱", text: "TikTok Shop: <span class='font-bold text-red-600'>10-20%</span> komisi"},
-                {icon: "🏪", text: "Lazada & Blibli: <span class='font-bold text-red-600'>6-8%</span> + biaya COD"}
-              ].map(item => (
-                <li class="flex items-center gap-3">
-                  <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-red-100 rounded-full">
-                    {item.icon}
-                  </span>
-                  <span set:html={item.text} />
-                </li>
-              ))}
+              {
+                [
+                  {
+                    icon: "🟠",
+                    text:
+                      "Shopee: Biaya admin kategori A–D " +
+                      "<span class='font-bold text-red-600'>4,25%–8%</span>. " +
+                      "Program opsional: Gratis Ongkir XTRA 0,5–6% (max 20rb/produk) + Promo XTRA 2% (max 10rb/produk). " +
+                      "Mulai 20 Jul 2025 ada biaya proses pesanan Rp1.250/order.",
+                  },
+                  {
+                    icon: "🟢",
+                    text:
+                      "Tokopedia / TikTok Shop by Tokopedia: Komisi platform efektif " +
+                      "<span class='font-bold text-red-600'>1%–8%</span> + Komisi Dinamis " +
+                      "<span class='font-bold text-red-600'>4%–6%</span> (max 40rb/item). " +
+                      "Mulai 11 Agu 2025 ada biaya proses pesanan Rp1.250/order.",
+                  },
+                  {
+                    icon: "🔵",
+                    text:
+                      "Lazada: Payment/admin ±1,82% + komisi kategori ~2,43%–10,2%. " +
+                      "Program opsional: Free Shipping Max (hingga 4%) + Bonus Dadakan (~2,22%).",
+                  },
+                  {
+                    icon: "🔷",
+                    text:
+                      "Blibli: Komisi " +
+                      "<span class='font-bold text-red-600'>±2,5%–8%</span> tergantung kategori.",
+                  },
+                ].map((item) => (
+                  <li class="flex items-center gap-3">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-lg">
+                      {item.icon}
+                    </span>
+                    <span set:html={item.text} />
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
 
         <div class="mt-8 pt-6 border-t-2 border-red-200">
-          <p class="text-center text-lg font-medium text-gray-800">
-            Belum termasuk biaya iklan, promosi, dan potongan voucher platform.
-            <span class="text-red-600">Total bisa mencapai 25-30% dari penjualan Anda!</span>
+          <p class="text-center text-sm text-gray-600 leading-relaxed">
+            * Angka di atas berlaku untuk Indonesia dan dapat berubah
+            sewaktu-waktu. Biaya iklan/afiliasi, voucher ditanggung penjual, dan
+            promo eksternal <span class="underline">tidak</span> termasuk—itu bisa
+            menambah biaya efektif di luar persentase platform.
           </p>
         </div>
-      </div> -->
+      </div>
 
       {/* Solution Section */}
-      <div class="bg-gray-50 rounded-xl p-8 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
-          Solusinya? Miliki Toko Online Sendiri!
+      <div class="bg-white rounded-xl max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-black text-red-600 mb-6 text-center uppercase tracking-tight"
+        >
+          BERTAHAN atau BANGKRUT: Pilihan Ada di Tangan Anda!
         </h2>
 
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-gray-800">Marketplace</h3>
-            <ul class="space-y-3 text-gray-600">
-              <li>✗ Biaya komisi 5-15% per transaksi</li>
-              <li>✗ Persaingan dengan ribuan penjual</li>
-              <li>✗ Terbatas pada aturan marketplace</li>
-              <li>✗ Data pelanggan dimiliki marketplace</li>
+          <div
+            class="space-y-4 bg-gray-50 p-6 rounded-lg border-2 border-red-500"
+          >
+            <h3 class="text-xl font-bold text-red-600">
+              ZONA BAHAYA: Marketplace
+            </h3>
+            <ul class="space-y-3 text-gray-800">
+              <li class="flex items-center">
+                <span class="text-xl mr-2">💀</span>
+                <span>Uang Anda DIPERAS 4-16% tiap transaksi</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">🔪</span>
+                <span>DIBANTAI persaingan ribuan competitor</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">⛓️</span>
+                <span>DIPERBUDAK aturan marketplace</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">🗡️</span>
+                <span>Data pelanggan DICURI marketplace</span>
+              </li>
             </ul>
           </div>
 
-          <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-gray-800">Toko Online Sendiri</h3>
-            <ul class="space-y-3 text-gray-600">
-              <li>✓ Tanpa biaya komisi per transaksi</li>
-              <li>✓ Brand dan domain milik sendiri</li>
-              <li>✓ Bebas atur desain dan fitur</li>
-              <li>✓ Data pelanggan 100% milik Anda</li>
+          <div
+            class="space-y-4 bg-gray-50 p-6 rounded-lg border-2 border-green-500"
+          >
+            <h3 class="text-xl font-bold text-green-600">
+              ZONA AMAN: Toko Online Sendiri
+            </h3>
+            <ul class="space-y-3 text-gray-800">
+              <li class="flex items-center">
+                <span class="text-xl mr-2">💰</span>
+                <span>KUASAI 100% keuntungan Anda</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">👑</span>
+                <span>JADILAH RAJA di bisnis Anda</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">🔓</span>
+                <span>BEBAS kendali penuh bisnis</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-xl mr-2">🎯</span>
+                <span>Data pelanggan MILIK ANDA selamanya</span>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Testimonials */}
-        <div class="bg-white rounded-lg p-6 mt-8">
-          <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">
-            Apa Kata Mereka yang Sudah Beralih
+        <div class="bg-gray-100 rounded-lg p-6 mt-8">
+          <h3
+            class="text-2xl font-black mb-4 text-center text-red-600 uppercase"
+          >
+            Mereka Selamat dari Kehancuran
           </h3>
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-gray-50 p-4 rounded-lg">
-              <p class="text-gray-700 mb-4">
-                "Setelah 3 bulan punya toko sendiri, omset naik 40% karena bisa fokus bangun brand. Yang penting, gak ada potongan komisi lagi!"
+            <div class="bg-white p-6 rounded-lg border border-red-500">
+              <p class="text-base mb-4 text-gray-700">
+                "Setelah pindah dari marketplace, omset kami naik 40% dalam 3
+                bulan. Sekarang bisa lebih tenang tanpa harus memikirkan
+                potongan komisi."
               </p>
-              <p class="font-semibold">- Sarah, Pemilik Beauty Store</p>
+              <p class="font-bold text-red-600">
+                - Sarah, Survivor Beauty Store
+              </p>
             </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
-              <p class="text-gray-700 mb-4">
-                "Data pelanggan yang saya dapat sangat berharga untuk marketing. Sekarang bisa retargeting dengan tepat."
+            <div class="bg-white p-6 rounded-lg border border-red-500">
+              <p class="text-base mb-4 text-gray-700">
+                "Dengan data pelanggan yang lengkap, saya bisa memahami
+                kebutuhan mereka dengan lebih baik. Ini membuat bisnis saya
+                lebih fokus dan efektif dalam melayani pasar."
               </p>
-              <p class="font-semibold">- Rudi, Pemilik Sport Equipment Store</p>
+              <p class="font-bold text-red-600">
+                - Rudi, Penakluk Sport Equipment Market
+              </p>
             </div>
           </div>
         </div>
 
         {/* CTA Section */}
         <div class="mt-12 text-center space-y-6">
-          <div class="bg-red-100 rounded-lg p-4">
-            <p class="text-red-600 font-bold text-lg">🔥 PERHATIAN PENTING!</p>
-            <p class="text-gray-800 font-medium">
-              Hanya tersisa 2 slot dari kuota 5 UMKM yang bisa kami bantu bulan ini
+          <div class="bg-gray-100 rounded-lg p-6 animate-pulse">
+            <p class="text-gray-900 text-xl font-black">⚠️ BAHAYA MENDESAK!</p>
+            <p class="text-red-600 text-lg font-bold">
+              2 SLOT TERAKHIR dari 5 Bisnis yang Bisa Kami Selamatkan Bulan Ini
             </p>
           </div>
 
-          <div class="bg-yellow-50 p-6 rounded-lg">
-            <p class="text-gray-800 font-medium mb-4">
-              "Saya masih ingat bagaimana rasanya terbangun tiap malam, memikirkan bisnis yang hampir bangkrut. Marketplace menguras hampir semua keuntungan saya. Anak saya bahkan harus berhenti les karena uangnya habis untuk komisi. Tapi sejak punya toko sendiri? Omset naik 300% dalam 6 bulan, dan anak saya sudah bisa sekolah di tempat yang lebih baik!"
+          <div class="bg-gray-50 p-8 rounded-lg border-2 border-red-500">
+            <p class="text-gray-800 text-base font-medium mb-4">
+              "Saya masih ingat masa-masa sulit itu. Bisnis fashion saya terus
+              merugi karena biaya marketplace yang mencekik. Pendapatan hampir
+              tidak cukup untuk biaya sekolah anak. Tapi setelah memiliki toko
+              sendiri, dalam 6 bulan omset naik 300%. Sekarang, saya bisa
+              memberikan pendidikan terbaik untuk anak saya."
             </p>
-            <p class="font-bold text-gray-900">
-              - Ahmad, Ayah yang Berhasil Selamatkan Bisnis & Keluarganya
-            </p>
-          </div>
-
-          <div class="bg-red-50 p-4 rounded-lg">
-            <p class="text-xl text-gray-800 font-bold mb-2">
-              Setiap Bulan, Anda Membiarkan:
-            </p>
-            <p class="text-2xl font-bold text-red-600 mb-2">
-              Rp 90.000.000/tahun
-            </p>
-            <p class="text-gray-700">
-              masuk ke kantong marketplace - uang yang seharusnya untuk masa depan keluarga Anda
+            <p class="font-black text-red-600 text-lg">
+              - Ahmad, Pemilik Toko Fashion Online yang Menyelamatkan
+              Keluarganya
             </p>
           </div>
 
-          <div class="bg-yellow-50 p-6 rounded-lg">
-            <p class="text-gray-800 mb-4">
-              Sebenarnya, harga normal untuk pembuatan toko online premium adalah <span class="font-bold">Rp 3.5 juta</span>. Tapi hari ini, saya membuat keputusan yang mungkin akan membuat tim saya protes...
+          <div class="bg-gray-100 p-6 rounded-lg animate-pulse">
+            <p class="text-xl text-gray-900 font-black mb-2">
+              PERHITUNGAN POTONGAN DI MARKETPLACE (Skenario Shopee)
             </p>
-            <p class="text-gray-800 font-medium mb-4">
-              Demi membantu UMKM Indonesia bangkit, khusus hari ini saya berikan harga yang tidak masuk akal:
+            <div class="space-y-2 mb-4">
+              <p class="text-lg text-gray-800">
+                • Omset Rp50jt/bulan × Admin kategori 8% = <span
+                  class="font-bold text-red-600">Rp4jt/bulan</span
+                >
+              </p>
+              <p class="text-lg text-gray-800">
+                • Biaya proses pesanan Rp1.250 × 500 order = <span
+                  class="font-bold text-red-600">Rp625rb/bulan</span
+                >
+              </p>
+              <p class="text-lg text-gray-800">
+                • Program Gratis Ongkir XTRA (contoh 4%) = <span
+                  class="font-bold text-red-600">Rp2jt/bulan</span
+                >
+              </p>
+            </div>
+            <p class="text-3xl font-black text-red-600 mb-2">
+              Total: Rp79.500.000/tahun
+            </p>
+            <p class="text-base text-gray-600 italic">
+              *Per 15 Agustus 2025. Catatan: admin per kategori bervariasi
+              (~2–8,5%); Gratis Ongkir XTRA kisaran ~0,5–6%; biaya proses
+              Rp1.250/ transaksi. Angka di atas adalah contoh realistis (Admin
+              8% + GO XTRA 4%). Belum termasuk PPN 11% atas fee.
             </p>
           </div>
 
-          <div class="space-y-2">
-            <p class="text-2xl font-bold text-gray-900">
-              <span class="line-through text-gray-400">Rp 3.5 juta</span>
+          <div class="bg-gray-50 p-8 rounded-lg border-2 border-yellow-500">
+            <p class="text-gray-900 text-lg leading-relaxed mb-4">
+              Sebenarnya, harga normal untuk pembuatan toko online premium
+              adalah <span class="font-black text-red-600">Rp 8 JUTA</span>.
+              Tapi hari ini, saya membuat keputusan yang mungkin akan membuat
+              tim saya protes...
             </p>
-            <p class="text-4xl font-bold text-red-600">
-              HANYA Rp 1.8 juta!
+            <p class="text-gray-800 text-lg leading-relaxed mb-4">
+              Demi membantu UMKM Indonesia bangkit, khusus hari ini saya berikan
+              harga yang tidak masuk akal:
             </p>
-            <p class="text-gray-700 font-medium">
-              ✓ Domain .com GRATIS (Hemat 280rb)<br />
-              ✓ Hosting 1 Tahun GRATIS (Hemat 1.2jt)<br />
-              ✓ Setup Toko 100% GRATIS (Hemat 500rb)
+            <p class="text-yellow-600 text-2xl font-black mb-2 animate-pulse">
+              PENAWARAN GILA TERBATAS!
             </p>
           </div>
 
-          <div class="bg-red-600 p-6 rounded-lg">
-            <p class="text-white font-bold mb-2">⚠️ PERINGATAN KERAS</p>
-            <p class="text-white">
-              Saat Anda membaca ini, pesaing Anda mungkin sudah mengklik tombol di bawah. Mereka akan merebut pelanggan Anda. Mereka akan menguasai pasar online. Apakah Anda rela tertinggal dan menyesal selamanya?
+          <div class="space-y-4 bg-gray-100 p-8 rounded-lg">
+            <p class="text-xl font-black text-gray-900">
+              <span class="line-through text-gray-500">Rp 8 juta</span>
+            </p>
+            <p class="text-2xl font-black text-yellow-600 animate-pulse">
+              HANYA Rp 4.5 JUTA!
+            </p>
+            <div class="flex flex-col items-center space-y-2">
+              <p
+                class="text-lg text-red-600 font-black text-center uppercase tracking-wider animate-pulse"
+              >
+                🎉 Promo Spesial Kemerdekaan! 🎉
+              </p>
+              <p class="text-sm text-yellow-600 font-bold">
+                Terbatas sampai 31 Agustus!
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"
+                ></span>
+                <span class="w-2 h-2 bg-white rounded-full"></span>
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"
+                ></span>
+              </div>
+            </div>
+            <p class="text-2xl font-black text-gray-900">
+              <span class="line-through text-gray-500">Rp 4.5 juta</span>
+            </p>
+            <p class="text-4xl font-black text-yellow-600 animate-pulse">
+              JADI Rp 1.8 JUTA!
+            </p>
+            <p class="text-lg text-gray-800 font-bold">
+              ✓ Domain .com GRATIS (Rp 200.000)<br />
+              ✓ Hosting 1 Tahun GRATIS (Rp 1.200.000)<br />
+              ✓ Setup Toko GRATIS (Rp 500.000)
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg border-2 border-red-500">
+            <p class="text-red-600 font-black text-xl mb-2">
+              ⚠️ Peringatan Terakhir!
+            </p>
+            <p class="text-gray-800 text-base">
+              Pesaing Anda sedang mencari solusi ini juga. Mereka bisa mengambil
+              alih pasar dan pelanggan Anda. Siap ambil langkah amankan bisnis
+              Anda?
             </p>
           </div>
 
           <div class="relative inline-block group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 rounded-lg blur opacity-90 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"
+            >
             </div>
             <a
               href="#contact"
-              class="relative inline-flex flex-col items-center bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white text-lg md:text-2xl font-bold px-6 md:px-12 py-4 md:py-6 rounded-lg transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl border-2 border-red-400"
+              class="relative inline-flex flex-col items-center bg-gradient-to-br from-red-500 via-red-600 to-red-700 text-white text-xl md:text-2xl font-black px-8 md:px-16 py-6 md:py-8 rounded-lg transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl border-2 border-yellow-400"
             >
-              <span class="absolute -top-2 -right-2 md:-top-3 md:-right-3 bg-gradient-to-r from-yellow-300 to-yellow-500 text-red-700 text-xs md:text-sm font-bold px-3 md:px-4 py-1 md:py-1.5 rounded-full animate-bounce shadow-lg border border-yellow-600">
-                TERBATAS!
+              <span
+                class="absolute -top-3 -right-3 bg-yellow-500 text-gray-900 text-base font-black px-4 py-2 rounded-full animate-bounce shadow-lg"
+              >
+                SELAMATKAN BISNIS ANDA!
               </span>
-              <span class="text-center">YA! SAYA MAU SELAMATKAN BISNIS SAYA SEKARANG!</span>
-              <span class="text-sm md:text-base font-semibold text-yellow-300 mt-1 md:mt-2">
-                👉 Klik untuk Konsultasi GRATIS
+              <span class="text-center"
+                >BERTINDAK SEKARANG ATAU MENYESAL SELAMANYA!</span
+              >
+              <span class="text-base font-bold text-yellow-300 mt-2">
+                ⭐ Konsultasi GRATIS - TERBATAS!
               </span>
             </a>
           </div>
 
-          <div class="text-sm text-red-600 font-medium">
-            ⚡ Hanya 2 slot tersisa! Harga naik dalam <span class="font-bold">24 jam</span>
+          <div class="text-base text-red-600 font-black animate-pulse">
+            ⚡ 2 SLOT TERAKHIR! Harga naik dalam <span class="text-yellow-600"
+              >24 JAM</span
+            >
           </div>
         </div>
       </div>
