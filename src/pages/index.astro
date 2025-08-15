@@ -49,16 +49,16 @@ const bg = await getImage({
         {SEO.description}
       </p>
 
-      {/* E-commerce Crafter */}
-      <div class="flex gap-4 mb-8 justify-center">
+      {/* Our Service */}
+      <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
         <a
           href="/ecommerce-crafter"
-          class="group flex flex-col items-center gap-2 px-6 py-3 rounded-xl border-2 border-gray-200 bg-gradient-to-r from-gray-900 to-gray-600 text-white backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:scale-105"
+          class="group flex flex-col items-center gap-2 px-4 sm:px-6 py-3 rounded-xl border-2 border-gray-200 bg-gradient-to-r from-gray-900 to-gray-600 text-white backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:scale-105 w-full sm:w-auto"
         >
           <div class="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-white"
+              class="h-5 sm:h-6 w-5 sm:w-6 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -70,16 +70,42 @@ const bg = await getImage({
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
             </svg>
             <div class="flex flex-col items-start">
-              <span
-                class="font-semibold text-white"
+              <span class="font-semibold text-white text-sm sm:text-base"
+                >E-Commerce Crafter</span
               >
-                E-Commerce Crafter
-              </span>
-              <span class="text-xs text-gray-200"> Integrated CS AI 24/7 </span>
+              <span class="text-xs text-gray-200">Integrated CS AI 24/7</span>
             </div>
           </div>
         </a>
+        <button
+          disabled
+          class="group flex flex-col items-center gap-2 px-4 sm:px-6 py-3 rounded-xl border-2 border-gray-200 bg-gradient-to-r from-gray-400 to-gray-500 text-white backdrop-blur-sm transition-all duration-300 cursor-not-allowed opacity-75 w-full sm:w-auto"
+        >
+          <div class="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 sm:h-6 w-5 sm:w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <div class="flex flex-col items-start">
+              <span class="font-semibold text-white text-sm sm:text-base">
+                Calculator Cost Comparator
+              </span>
+              <span class="text-xs text-gray-200">Coming Soon</span>
+            </div>
+          </div>
+        </button>
       </div>
+
       <form
         id="searchForm"
         class="flex w-full max-w-2xl mx-auto group"
