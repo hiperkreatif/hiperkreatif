@@ -67,12 +67,16 @@ import Logo from "../assets/logo-black.svg";
         <button
           class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none rounded-full hover:bg-gray-100 transition-colors"
           onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           <svg
             class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
