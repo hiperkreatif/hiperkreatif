@@ -9,7 +9,7 @@ export interface NavMenuItem {
 export const NAV_MENU: NavMenuItem[] = [
   { label: "Blog", href: "https://hiperkreatif.com/blog" },
   { label: "Community", href: "#community" },
-  { label: "Github", href: "https://github.com/ddr137", external: true },
+  { label: "Github", href: "https://github.com/hiperkreatif", external: true },
 ];
 
 export interface NavCta {
