@@ -19,99 +19,102 @@ import Logo from "../assets/logo.webp";
     <meta property="og:title" content={SEO.title} />
     <meta property="og:description" content={SEO.description} />
     <meta property="og:image" content={SEO.ogImage} />
-    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
   <body class="min-h-screen bg-white text-gray-900">
-    <nav
-      class="sticky top-0 z-50 bg-transparent backdrop-blur-xl border-b border-gray-100"
-    >
-      <div
-        class="max-w-4xl mx-auto flex items-center justify-between px-6 sm:px-0 py-4"
+    <header transition:name="site-header">
+      <nav
+        class="sticky top-0 z-50 bg-transparent backdrop-blur-xl border-b border-gray-100"
       >
-        <a href="/" class="flex items-center gap-3 group">
-          <Picture
-            src={Logo}
-            alt={NAV_LOGO}
-            widths={[40, 48]}
-            sizes="(min-width: 768px) 48px, 40px"
-            class="h-10 w-10 md:h-12 md:w-12 transition-transform duration-300 group-hover:scale-110"
-          />
-          <span
-            class="font-bold text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-gray-400"
-            >{NAV_LOGO}</span
-          >
-        </a>
-
-        {/* Desktop Menu */}
-        <div class="hidden md:flex items-center gap-6">
-          {
-            NAV_MENU.map((item) => (
-              <a
-                href={item.href}
-                class="relative text-base text-gray-600 font-medium px-2 py-1 hover:text-black transition-colors after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener" : undefined}
-              >
-                {item.label}
-              </a>
-            ))
-          }
-          <a
-            href={NAV_CTA.href}
-            class="ml-4 bg-black text-white font-medium text-base px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >{NAV_CTA.label}</a
-          >
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none rounded-full hover:bg-gray-100 transition-colors"
-          onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-        >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu Panel */}
-      <div id="mobile-menu" class="hidden md:hidden">
         <div
-          class="px-6 pt-4 pb-6 space-y-3 bg-gray-50/80 backdrop-blur-lg border-t border-gray-100"
+          class="max-w-4xl mx-auto flex items-center justify-between px-6 sm:px-0 py-4"
         >
-          {
-            NAV_MENU.map((item) => (
-              <a
-                href={item.href}
-                class="block text-base text-gray-600 hover:text-black font-medium px-3 py-2.5 rounded-lg hover:bg-white transition-all"
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener" : undefined}
-              >
-                {item.label}
-              </a>
-            ))
-          }
-          <a
-            href={NAV_CTA.href}
-            class="block mt-6 bg-black text-white font-medium text-base px-6 py-3 rounded-full text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
-            >{NAV_CTA.label}</a
+          <a href="/" class="flex items-center gap-3 group">
+            <Picture
+              src={Logo}
+              alt={NAV_LOGO}
+              widths={[40, 48]}
+              sizes="(min-width: 768px) 48px, 40px"
+              class="h-10 w-10 md:h-12 md:w-12 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span
+              class="font-bold text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-gray-400"
+              >{NAV_LOGO}</span
+            >
+          </a>
+
+          {/* Desktop Menu */}
+          <div class="hidden md:flex items-center gap-6">
+            {
+              NAV_MENU.map((item) => (
+                <a
+                  href={item.href}
+                  class="relative text-base text-gray-600 font-medium px-2 py-1 hover:text-black transition-colors after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <a
+              href={NAV_CTA.href}
+              class="ml-4 bg-black text-white font-medium text-base px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >{NAV_CTA.label}</a
+            >
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none rounded-full hover:bg-gray-100 transition-colors"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
           >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
-      </div>
-    </nav>
-    <div>
+
+        {/* Mobile Menu Panel */}
+        <div id="mobile-menu" class="hidden md:hidden">
+          <div
+            class="px-6 pt-4 pb-6 space-y-3 bg-gray-50/80 backdrop-blur-lg border-t border-gray-100"
+          >
+            {
+              NAV_MENU.map((item) => (
+                <a
+                  href={item.href}
+                  class="block text-base text-gray-600 hover:text-black font-medium px-3 py-2.5 rounded-lg hover:bg-white transition-all"
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <a
+              href={NAV_CTA.href}
+              class="block mt-6 bg-black text-white font-medium text-base px-6 py-3 rounded-full text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+              >{NAV_CTA.label}</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main transition:name="page-content">
       <slot />
-    </div>
+    </main>
     <footer
+      transition:name="site-footer"
       class="mt-12 py-6 border-t border-gray-200 bg-white text-center text-sm text-gray-500"
     >
       &copy; {new Date().getFullYear()} Hiperkreatif. All rights reserved.
