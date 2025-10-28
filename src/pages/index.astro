@@ -41,7 +41,6 @@ const bg = await getImage({
     >
       <h1
         class="px-0 sm:px-6 text-5xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 tracking-tight leading-tight"
-
       >
         {SEO.heroTitle}
       </h1>
@@ -109,10 +108,14 @@ const bg = await getImage({
           </div>
         </button>
       </div>
+    </section>
 
+    {/* Products Section */}
+    <section class="px-0 sm:px-4">
+      <script type="module" src="/scripts/tagFilter.js"></script>
       <form
         id="searchForm"
-        class="flex w-full max-w-2xl mx-auto group"
+        class="flex w-full max-w-2xl mx-auto group mb-12 mt-8"
         role="search"
       >
         <input
@@ -122,12 +125,6 @@ const bg = await getImage({
           aria-label="Cari produk, tools, atau layanan"
         />
       </form>
-    </section>
-
-    {/* Products Section */}
-    <section class="px-0 sm:px-4 mt-24">
-      <script type="module" src="/scripts/tagFilter.js"></script>
-
       {/* Tag Filter */}
       <div id="tag-filter" class="flex mb-8 md:flex-wrap md:justify-center">
         <div
