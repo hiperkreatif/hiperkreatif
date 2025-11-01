@@ -6,8 +6,6 @@ import { SERVICES } from "../constants/services";
 import { FAQS } from "../constants/faqs";
 import Button from "../components/Button.astro";
 import Hero from "../components/Hero.astro";
-
-// Pakai URL langsung untuk JSON-LD
 const logo = LogoUrl;
 ---
 
@@ -19,7 +17,7 @@ const logo = LogoUrl;
       description={SEO.description}
       primaryButtonText="Jadwalkan Konsultasi"
       secondaryButtonText="Chat WhatsApp"
-      primaryButtonLink="#consult"
+      primaryButtonLink="/consultation"
       secondaryButtonLink="https://wa.me/6285157445924"
       secondaryButtonTarget="_blank"
       secondaryButtonRel="noopener noreferrer"
@@ -32,7 +30,7 @@ const logo = LogoUrl;
           Layanan Unggulan
         </h2>
         <a
-          href="#consult"
+          href="/consultation"
           class="text-sm font-medium text-gray-900 underline decoration-2 underline-offset-4"
           >Butuh Spesifik? Konsultasi</a
         >
@@ -79,7 +77,7 @@ const logo = LogoUrl;
             Proses Kerja
           </h2>
           <a
-            href="#consult"
+            href="/consultation"
             class="text-sm font-medium text-gray-900 underline decoration-2 underline-offset-4"
             >Mulai konsultasi</a
           >
@@ -197,241 +195,6 @@ const logo = LogoUrl;
         </a>
       </div>
     </section> -->
-
-    <!-- CONSULT FORM -->
-    <section
-      id="consult"
-      class="scroll-mt-24 px-6 mt-12 mb-20"
-      aria-labelledby="consult-title"
-    >
-      <div class="bg-white rounded-2xl border-2 border-gray-100">
-        <div class="p-6 border-b border-gray-100">
-          <h2 id="consult-title" class="text-3xl font-bold text-gray-900 mb-2">
-            Konsultasi Cepat
-          </h2>
-          <p class="text-gray-700">
-            Isi singkat dan jelas. Saya balas dengan rencana teknis + estimasi
-            waktu.
-          </p>
-        </div>
-
-        <form
-          method="POST"
-          action="/api/consult"
-          class="p-6 space-y-8"
-          novalidate
-        >
-          <!-- Honeypot -->
-          <input
-            type="text"
-            name="website"
-            class="hidden"
-            tabindex="-1"
-            autocomplete="off"
-          />
-          <!-- Time-trap -->
-          <input type="hidden" name="submitted_at" value={Date.now()} />
-
-          <!-- Info Kontak -->
-          <fieldset class="space-y-4">
-            <legend class="text-sm font-semibold text-gray-900 mb-2"
-              >Info Kontak</legend
-            >
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label
-                  for="name"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  Nama lengkap <span class="text-red-600">*</span>
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  autocomplete="name"
-                  placeholder="Nama lengkap"
-                  class="formc w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:border-black"
-                />
-              </div>
-              <div>
-                <label
-                  for="email"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  Email <span class="text-red-600">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autocomplete="email"
-                  placeholder="email@bisnis.com"
-                  class="formc w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:border-black"
-                />
-              </div>
-              <div>
-                <label
-                  for="whatsapp"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  WhatsApp <span class="text-red-600">*</span>
-                </label>
-                <input
-                  id="whatsapp"
-                  name="whatsapp"
-                  type="tel"
-                  inputmode="tel"
-                  required
-                  autocomplete="tel"
-                  pattern="^\+?\d{6,15}$"
-                  placeholder="+62…"
-                  class="formc w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:border-black"
-                />
-                <p class="mt-1 text-xs text-gray-500">
-                  Gunakan format internasional untuk mempermudah.
-                </p>
-              </div>
-              <div>
-                <label
-                  for="company"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  Nama Bisnis/Brand <span class="text-red-600">*</span>
-                </label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  required
-                  autocomplete="organization"
-                  placeholder="Nama Bisnis/Brand"
-                  class="formc w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:border-black"
-                />
-              </div>
-            </div>
-          </fieldset>
-
-          <!-- Kebutuhan Proyek -->
-          <fieldset class="space-y-4 mt-4">
-            <legend class="text-sm font-semibold text-gray-900 mb-2"
-              >Kebutuhan Proyek</legend
-            >
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label
-                  for="scope"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  Scope Utama <span class="text-red-600">*</span>
-                </label>
-                <select
-                  id="scope"
-                  name="scope"
-                  required
-                  class="formc w-full px-4 py-3 pr-10 rounded-xl border-2 border-gray-200 bg-white appearance-none focus:outline-none focus:border-black"
-                >
-                  <option value="">Pilih scope</option>
-                  <option value="web">Website</option>
-                  <option value="mobile">Mobile App</option>
-                  <option value="web_mobile">Website + Mobile</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  for="ai_needs"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                  >AI Needs</label
-                >
-                <select
-                  id="ai_needs"
-                  name="ai_needs"
-                  class="formc w-full px-4 py-3 pr-10 rounded-xl border-2 border-gray-200 bg-white appearance-none focus:outline-none focus:border-black"
-                >
-                  <option value="">Pilih kebutuhan AI</option>
-                  <option value="cs">CS WhatsApp 24/7</option>
-                  <option value="reco">Rekomendasi Produk</option>
-                  <option value="mktg">Marketing Automation</option>
-                  <option value="finance">Finance Assist</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  for="monthly_revenue"
-                  class="block text-sm font-medium text-gray-900 mb-1"
-                >
-                  Omzet Bulanan <span class="text-red-600">*</span>
-                </label>
-                <select
-                  id="monthly_revenue"
-                  name="monthly_revenue"
-                  required
-                  class="formc w-full px-4 py-3 pr-10 rounded-xl border-2 border-gray-200 bg-white appearance-none focus:outline-none focus:border-black"
-                >
-                  <option value="">Pilih omzet</option>
-                  <option value="lt_10">&lt; 10 juta</option>
-                  <option value="10_50">10–50 juta</option>
-                  <option value="50_200">50–200 juta</option>
-                  <option value="gt_200">&gt; 200 juta</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label
-                for="notes"
-                class="block text-sm font-medium text-gray-900 mb-1"
-              >
-                Catatan <span class="text-red-600">*</span>
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                required
-                rows={5}
-                placeholder="Problem utama & target 1–2 bulan ke depan…"
-                class="formc w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white placeholder:text-gray-400 focus:outline-none focus:border-black"
-              ></textarea>
-              <p class="mt-1 text-xs text-gray-500">
-                Contoh: “Migrasi dari marketplace, target 20 order/hari.”
-              </p>
-            </div>
-          </fieldset>
-
-          <!-- Persetujuan & Submit -->
-          <div class="space-y-4">
-            <label class="flex items-start gap-3">
-              <input
-                id="agree"
-                name="agree"
-                type="checkbox"
-                required
-                class="mt-1 h-4 w-4 rounded border-gray-300 text-gray-900 focus:outline-none"
-              />
-              <span class="text-sm text-gray-700"
-                >Setuju dihubungi terkait konsultasi & penawaran.</span
-              >
-            </label>
-
-            <Button
-              variant="primary"
-              size="lg"
-              type="submit"
-              text="Kirim Brief Singkat"
-              className="w-full"
-            />
-
-            <div class="text-xs text-gray-500">
-              Data aman, tanpa spam. Balasan biasanya &lt; 48 jam kerja.
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
   </div>
 
   <!-- JSON-LD @graph tetap di head -->
