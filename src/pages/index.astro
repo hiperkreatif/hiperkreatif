@@ -161,10 +161,7 @@ const logo = LogoUrl;
         </h2>
 
         <!-- Wrapper: single column on mobile, grid 2-col on md+ -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-4"
-          role="list"
-        >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" role="list">
           {
             FAQS.map((f, index) => (
               <div class="overflow-hidden">
@@ -205,19 +202,10 @@ const logo = LogoUrl;
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.hiperkreatif.com/#website",
-          url: "https://www.hiperkreatif.com/",
-          name: "Hiperkreatif",
-          alternateName: ["Hiperkreatif", "hiperkreatif.com"],
-          publisher: { "@id": "https://www.hiperkreatif.com/#org" },
-          inLanguage: "id-ID",
-        },
-        {
           "@type": "Organization",
           "@id": "https://www.hiperkreatif.com/#org",
           name: "Hiperkreatif",
-          url: "https://www.hiperkreatif.com",
+          url: "https://www.hiperkreatif.com/",
           logo: {
             "@type": "ImageObject",
             url: logo,
@@ -232,32 +220,45 @@ const logo = LogoUrl;
             {
               "@type": "ContactPoint",
               contactType: "customer support",
-              telephone: "+62-800-0000-0000",
+              telephone: "+628157445924", // pakai E.164
               email: "hi@hiperkreatif.com",
+              availableLanguage: "id",
             },
           ],
           founder: { "@id": "https://www.hiperkreatif.com/#person" },
         },
+
         {
           "@type": "Person",
           "@id": "https://www.hiperkreatif.com/#person",
           name: "Kang Dadan",
-          url: "https://www.hiperkreatif.com",
           jobTitle: "Software Engineer & Solo Founder",
+          url: "https://www.hiperkreatif.com/",
           image: "https://www.hiperkreatif.com/dadan.jpg",
-          sameAs: [
-            "https://github.com/hiperkreatif",
-            "https://wa.me/6285157445924",
-          ],
           worksFor: { "@id": "https://www.hiperkreatif.com/#org" },
         },
+
+        {
+          "@type": "WebSite",
+          "@id": "https://www.hiperkreatif.com/#website",
+          url: "https://www.hiperkreatif.com/",
+          name: "Hiperkreatif",
+          publisher: { "@id": "https://www.hiperkreatif.com/#org" },
+          inLanguage: "id-ID",
+          potentialAction: {
+            "@type": "SearchAction",
+            target:
+              "https://www.hiperkreatif.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        },
+
         {
           "@type": "WebPage",
           "@id": "https://www.hiperkreatif.com/#webpage",
           url: "https://www.hiperkreatif.com/",
           name: SEO.title,
           description: SEO.description,
-          inLanguage: "id-ID",
           isPartOf: { "@id": "https://www.hiperkreatif.com/#website" },
           about: { "@id": "https://www.hiperkreatif.com/#org" },
           primaryImageOfPage: {
@@ -266,6 +267,77 @@ const logo = LogoUrl;
             width: 1200,
             height: 630,
           },
+        },
+
+        // NAVIGATION / SITEMAP-LIKE — bantu Google kenalin link penting (sitelinks candidate)
+        {
+          "@type": "SiteNavigationElement",
+          name: "Primary navigation",
+          url: "https://www.hiperkreatif.com/",
+          about: [
+            {
+              "@type": "WebPage",
+              name: "HyperSite Commerce",
+              url: "https://www.hiperkreatif.com/services/hypersite-commerce",
+            },
+            {
+              "@type": "WebPage",
+              name: "HyperProfile Site",
+              url: "https://www.hiperkreatif.com/services/hyperprofile-site",
+            },
+            {
+              "@type": "WebPage",
+              name: "HyperBuild Custom",
+              url: "https://www.hiperkreatif.com/services/hyperbuild-custom",
+            },
+            {
+              "@type": "WebPage",
+              name: "Gen-AI Solutions",
+              url: "https://www.hiperkreatif.com/services/gen-ai-solutions",
+            },
+          ],
+        },
+
+        // DESKRIPSI LAYANAN EXPLICIT — Google loves explicit entities
+        {
+          "@type": "Service",
+          "@id": "https://www.hiperkreatif.com/services/hypersite-commerce",
+          name: "HyperSite Commerce",
+          serviceType: "E-commerce Development",
+          url: "https://www.hiperkreatif.com/services/hypersite-commerce",
+          provider: { "@id": "https://www.hiperkreatif.com/#org" },
+          description:
+            "Toko online kencang, aman, SEO-ready, integrasi pembayaran & CRM.",
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.hiperkreatif.com/services/hyperprofile-site",
+          name: "HyperProfile Site",
+          serviceType: "Company Profile Website",
+          url: "https://www.hiperkreatif.com/services/hyperprofile-site",
+          provider: { "@id": "https://www.hiperkreatif.com/#org" },
+          description:
+            "Company profile profesional, CMS ramah editor, multi bahasa opsional.",
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.hiperkreatif.com/services/hyperbuild-custom",
+          name: "HyperBuild Custom",
+          serviceType: "Custom Web & App Development",
+          url: "https://www.hiperkreatif.com/services/hyperbuild-custom",
+          provider: { "@id": "https://www.hiperkreatif.com/#org" },
+          description:
+            "Solusi custom untuk workflow, integrasi API, dan automasi bisnis.",
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.hiperkreatif.com/services/gen-ai-solutions",
+          name: "Gen-AI Solutions",
+          serviceType: "Generative AI & Automation",
+          url: "https://www.hiperkreatif.com/services/gen-ai-solutions",
+          provider: { "@id": "https://www.hiperkreatif.com/#org" },
+          description:
+            "Asisten AI, RAG untuk SOP & katalog, chat CS otomatis, integrasi multichannel.",
         },
       ],
     })}

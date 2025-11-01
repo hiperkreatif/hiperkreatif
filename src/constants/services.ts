@@ -410,135 +410,134 @@ export const SERVICES: Service[] = [
   // =========================
   // 4) Gen-AI Solutions
   // =========================
-{
-  slug: "gen-ai",
-  name: "Gen-AI Solutions",
-  badge: "Gen-AI",
-  tagline:
-    "AI yang beneran kerja: dari chat pelanggan sampai keputusan bisnis.",
-  desc: "Kami bantu bangun ekosistem Gen-AI yang relevan dan terukur — bukan sekadar demo yang bikin 'wow' sebentar. Dari otomasi chat WhatsApp 24/7 sampai analitik keuangan cerdas, semuanya diorkestrasi biar tim lo bisa kerja lebih cepat, rapi, dan murah.",
-  bullets: [
-    "CS AI 24/7 di WhatsApp & web",
-    "AI Asisten Operasional (meeting, laporan, jadwal)",
-    "AI Knowledge Search berbasis dokumen internal (RAG)",
-    "AI Content Generator untuk marketing & brand",
-    "Prompt Crafter siap pakai untuk tim non-teknis",
-    "AI Decision Support untuk analitik & keuangan",
-    "AI Training & Education interaktif",
-    "AI Agent Multi-Role yang saling sinkron",
-  ],
-  cta: "/services/gen-ai",
-  audience: [
-    "Tim Customer Service & Operasional yang overworked",
-    "Tim Marketing yang dikejar konten tiap hari",
-    "Owner yang mau efisiensi tanpa nurunin kualitas",
-    "Perusahaan dengan ribuan chat atau tiket per bulan",
-  ],
-  outcomes: [
-    "Masalah selesai otomatis tanpa eskalasi manusia",
-    "Waktu respon chat & analitik turun dari menit ke detik",
-    "Nada & tone brand tetap konsisten di semua channel",
-    "Biaya per tiket dan produksi konten turun signifikan",
-    "Kepuasan pelanggan (CSAT) tetap stabil atau meningkat",
-  ],
-  deliverables: [
-    {
-      title: "Fondasi & Data",
-      items: [
-        "Analisis use case & peta risiko",
-        "Pembangunan knowledge base (RAG) + pipeline otomatis",
-        "Desain prompt, flow agent, dan guardrails keamanan",
-      ],
-    },
-    {
-      title: "Orkestrasi & Kontrol",
-      items: [
-        "Evaluasi kualitas model (offline & real-time)",
-        "Monitoring percakapan dan performa agent",
-        "Dashboard metrik, biaya, dan insight penggunaan",
-        "Alert otomatis untuk error & penurunan kualitas",
-      ],
-    },
-  ],
-  includes: [
-    "Template guardrail & evaluasi kualitas",
-    "Dokumentasi operasional & keamanan data",
-    "Workshop onboarding untuk tim internal",
-    "Setup awal dashboard & monitoring",
-  ],
-  excludes: [
-    "Biaya penggunaan model LLM & embedding",
-    "Labeling data dalam skala besar",
-    "Integrasi enterprise kompleks (perlu SOW tambahan)",
-    "Fitur custom di luar scope dasar",
-  ],
-  timeline: {
-    minWeeks: 2,
-    maxWeeks: 6,
-    note: "Mulai dari pilot kecil yang bisa langsung diukur, lalu scale bertahap.",
-  },
-  price: {
-    currency: "IDR",
-    unit: "project",
-    note: "Estimasi menyesuaikan kompleksitas dan scope final.",
-  },
-  kpis: [
-    {
-      name: "Masalah Selesai oleh Bot",
-      target: "≥ 60%",
-      goal: "CS fokus ke kasus penting, bukan repetitif",
-      window: "30d",
-      source: ["Bot Analytics"],
-    },
-    {
-      name: "Waktu Respon Chat",
-      target: "< 2 detik",
-      goal: "Pengalaman pelanggan secepat instan",
-      window: "30d",
-      source: ["Bot Analytics"],
-    },
-    {
-      name: "Kepuasan Pelanggan (CSAT)",
-      target: "≥ 4.2/5",
-      goal: "AI tetap memberi jawaban yang memuaskan",
-      window: "30d",
-      source: ["Survey/CSAT"],
-    },
-    {
-      name: "Biaya Operasional",
-      target: "Turun ≥ 30%",
-      goal: "Efisiensi biaya per tiket atau per konten",
-      window: "30d",
-      source: ["Billing/Usage"],
-    },
-    {
-      name: "Konsistensi Jawaban",
-      target: "On-brand (audit mingguan)",
-      goal: "Nada & isi tetap sesuai brand voice",
-      window: "7d",
-      source: ["Sampling QA"],
-    },
-    {
-      name: "Akurasi AI",
-      target: "Hallucination < 5%",
-      goal: "Jawaban aman dan relevan",
-      window: "30d",
-      source: ["Sampling QA"],
-    },
-  ],
-  security: {
-    features: [
-      "Enkripsi Data End-to-End",
-      "Role-Based Access Control (RBAC)",
-      "Deteksi Anomali & Audit Log AI",
+  {
+    slug: "gen-ai-solutions",
+    name: "Gen-AI Solutions",
+    badge: "Gen-AI",
+    tagline:
+      "AI yang beneran kerja: dari chat pelanggan sampai keputusan bisnis.",
+    desc: "Kami bantu bangun ekosistem Gen-AI yang relevan dan terukur — bukan sekadar demo yang bikin 'wow' sebentar. Dari otomasi chat WhatsApp 24/7 sampai analitik keuangan cerdas, semuanya diorkestrasi biar tim lo bisa kerja lebih cepat, rapi, dan murah.",
+    bullets: [
+      "CS AI 24/7 di WhatsApp & web",
+      "AI Asisten Operasional (meeting, laporan, jadwal)",
+      "AI Knowledge Search berbasis dokumen internal (RAG)",
+      "AI Content Generator untuk marketing & brand",
+      "Prompt Crafter siap pakai untuk tim non-teknis",
+      "AI Decision Support untuk analitik & keuangan",
+      "AI Training & Education interaktif",
+      "AI Agent Multi-Role yang saling sinkron",
     ],
+    cta: "/services/gen-ai-solutions",
+    audience: [
+      "Tim Customer Service & Operasional yang overworked",
+      "Tim Marketing yang dikejar konten tiap hari",
+      "Owner yang mau efisiensi tanpa nurunin kualitas",
+      "Perusahaan dengan ribuan chat atau tiket per bulan",
+    ],
+    outcomes: [
+      "Masalah selesai otomatis tanpa eskalasi manusia",
+      "Waktu respon chat & analitik turun dari menit ke detik",
+      "Nada & tone brand tetap konsisten di semua channel",
+      "Biaya per tiket dan produksi konten turun signifikan",
+      "Kepuasan pelanggan (CSAT) tetap stabil atau meningkat",
+    ],
+    deliverables: [
+      {
+        title: "Fondasi & Data",
+        items: [
+          "Analisis use case & peta risiko",
+          "Pembangunan knowledge base (RAG) + pipeline otomatis",
+          "Desain prompt, flow agent, dan guardrails keamanan",
+        ],
+      },
+      {
+        title: "Orkestrasi & Kontrol",
+        items: [
+          "Evaluasi kualitas model (offline & real-time)",
+          "Monitoring percakapan dan performa agent",
+          "Dashboard metrik, biaya, dan insight penggunaan",
+          "Alert otomatis untuk error & penurunan kualitas",
+        ],
+      },
+    ],
+    includes: [
+      "Template guardrail & evaluasi kualitas",
+      "Dokumentasi operasional & keamanan data",
+      "Workshop onboarding untuk tim internal",
+      "Setup awal dashboard & monitoring",
+    ],
+    excludes: [
+      "Biaya penggunaan model LLM & embedding",
+      "Labeling data dalam skala besar",
+      "Integrasi enterprise kompleks (perlu SOW tambahan)",
+      "Fitur custom di luar scope dasar",
+    ],
+    timeline: {
+      minWeeks: 2,
+      maxWeeks: 6,
+      note: "Mulai dari pilot kecil yang bisa langsung diukur, lalu scale bertahap.",
+    },
+    price: {
+      currency: "IDR",
+      unit: "project",
+      note: "Estimasi menyesuaikan kompleksitas dan scope final.",
+    },
+    kpis: [
+      {
+        name: "Masalah Selesai oleh Bot",
+        target: "≥ 60%",
+        goal: "CS fokus ke kasus penting, bukan repetitif",
+        window: "30d",
+        source: ["Bot Analytics"],
+      },
+      {
+        name: "Waktu Respon Chat",
+        target: "< 2 detik",
+        goal: "Pengalaman pelanggan secepat instan",
+        window: "30d",
+        source: ["Bot Analytics"],
+      },
+      {
+        name: "Kepuasan Pelanggan (CSAT)",
+        target: "≥ 4.2/5",
+        goal: "AI tetap memberi jawaban yang memuaskan",
+        window: "30d",
+        source: ["Survey/CSAT"],
+      },
+      {
+        name: "Biaya Operasional",
+        target: "Turun ≥ 30%",
+        goal: "Efisiensi biaya per tiket atau per konten",
+        window: "30d",
+        source: ["Billing/Usage"],
+      },
+      {
+        name: "Konsistensi Jawaban",
+        target: "On-brand (audit mingguan)",
+        goal: "Nada & isi tetap sesuai brand voice",
+        window: "7d",
+        source: ["Sampling QA"],
+      },
+      {
+        name: "Akurasi AI",
+        target: "Hallucination < 5%",
+        goal: "Jawaban aman dan relevan",
+        window: "30d",
+        source: ["Sampling QA"],
+      },
+    ],
+    security: {
+      features: [
+        "Enkripsi Data End-to-End",
+        "Role-Based Access Control (RBAC)",
+        "Deteksi Anomali & Audit Log AI",
+      ],
+    },
+    support: {
+      warrantyDays: 7,
+      slaHours: 48,
+      channels: ["Email", "WhatsApp"],
+    },
+    demo: { label: "Coba pilot RAG", href: "/demo/gen-ai" },
   },
-  support: {
-    warrantyDays: 7,
-    slaHours: 48,
-    channels: ["Email", "WhatsApp"],
-  },
-  demo: { label: "Coba pilot RAG", href: "/demo/gen-ai" },
-}
-
 ];

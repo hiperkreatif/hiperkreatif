@@ -9,12 +9,13 @@ import { ClientRouter } from "astro:transitions";
 import { SEO as DEFAULTS } from "../constants/seo.ts";
 import og from "../assets/og.png";
 const ogUrl = new URL(og.src, Astro.site).toString();
-
+import LogoUrl from "../assets/logo-black.svg?url";
 const {
   title = DEFAULTS.title,
   description = DEFAULTS.description,
   robots = DEFAULTS.robots,
   //   ogImage = DEFAULTS.ogImage,
+  logo = LogoUrl,
   ogImageAlt = DEFAULTS.ogImageAlt,
   ogType = DEFAULTS.ogType,
   twitterCard = DEFAULTS.twitterCard,
@@ -38,6 +39,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
+    <meta property="og:logo" content={logo} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
