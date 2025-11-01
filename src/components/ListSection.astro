@@ -1,0 +1,37 @@
+--- 
+export interface Props {
+  title: string;
+  items: string[] | undefined;
+  columns?: 1 | 2;
+  class?: string;
+}
+
+const { title, items, columns = 2, class: className } = Astro.props;
+---
+
+{
+  items && items.length > 0 && (
+    <section class:list={["bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100 mb-8", className]}>
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">{title}</h2>
+      </div>
+      
+      <ul class:list={["gap-x-6 gap-y-3", {
+        "grid grid-cols-1 md:grid-cols-2": columns === 2,
+        "space-y-3": columns === 1,
+      }]}>
+        {
+          items.map((item) => (
+            <li class="flex gap-3 items-start">
+              <span
+                aria-hidden="true"
+                class="inline-block shrink-0 h-1.5 w-1.5 rounded-full bg-gray-900 translate-y-[7px]"
+              />
+              <span class="text-gray-800">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  )
+}

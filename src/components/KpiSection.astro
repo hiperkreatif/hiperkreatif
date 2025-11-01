@@ -1,0 +1,101 @@
+---
+// components/KpiSection.astro
+// Komponen KPI yang fleksibel: terima string[] ATAU objek KPI[].
+
+// ===== Types =====
+export interface KPI {
+  name: string;                 // "Checkout Sukses"
+  target?: string;              // "≥ 97%"
+  goal?: string;                // "Transaksi mulus tanpa error"
+  window?: "7d" | "30d" | "90d";
+  source?: string[];            // ["GA4", "Gateway Logs"]
+}
+
+export type KPIInput = string | KPI;
+
+export interface Props {
+  kpis?: KPIInput[];            // bisa string[] atau KPI[]
+  title?: string;               // judul section
+  variant?: "list" | "chips";   // tampilkan sebagai list detail atau chip ringkas
+  max?: number;                 // batasi jumlah KPI
+  dense?: boolean;              // padding lebih rapat
+}
+
+const {
+  kpis = [],
+  title = "KPI Utama",
+  variant = "list",
+  max = 8,
+  dense = false
+} = Astro.props as Props;
+
+// ===== Normalize: ubah string -> KPI { name } dan buang item kosong =====
+const normalized: KPI[] = (Array.isArray(kpis) ? kpis : [])
+  .map((k: KPIInput) => (typeof k === "string" ? { name: k } : k))
+  .filter((k: KPI) => k && k.name?.trim().length > 0)
+  .slice(0, max);
+
+// ===== Helpers =====
+function renderSource(src?: string[]) {
+  if (!src || src.length === 0) return null;
+  return src.join(", ");
+}
+
+const pad = dense ? "p-5 md:p-6" : "p-6 md:p-8";
+---
+{normalized.length > 0 && (
+  <section class={`bg-white rounded-2xl ${pad} border-2 border-gray-100 mt-8`} aria-labelledby="kpi-title">
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <h2 id="kpi-title" class="text-2xl font-bold text-gray-900">{title}</h2>
+    </div>
+
+    {variant === "chips" ? (
+      // ===== CHIP VARIANT =====
+      <div class="flex flex-wrap gap-3">
+        {normalized.map((kpi) => (
+          <span class="px-4 py-2 bg-gray-100 text-gray-900 rounded-full text-sm border border-gray-200">
+            <span class="font-semibold">{kpi.name}</span>
+            {kpi.target && <span class="ml-2 text-gray-600">({kpi.target})</span>}
+          </span>
+        ))}
+      </div>
+    ) : (
+      // ===== LIST VARIANT =====
+      <ul class="space-y-3">
+        {normalized.map((kpi) => (
+          <li class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-start">
+            <div class="md:col-span-4">
+              <span class="inline-block font-semibold text-gray-900">{kpi.name}</span>
+            </div>
+            <div class="md:col-span-3">
+              {kpi.target ? (
+                <span class="inline-flex items-center px-3 py-1 rounded-full border border-gray-300 bg-gray-50 text-gray-900 text-sm">
+                  Target: {kpi.target}
+                </span>
+              ) : (
+                <span class="text-gray-500 text-sm">Target disepakati</span>
+              )}
+            </div>
+            <div class="md:col-span-5 text-gray-700 text-sm">
+              {kpi.goal ? kpi.goal : <span class="text-gray-500">Tujuan: peningkatan hasil</span>}
+              {(kpi.window || kpi.source) && (
+                <div class="mt-1 flex flex-wrap items-center gap-2">
+                  {kpi.window && (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-[12px] text-gray-700">
+                      Periode: {kpi.window}
+                    </span>
+                  )}
+                  {kpi.source && kpi.source.length > 0 && (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-[12px] text-gray-700">
+                      Sumber: {renderSource(kpi.source)}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+)}

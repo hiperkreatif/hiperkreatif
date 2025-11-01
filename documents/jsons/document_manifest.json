@@ -1,0 +1,199 @@
+{
+  "product": "Agency Doc Engine",
+  "version": "1.0.0",
+  "locale": {
+    "language": "id",
+    "currency": "IDR",
+    "date_format": "DD MMM YYYY",
+    "number_format": "#,##0"
+  },
+  "numbering": {
+    "rules": [
+      {
+        "type": "quotation",
+        "pattern": "QT/{{year}}/{{month}}/{{seq}}",
+        "seq_padding": 4
+      },
+      {
+        "type": "invoice",
+        "pattern": "INV/{{year}}/{{month}}/{{seq}}",
+        "seq_padding": 4
+      },
+      {
+        "type": "contract",
+        "pattern": "AGR/{{year}}/{{seq}}",
+        "seq_padding": 4
+      },
+      {
+        "type": "receipt",
+        "pattern": "RCPT/{{year}}/{{month}}/{{seq}}",
+        "seq_padding": 4
+      },
+      {
+        "type": "handover",
+        "pattern": "HOV/{{year}}/{{seq}}",
+        "seq_padding": 4
+      },
+      {
+        "type": "progress",
+        "pattern": "PRG/{{year}}/{{week}}/{{seq}}",
+        "seq_padding": 3
+      }
+    ]
+  },
+  "global_defaults": {
+    "agency": {
+      "name": "Hiperkreatif",
+      "address": "Jl. Contoh No. 123, Kota, 40200",
+      "email": "hello@hiperkreatif.id",
+      "phone": "+62 812-0000-0000",
+      "website": "https://hiperkreatif.id",
+      "npwp": "00.000.000.0-000.000"
+    },
+    "payment": {
+      "terms_days": 7,
+      "methods": ["Bank Transfer", "Virtual Account"],
+      "bank_accounts": [
+        { "bank": "BCA", "name": "HIPERKREATIF", "number": "1234567890" }
+      ]
+    }
+  },
+  "documents": [
+    {
+      "type": "quotation",
+      "title": "Quotation / Penawaran Harga",
+      "filename": "quotation_{{number}}.pdf",
+      "required_fields": [
+        "number",
+        "date",
+        "client.name",
+        "client.company",
+        "client.email",
+        "items[]",
+        "totals.subtotal",
+        "totals.tax",
+        "totals.total",
+        "valid_until"
+      ],
+      "workflow": {
+        "approval": ["agency.account_manager", "client.representative"],
+        "signers": ["agency.sign", "client.sign"]
+      }
+    },
+    {
+      "type": "invoice",
+      "title": "Invoice / Tagihan",
+      "filename": "invoice_{{number}}.pdf",
+      "required_fields": [
+        "number",
+        "date",
+        "due_date",
+        "client.name",
+        "items[]",
+        "totals.subtotal",
+        "totals.tax",
+        "totals.total",
+        "payment.instructions"
+      ],
+      "workflow": {
+        "approval": ["agency.finance"],
+        "signers": ["agency.sign"]
+      }
+    },
+    {
+      "type": "contract",
+      "title": "Service Agreement / Kontrak",
+      "filename": "contract_{{number}}.pdf",
+      "required_fields": [
+        "number",
+        "date",
+        "client.name",
+        "client.company",
+        "project.scope",
+        "project.timeline",
+        "project.deliverables[]",
+        "payment.terms",
+        "ip_rights",
+        "warranty",
+        "termination"
+      ],
+      "workflow": {
+        "approval": ["agency.legal", "client.representative"],
+        "signers": ["agency.sign", "client.sign"]
+      }
+    },
+    {
+      "type": "brief",
+      "title": "Project Brief / Requirement",
+      "filename": "brief_{{client.company}}_{{date}}.pdf",
+      "required_fields": [
+        "client.name",
+        "client.company",
+        "goals",
+        "audience",
+        "features[]",
+        "brand_assets[]",
+        "constraints",
+        "deadline"
+      ],
+      "workflow": { "approval": ["agency.pm", "client.representative"] }
+    },
+    {
+      "type": "progress",
+      "title": "Weekly Progress Report",
+      "filename": "progress_{{number}}.pdf",
+      "required_fields": [
+        "number",
+        "period_start",
+        "period_end",
+        "milestones[]",
+        "status",
+        "risks[]",
+        "next_actions[]"
+      ],
+      "workflow": { "approval": ["agency.pm"], "distribution": ["client.email"] }
+    },
+    {
+      "type": "handover",
+      "title": "Project Handover / Serah Terima",
+      "filename": "handover_{{number}}.pdf",
+      "required_fields": [
+        "number",
+        "date",
+        "client.name",
+        "deliverables[]",
+        "repo_links[]",
+        "credentials[]",
+        "acceptance_clause"
+      ],
+      "workflow": {
+        "approval": ["agency.pm", "client.representative"],
+        "signers": ["agency.sign", "client.sign"]
+      }
+    }
+  ],
+  "schemas": {
+    "party": {
+      "name": "string",
+      "company": "string",
+      "email": "string",
+      "phone": "string",
+      "address": "string",
+      "sign": { "name": "string", "title": "string" }
+    },
+    "item": {
+      "name": "string",
+      "description": "string",
+      "qty": "number",
+      "unit_price": "number",
+      "total": "number",
+      "metadata": "object"
+    },
+    "totals": {
+      "subtotal": "number",
+      "discount": "number",
+      "tax": "number",
+      "total": "number"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+---
+// Consultation Component
+export interface Props {
+  id?: string;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  serviceName?: string;
+}
+
+const {
+  id = "consult",
+  title = "Mari Kita Bicarakan Proyek Anda",
+  description = "Jelaskan kebutuhan bisnis Anda, tim kami akan membantu menemukan solusi digital terbaik untuk pertumbuhan perusahaan Anda.",
+  buttonText = "Konsultasi Gratis",
+  serviceName
+} = Astro.props;
+
+// Generate contextual WhatsApp link based on service name
+let whatsappMessage = "Minat dengan layanan Hiperkreatif. Boleh dibantu konsultasi lebih lanjut?";
+if (serviceName) {
+  const encodedServiceName = encodeURIComponent(serviceName);
+  whatsappMessage = `Minat dengan layanan ${serviceName} dari Hiperkreatif. Boleh dibantu konsultasi lebih lanjut?`;
+}
+const encodedMessage = encodeURIComponent(whatsappMessage);
+const whatsappLink = `https://wa.me/6285157445924?text=${encodedMessage}`;
+---
+
+<section id={id} class="mt-16 bg-gray-900 rounded-2xl p-8 md:p-12 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>
+  <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+    {description}
+  </p>
+  <a
+    href={whatsappLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full border-2 border-white bg-white text-gray-900 font-semibold transition-all duration-300 hover:bg-gray-100 w-full sm:w-auto"
+  >
+    {buttonText}
+  </a>
+</section>

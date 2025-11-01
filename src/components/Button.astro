@@ -1,0 +1,103 @@
+---
+export interface Props {
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "pricing-popular" | "pricing-standard";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  target?: string;
+  rel?: string;
+  type?: "button" | "submit" | "reset";
+  text: string;
+  className?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  target,
+  rel,
+  type = "button",
+  text,
+  className = "",
+  onClick,
+  disabled = false,
+  loading = false,
+} = Astro.props as Props;
+
+const baseClasses =
+  "inline-flex items-center justify-center font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+
+const sizeClasses = {
+  sm: "h-12 px-6 rounded-xl text-sm",
+  md: "h-14 px-8 rounded-full text-base",
+  lg: "h-16 px-8 rounded-full text-base",
+} as const;
+
+const variantClasses: Record<NonNullable<Props["variant"]>, string> = {
+  primary:
+    "bg-gray-900 text-white border-2 border-gray-900 hover:bg-gray-800 hover:shadow-xl hover:scale-[1.01]",
+  secondary:
+    "bg-white text-gray-900 border-2 border-gray-200 hover:bg-gray-50 hover:shadow-xl hover:scale-[1.01]",
+  outline:
+    "bg-transparent text-gray-900 border-2 border-gray-200 hover:bg-gray-50",
+  ghost:
+    "bg-transparent text-gray-900 hover:underline underline-offset-4 px-0",
+  "pricing-popular":
+    "block w-full py-3 rounded-xl border-2 border-gray-900 bg-gray-900 text-white font-semibold hover:bg-black",
+  "pricing-standard":
+    "block w-full py-3 rounded-xl border-2 border-gray-900 bg-white text-gray-900 font-semibold hover:bg-gray-50",
+};
+
+const hasCustomStyling = /(?:^|\s)(bg-|text-|border-)/.test(className);
+const isPricing = variant === "pricing-popular" || variant === "pricing-standard";
+
+const computedRel = target === "_blank" ? (rel?.length ? rel : "noopener noreferrer") : rel;
+
+const variantClass = variant && !hasCustomStyling ? variantClasses[variant] : "";
+
+const sizeClass =
+  isPricing
+    ? ""
+    : variant === "ghost"
+      ? "h-auto px-0 rounded-none text-base"
+      : sizeClasses[size];
+
+const stateClasses = [
+  disabled || loading ? "opacity-60 cursor-not-allowed" : "",
+  loading ? "aria-busy:opacity-80" : "",
+].join(" ");
+
+const classes = [baseClasses, sizeClass, variantClass, stateClasses, className]
+  .join(" ")
+  .replace(/\s+/g, " ")
+  .trim();
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      {...(target && { target })}
+      {...(computedRel && { rel: computedRel })}
+      class={classes}
+      aria-busy={loading ? "true" : "false"}
+      aria-disabled={disabled ? "true" : "false"}
+      {...(onClick && { onClick })}
+    >
+      <span class="inline-block align-middle">{text}</span>
+    </a>
+  ) : (
+    <button
+      type={type}
+      class={classes}
+      disabled={disabled || loading}
+      aria-busy={loading ? "true" : "false"}
+      {...(onClick && { onClick })}
+    >
+      <span class="inline-block align-middle">{text}</span>
+    </button>
+  )
+}

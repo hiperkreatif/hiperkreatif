@@ -1,26 +1,62 @@
 ---
 import { NAV_LOGO, NAV_MENU, NAV_CTA } from "../constants/navbar.ts";
-import { SEO } from "../constants/seo.ts";
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 
 import { Picture } from "astro:assets";
 import Logo from "../assets/logo-black.svg";
 import { ClientRouter } from "astro:transitions";
+import { SEO as DEFAULTS } from "../constants/seo.ts";
+import og from "../assets/og.png";
+const ogUrl = new URL(og.src, Astro.site).toString();
+
+const {
+  title = DEFAULTS.title,
+  description = DEFAULTS.description,
+  robots = DEFAULTS.robots,
+  //   ogImage = DEFAULTS.ogImage,
+  ogImageAlt = DEFAULTS.ogImageAlt,
+  ogType = DEFAULTS.ogType,
+  twitterCard = DEFAULTS.twitterCard,
+  siteName = DEFAULTS.siteName,
+} = Astro.props;
+
+// Canonical per halaman, bukan hardcode:
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{SEO.title}</title>
-    <meta name="description" content={SEO.description} />
-    <meta name="keywords" content={SEO.keywords} />
-    <meta name="author" content={SEO.author} />
-    <meta property="og:title" content={SEO.title} />
-    <meta property="og:description" content={SEO.description} />
-    <meta property="og:image" content={SEO.ogImage} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:url" content={Astro.url.href} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <!-- Optional: bantu crawler nemuin sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Router + prefetch -->
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-white text-gray-900">

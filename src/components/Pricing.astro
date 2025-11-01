@@ -1,0 +1,75 @@
+---
+// Pricing Component
+import Button from "../components/Button.astro";
+
+export interface PricingPlan {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  cta: string;
+  shadow?: boolean;
+  popular?: boolean;
+  originalPrice?: string;
+  discountPercentage?: number;
+}
+
+export interface Props {
+  plans: PricingPlan[];
+  title?: string;
+}
+
+const {
+  plans,
+  title = "Pilihan Paket"
+} = Astro.props;
+---
+
+<!-- Paket Harga -->
+<div class="mt-12">
+  <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+    {title}
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {
+      plans.map((plan) => (
+        <div
+          class={`${plan.shadow ? "bg-white rounded-2xl p-6 border-2 border-gray-900 relative shadow-xl" : "bg-white rounded-2xl p-6 border-2 border-gray-200"}`}
+        >
+          {plan.popular && (
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm font-semibold px-4 py-1 rounded-full">
+              Rekomendasi
+            </div>
+          )}
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+          <div class="text-3xl font-bold text-gray-900 mb-4">
+            {plan.price}
+          </div>
+          <p class="text-gray-600 mb-4 text-sm">{plan.description}</p>
+          <ul class="space-y-3 mb-6">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <span class="inline-block shrink-0 h-1.5 w-1.5 rounded-full bg-gray-900 mt-2" />
+                <span class="text-gray-800">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          {plan.originalPrice && plan.discountPercentage && (
+            <div class="text-sm text-gray-600 mb-4">
+              <p class="line-through">{plan.originalPrice}</p>
+              <p class="text-green-600 font-semibold">
+                Hemat {plan.discountPercentage}% off
+              </p>
+            </div>
+          )}
+          <Button
+            variant={plan.popular ? "pricing-popular" : "pricing-standard"}
+            text={plan.cta}
+            href="#consult"
+            className="w-full"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

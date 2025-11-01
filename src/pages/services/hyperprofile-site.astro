@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SERVICES } from "../../constants/services";
+import { PRICING_DATA } from "../../constants/pricing";
+import Consultation from "../../components/Consultation.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import ListSection from "../../components/ListSection.astro";
+import DeliverablesSection from "../../components/DeliverablesSection.astro";
+import TimelineSupportSecuritySection from "../../components/TimelineSupportSecuritySection.astro";
+import KpiSection from "../../components/KpiSection.astro";
+import Pricing from "../../components/Pricing.astro";
+
+const service = SERVICES.find(s => s.slug === "hyperprofile-site");
+if (!service) {
+  return Astro.redirect("/404");
+}
+---
+
+<BaseLayout>
+  <div class="max-w-6xl mx-auto">
+    <ServiceHero
+      badge={service.badge}
+      name={service.name}
+      tagline={service.tagline}
+      description={service.desc}
+    />
+
+    <ListSection title="Keunggulan" items={service.bullets} />
+    <ListSection title="Cocok Untuk" items={service.audience} />
+    <ListSection title="Hasil yang Diharapkan" items={service.outcomes} />
+
+    <DeliverablesSection deliverables={service.deliverables} />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <ListSection title="Sudah Termasuk" items={service.includes} columns={1} class="mb-0" />
+      <ListSection title="Tidak Termasuk" items={service.excludes} columns={1} class="mb-0" />
+    </div>
+
+    <TimelineSupportSecuritySection
+      timeline={service.timeline}
+      support={service.support}
+      security={service.security}
+    />
+
+    <KpiSection kpis={service.kpis} variant="chips" />
+
+    <!-- PRICING PLANS -->
+    <section class="mt-12">
+      <Pricing plans={PRICING_DATA.hyperprofileSite.plans} />
+    </section>
+
+    <Consultation serviceName={service.name} />
+  </div>
+</BaseLayout>

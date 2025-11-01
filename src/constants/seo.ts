@@ -1,8 +1,24 @@
 export const SEO = {
-  title: "Hiperkreatif - Solusi AI, Produk Digital & Bisnis Modern",
-  heroTitle: "Otomasi & Produk Digital Berbasis AI",
-  description: "I build AI-powered websites & automation systems that save you hours — so you can focus on making money, not managing chaos.",
-  keywords: "AI tools, produk digital, jual produk digital, tools bisnis, solusi bisnis, layanan digital, resource bisnis, inspirasi bisnis, hiperkreatif, bisnis online, digital marketing, template, plugin, jasa kreatif, automation, website bisnis, workflow, artificial intelligence",
-  author: "Hiperkreatif Team",
-  ogImage: "/favicon.svg",
+  title: "Jasa Website, Aplikasi & Otomasi AI-Powered | Hiperkreatif",
+
+  headline: "Website, Aplikasi, dan Otomasi AI-Powered untuk Bisnismu",
+
+  description:
+    "Bangun website cepat, aplikasi mobile, dan otomasi AI-powered. Hemat waktu, lindungi margin, analitik rapi, dukungan WhatsApp. Siap scale.",
+
+  author: "Hiperkreatif",
+
+  // Open Graph / Twitter
+  ogImage: "/og.webp",
+  ogImageAlt: "Hiperkreatif — Websites, Mobile Apps, & AI-Powered",
+  ogType: "website",
+  twitterCard: "summary_large_image",
+
+  // Robots: valid & diakui Google
+  robots:
+    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+
+  // Optional untuk UI internal
+  badgeTitle: "Website • Mobile App • AI-Powered",
+  siteName: "Hiperkreatif",
 };

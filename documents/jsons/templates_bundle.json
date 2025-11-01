@@ -1,0 +1,57 @@
+{
+  "templates": [
+    {
+      "type": "quotation",
+      "engine": "handlebars",
+      "template": "# {{agency.name}}\n{{agency.address}}\nEmail: {{agency.email}} | Tel: {{agency.phone}} | {{agency.website}}\n\n## QUOTATION {{number}}\nTanggal: {{date}}  •  Berlaku s.d: {{valid_until}}\n\n**Kepada:**\n{{client.name}} — {{client.company}}\n{{client.email}} | {{client.phone}}\n\n### Ringkasan Pekerjaan\n{{project.summary}}\n\n### Rincian Item\n| Item | Deskripsi | Qty | Harga Satuan | Total |\n|---|---|---:|---:|---:|\n{{#each items}}\n| {{name}} | {{description}} | {{qty}} | {{currency ../../locale.currency}} {{formatNumber unit_price}} | {{currency ../../locale.currency}} {{formatNumber total}} |\n{{/each}}\n\n**Subtotal:** {{currency locale.currency}} {{formatNumber totals.subtotal}}\n{{#if totals.discount}}**Diskon:** {{currency locale.currency}} {{formatNumber totals.discount}}{{/if}}\n**Pajak:** {{currency locale.currency}} {{formatNumber totals.tax}}\n**Total:** **{{currency locale.currency}} {{formatNumber totals.total}}**\n\n**Syarat & Ketentuan Singkat**\n1. Pembayaran DP minimal 50% untuk memulai.\n2. Revisi: 2 siklus minor, perubahan scope dikenakan biaya tambahan.\n3. Berkas final diserahkan setelah pelunasan.\n\n**Tanda Tangan**\nPihak Agency: __________________  \nPihak Klien: __________________   \n"
+    },
+    {
+      "type": "invoice",
+      "engine": "handlebars",
+      "template": "# INVOICE {{number}}\nTanggal: {{date}}  •  Jatuh Tempo: {{due_date}}\n\n**Ditagihkan Kepada**\n{{client.name}} — {{client.company}}\n{{client.address}}\n\n### Item Tagihan\n| Item | Qty | Harga | Total |\n|---|---:|---:|---:|\n{{#each items}}\n| {{name}} | {{qty}} | {{currency ../../locale.currency}} {{formatNumber unit_price}} | {{currency ../../locale.currency}} {{formatNumber total}} |\n{{/each}}\n\n**Subtotal:** {{currency locale.currency}} {{formatNumber totals.subtotal}}\n{{#if totals.discount}}**Diskon:** {{currency locale.currency}} {{formatNumber totals.discount}}{{/if}}\n**Pajak:** {{currency locale.currency}} {{formatNumber totals.tax}}\n**Total Bayar:** **{{currency locale.currency}} {{formatNumber totals.total}}**\n\n### Instruksi Pembayaran\nMetode: {{#each payment.methods}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}\n{{#each payment.bank_accounts}}\n- {{bank}} a.n. {{name}}: {{number}}\n{{/each}}\n\nCatatan: Mohon konfirmasi bukti transfer ke {{agency.email}}.\n"
+    },
+    {
+      "type": "contract",
+      "engine": "handlebars",
+      "template": "# SERVICE AGREEMENT {{number}}\nTanggal: {{date}}\n\n**Pihak Pertama (Agency):** {{agency.name}}, {{agency.address}}\n**Pihak Kedua (Klien):** {{client.company}} (v: {{client.name}}), {{client.address}}\n\n## 1. Ruang Lingkup Layanan\n{{project.scope}}\n\n**Deliverables:**\n{{#each project.deliverables}}\n- {{this}}\n{{/each}}\n\n## 2. Timeline\n{{project.timeline}}\n\n## 3. Biaya & Pembayaran\n- Nilai proyek: {{currency ../locale.currency}} {{formatNumber totals.total}}\n- Skema: {{payment.terms}} (mis. 50% DP, 50% pelunasan)\n\n## 4. Hak Kekayaan Intelektual\n{{ip_rights}}\n\n## 5. Garansi & Dukungan\n{{warranty}}\n\n## 6. Perubahan Lingkup\nPerubahan diatur melalui Change Request dan dapat mempengaruhi biaya & timeline.\n\n## 7. Pengakhiran\n{{termination}}\n\n## 8. Kerahasiaan\nPara pihak sepakat menjaga kerahasiaan seluruh informasi proyek.\n\n**Tanda Tangan**\nPihak Pertama: __________________  \nPihak Kedua: __________________   \n"
+    },
+    {
+      "type": "brief",
+      "engine": "handlebars",
+      "template": "# PROJECT BRIEF\nTanggal: {{date}}\nKlien: {{client.name}} — {{client.company}}\nKontak: {{client.email}} | {{client.phone}}\n\n## Tujuan Proyek\n{{goals}}\n\n## Target Audiens\n{{audience}}\n\n## Fitur/Permintaan Utama\n{{#each features}}\n- {{this}}\n{{/each}}\n\n## Aset Brand\n{{#each brand_assets}}\n- {{this}}\n{{/each}}\n\n## Batasan & Kendala\n{{constraints}}\n\n## Deadline & Milestone Awal\n{{deadline}}\n"
+    },
+    {
+      "type": "progress",
+      "engine": "handlebars",
+      "template": "# WEEKLY PROGRESS REPORT {{number}}\nPeriode: {{period_start}} — {{period_end}}\nKlien: {{client.company}}\n\n## Milestone\n{{#each milestones}}\n- {{this}}\n{{/each}}\n\n## Status Umum\n{{status}}\n\n## Risiko & Mitigasi\n{{#each risks}}\n- {{this}}\n{{/each}}\n\n## Aksi Berikutnya\n{{#each next_actions}}\n- {{this}}\n{{/each}}\n"
+    },
+    {
+      "type": "handover",
+      "engine": "handlebars",
+      "template": "# PROJECT HANDOVER {{number}}\nTanggal: {{date}}\nKlien: {{client.name}} — {{client.company}}\n\n## Deliverables\n{{#each deliverables}}\n- {{this}}\n{{/each}}\n\n## Repositori & Tautan\n{{#each repo_links}}\n- {{this}}\n{{/each}}\n\n## Kredensial (tersampaikan via kanal aman)\n{{#each credentials}}\n- {{this.key}}: [diserahkan]\n{{/each}}\n\n## Pernyataan Penerimaan\n{{acceptance_clause}}\n\n**Tanda Tangan**\nPihak Agency: __________________  \nPihak Klien: __________________   \n"
+    }
+  ],
+  "helpers": {
+    "formatNumber": "Formats number using locale.number_format",
+    "currency": "Prepends currency code/symbol"
+  },
+  "example_payloads": {
+    "quotation": {
+      "number": "QT/2025/10/0042",
+      "date": "31 Okt 2025",
+      "valid_until": "14 Nov 2025",
+      "client": {
+        "name": "Maula",
+        "company": "PT Contoh Bagus",
+        "email": "maula@example.com",
+        "phone": "+62 811 9999 0000"
+      },
+      "project": { "summary": "Pembuatan website e-commerce + integrasi payment." },
+      "items": [
+        { "name": "E-commerce build", "description": "Setup katalog, checkout, SEO", "qty": 1, "unit_price": 15000000, "total": 15000000 },
+        { "name": "Integrasi Payment", "description": "Midtrans/Xendit", "qty": 1, "unit_price": 2500000, "total": 2500000 }
+      ],
+      "totals": { "subtotal": 17500000, "discount": 0, "tax": 1750000, "total": 19250000 }
+    }
+  }
+}

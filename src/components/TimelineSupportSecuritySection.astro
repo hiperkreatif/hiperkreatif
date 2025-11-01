@@ -1,0 +1,60 @@
+---
+import Security from "./Security.astro";
+
+export interface Props {
+    timeline: { minWeeks: number; maxWeeks: number; note?: string } | undefined;
+    support: { warrantyDays?: number; slaHours?: number } | undefined;
+    security: { features: string[] } | undefined;
+}
+
+const { timeline, support, security } = Astro.props;
+---
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      {
+        timeline && (
+          <section class="bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100">
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <h2 class="text-xl font-bold text-gray-900">Timeline</h2>
+            </div>
+
+            <div class="mt-4 p-4 bg-gray-50 rounded-xl">
+              <p class="text-gray-800">
+                {timeline.minWeeks}-{timeline.maxWeeks} minggu
+              </p>
+              {timeline.note && (
+                <p class="text-sm text-gray-600 mt-3">{timeline.note}</p>
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        support && (
+          <section class="bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100">
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <h2 class="text-xl font-bold text-gray-900">Dukungan</h2>
+            </div>
+
+            <div class="mt-4 space-y-3">
+              {support.warrantyDays && (
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <p class="text-gray-800">
+                    {support.warrantyDays} hari garansi
+                  </p>
+                </div>
+              )}
+              {support.slaHours && (
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <p class="text-sm text-gray-600">
+                    {support.slaHours} jam SLA
+                  </p>
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      <Security security={security} />
+    </div>

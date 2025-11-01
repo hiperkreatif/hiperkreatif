@@ -1,0 +1,32 @@
+---
+// PriceDisplay Component for single price displays
+export interface Props {
+  price?: {
+    from?: number;
+    to?: number;
+    currency?: "IDR" | "USD";
+    unit?: "project" | "month";
+    note?: string;
+  };
+  title?: string;
+}
+
+const {
+  price,
+  title = "Harga"
+} = Astro.props;
+---
+
+{price && (
+  <div class="bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-2">{title}</h2>
+    {price.from && price.to ? (
+      <p class="text-gray-800">Rp{price.from.toLocaleString()} - Rp{price.to.toLocaleString()}</p>
+    ) : price.from ? (
+      <p class="text-gray-800">Rp{price.from.toLocaleString()}+</p>
+    ) : (
+      <p class="text-gray-800">Kontak untuk penawaran</p>
+    )}
+    {price.note && <p class="text-sm text-gray-600 mt-2">{price.note}</p>}
+  </div>
+)}

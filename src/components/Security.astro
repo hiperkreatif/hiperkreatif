@@ -1,0 +1,25 @@
+---
+export interface Props {
+    security: { features: string[] } | undefined;
+}
+
+const { security } = Astro.props;
+---
+<section class="bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100">
+  <div class="flex items-center justify-between gap-4 mb-4">
+    <h2 class="text-xl font-bold text-gray-900">Security</h2>
+  </div>
+
+  <div class="mt-4 space-y-3">
+    {security?.features && security.features.map(feature => (
+      <div class="p-4 bg-gray-50 rounded-xl">
+        <p class="text-gray-800">{feature}</p>
+      </div>
+    ))}
+    {!security?.features && (
+      <div class="p-4 bg-gray-50 rounded-xl">
+        <p class="text-gray-800">Tidak ada informasi keamanan.</p>
+      </div>
+    )}
+  </div>
+</section>
