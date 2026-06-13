@@ -129,9 +129,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const company = (document.getElementById('company') as HTMLInputElement).value;
       const brief = (document.getElementById('brief') as HTMLTextAreaElement).value;
       
-      const message = `*INISIASI PROYEK BARU*%0A%0A*Nama:* ${name}%0A*Perusahaan:* ${company}%0A*Tantangan Bisnis:* ${brief}%0A%0AMohon bantuannya untuk menjadwalkan Discovery Call.`;
+      const rawMessage = `*INISIASI PROYEK BARU*\n\n*Nama:* ${name}\n*Perusahaan:* ${company}\n*Tantangan Bisnis:* ${brief}\n\nMohon bantuannya untuk menjadwalkan Discovery Call.`;
+      const encodedMessage = encodeURIComponent(rawMessage);
       
-      window.open(`https://wa.me/6285157445924?text=${message}`, '_blank');
+      window.open(`https://wa.me/6281111111111?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
     });
   }
 </script>
