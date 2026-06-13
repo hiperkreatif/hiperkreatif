@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { BLOGS } from "../../constants/blogs";
+---
+
+<BaseLayout
+  title="Jurnal Efisiensi Bisnis & Teknologi | Hiperkreatif"
+  description="Kumpulan artikel mendalam tentang strategi e-commerce, dominasi media sosial, pengembangan website korporat, dan otomatisasi bisnis dengan AI."
+>
+  <div class="max-w-6xl mx-auto border-x border-white/10 relative min-h-screen">
+    
+    <!-- Top Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
+
+    <section class="relative pt-32 pb-20 overflow-hidden border-b border-white/10">
+      <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
+      
+      <div class="container mx-auto px-6 lg:px-12 relative z-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white uppercase leading-tight">
+          Jurnal <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600">Efisiensi</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          Wawasan tajam dan tanpa basa-basi mengenai masa depan arsitektur digital, otomatisasi AI, dan dominasi pasar.
+        </p>
+      </div>
+    </section>
+
+    <section class="divide-y divide-white/10">
+      {BLOGS.map((blog) => (
+        <a href={`/blog/${blog.slug}`} class="block group hover:bg-white/[0.02] transition-colors">
+          <div class="px-6 lg:px-12 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div class="md:w-3/4">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-white px-3 py-1 bg-white/10 border border-white/20">
+                  {blog.category}
+                </span>
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-500">
+                  {blog.date}
+                </span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-black text-white leading-snug group-hover:text-gray-300 transition-colors mb-4">
+                {blog.title}
+              </h2>
+              <p class="text-gray-400 leading-relaxed max-w-3xl">
+                {blog.excerpt}
+              </p>
+            </div>
+            
+            <div class="md:w-1/4 flex justify-end">
+              <div class="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-white group-hover:bg-white group-hover:text-black transition-all">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <!-- Bottom Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
+  </div>
+</BaseLayout>

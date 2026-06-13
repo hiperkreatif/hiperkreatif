@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { BLOGS } from "../../constants/blogs";
+
+export function getStaticPaths() {
+  return BLOGS.map((blog) => ({
+    params: { slug: blog.slug },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
+---
+
+<BaseLayout
+  title={`${blog.title} | Jurnal | Hiperkreatif`}
+  description={blog.excerpt}
+>
+  <div class="max-w-4xl mx-auto border-x border-white/10 relative min-h-screen bg-slate-950">
+    
+    <!-- Top Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
+
+    <article class="pt-24 pb-24 px-6 lg:px-12 relative border-b border-white/10">
+      <div class="mb-12 border-b border-white/10 pb-12">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-black bg-white px-3 py-1">
+            {blog.category}
+          </span>
+          <span class="text-xs font-bold uppercase tracking-widest text-gray-500">
+            {blog.date}
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-8">
+          {blog.title}
+        </h1>
+      </div>
+
+      <div class="prose prose-invert prose-lg max-w-none 
+                  prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-white
+                  prose-p:text-gray-300 prose-p:leading-relaxed
+                  prose-a:text-white prose-a:font-bold prose-a:underline-offset-4
+                  prose-strong:text-white prose-strong:font-black
+                  prose-ul:text-gray-300 prose-li:marker:text-white
+                  prose-blockquote:border-l-4 prose-blockquote:border-white prose-blockquote:text-gray-400 prose-blockquote:italic prose-blockquote:bg-white/5 prose-blockquote:p-6"
+           set:html={blog.content}>
+      </div>
+    </article>
+
+    <section class="py-16 px-6 lg:px-12 bg-white/[0.02] text-center">
+      <h3 class="text-2xl font-black text-white uppercase mb-4">Butuh Solusi Spesifik untuk Bisnis Anda?</h3>
+      <p class="text-gray-400 mb-8 max-w-xl mx-auto">Kami membantu perusahaan-perusahaan ambisius memangkas inefisiensi melalui teknologi tepat guna.</p>
+      <a href="/consultation" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors">
+        Jadwalkan Konsultasi
+      </a>
+    </section>
+
+    <!-- Bottom Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
+  </div>
+</BaseLayout>
