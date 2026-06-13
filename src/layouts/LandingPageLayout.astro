@@ -111,6 +111,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           <button
             class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none rounded-full hover:bg-gray-100 transition-colors"
             onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
           >
             <svg
               class="h-6 w-6"
@@ -158,9 +161,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </main>
     <footer
       transition:name="site-footer"
-      class="mt-12 py-6 border-t border-gray-200 bg-white text-center text-sm text-gray-500"
+      class="mt-12 py-8 border-t border-gray-200 bg-white"
     >
-      &copy; {new Date().getFullYear()} Hiperkreatif. All rights reserved.
+      <div class="max-w-4xl mx-auto px-6 sm:px-0 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-4 text-sm font-medium">
+          <a href="https://instagram.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-500 hover:text-black transition-colors hover:scale-110">Instagram</a>
+          <a href="https://tiktok.com/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-gray-500 hover:text-black transition-colors hover:scale-110">TikTok</a>
+          <a href="https://facebook.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-500 hover:text-black transition-colors hover:scale-110">Facebook</a>
+          <a href="https://threads.net/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Threads" class="text-gray-500 hover:text-black transition-colors hover:scale-110">Threads</a>
+        </div>
+        <div class="text-sm text-gray-500">
+          &copy; {new Date().getFullYear()} Hiperkreatif. All rights reserved.
+        </div>
+      </div>
     </footer>
     <Analytics />
   </body>
