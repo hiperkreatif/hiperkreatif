@@ -62,36 +62,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Router + prefetch -->
     <ClientRouter />
   </head>
-  <body class="min-h-screen bg-slate-950 text-gray-100 overflow-x-hidden">
+  <body class="min-h-screen bg-slate-950 text-gray-100 overflow-x-hidden flex flex-col">
     <header
       transition:name="site-header"
-      class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10"
+      class="sticky top-0 z-50 bg-slate-950 border-b border-white/10"
     >
-      <nav>
+      <nav class="border-b border-white/10">
         <div
-          class="max-w-6xl mx-auto flex items-center justify-between px-6 sm:px-0 py-4"
+          class="max-w-6xl mx-auto flex items-center justify-between px-6 lg:px-12 py-5 border-x border-white/10"
         >
           <a href="/" class="flex items-center gap-3 group">
             <Picture
               src={Logo}
               alt="Logo Hiperkreatif"
-              widths={[48, 48]}
-              sizes="(min-width: 768px) 48px, 48px"
-              class="h-10 w-10 md:h-12 md:w-12 transition-transform duration-300 group-hover:scale-110"
+              widths={[40, 40]}
+              sizes="(min-width: 768px) 40px, 40px"
+              class="h-8 w-8 transition-transform duration-300 group-hover:scale-110 invert"
             />
             <span
-              class="font-bold text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+              class="font-black text-xl md:text-2xl text-white uppercase tracking-widest"
               >{NAV_LOGO}</span
             >
           </a>
 
           {/* Desktop Menu */}
-          <div class="hidden md:flex items-center gap-6">
+          <div class="hidden md:flex items-center gap-8">
             {
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="relative text-base text-gray-400 font-medium px-2 py-1 hover:text-white transition-colors after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-white after:transition-all hover:after:w-full"
+                  class="text-xs text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-colors"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -101,14 +101,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="ml-4 bg-white text-black font-medium text-base px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              class="ml-4 bg-white text-black font-bold uppercase tracking-widest text-xs px-6 py-3 hover:bg-gray-200 transition-colors"
               >{NAV_CTA.label}</a
             >
           </div>
 
-          {/* Mobile Menu Button */}
+          <!-- Mobile Menu Button -->
           <button
-            class="md:hidden p-2 text-gray-600 hover:text-black focus:outline-none rounded-full hover:bg-gray-100 transition-colors"
+            class="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none rounded-full hover:bg-white/10 transition-colors"
             onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
             aria-label="Toggle mobile menu"
             aria-expanded="false"
@@ -130,16 +130,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           </button>
         </div>
 
-        {/* Mobile Menu Panel */}
-        <div id="mobile-menu" class="hidden md:hidden">
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
           <div
-            class="px-6 pt-4 pb-6 space-y-3 bg-gray-50/80 backdrop-blur-lg border-t border-gray-100"
+            class="px-6 pt-4 pb-6 space-y-4 bg-slate-950"
           >
             {
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="block text-base text-gray-600 hover:text-black font-medium px-3 py-2.5 rounded-lg hover:bg-white transition-all"
+                  class="block text-xs text-gray-400 hover:text-white font-bold uppercase tracking-widest py-2"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -149,21 +149,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="block mt-6 bg-white text-black font-medium text-base px-6 py-3 rounded-full text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+              class="block mt-6 bg-white text-black font-bold uppercase tracking-widest text-xs px-6 py-4 text-center"
               >{NAV_CTA.label}</a
             >
           </div>
         </div>
       </nav>
     </header>
-    <main class="container mx-auto px-6">
+    <main class="flex-grow flex flex-col">
       <slot />
     </main>
     <footer
       transition:name="site-footer"
-      class="mt-12 py-6 border-t border-white/10 bg-slate-950 text-center text-sm text-gray-500"
+      class="mt-auto border-t border-white/10 bg-slate-950"
     >
-      &copy; {new Date().getFullYear()} Hiperkreatif. All rights reserved.
+      <div class="max-w-6xl mx-auto px-6 lg:px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-6 border-x border-white/10 relative">
+        <!-- Footer Nodes -->
+        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -left-[3px] z-20"></div>
+        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -right-[3px] z-20"></div>
+
+        <div class="text-white font-black tracking-widest uppercase text-xl">
+          {NAV_LOGO}
+        </div>
+        <div class="text-xs text-gray-500 uppercase tracking-widest font-bold">
+          &copy; {new Date().getFullYear()} Hiperkreatif. Blueprint Of Efficiency.
+        </div>
+      </div>
     </footer>
     <Analytics />
   </body>

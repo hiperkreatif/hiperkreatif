@@ -1,55 +1,22 @@
-export interface Faq {
-  q: string;
-  a: string;
-}
-
-export const FAQS: Faq[] = [
+export const FAQS = [
   {
-    q: "Berapa estimasi timeline proyek?",
-    a: "Company profile 1–2 minggu, e-commerce 2–4 minggu, custom 3–8 minggu. Tergantung kesiapan konten, keputusan cepat, dan integrasi pihak ketiga.",
+    q: "Berapa lama sampai sistem saya siap menghasilkan uang?",
+    a: "Tidak sampai berbulan-bulan. Kami menggunakan alur kerja gesit (agile). Untuk website profil bisa selesai dalam 7 hari. Untuk sistem kustom atau AI, versi pertama (MVP) yang sudah bisa menekan biaya operasional akan siap dalam 3-4 minggu."
   },
   {
-    q: "Skema pembayaran bagaimana?",
-    a: "50% DP untuk mulai, 30% setelah demo pertama, 20% sebelum go-live. Untuk enterprise bisa PO/invoice net 14–30 hari.",
+    q: "Bagaimana jika saya tidak mengerti IT sama sekali?",
+    a: "Anda adalah pemilik bisnis, bukan teknisi. Kami merancang panel kontrol (dashboard) sebodoh mungkin sehingga anak magang pun bisa mengoperasikannya dalam 5 menit. Fokuslah jualan, biar mesin yang mengurus kerumitannya."
   },
   {
-    q: "Apa saja yang termasuk dan tidak termasuk?",
-    a: "Termasuk: desain, build, deploy, dokumentasi dasar. Tidak termasuk: copywriting penuh, stok foto berbayar, biaya SaaS pihak ketiga, iklan/SEO off-page, domain/hosting.",
+    q: "Apakah keamanan data perusahaan saya terjamin?",
+    a: "Absolut. Kami menerapkan enkripsi standar militer. Terutama untuk sistem AI terintegrasi, data rahasia perusahaan Anda disimpan di server yang terisolasi total dan tidak akan pernah bocor ke publik."
   },
   {
-    q: "Siapa pemilik source code dan aset?",
-    a: "Klien punya lisensi penuh untuk proyek yang dibayar lunas. Reusable library internal tetap milik kami, tapi tidak membatasi operasional situs/app kamu.",
+    q: "Apa yang terjadi setelah serah terima sistem selesai?",
+    a: "Kami tidak akan kabur setelah Anda bayar lunas. Kami memberikan masa garansi penuh untuk memastikan tidak ada celah error, serta memberikan pelatihan tatap muka/online sampai tim Anda 100% mandiri."
   },
   {
-    q: "Bisa NDA dan kontrak formal?",
-    a: "Bisa. Kami siap tanda tangan NDA dan MSA/SOW standar. Draft sederhana tersedia bila dibutuhkan.",
-  },
-  {
-    q: "Teknologi yang dipakai?",
-    a: "Pilih yang cepat dikerjakan, mudah dirawat, dan aman buat growth. Detail teknis dibahas saat konsultasi berdasarkan kebutuhan (SEO, performa, integrasi, AI).",
-  },
-  {
-    q: "Hosting, domain, dan email bisnis?",
-    a: "Kami bantu rekomendasi dan setup. Biaya ditanggung klien. Untuk performance, kami pakai hosting yang hemat tapi kencang sesuai skala.",
-  },
-  {
-    q: "SEO & analytics siap?",
-    a: "On-page SEO dasar, sitemap, robots, dan integrasi analytics/pixel termasuk. Campaign iklan/SEO off-page di luar scope.",
-  },
-  {
-    q: "Keamanan & privasi data?",
-    a: "Prinsip minimum access, enkripsi di transit, audit log dasar, dan praktik secure defaults. Data sensitif tetap milik klien.",
-  },
-  {
-    q: "Perubahan scope di tengah jalan?",
-    a: "Minor change kami akomodir di sprint berjalan. Major change dibuatkan change request dengan estimasi biaya & timeline baru.",
-  },
-  {
-    q: "Support pasca go-live?",
-    a: "7–30 hari support sesuai paket. Opsional maintenance bulanan untuk update, monitoring, dan backup.",
-  },
-  {
-    q: "Jam operasional & kanal komunikasi?",
-    a: "Senin–Jumat, 09.00–18.00 WIB. Kanal utama email & WhatsApp. Escalation untuk isu kritis via WhatsApp.",
-  },
+    q: "Kenapa harganya terasa lebih tinggi dari freelancer?",
+    a: "Freelancer menjual kode, kami menjual efisiensi bisnis. Satu kesalahan server atau kebocoran data dari freelancer murah bisa mematikan bisnis Anda. Anda berinvestasi pada ketenangan pikiran dan sistem yang dijamin mencetak Return on Investment (ROI)."
+  }
 ];

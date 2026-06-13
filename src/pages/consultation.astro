@@ -2,82 +2,136 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
-  <main class="max-w-6xl mx-auto py-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4 px-6">Jadwalkan Konsultasi</h1>
-    <p class="text-lg text-gray-700 mb-12 px-6">Isi formulir di bawah ini untuk memberikan kami gambaran singkat tentang kebutuhan Anda.</p>
+<BaseLayout
+  title="Inisiasi Proyek & Konsultasi | Hiperkreatif"
+  description="Kami siap membantu mentransformasi dan mengoptimasi operasional digital bisnis Anda. Isi brief di sini untuk menjadwalkan panggilan discovery."
+>
+  <!-- Architectural Layout Grid -->
+  <div class="max-w-6xl mx-auto border-x border-white/10 relative min-h-screen flex flex-col">
+    
+    <!-- Top Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-6 mt-12">
-      <!-- Left Column: Explanations and Terms -->
-      <div>
-        <div class="bg-white p-6 rounded-2xl border-2 border-gray-100">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4">Contoh dan Penjelasan</h2>
-          <p class="text-gray-700 mb-6">
-            Di sini Anda dapat memberikan contoh brief yang baik, menjelaskan proses konsultasi, atau memberikan informasi lain yang relevan untuk membantu pengguna mengisi formulir dengan benar.
-          </p>
-
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Contoh Brief Proyek:</h3>
-          <div class="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p><strong>Nama Proyek:</strong> Redesain Website E-commerce "Toko X"</p>
-            <p><strong>Tujuan:</strong> Meningkatkan konversi penjualan sebesar 20% dan memperbaiki pengalaman pengguna mobile.</p>
-            <p><strong>Fitur Utama:</strong> Sistem pembayaran baru, filter produk yang lebih canggih, halaman detail produk yang lebih informatif.</p>
-            <p><strong>Target Audiens:</strong> Wanita usia 25-40 tahun yang tertarik dengan fashion.</p>
-          </div>
-
-          <h2 class="text-2xl font-bold text-gray-900 mt-6 mb-4">Syarat dan Ketentuan</h2>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Diskusi awal kebutuhan proyek.</li>
-            <li>Informasi yang Anda berikan akan dijaga kerahasiaannya.</li>
-            <li>Kami akan menghubungi Anda dalam 1-2 hari kerja untuk menjadwalkan sesi konsultasi.</li>
-            <li>Dengan mengirimkan formulir ini, Anda setuju dengan kebijakan privasi kami.</li>
-          </ul>
+    <section class="relative pt-24 pb-12 overflow-hidden border-b border-white/10">
+      <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
+      
+      <div class="container mx-auto px-6 lg:px-12 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 uppercase tracking-widest text-xs font-bold backdrop-blur-sm">
+          <span class="w-1.5 h-1.5 bg-white animate-pulse"></span>
+          Discovery Call
         </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white max-w-4xl uppercase">
+          Inisiasi Proyek
+        </h1>
+
+        <p class="text-xl md:text-2xl font-medium text-gray-400 max-w-3xl leading-snug">
+          Kami tidak menerima semua proyek. Kami hanya bekerja sama dengan bisnis yang serius ingin memangkas inefisiensi operasional dan mendominasi industrinya.
+        </p>
+      </div>
+    </section>
+
+    <section class="flex flex-col lg:flex-row flex-grow divide-y lg:divide-y-0 lg:divide-x divide-white/10 relative bg-white/[0.01]">
+      
+      <!-- Left Column: Expectations -->
+      <div class="lg:w-5/12 p-6 lg:p-12 relative">
+        <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-8">Ekspektasi Kerja Sama</h2>
+        
+        <ul class="space-y-8">
+          <li class="relative pl-6 border-l border-white/20">
+            <div class="absolute w-1.5 h-1.5 bg-white -left-[3px] top-2"></div>
+            <h3 class="font-bold text-white text-lg mb-2 uppercase tracking-wide">Fokus pada ROI</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Kami merancang sistem untuk mengembalikan investasi Anda (ROI) berkali-kali lipat, bukan sekadar mempercantik tampilan.</p>
+          </li>
+          <li class="relative pl-6 border-l border-white/20">
+            <div class="absolute w-1.5 h-1.5 bg-white -left-[3px] top-2"></div>
+            <h3 class="font-bold text-white text-lg mb-2 uppercase tracking-wide">Transparansi Absolut</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Anda akan mendapatkan laporan berkala, akses langsung ke tim teknis, dan timeline yang tidak pernah molor.</p>
+          </li>
+          <li class="relative pl-6 border-l border-white/20">
+            <div class="absolute w-1.5 h-1.5 bg-white -left-[3px] top-2"></div>
+            <h3 class="font-bold text-white text-lg mb-2 uppercase tracking-wide">Bukan Harga Murah</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Kami menjual efisiensi tingkat korporat. Kami jamin Anda mendapatkan kualitas kelas atas yang tak akan didapatkan dari freelancer harian.</p>
+          </li>
+        </ul>
       </div>
 
       <!-- Right Column: Form -->
-      <div>
-        <form class="bg-white p-6 rounded-2xl border-2 border-gray-100">
-          <div class="mb-6">
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-            />
+      <div class="lg:w-7/12 p-6 lg:p-12 relative bg-slate-950/50">
+        <form id="consultation-form" class="flex flex-col h-full">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="relative group">
+              <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama / Perwakilan</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="block w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors"
+                placeholder="Cth: John Doe"
+              />
+            </div>
+
+            <div class="relative group">
+              <label for="company" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama Perusahaan</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                required
+                class="block w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors"
+                placeholder="Cth: PT Sukses Makmur"
+              />
+            </div>
           </div>
 
-          <div class="mb-6">
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-            />
-          </div>
-
-          <div class="mb-6">
-            <label for="project-description" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi Proyek Singkat</label>
+          <div class="relative group mb-12 flex-grow">
+            <label for="brief" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Deskripsi Singkat Tantangan Bisnis</label>
             <textarea
-              id="project-description"
-              name="project-description"
-              rows="5"
+              id="brief"
+              name="brief"
+              rows="4"
               required
-              class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
+              class="block w-full bg-transparent border-b border-white/20 px-0 py-3 text-white focus:outline-none focus:border-white transition-colors resize-none"
+              placeholder="Ceritakan masalah utama (bottleneck) yang ingin Anda selesaikan..."
             ></textarea>
           </div>
 
           <button
             type="submit"
-            class="inline-flex items-center gap-2 h-12 px-6 rounded-full border-2 border-gray-900 bg-gray-900 text-white font-semibold transition-all duration-300 hover:shadow-xl"
+            class="mt-auto inline-flex items-center justify-center gap-3 w-full lg:w-auto self-start px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
-            Kirim Permintaan Konsultasi
+            <span>Kirim via WhatsApp</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </button>
         </form>
       </div>
-    </div>
-  </main>
+      
+    </section>
+
+    <!-- Bottom Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
+  </div>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('consultation-form') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const company = (document.getElementById('company') as HTMLInputElement).value;
+      const brief = (document.getElementById('brief') as HTMLTextAreaElement).value;
+      
+      const message = `*INISIASI PROYEK BARU*%0A%0A*Nama:* ${name}%0A*Perusahaan:* ${company}%0A*Tantangan Bisnis:* ${brief}%0A%0AMohon bantuannya untuk menjadwalkan Discovery Call.`;
+      
+      window.open(`https://wa.me/6285157445924?text=${message}`, '_blank');
+    });
+  }
+</script>
