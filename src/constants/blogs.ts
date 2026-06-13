@@ -2,7 +2,7 @@ export const BLOGS = [
   {
     slug: "mengapa-toko-online-bangkrut",
     title: "Mengapa 80% Toko Online Bangkrut di Tahun Pertama (Dan Cara Mencegahnya)",
-    date: "10 Juni 2026",
+    date: "13 Juni 2026, 10:36 WIB",
     category: "E-Commerce",
     excerpt: "Banyak pemilik bisnis merasa cukup dengan memasang foto produk di Instagram atau marketplace. Padahal, tanpa sistem yang tepat, Anda sedang menunggu bom waktu.",
     content: `
@@ -36,7 +36,7 @@ export const BLOGS = [
   {
     slug: "website-perusahaan-murahan",
     title: "Website Perusahaan Anda Terlihat Murahan? Ini Alasan Klien Kabur ke Kompetitor",
-    date: "12 Juni 2026",
+    date: "11 Juni 2026, 14:20 WIB",
     category: "Company Profile",
     excerpt: "Di era digital, website adalah kantor pusat Anda. Jika 'kantor' Anda terlihat seperti dibangun semalaman dengan template gratisan, wajar jika calon investor lari.",
     content: `
@@ -64,7 +64,7 @@ export const BLOGS = [
   {
     slug: "rahasia-sosmed-ratusan-juta",
     title: "Berhenti Bikin Konten 'Jualan'! Ini Rahasia Akun Instagram yang Menghasilkan Miliaran",
-    date: "14 Juni 2026",
+    date: "09 Juni 2026, 09:15 WIB",
     category: "Social Media",
     excerpt: "Jika setiap postingan Anda hanyalah foto produk dengan caption 'Yuk Dibeli', pantas saja followers Anda tidak pernah bertambah.",
     content: `
@@ -93,7 +93,7 @@ export const BLOGS = [
   {
     slug: "ai-mengambil-alih-efisiensi",
     title: "Pekerjaan Admin CS Akan Punah di 2027: Bagaimana AI Mereset Ulang Efisiensi Bisnis",
-    date: "15 Juni 2026",
+    date: "06 Juni 2026, 16:45 WIB",
     category: "AI & Otomasi",
     excerpt: "Gaji staf admin yang menjawab keluhan berulang adalah kebocoran anggaran terbesar yang tidak Anda sadari. AI bukan lagi masa depan, ia adalah hari ini.",
     content: `
