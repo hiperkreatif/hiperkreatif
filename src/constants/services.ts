@@ -27,10 +27,10 @@ export const SERVICES = [
     tagline: "Brosur digital elit yang merubah keraguan calon investor dan klien menjadi kepercayaan penuh.",
     desc: "Kesan pertama klien B2B atau investor modern selalu dimulai dari pencarian Google. Kami merancang arsitektur website profil perusahaan yang memancarkan otoritas penuh, kredibilitas, dan stabilitas bisnis Anda, memastikan Anda memenangkan persepsi klien bahkan sebelum pertemuan pertama terjadi.",
     bullets: [
-      "Desain Kelas Enterprise: Estetika visual premium yang mencerminkan dominasi Anda di industri.",
+      "Desain Kelas Enterprise: Estetika visual premium yang mencerminkan kepemimpinan Anda di industri.",
       "Lead Generation Otomatis: Sistem yang secara otomatis menangkap data (nama, kontak) dari calon prospek yang berkunjung.",
       "Independensi Konten: Sistem panel kontrol simpel agar staf internal Anda bisa memperbarui berita/portofolio tanpa perlu keahlian teknis.",
-      "Optimasi Mesin Pencari (SEO): Struktur yang dirancang agar perusahaan Anda mendominasi halaman pertama Google.",
+      "Optimasi Mesin Pencari (SEO): Struktur yang dirancang agar perusahaan Anda menonjol di halaman pertama Google.",
       "Aksesibilitas Sempurna: Tampil tajam dan proporsional di seluruh ukuran layar, dari smartphone hingga monitor rapat."
     ],
     cta: "/services/hyperprofile-site",
@@ -44,7 +44,7 @@ export const SERVICES = [
   {
     slug: "social-media-management",
     name: "Social Media Management",
-    badge: "Dominasi Sosial",
+    badge: "Pertumbuhan Sosial",
     tagline: "Akuisisi pangsa pasar di Instagram & TikTok tanpa menguras waktu manajemen Anda.",
     desc: "Mendelegasikan media sosial ke karyawan yang tidak berpengalaman sering kali merusak citra brand. Kami mengambil alih seluruh beban tersebut. Tim ahli kami menangani riset pasar, strategi kampanye, produksi desain visual, hingga pelaporan matriks pertumbuhan—mengubah media sosial dari beban kerja menjadi aset penarik pelanggan.",
     bullets: [
