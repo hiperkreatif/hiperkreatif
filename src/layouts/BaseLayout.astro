@@ -93,7 +93,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="text-xs text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-colors"
+                  class="relative text-xs text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all hover:after:w-full"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -167,12 +167,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     >
       <div class="max-w-6xl mx-auto px-6 lg:px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-6 border-x border-white/10 relative">
         <!-- Footer Nodes -->
-        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -left-[3px] z-20"></div>
-        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -right-[3px] z-20"></div>
+        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -left-[3px] z-20" aria-hidden="true"></div>
+        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -right-[3px] z-20" aria-hidden="true"></div>
 
         <div class="text-white font-black tracking-widest uppercase text-xl">
           {NAV_LOGO}
         </div>
+        
+        <div class="flex items-center gap-4 my-4 md:my-0">
+          <a href="https://instagram.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors hover:scale-110">Instagram</a>
+          <a href="https://tiktok.com/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-gray-400 hover:text-white transition-colors hover:scale-110">TikTok</a>
+          <a href="https://facebook.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors hover:scale-110">Facebook</a>
+          <a href="https://threads.net/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Threads" class="text-gray-400 hover:text-white transition-colors hover:scale-110">Threads</a>
+        </div>
+
         <div class="text-xs text-gray-500 uppercase tracking-widest font-bold">
           &copy; {new Date().getFullYear()} Hiperkreatif. Blueprint Of Efficiency.
         </div>
