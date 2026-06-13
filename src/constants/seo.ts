@@ -4,7 +4,7 @@ export const SEO = {
   headline: "Website, Aplikasi, dan Otomasi AI-Powered untuk Bisnismu",
 
   description:
-    "Bangun website cepat, aplikasi mobile, dan otomasi AI-powered. Hemat waktu, lindungi margin, analitik rapi, dukungan WhatsApp. Siap scale.",
+    "Jasa pembuatan website e-commerce, company profile, manajemen sosial media (Instagram, TikTok, dll), dan otomasi AI-powered. Hemat waktu, lindungi margin, siap scale.",
 
   author: "Hiperkreatif",
 
@@ -19,6 +19,6 @@ export const SEO = {
     "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
 
   // Optional untuk UI internal
-  badgeTitle: "Website • Mobile App • AI-Powered",
+  badgeTitle: "Website • Social Media • AI-Powered",
   siteName: "Hiperkreatif",
 };

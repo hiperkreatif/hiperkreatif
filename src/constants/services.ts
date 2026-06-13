@@ -1,5 +1,3 @@
-import type { Service } from "./types";
-
 export const SERVICES = [
   {
     slug: "hypersite-commerce",
