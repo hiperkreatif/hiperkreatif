@@ -31,7 +31,7 @@ const logo = LogoUrl;
       <div class="glow-blob delay-5s bg-white/5 w-[400px] h-[400px] top-32 -right-32"></div>
 
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-gray-300 mb-8 animate-on-scroll" style="transition-delay: 0ms;">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card font-mono text-xs uppercase tracking-wider text-gray-300 mb-8 animate-on-scroll" style="transition-delay: 0ms;">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
           Agency Jasa Website & Otomasi AI untuk bisnis modern
         </div>
@@ -46,10 +46,10 @@ const logo = LogoUrl;
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="transition-delay: 300ms;">
-          <a href="/consultation" class="px-8 py-4 bg-white text-slate-950 font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          <a href="/consultation" class="px-8 py-4 bg-white text-slate-950 font-mono font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Atasi Kendala Bisnis Anda
           </a>
-          <a href="#services" class="px-8 py-4 border-2 border-white/20 text-white font-bold uppercase tracking-widest text-sm hover:border-white transition-colors">
+          <a href="#services" class="px-8 py-4 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
             Jelajahi Ekosistem Kami
           </a>
         </div>
@@ -82,8 +82,8 @@ const logo = LogoUrl;
             { val: "24/7", label: "Sistem Bisnis Otomatis" }
           ].map(stat => (
             <div class="p-8 md:p-12 text-center hover:bg-white/[0.04] transition-colors flex flex-col justify-center relative group">
-              <p class="text-5xl md:text-6xl font-black text-white tracking-tighter mb-3 group-hover:scale-110 transition-transform duration-500">{stat.val}</p>
-              <p class="text-xs md:text-sm text-gray-400 font-bold uppercase tracking-widest">{stat.label}</p>
+              <p class="text-5xl md:text-6xl font-mono font-bold text-white tracking-tight mb-3 group-hover:scale-110 transition-transform duration-500">{stat.val}</p>
+              <p class="text-xs text-gray-400 font-mono font-bold uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -98,7 +98,7 @@ const logo = LogoUrl;
 
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 animate-on-scroll px-4 lg:px-8">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-white text-sm font-medium mb-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-white font-mono text-xs uppercase tracking-wider mb-4">
             <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
             Ekosistem Solusi Terintegrasi
           </div>
@@ -108,7 +108,7 @@ const logo = LogoUrl;
         </div>
         <a
           href="/consultation"
-          class="inline-flex items-center gap-2 px-6 py-3 animated-border text-sm font-medium text-white transition-all hover:scale-105"
+          class="inline-flex items-center gap-2 px-6 py-3 animated-border font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:scale-105"
         >
           Diskusikan masalah bisnis Anda 
           <span class="group-hover:translate-x-1 transition-transform">-&gt;</span>
@@ -123,13 +123,13 @@ const logo = LogoUrl;
           <div class={`relative group p-8 lg:p-14 overflow-hidden border-b border-white/10 hover:bg-white/[0.06] transition-colors duration-300 flex flex-col min-h-[480px] ${i % 2 === 0 ? 'md:border-r border-white/10' : ''}`}>
             
             <!-- Huge Background Number -->
-            <div class="absolute -right-8 -bottom-16 text-[200px] font-black text-white/[0.03] group-hover:text-white/[0.09] transition-colors duration-700 leading-none select-none">
+            <div class="absolute -right-8 -bottom-16 text-[200px] font-mono font-bold text-white/[0.03] group-hover:text-white/[0.09] transition-colors duration-700 leading-none select-none">
               0{i + 1}
             </div>
 
             <!-- Content -->
             <div class="relative z-10 flex-grow">
-              <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 uppercase tracking-widest backdrop-blur-sm">
+              <div class="inline-flex items-center gap-2 text-[10px] font-mono font-bold px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 uppercase tracking-widest backdrop-blur-sm">
                 <span class="w-1.5 h-1.5 bg-white animate-pulse"></span>
                 {s.badge}
               </div>
@@ -148,7 +148,7 @@ const logo = LogoUrl;
             </div>
 
             <div class="relative z-10 mt-auto">
-              <a href={s.cta} class="group/cta inline-flex items-center gap-3 text-white font-bold uppercase text-sm tracking-widest">
+              <a href={s.cta} class="group/cta inline-flex items-center gap-3 text-white font-mono font-bold uppercase text-xs tracking-widest">
                 <span class="group-hover/cta:translate-x-1 transition-transform duration-300 inline-block">Pelajari Detail</span>
                 <span class="w-8 h-[1px] bg-white group-hover:w-16 group-hover/cta:w-16 transition-all duration-300"></span>
                 <svg class="w-4 h-4 group-hover/cta:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,27 +175,27 @@ const logo = LogoUrl;
               Cara Kerja
             </h2>
             <p class="text-gray-400 text-lg">Cepat, terukur, dan berorientasi hasil.</p>
-            <a href="/consultation" class="mt-8 inline-block px-6 py-3 bg-white text-black font-bold uppercase text-sm tracking-widest hover:bg-gray-200 transition-colors">Konsultasi Sekarang</a>
+            <a href="/consultation" class="mt-8 inline-block px-6 py-3 bg-white text-black font-mono font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition-colors">Konsultasi Sekarang</a>
           </div>
           
           <ol class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             <li class="p-8 group hover:bg-white/[0.04] transition-colors relative border-b sm:border-b-0 border-white/10">
-              <div class="text-6xl font-black text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">01</div>
+              <div class="text-6xl font-mono font-bold text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">01</div>
               <h3 class="font-bold text-white text-xl mb-3">Ngobrol & Diskusi</h3>
               <p class="text-gray-400 leading-relaxed">Kita teleponan. Anda ceritakan pusingnya di mana, kami siapkan solusinya.</p>
             </li>
             <li class="p-8 group hover:bg-white/[0.04] transition-colors relative border-b sm:border-b-0 border-white/10">
-              <div class="text-6xl font-black text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">02</div>
+              <div class="text-6xl font-mono font-bold text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">02</div>
               <h3 class="font-bold text-white text-xl mb-3">Blueprint Eksak</h3>
               <p class="text-gray-400 leading-relaxed">Kami buatkan gambarannya secara detil. Tidak ada asumsi, semuanya terukur.</p>
             </li>
             <li class="p-8 group hover:bg-white/[0.04] transition-colors relative sm:border-t border-white/10 border-b sm:border-b-0 border-white/10">
-              <div class="text-6xl font-black text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">03</div>
+              <div class="text-6xl font-mono font-bold text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">03</div>
               <h3 class="font-bold text-white text-xl mb-3">Eksekusi Terukur</h3>
               <p class="text-gray-400 leading-relaxed">Tim kami langsung merakit sistemnya. Anda terima laporan progres matang.</p>
             </li>
             <li class="p-8 group hover:bg-white/[0.04] transition-colors relative sm:border-t border-white/10 border-b sm:border-b-0 border-white/10">
-              <div class="text-6xl font-black text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">04</div>
+              <div class="text-6xl font-mono font-bold text-white/[0.05] mb-4 group-hover:text-white/10 transition-colors">04</div>
               <h3 class="font-bold text-white text-xl mb-3">Rilis & Profit</h3>
               <p class="text-gray-400 leading-relaxed">Sistem aktif. Kami pandu tim Anda sampai 100% mandiri pakai mesin barunya.</p>
             </li>
