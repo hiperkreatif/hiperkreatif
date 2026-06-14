@@ -1,6 +1,6 @@
 export const SERVICES = [
   {
-    slug: "hypersite-commerce",
+    slug: "ecommerce",
     name: "Sistem E-Commerce",
     badge: "Toko Online Otomatis",
     tagline: "Infrastruktur penjualan 24/7 yang memangkas biaya operasional dan mencegah kebocoran transaksi.",
@@ -12,7 +12,7 @@ export const SERVICES = [
       "Checkout Tanpa Hambatan: Alur pembelian yang disederhanakan untuk meningkatkan rasio konversi secara drastis.",
       "Skalabilitas Tinggi: Server yang dirancang untuk menahan lonjakan trafik saat kampanye diskon besar-besaran."
     ],
-    cta: "/services/hypersite-commerce",
+    cta: "/services/ecommerce",
     audience: [], outcomes: [], deliverables: [], includes: [], excludes: [], kpis: [],
     timeline: { minWeeks: 2, maxWeeks: 4, note: "" },
     price: { currency: "IDR", unit: "project", note: "" },
@@ -21,7 +21,7 @@ export const SERVICES = [
     demo: { label: "", href: "" }
   },
   {
-    slug: "hyperprofile-site",
+    slug: "company-profile",
     name: "Corporate Profile",
     badge: "Otoritas Digital",
     tagline: "Brosur digital elit yang merubah keraguan calon investor dan klien menjadi kepercayaan penuh.",
@@ -33,7 +33,7 @@ export const SERVICES = [
       "Optimasi Mesin Pencari (SEO): Struktur yang dirancang agar perusahaan Anda menonjol di halaman pertama Google.",
       "Aksesibilitas Sempurna: Tampil tajam dan proporsional di seluruh ukuran layar, dari smartphone hingga monitor rapat."
     ],
-    cta: "/services/hyperprofile-site",
+    cta: "/services/company-profile",
     audience: [], outcomes: [], deliverables: [], includes: [], excludes: [], kpis: [],
     timeline: { minWeeks: 1, maxWeeks: 2, note: "" },
     price: { currency: "IDR", unit: "project", note: "" },
@@ -42,7 +42,7 @@ export const SERVICES = [
     demo: { label: "", href: "" }
   },
   {
-    slug: "social-media-management",
+    slug: "social-media",
     name: "Social Media Management",
     badge: "Pertumbuhan Sosial",
     tagline: "Akuisisi pangsa pasar di Instagram & TikTok tanpa menguras waktu manajemen Anda.",
@@ -54,7 +54,7 @@ export const SERVICES = [
       "Konsistensi Mutlak: Jadwal tayang yang presisi untuk memastikan brand Anda selalu berada di pikiran konsumen.",
       "Laporan Kinerja Transparan: Rangkuman bulanan tentang seberapa banyak audiens yang berhasil diubah menjadi prospek."
     ],
-    cta: "/services/social-media-management",
+    cta: "/services/social-media",
     audience: [], outcomes: [], deliverables: [], includes: [], excludes: [], kpis: [],
     timeline: { minWeeks: 4, maxWeeks: 12, note: "" },
     price: { currency: "IDR", unit: "month", note: "" },
@@ -63,7 +63,7 @@ export const SERVICES = [
     demo: { label: "", href: "" }
   },
   {
-    slug: "gen-ai-solutions",
+    slug: "ai-automation",
     name: "Integrasi AI & Otomasi",
     badge: "Efisiensi Cerdas",
     tagline: "Sistem kecerdasan buatan yang memangkas beban kerja operasional hingga 50%.",
@@ -75,7 +75,7 @@ export const SERVICES = [
       "Analitik Data Cepat: Mampu merangkum ribuan baris data komplain atau transaksi menjadi ringkasan matang dalam hitungan detik.",
       "Privasi Tingkat Enterprise: Data rahasia perusahaan dan riwayat obrolan diisolasi penuh dan dijamin tidak akan bocor ke publik."
     ],
-    cta: "/services/gen-ai-solutions",
+    cta: "/services/ai-automation",
     audience: [], outcomes: [], deliverables: [], includes: [], excludes: [], kpis: [],
     timeline: { minWeeks: 3, maxWeeks: 6, note: "" },
     price: { currency: "IDR", unit: "project", note: "" },
