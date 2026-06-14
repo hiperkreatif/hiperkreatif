@@ -21,29 +21,31 @@ const logo = LogoUrl;
       <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none"></div>
       
       <!-- Moving Beams -->
-      <div class="absolute left-[20%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: 0s;"></div></div>
-      <div class="absolute left-[80%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -2s;"></div></div>
+      <div class="absolute left-[15%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: 0s;"></div></div>
+      <div class="absolute left-[35%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -1.5s;"></div></div>
+      <div class="absolute left-[65%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -0.8s;"></div></div>
+      <div class="absolute left-[85%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -3s;"></div></div>
 
       <!-- Glow blobs -->
       <div class="glow-blob bg-white/10 w-[500px] h-[500px] -top-32 -left-32"></div>
       <div class="glow-blob delay-5s bg-white/5 w-[400px] h-[400px] top-32 -right-32"></div>
 
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-gray-300 mb-8 animate-on-scroll">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-gray-300 mb-8 animate-on-scroll" style="transition-delay: 0ms;">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
           Agency Jasa Website & Otomasi AI untuk bisnis modern
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 animate-on-scroll leading-tight md:leading-tight">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 animate-on-scroll leading-tight md:leading-tight" style="transition-delay: 100ms;">
           <span class="block text-white pb-2">Dirancang untuk Solusi.</span>
           <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500 pb-2">Dibangun untuk Profitabilitas.</span>
         </h1>
 
-        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-on-scroll">
+        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-on-scroll" style="transition-delay: 200ms;">
           Berhenti membuang waktu pada sistem digital yang lambat dan tidak efisien. Kami membangun website super cepat, aplikasi kustom presisi, dan otomasi AI yang memangkas biaya serta melipatgandakan ROI bisnis Anda.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="transition-delay: 300ms;">
           <a href="/consultation" class="px-8 py-4 bg-white text-slate-950 font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Atasi Kendala Bisnis Anda
           </a>
@@ -118,10 +120,10 @@ const logo = LogoUrl;
         <div class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white z-30 shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
         
         {SERVICES.map((s, i) => (
-          <div class={`relative group p-8 lg:p-14 overflow-hidden border-b border-white/10 hover:bg-white/[0.03] transition-colors duration-500 flex flex-col min-h-[480px] ${i % 2 === 0 ? 'md:border-r border-white/10' : ''}`}>
+          <div class={`relative group p-8 lg:p-14 overflow-hidden border-b border-white/10 hover:bg-white/[0.06] transition-colors duration-300 flex flex-col min-h-[480px] ${i % 2 === 0 ? 'md:border-r border-white/10' : ''}`}>
             
             <!-- Huge Background Number -->
-            <div class="absolute -right-8 -bottom-16 text-[200px] font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors duration-700 leading-none select-none">
+            <div class="absolute -right-8 -bottom-16 text-[200px] font-black text-white/[0.03] group-hover:text-white/[0.09] transition-colors duration-700 leading-none select-none">
               0{i + 1}
             </div>
 
@@ -146,10 +148,10 @@ const logo = LogoUrl;
             </div>
 
             <div class="relative z-10 mt-auto">
-              <a href={s.cta} class="inline-flex items-center gap-3 text-white font-bold uppercase text-sm tracking-widest hover:translate-x-2 transition-transform duration-300">
-                <span>Pelajari Detail</span>
-                <span class="w-8 h-[1px] bg-white group-hover:w-16 transition-all duration-300"></span>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <a href={s.cta} class="group/cta inline-flex items-center gap-3 text-white font-bold uppercase text-sm tracking-widest">
+                <span class="group-hover/cta:translate-x-1 transition-transform duration-300 inline-block">Pelajari Detail</span>
+                <span class="w-8 h-[1px] bg-white group-hover:w-16 group-hover/cta:w-16 transition-all duration-300"></span>
+                <svg class="w-4 h-4 group-hover/cta:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>

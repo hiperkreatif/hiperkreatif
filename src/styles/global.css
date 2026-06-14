@@ -137,6 +137,26 @@ body {
     animation: beam 4s linear infinite;
     z-index: 0;
   }
+
+  /* Shimmer sweep for buttons */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+  .btn-shimmer:hover::after {
+    animation: shimmer-sweep 0.7s ease-out forwards;
+  }
 }
 
 @keyframes marquee {
@@ -161,4 +181,9 @@ body {
   10% { opacity: 1; }
   90% { opacity: 1; }
   100% { top: 110%; opacity: 0; }
+}
+
+@keyframes shimmer-sweep {
+  0% { left: -100%; }
+  100% { left: 150%; }
 }
