@@ -92,7 +92,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="relative text-sm font-mono text-gray-600 font-medium px-2 py-1 hover:text-black transition-colors after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
+                  class="relative text-xs font-mono text-gray-600 font-bold uppercase tracking-wider px-2 py-1 hover:text-black transition-colors after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -102,7 +102,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="ml-4 bg-black text-white font-mono font-medium text-sm px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              class="ml-4 bg-black text-white font-mono font-bold text-sm px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
               >{NAV_CTA.label}</a
             >
           </div>
@@ -139,7 +139,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="block text-sm font-mono text-gray-600 hover:text-black font-medium px-3 py-2.5 rounded-lg hover:bg-white transition-all"
+                  class="block text-xs font-mono text-gray-600 hover:text-black font-bold uppercase tracking-wider px-3 py-2.5 rounded-lg hover:bg-white transition-all"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -149,7 +149,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="block mt-6 bg-black text-white font-mono font-medium text-sm px-6 py-3 rounded-full text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+              class="block mt-6 bg-black text-white font-mono font-bold text-sm px-6 py-3 rounded-full text-center shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
               >{NAV_CTA.label}</a
             >
           </div>
@@ -189,7 +189,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
         <!-- Right: Copyright -->
         <div class="flex-1 flex justify-center md:justify-end">
-          <div class="text-xs font-mono text-gray-500 text-center md:text-right font-medium">
+          <div class="text-xs font-mono text-gray-500 text-center md:text-right font-normal">
             &copy; {new Date().getFullYear()} Hiperkreatif.<br class="hidden xl:block"/> All rights reserved.
           </div>
         </div>
