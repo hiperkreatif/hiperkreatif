@@ -93,7 +93,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="relative text-xs text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all hover:after:w-full"
+                  class="relative text-xs text-gray-400 font-mono font-bold uppercase tracking-widest hover:text-white transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all hover:after:w-full"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -103,7 +103,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="ml-4 bg-white text-black font-bold uppercase tracking-widest text-xs px-6 py-3 hover:bg-gray-200 transition-colors"
+              class="ml-4 bg-white text-black font-mono font-bold uppercase tracking-widest text-xs px-6 py-3 hover:bg-gray-200 transition-colors"
               >{NAV_CTA.label}</a
             >
           </div>
@@ -141,7 +141,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="block text-xs text-gray-400 hover:text-white font-bold uppercase tracking-widest py-2"
+                  class="block text-xs text-gray-400 hover:text-white font-mono font-bold uppercase tracking-widest py-2"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener" : undefined}
                 >
@@ -151,7 +151,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             }
             <a
               href={NAV_CTA.href}
-              class="block mt-6 bg-white text-black font-bold uppercase tracking-widest text-xs px-6 py-4 text-center"
+              class="block mt-6 bg-white text-black font-mono font-bold uppercase tracking-widest text-xs px-6 py-4 text-center"
               >{NAV_CTA.label}</a
             >
           </div>
@@ -195,7 +195,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
         <!-- Right: Copyright -->
         <div class="flex-1 flex justify-center md:justify-end">
-          <div class="text-xs text-gray-500 uppercase tracking-widest font-bold text-center md:text-right mt-2 md:mt-0">
+          <div class="text-xs text-gray-500 font-mono uppercase tracking-widest font-bold text-center md:text-right mt-2 md:mt-0">
             &copy; {new Date().getFullYear()} Hiperkreatif.<br class="hidden xl:block"/> Blueprint Of Efficiency.
           </div>
         </div>
