@@ -1,82 +1,55 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/Button.astro';
 ---
 
-<BaseLayout title="Page Not Found" fullWidth>
-  <main class="min-h-screen bg-white flex items-center justify-center p-6 relative overflow-hidden">
-    {/* Animated background elements */}
-    <div class="absolute inset-0 w-full h-full">
-      <div class="absolute w-[500px] h-[500px] bg-black/5 rounded-full blur-3xl -top-48 -left-24 animate-pulse"></div>
-      <div class="absolute w-[400px] h-[400px] bg-black/5 rounded-full blur-3xl -bottom-32 -right-24 animate-pulse delay-700"></div>
+<BaseLayout title="Halaman Tidak Ditemukan | Hiperkreatif">
+  <!-- Architectural Layout Grid -->
+  <div class="max-w-7xl mx-auto border-x border-white/10 relative min-h-[85vh] flex flex-col justify-center items-center py-24 px-6 lg:px-12 overflow-hidden">
+    
+    <!-- Top Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
+
+    <!-- Background Elements -->
+    <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
+    <div class="glow-blob bg-white/5 w-[500px] h-[500px] -top-32 -left-32 pointer-events-none"></div>
+
+    <!-- Moving Beams -->
+    <div class="absolute left-[30%] top-0 h-full w-[1px] bg-white/5"><div class="moving-beam" style="animation-delay: 0s;"></div></div>
+    <div class="absolute left-[70%] top-0 h-full w-[1px] bg-white/5"><div class="moving-beam" style="animation-delay: 2s;"></div></div>
+
+    <!-- Massive Background Number -->
+    <div class="absolute right-12 bottom-12 text-[180px] md:text-[300px] font-mono font-bold text-white/[0.02] leading-none select-none pointer-events-none">
+      404
     </div>
 
-    <div class="relative max-w-3xl w-full backdrop-blur-xl bg-black/5 rounded-3xl border border-black/10 p-12 transform hover:scale-[1.02] transition-all duration-500">
-      <div class="relative">
-        <div class="absolute -top-32 left-1/2 transform -translate-x-1/2">
-          <div class="w-40 h-40 bg-black/20 rounded-2xl rotate-12 flex items-center justify-center animate-float shadow-2xl shadow-black/10">
-            <span class="text-7xl font-black text-black rotate-[-12deg] tracking-tighter">404</span>
-          </div>
-        </div>
+    <!-- Main Content -->
+    <div class="relative z-10 text-center max-w-2xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 font-mono uppercase tracking-widest text-xs font-bold backdrop-blur-sm">
+        <span class="w-1.5 h-1.5 bg-red-500 animate-pulse"></span>
+        Error: System 404
       </div>
 
-      <div class="text-center mt-16">
-        <h1 class="text-5xl font-extrabold text-black mb-6 tracking-tight">
-          Page Not Found
-        </h1>
-        <p class="text-xl text-gray-700 mb-10 leading-relaxed">
-          Looks like you've ventured into uncharted digital territory.
-        </p>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 uppercase">
+        Rute Tidak Ditemukan
+      </h1>
 
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <Button
-            variant="primary"
-            size="md"
-            href="/"
-            text="Return Home"
-            icon='<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>'
-            iconPosition="left"
-            className="px-8 py-4 bg-black text-white font-semibold rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-lg"
-          />
-          <Button
-            variant="outline"
-            size="md"
-            href="#"
-            text="Get Help"
-            icon='<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>'
-            iconPosition="left"
-            className="px-8 py-4 bg-black/5 backdrop-blur-lg text-black font-semibold rounded-2xl border-2 border-black/10 hover:bg-black/10 hover:border-black/20 transition-all duration-300"
-          />
-        </div>
-      </div>
+      <p class="text-lg text-gray-400 mb-12 leading-relaxed">
+        Halaman yang Anda cari tidak terdaftar dalam cetak biru sistem kami atau telah dipindahkan ke direktori lain.
+      </p>
 
-      <div class="mt-16 text-center">
-        <p class="text-gray-600">
-          Need directions? Check out our
-          <a href="#" class="text-black hover:text-gray-700 transition-colors underline decoration-wavy underline-offset-4">sitemap</a>
-        </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="px-8 py-4 bg-white text-slate-950 font-mono font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          Kembali ke Beranda
+        </a>
+        <a href="/consultation" class="px-8 py-4 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
+          Laporkan Masalah
+        </a>
       </div>
     </div>
-  </main>
+
+    <!-- Bottom Nodes -->
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
+    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
+  </div>
 </BaseLayout>
-
-<style>
-  @keyframes float {
-    0% { transform: translateY(0px) rotate(12deg); }
-    50% { transform: translateY(-20px) rotate(12deg); }
-    100% { transform: translateY(0px) rotate(12deg); }
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-  }
-
-  .animate-pulse {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-</style>
