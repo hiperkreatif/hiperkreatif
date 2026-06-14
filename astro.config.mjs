@@ -8,7 +8,6 @@ export default defineConfig({
   site: "https://hiperkreatif.com",
   integrations: [
     sitemap({
-      customPages: ["https://hiperkreatif.com/ecommerce-crafter"],
       changefreq: "weekly",
       priority: 0.8,
     }),
