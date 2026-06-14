@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
       
       <div class="container mx-auto px-6 lg:px-12 relative z-10">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 uppercase tracking-widest text-xs font-bold backdrop-blur-sm">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 font-mono uppercase tracking-widest text-xs font-bold backdrop-blur-sm">
           <span class="w-1.5 h-1.5 bg-white animate-pulse"></span>
           Discovery Call
         </div>
@@ -63,7 +63,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div class="relative group">
-              <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama / Perwakilan</label>
+              <label for="name" class="block text-xs font-mono font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama / Perwakilan</label>
               <input
                 type="text"
                 id="name"
@@ -75,7 +75,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
 
             <div class="relative group">
-              <label for="company" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama Perusahaan</label>
+              <label for="company" class="block text-xs font-mono font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Nama Perusahaan</label>
               <input
                 type="text"
                 id="company"
@@ -88,7 +88,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <div class="relative group mb-12 flex-grow">
-            <label for="brief" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Deskripsi Singkat Tantangan Bisnis</label>
+            <label for="brief" class="block text-xs font-mono font-bold text-gray-500 uppercase tracking-widest mb-2 group-focus-within:text-white transition-colors">Deskripsi Singkat Tantangan Bisnis</label>
             <textarea
               id="brief"
               name="brief"
@@ -101,7 +101,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <button
             type="submit"
-            class="mt-auto inline-flex items-center justify-center gap-3 w-full lg:w-auto self-start px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+            class="mt-auto inline-flex items-center justify-center gap-3 w-full lg:w-auto self-start px-10 py-5 bg-white text-black font-mono font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             <span>Kirim via WhatsApp</span>
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
