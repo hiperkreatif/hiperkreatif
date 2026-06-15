@@ -4,7 +4,7 @@ export const SEO = {
   headline: "Website, Aplikasi, dan Otomasi AI-Powered untuk Bisnismu",
 
   description:
-    "Jasa pembuatan website e-commerce, company profile, manajemen sosial media (Instagram, TikTok, dll), dan otomasi AI-powered. Hemat waktu, lindungi margin, siap scale.",
+    "Jasa website e-commerce, company profile & otomasi AI-powered untuk bisnis modern. Bangun sistem digital yang hemat waktu, lindungi margin, dan siap scale.",
 
   author: "Hiperkreatif",
 
