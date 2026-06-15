@@ -9,7 +9,7 @@ export const SEO = {
   author: "Hiperkreatif",
 
   // Open Graph / Twitter
-  ogImage: "/og.png",
+  ogImage: "/og.webp",
   ogImageAlt: "Hiperkreatif — Agency Digital: Website, Aplikasi & Otomasi AI",
   ogType: "website",
   twitterCard: "summary_large_image",

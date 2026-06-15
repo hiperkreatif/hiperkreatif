@@ -6,7 +6,7 @@ import Analytics from "@vercel/analytics/astro";
 import { Picture } from "astro:assets";
 import Logo from "../assets/logo-black.svg";
 import { SEO as DEFAULTS } from "../constants/seo.ts";
-import og from "../assets/og.png";
+import og from "../assets/og.webp";
 const ogUrl = new URL(og.src, Astro.site).toString();
 import LogoUrl from "../assets/logo-black.svg?url";
 import ManropeExtraBoldUrl from "../assets/fonts/Manrope-ExtraBold.woff2?url";
@@ -52,7 +52,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:image" content={ogUrl} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogImageAlt} />
