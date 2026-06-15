@@ -415,10 +415,7 @@ const logo = LogoUrl;
   />
 
   <script>
-    document.addEventListener('astro:page-load', () => {
-      const pathKey = 'animated-' + window.location.pathname;
-      const hasPlayed = sessionStorage.getItem(pathKey);
-
+    function initScrollAnimations() {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -429,19 +426,14 @@ const logo = LogoUrl;
       }, { threshold: 0.1 });
 
       document.querySelectorAll('.animate-on-scroll:not(.is-visible)').forEach((el) => {
-        if (hasPlayed) {
-          // Jika sudah pernah dirender di sesi ini (misal: back navigation), 
-          // matikan transisi dan langsung tampilkan untuk mencegah animasi ganda (flicker)
-          el.style.transition = 'none';
-          el.classList.add('is-visible');
-        } else {
-          observer.observe(el);
-        }
+        observer.observe(el);
       });
+    }
 
-      if (!hasPlayed) {
-        sessionStorage.setItem(pathKey, 'true');
-      }
-    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    } else {
+      initScrollAnimations();
+    }
   </script>
 </BaseLayout>
