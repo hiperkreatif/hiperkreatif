@@ -12,6 +12,8 @@ const ogUrl = new URL(og.src, Astro.site).toString();
 import LogoUrl from "../assets/logo-black.svg?url";
 import ManropeExtraBoldUrl from "../assets/fonts/Manrope-ExtraBold.woff2?url";
 import ManropeBoldUrl from "../assets/fonts/Manrope-Bold.woff2?url";
+import ManropeSemiBoldUrl from "../assets/fonts/Manrope-SemiBold.woff2?url";
+import ManropeMediumUrl from "../assets/fonts/Manrope-Medium.woff2?url";
 import ManropeRegularUrl from "../assets/fonts/Manrope-Regular.woff2?url";
 import SpaceMonoBoldUrl from "../assets/fonts/SpaceMono-Bold.woff2?url";
 import SpaceMonoRegularUrl from "../assets/fonts/SpaceMono-Regular.woff2?url";
@@ -67,6 +69,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Preload critical fonts -->
     <link rel="preload" href={ManropeExtraBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={ManropeBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={ManropeSemiBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={ManropeMediumUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={ManropeRegularUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={SpaceMonoBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={SpaceMonoRegularUrl} as="font" type="font/woff2" crossorigin="anonymous" />
