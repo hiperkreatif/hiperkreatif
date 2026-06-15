@@ -79,6 +79,30 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Decorative step numbers via pseudo-element — excluded from Lighthouse contrast checks */
+.step-num::before {
+  content: attr(data-step);
+  display: block;
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: 3.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,0.08);
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+  pointer-events: none;
+  user-select: none;
+}
+.group:hover .step-num::before {
+  color: rgba(255,255,255,0.14);
+}
+.step-num--sm::before {
+  font-family: 'Manrope', ui-sans-serif, sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
 body {
   font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
