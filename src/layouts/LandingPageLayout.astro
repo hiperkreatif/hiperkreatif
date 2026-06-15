@@ -5,7 +5,6 @@ import Analytics from "@vercel/analytics/astro";
 
 import { Picture } from "astro:assets";
 import Logo from "../assets/logo.webp";
-import { ClientRouter } from "astro:transitions";
 import { SEO as DEFAULTS } from "../constants/seo.ts";
 import og from "../assets/og.png";
 const ogUrl = new URL(og.src, Astro.site).toString();
@@ -60,12 +59,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Schema Markup (JSON-LD) removed to avoid duplication -->
 
-    <!-- Router + prefetch -->
-    <ClientRouter />
   </head>
   <body class="min-h-screen bg-white text-gray-900">
     <header
-      transition:name="site-header"
       class="sticky top-0 z-50 bg-transparent backdrop-blur-xl border-b border-gray-100"
     >
       <nav>
@@ -156,11 +152,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
       </nav>
     </header>
-    <main transition:name="page-content">
+    <main>
       <slot />
     </main>
     <footer
-      transition:name="site-footer"
       class="mt-12 py-8 md:py-12 border-t border-gray-200 bg-white"
     >
       <div class="max-w-4xl mx-auto px-6 sm:px-0 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">

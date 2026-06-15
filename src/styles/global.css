@@ -75,6 +75,11 @@
 }
 
 
+/* Native browser view transitions — zero JS overhead */
+@view-transition {
+  navigation: auto;
+}
+
 /* Tailwind import tetap bisa */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
