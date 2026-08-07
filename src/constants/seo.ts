@@ -1,10 +1,12 @@
 export const SEO = {
-  title: "Jasa Website, Aplikasi & Otomasi AI-Powered | Hiperkreatif",
+  // Kata kunci pencarian ("jasa website", "toko online", "otomasi ai") sengaja
+  // dipertahankan di title — problem-first-nya ditaruh di description.
+  title: "Jasa Website, Toko Online & Otomasi AI untuk UMKM | Hiperkreatif",
 
-  headline: "Website, Aplikasi, dan Otomasi AI-Powered untuk Bisnismu",
+  headline: "Kanal jualan dan sistem operasional milik bisnis Anda sendiri",
 
   description:
-    "Jasa website e-commerce, company profile & otomasi AI-powered untuk bisnis modern. Bangun sistem digital yang hemat waktu, lindungi margin, dan siap scale.",
+    "Margin habis di potongan marketplace dan kerja manual? Kami bangun toko online, profil perusahaan, dan otomasi AI milik Anda sendiri. Konsultasi gratis.",
 
   author: "Hiperkreatif",
 
@@ -21,4 +23,8 @@ export const SEO = {
   // Optional untuk UI internal
   badgeTitle: "Website • Social Media • AI-Powered",
   siteName: "Hiperkreatif",
+
+  // Nama merek tetap "Hiperkreatif"; badan hukumnya dipakai di footer dan
+  // schema.org legalName supaya bisa diverifikasi calon klien B2B.
+  legalName: "PT Hiperkreatif Solusi Digital",
 };

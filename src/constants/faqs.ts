@@ -1,22 +1,26 @@
 export const FAQS = [
   {
-    q: "Berapa lama sampai sistem saya siap menghasilkan uang?",
-    a: "Tidak sampai berbulan-bulan. Kami menggunakan alur kerja gesit (agile). Untuk website profil bisa selesai dalam 7 hari. Untuk sistem kustom atau AI, versi pertama (MVP) yang sudah bisa menekan biaya operasional akan siap dalam 3-4 minggu."
+    q: "Sudah jualan di marketplace, masih perlu website sendiri?",
+    a: "Perlu, tapi bukan untuk menggantikan. Marketplace tetap kanal terbaik untuk ditemukan pembeli baru. Yang merugikan adalah pembeli yang sudah pernah belanja tetap dipotong komisi seperti pembeli baru, setiap kali mereka pesan lagi. Website sendiri dipakai untuk menampung pembelian ulang, dan di sana potongannya nol serta nomor pelanggannya jadi milik Anda."
   },
   {
-    q: "Bagaimana jika saya tidak mengerti IT sama sekali?",
-    a: "Anda adalah pemilik bisnis, bukan teknisi. Kami merancang panel kontrol (dashboard) sebodoh mungkin sehingga anak magang pun bisa mengoperasikannya dalam 5 menit. Fokuslah jualan, biar mesin yang mengurus kerumitannya."
+    q: "Berapa lama sampai sistemnya bisa dipakai?",
+    a: "Website profil biasanya 1–2 minggu. Untuk sistem kustom atau AI, versi pertama yang sudah bisa dipakai kerja siap dalam 3–4 minggu, lalu kami tambah bertahap. Kami tidak menahan rilis sampai semuanya sempurna, karena sistem yang sudah jalan lebih berguna daripada sistem yang masih dirapikan."
   },
   {
-    q: "Apakah keamanan data perusahaan saya terjamin?",
-    a: "Absolut. Kami menerapkan enkripsi standar militer. Terutama untuk sistem AI terintegrasi, data rahasia perusahaan Anda disimpan di server yang terisolasi total dan tidak akan pernah bocor ke publik."
+    q: "Bagaimana kalau saya tidak mengerti teknis sama sekali?",
+    a: "Tidak perlu mengerti. Panel kontrolnya kami buat sesederhana mungkin dan tim Anda kami latih sampai bisa memakainya sendiri. Kalau ada bagian yang tetap membingungkan, itu masalah desain kami dan kami yang perbaiki."
   },
   {
-    q: "Apa yang terjadi setelah serah terima sistem selesai?",
-    a: "Kami tidak akan kabur setelah Anda bayar lunas. Kami memberikan masa garansi penuh untuk memastikan tidak ada celah error, serta memberikan pelatihan tatap muka/online sampai tim Anda 100% mandiri."
+    q: "Bagaimana keamanan data perusahaan kami?",
+    a: "Data dienkripsi saat dikirim maupun saat disimpan, hak akses dibatasi per peran, dan kredensial tidak pernah ditaruh di dalam kode. Khusus sistem AI, dokumen internal Anda disimpan terpisah dan tidak dipakai untuk melatih model pihak ketiga."
   },
   {
-    q: "Kenapa harganya terasa lebih tinggi dari freelancer?",
-    a: "Freelancer menjual kode, kami menjual efisiensi bisnis. Satu kesalahan server atau kebocoran data dari freelancer murah bisa mematikan bisnis Anda. Anda berinvestasi pada ketenangan pikiran dan sistem yang dijamin mencetak Return on Investment (ROI)."
+    q: "Apa yang terjadi setelah serah terima?",
+    a: "Ada 30 hari garansi perbaikan bug tanpa biaya tambahan, plus pelatihan untuk tim Anda. Setelah itu Anda bebas memilih: lanjut kontrak pemeliharaan, atau jalan sendiri. Kode dan akses server sepenuhnya milik Anda, bukan disandera di server kami."
+  },
+  {
+    q: "Kenapa lebih mahal dari freelancer?",
+    a: "Kami memasukkan biaya untuk hal yang biasanya tidak ada di penawaran murah: pengujian, dokumentasi, penanganan error, dan orang yang masih bisa dihubungi enam bulan kemudian. Kalau kebutuhan Anda memang kecil dan sekali jadi, freelancer sering jadi pilihan yang lebih masuk akal, dan kami akan bilang begitu saat konsultasi."
   }
 ];

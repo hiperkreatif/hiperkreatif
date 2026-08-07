@@ -7,60 +7,72 @@ import { BLOGS } from "../../constants/blogs";
   title="Jurnal Efisiensi Bisnis & Teknologi | Hiperkreatif"
   description="Kumpulan artikel mendalam tentang strategi e-commerce, dominasi media sosial, pengembangan website korporat, dan otomatisasi bisnis dengan AI."
 >
-  <div class="w-full max-w-7xl mx-auto border-x border-white/10 relative min-h-screen">
-    
-    <!-- Top Nodes -->
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden border-b border-line bg-surface">
+    <div class="grid-bg pointer-events-none absolute inset-0 opacity-35" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_20%,var(--color-surface)_85%)]"
+      aria-hidden="true"
+    >
+    </div>
 
-    <section class="relative pt-32 pb-20 overflow-hidden border-b border-white/10">
-      <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
-      
-      <div class="container mx-auto px-6 lg:px-12 relative z-10">
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white uppercase leading-tight">
-          Jurnal <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600">Efisiensi</span>
-        </h1>
-        <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
-          Wawasan tajam dan tanpa basa-basi mengenai masa depan arsitektur digital, otomatisasi AI, dan dominasi pasar.
-        </p>
-      </div>
-    </section>
+    <div class="wrap relative z-10 py-14 md:py-20">
+      <p class="eyebrow m-0">jurnal</p>
+      <h1 class="display mt-5 max-w-[18ch] text-[clamp(2.4rem,5.2vw,3.8rem)]">
+        Catatan dari lapangan.
+      </h1>
+      <p class="lede mt-5 max-w-[60ch]">
+        Apa yang kami temukan saat membereskan sistem bisnis orang lain: biaya yang tidak
+        kelihatan, kebiasaan yang mahal, dan hal-hal yang ternyata tidak perlu dibangun.
+      </p>
+    </div>
+  </section>
 
-    <section class="divide-y divide-white/10">
-      {BLOGS.map((blog) => (
-        <a href={`/blog/${blog.slug}`} class="block group hover:bg-white/[0.02] transition-colors">
-          <div class="px-6 lg:px-12 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <div class="md:w-3/4">
-              <div class="flex items-center gap-4 mb-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-white px-3 py-1 bg-white/10 border border-white/20">
-                  {blog.category}
-                </span>
-                <span class="text-xs font-bold uppercase tracking-widest text-gray-500">
-                  {blog.date}
-                </span>
+  <!-- ══ DAFTAR ════════════════════════════════════════════ -->
+  <section class="wrap py-4">
+    <ul class="m-0 list-none divide-y divide-line p-0 border-b border-line">
+      {
+        BLOGS.map((blog) => (
+          <li>
+            <a
+              href={`/blog/${blog.slug}`}
+              class="group grid gap-4 py-8 transition-colors md:grid-cols-[minmax(0,0.26fr)_minmax(0,1fr)_auto] md:items-start md:gap-8"
+            >
+              <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
+                <span class="tag">{blog.category}</span>
+                <span class="text-muted">{blog.date}</span>
               </div>
-              <h2 class="text-2xl md:text-3xl font-black text-white leading-snug group-hover:text-gray-300 transition-colors mb-4">
-                {blog.title}
-              </h2>
-              <p class="text-gray-400 leading-relaxed max-w-3xl">
-                {blog.excerpt}
-              </p>
-            </div>
-            
-            <div class="md:w-1/4 flex justify-end">
-              <div class="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-white group-hover:bg-white group-hover:text-black transition-all">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </a>
-      ))}
-    </section>
 
-    <!-- Bottom Nodes -->
-    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-  </div>
+              <div>
+                <h2 class="display-sm m-0 max-w-[34ch] text-[clamp(1.15rem,2.2vw,1.5rem)] transition-colors group-hover:text-accent">
+                  {blog.title}
+                </h2>
+                <p class="mt-3 mb-0 max-w-[70ch] text-[0.92rem] leading-relaxed text-muted">
+                  {blog.excerpt}
+                </p>
+              </div>
+
+              <span
+                class="hidden font-mono text-[0.9rem] text-muted transition-colors group-hover:text-accent md:inline"
+                aria-hidden="true">→</span
+              >
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- ══ CTA ═══════════════════════════════════════════════ -->
+  <section class="border-t border-line">
+    <div class="wrap py-16 text-center md:py-20">
+      <h2 class="display mx-auto max-w-[22ch] text-[clamp(1.5rem,3.2vw,2.2rem)]">
+        Kendala Anda belum ada artikelnya?
+      </h2>
+      <p class="mx-auto mt-4 mb-0 max-w-[50ch] text-muted">
+        Ceritakan langsung saja. Telepon 30 menit, gratis.
+      </p>
+      <a href="/consultation" class="btn btn-primary mt-7">Jadwalkan konsultasi</a>
+    </div>
+  </section>
 </BaseLayout>

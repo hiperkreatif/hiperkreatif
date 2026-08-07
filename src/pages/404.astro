@@ -7,53 +7,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Halaman yang Anda cari tidak ditemukan. Kembali ke halaman utama Hiperkreatif."
   robots="noindex, nofollow"
 >
-  <!-- Architectural Layout Grid -->
-  <div class="w-full max-w-7xl mx-auto border-x border-white/10 relative min-h-[85vh] flex flex-col justify-center items-center py-24 px-6 lg:px-12 overflow-hidden">
-    
-    <!-- Top Nodes -->
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
-
-    <!-- Background Elements -->
-    <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none opacity-50"></div>
-    <div class="glow-blob bg-white/5 w-[500px] h-[500px] -top-32 -left-32 pointer-events-none"></div>
-
-    <!-- Moving Beams -->
-    <div class="absolute left-[30%] top-0 h-full w-[1px] bg-white/5"><div class="moving-beam" style="animation-delay: 0s;"></div></div>
-    <div class="absolute left-[70%] top-0 h-full w-[1px] bg-white/5"><div class="moving-beam" style="animation-delay: 2s;"></div></div>
-
-    <!-- Massive Background Number -->
-    <div class="absolute right-12 bottom-12 text-[180px] md:text-[300px] font-mono font-bold text-white/[0.02] leading-none select-none pointer-events-none">
-      404
+  <section class="relative flex flex-grow items-center overflow-hidden bg-surface">
+    <div class="grid-bg pointer-events-none absolute inset-0 opacity-35" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,transparent_15%,var(--color-surface)_80%)]"
+      aria-hidden="true"
+    >
     </div>
 
-    <!-- Main Content -->
-    <div class="relative z-10 text-center max-w-2xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 font-mono uppercase tracking-widest text-xs font-bold backdrop-blur-sm">
-        <span class="w-1.5 h-1.5 bg-red-500 animate-pulse"></span>
-        Error: System 404
-      </div>
+    <div class="wrap relative z-10 py-20 md:py-28">
+      <div class="max-w-[60ch]">
+        <p class="eyebrow m-0">error 404</p>
 
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 uppercase">
-        Rute Tidak Ditemukan
-      </h1>
+        <h1 class="display mt-5 text-[clamp(2.4rem,5.2vw,3.8rem)]">Rute tidak ditemukan.</h1>
 
-      <p class="text-lg text-gray-400 mb-12 leading-relaxed">
-        Halaman yang Anda cari tidak terdaftar dalam cetak biru sistem kami atau telah dipindahkan ke direktori lain.
-      </p>
+        <p class="lede mt-5">
+          Halaman yang Anda cari sudah dipindahkan atau tidak pernah ada. Kalau Anda sampai di
+          sini dari tautan kami sendiri, tolong beri tahu supaya bisa kami perbaiki.
+        </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/" class="px-8 py-4 bg-white text-slate-950 font-mono font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-          Kembali ke Beranda
-        </a>
-        <a href="https://wa.me/6285157445924?text=Halo%20Hiperkreatif%2C%20saya%20menemukan%20masalah%2Ferror%20404%20saat%20mengakses%20halaman%20di%20website." target="_blank" rel="noopener noreferrer" class="px-8 py-4 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
-          Laporkan Masalah
-        </a>
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <a href="/" class="btn btn-primary">Kembali ke beranda</a>
+          <a
+            href="https://wa.me/6285157445924?text=Halo%20Hiperkreatif%2C%20saya%20menemukan%20error%20404%20saat%20mengakses%20halaman%20di%20website."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary">Laporkan masalah</a
+          >
+        </div>
+
+        <div class="mt-12 border-t border-line pt-6">
+          <p class="m-0 font-mono text-[0.75rem] text-muted">coba salah satu ini:</p>
+          <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[0.8rem]">
+            <a href="/#layanan" class="link">layanan</a>
+            <a href="/blog" class="link">jurnal</a>
+            <a href="/consultation" class="link">konsultasi</a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Bottom Nodes -->
-    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-    <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-  </div>
+  </section>
 </BaseLayout>

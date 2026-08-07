@@ -9,19 +9,14 @@ import { SEO as DEFAULTS } from "../constants/seo.ts";
 import og from "../assets/og.webp";
 const ogUrl = new URL(og.src, Astro.site).toString();
 import LogoUrl from "../assets/logo-black.svg?url";
-import ManropeExtraBoldUrl from "../assets/fonts/Manrope-ExtraBold.woff2?url";
-import ManropeBoldUrl from "../assets/fonts/Manrope-Bold.woff2?url";
-import ManropeSemiBoldUrl from "../assets/fonts/Manrope-SemiBold.woff2?url";
-import ManropeMediumUrl from "../assets/fonts/Manrope-Medium.woff2?url";
-import ManropeRegularUrl from "../assets/fonts/Manrope-Regular.woff2?url";
-import SpaceMonoBoldUrl from "../assets/fonts/SpaceMono-Bold.woff2?url";
-import SpaceMonoRegularUrl from "../assets/fonts/SpaceMono-Regular.woff2?url";
+import ArchivoUrl from "../assets/fonts/Archivo-Variable.woff2?url";
+import InterUrl from "../assets/fonts/Inter-Variable.woff2?url";
+import JetBrainsMonoUrl from "../assets/fonts/JetBrainsMono-Variable.woff2?url";
 
 const {
   title = DEFAULTS.title,
   description = DEFAULTS.description,
   robots = DEFAULTS.robots,
-  //   ogImage = DEFAULTS.ogImage,
   logo = LogoUrl,
   ogImageAlt = DEFAULTS.ogImageAlt,
   ogType = DEFAULTS.ogType,
@@ -31,9 +26,49 @@ const {
 
 // Canonical per halaman, bukan hardcode:
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPath = Astro.url.pathname;
+const year = new Date().getFullYear();
+
+// Sakelar mode pakai ikon, bukan teks — glyph ☾ ☀ tidak ada di subset font
+// yang kita self-host, jadi digambar sebagai SVG stroke.
+const MODES = [
+  {
+    id: "ink",
+    label: "Mode gelap",
+    d: "M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z",
+  },
+  {
+    id: "paper",
+    label: "Mode terang",
+    d: "M12 3v1.5M12 19.5V21M4.22 4.22l1.06 1.06M18.72 18.72l1.06 1.06M3 12h1.5M19.5 12H21M4.22 19.78l1.06-1.06M18.72 5.28l1.06-1.06M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z",
+  },
+];
+
+const SOCIALS = [
+  {
+    label: "Instagram",
+    href: "https://instagram.com/hiperkreatif",
+    path: "M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@hiperkreatif",
+    path: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.15 4.38-2.9 5.66-1.62 1.2-3.72 1.63-5.69 1.19-2.02-.45-3.8-1.8-4.75-3.66-1.02-2-1.06-4.42-.09-6.44 1.06-2.18 3.25-3.64 5.66-3.83.18-.01.37-.02.56-.02v4.06c-1.37.05-2.73.7-3.56 1.81-.88 1.15-1.1 2.75-.54 4.08.5 1.16 1.61 2.05 2.86 2.25 1.5.24 3.12-.22 4.12-1.4.95-1.11 1.25-2.6 1.21-4.04-.04-4.83-.02-9.66-.03-14.49z",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@hiperkreatif",
+    path: "M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z",
+  },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/hiperkreatif",
+    path: "M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z",
+  },
+];
 ---
 
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,6 +78,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="color-scheme" content="dark light" />
+    <meta id="theme-color" name="theme-color" content="#efece5" />
+
+    <!-- Harus sinkron & sebelum paint pertama, kalau tidak mode-nya berkedip -->
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem("hk-mode");
+        const mode =
+          saved === "ink" || saved === "paper"
+            ? saved
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "ink"
+              : "paper";
+        document.documentElement.dataset.mode = mode;
+      })();
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
@@ -65,154 +116,226 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:image" content={ogUrl} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
 
-    <!-- Optional: bantu crawler nemuin sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href={ManropeExtraBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={ManropeBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={ManropeSemiBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={ManropeMediumUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={ManropeRegularUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={SpaceMonoBoldUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={SpaceMonoRegularUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <!-- Preload font: 3 file variable, satu per peran -->
+    <link rel="preload" href={ArchivoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={InterUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={JetBrainsMonoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
 
+    <!-- Tanpa slot bernama ini, `slot="head"` di halaman dibuang diam-diam
+         oleh Astro — itu sebabnya JSON-LD tidak pernah terbit. -->
+    <slot name="head" />
   </head>
-  <body class="min-h-screen bg-slate-950 text-gray-100 overflow-x-hidden flex flex-col">
-    <header
-      class="sticky top-0 z-50 bg-slate-950 border-b border-white/10"
+
+  <body class="flex min-h-screen flex-col bg-bg text-ink">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-bg"
+      >Lompat ke konten</a
     >
-      <nav class="border-b border-white/10">
-        <div
-          class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-12 py-5 border-x border-white/10"
-        >
-          <a href="/" class="flex items-center gap-3 group">
+
+    <div class="sheet">
+    <header
+      class="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur-md supports-[backdrop-filter]:bg-bg/80"
+    >
+      <nav class="wrap flex items-center justify-between gap-4 py-3" aria-label="Navigasi utama">
+        <a href="/" class="group inline-flex items-center gap-2.5">
+          <!-- Kotak logo dipatok setinggi .btn-sm (2.25rem) supaya sejajar CTA -->
+          <span
+            class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-line bg-surface transition-colors group-hover:border-line-strong"
+          >
             <Picture
               src={Logo}
-              alt="Logo Hiperkreatif"
-              widths={[40, 40]}
-              sizes="(min-width: 768px) 40px, 40px"
-              class="h-8 w-8 transition-transform duration-300 group-hover:scale-110 invert"
+              alt=""
+              widths={[44]}
+              sizes="22px"
+              class="logo-mark h-[1.375rem] w-[1.375rem]"
+              aria-hidden="true"
             />
-            <span
-              class="font-black text-xl md:text-2xl text-white uppercase tracking-widest"
-              >{NAV_LOGO}</span
-            >
-          </a>
+          </span>
+          <span class="font-display text-[1.15rem] font-black tracking-[-0.045em] text-ink">
+            {NAV_LOGO}
+          </span>
+        </a>
 
-          {/* Desktop Menu */}
-          <div class="hidden md:flex items-center gap-8">
+        <!-- Desktop -->
+        <div class="hidden items-center gap-6 md:flex">
+          {
+            NAV_MENU.map((item) => (
+              <a
+                href={item.href}
+                class="text-[0.875rem] font-medium text-ink-soft transition-colors hover:text-accent"
+                aria-current={currentPath === item.href ? "page" : undefined}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <div class="mode" role="group" aria-label="Mode tampilan">
             {
-              NAV_MENU.map((item) => (
-                <a
-                  href={item.href}
-                  class="relative text-xs text-gray-400 font-mono font-bold uppercase tracking-widest hover:text-white transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all hover:after:w-full"
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener" : undefined}
+              MODES.map((m) => (
+                <button
+                  type="button"
+                  data-mode-btn={m.id}
+                  aria-pressed="false"
+                  aria-label={m.label}
+                  title={m.label}
                 >
-                  {item.label}
-                </a>
+                  <svg
+                    class="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={m.d} />
+                  </svg>
+                </button>
               ))
             }
-            <a
-              href={NAV_CTA.href}
-              class="ml-4 bg-white text-black font-mono font-bold uppercase tracking-widest text-xs px-6 py-3 hover:bg-gray-200 transition-colors"
-              >{NAV_CTA.label}</a
-            >
           </div>
-
-          <!-- Mobile Menu Button -->
-          <button
-            class="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none rounded-full hover:bg-white/10 transition-colors"
-            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-            aria-label="Toggle mobile menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
+          <a href={NAV_CTA.href} class="btn btn-primary btn-sm">{NAV_CTA.label}</a>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+        <!-- Mobile: sakelar mode di luar disclosure supaya selalu terjangkau -->
+        <div class="flex items-center gap-2 md:hidden">
+          <div class="mode" role="group" aria-label="Mode tampilan">
+            {
+              MODES.map((m) => (
+                <button
+                  type="button"
+                  data-mode-btn={m.id}
+                  aria-pressed="false"
+                  aria-label={m.label}
+                  title={m.label}
+                >
+                  <svg
+                    class="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={m.d} />
+                  </svg>
+                </button>
+              ))
+            }
+          </div>
+
+        <details class="relative" name="nav">
+          <summary
+            class="grid h-9 w-9 cursor-pointer list-none place-items-center gap-[0.22rem] rounded-md border border-line text-ink-soft transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent [&::-webkit-details-marker]:hidden"
+            aria-label="Buka menu"
+          >
+            <span class="block h-px w-4 bg-current"></span>
+            <span class="block h-px w-4 bg-current"></span>
+            <span class="block h-px w-4 bg-current"></span>
+          </summary>
           <div
-            class="px-6 pt-4 pb-6 space-y-4 bg-slate-950"
+            class="absolute right-0 top-[calc(100%+0.6rem)] z-40 grid min-w-[min(17rem,calc(100vw-2rem))] gap-1 rounded-md border border-line-strong bg-surface p-1.5 shadow-[0_16px_44px_rgba(0,0,0,0.12)]"
           >
             {
               NAV_MENU.map((item) => (
                 <a
                   href={item.href}
-                  class="block text-xs text-gray-400 hover:text-white font-mono font-bold uppercase tracking-widest py-2"
+                  class="rounded-sm px-3 py-2.5 text-[0.9375rem] font-medium text-ink-soft transition-colors hover:bg-accent-soft hover:text-accent"
                   target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
                 >
                   {item.label}
                 </a>
               ))
             }
-            <a
-              href={NAV_CTA.href}
-              class="block mt-6 bg-white text-black font-mono font-bold uppercase tracking-widest text-xs px-6 py-4 text-center"
-              >{NAV_CTA.label}</a
-            >
+            <a href={NAV_CTA.href} class="btn btn-primary mt-1">{NAV_CTA.label}</a>
           </div>
+        </details>
         </div>
       </nav>
     </header>
-    <main class="flex-grow flex flex-col">
+
+    <main id="main" class="flex flex-grow flex-col">
       <slot />
     </main>
-    <footer
-      class="mt-auto border-t border-white/10 bg-slate-950"
-    >
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 py-8 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 border-x border-white/10 relative">
-        <!-- Footer Nodes -->
-        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -left-[3px] z-20" aria-hidden="true"></div>
-        <div class="absolute w-1.5 h-1.5 bg-white -top-[3px] -right-[3px] z-20" aria-hidden="true"></div>
 
-        <!-- Left: Logo -->
-        <div class="flex-1 flex justify-center md:justify-start">
-          <div class="text-white font-black tracking-widest uppercase text-xl md:text-2xl">
-            {NAV_LOGO}
-          </div>
-        </div>
-        
-        <!-- Center: Socials -->
-        <div class="flex-none flex items-center justify-center gap-3">
-          <a href="https://instagram.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:bg-gradient-to-tr hover:from-pink-500 hover:to-orange-500 hover:text-white hover:border-transparent hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
-          </a>
-          <a href="https://www.tiktok.com/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:bg-black hover:text-white hover:border-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.15 4.38-2.9 5.66-1.62 1.2-3.72 1.63-5.69 1.19-2.02-.45-3.8-1.8-4.75-3.66-1.02-2-1.06-4.42-.09-6.44 1.06-2.18 3.25-3.64 5.66-3.83.18-.01.37-.02.56-.02v4.06c-1.37.05-2.73.7-3.56 1.81-.88 1.15-1.1 2.75-.54 4.08.5 1.16 1.61 2.05 2.86 2.25 1.5.24 3.12-.22 4.12-1.4.95-1.11 1.25-2.6 1.21-4.04-.04-4.83-.02-9.66-.03-14.49z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:bg-[#FF0000] hover:text-white hover:border-transparent hover:shadow-[0_0_15px_rgba(255,0,0,0.5)] transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"/></svg>
-          </a>
-          <a href="https://facebook.com/hiperkreatif" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:bg-[#1877F2] hover:text-white hover:border-transparent hover:shadow-[0_0_15px_rgba(24,119,242,0.5)] transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-          </a>
+    <footer class="mt-auto border-t border-line">
+      <div
+        class="wrap flex flex-col items-center justify-between gap-5 py-7 text-center font-mono text-[0.8rem] text-muted md:flex-row md:text-left"
+      >
+        <p class="m-0">
+          &copy; {year} {DEFAULTS.legalName}
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <a href="/blog" class="transition-colors hover:text-accent">blog</a>
+          <a href="/consultation" class="transition-colors hover:text-accent">konsultasi</a>
+          <a
+            href="mailto:hi@hiperkreatif.com"
+            class="transition-colors hover:text-accent">hi@hiperkreatif.com</a
+          >
         </div>
 
-        <!-- Right: Copyright -->
-        <div class="flex-1 flex justify-center md:justify-end">
-          <div class="text-xs text-gray-400 font-mono uppercase tracking-widest font-bold text-center md:text-right mt-2 md:mt-0">
-            &copy; {new Date().getFullYear()} Hiperkreatif.<br class="hidden xl:block"/> Blueprint Of Efficiency.
-          </div>
+        <div class="flex flex-wrap items-center justify-center gap-1.5">
+          {
+            SOCIALS.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                class="inline-flex h-8 w-8 items-center justify-center rounded-md border border-line text-muted transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent"
+              >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d={s.path} />
+                </svg>
+              </a>
+            ))
+          }
         </div>
       </div>
     </footer>
+    </div>
+
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const meta = document.getElementById("theme-color");
+        const buttons = document.querySelectorAll("[data-mode-btn]");
+
+        const paint = (mode) => {
+          root.dataset.mode = mode;
+          // Diambil dari CSS, bukan diketik ulang — satu sumber kebenaran.
+          meta.content = getComputedStyle(root).getPropertyValue("--color-bg").trim();
+          buttons.forEach((b) =>
+            b.setAttribute("aria-pressed", String(b.dataset.modeBtn === mode))
+          );
+        };
+
+        buttons.forEach((b) =>
+          b.addEventListener("click", () => {
+            localStorage.setItem("hk-mode", b.dataset.modeBtn);
+            paint(b.dataset.modeBtn);
+          })
+        );
+
+        // Ikuti OS selama pengguna belum pernah memilih sendiri
+        matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          if (!localStorage.getItem("hk-mode")) paint(e.matches ? "ink" : "paper");
+        });
+
+        paint(root.dataset.mode);
+      })();
+    </script>
+
     <Analytics />
   </body>
 </html>

@@ -1,5 +1,141 @@
 export const BLOGS = [
   {
+    slug: "potongan-naik-pajak-dipungut-2026",
+    title: "Potongan Naik, Pajak Dipungut di Muka: Hitung Ulang Letak Pesanan Ulang Anda",
+    date: "06 Agustus 2026, 09:10 WIB",
+    category: "E-Commerce",
+    excerpt: "Mei 2026 menambah potongan di tiga tempat sekaligus, dan sejak 1 Agustus empat marketplace memungut PPh 0,5% tiap transaksi. Angkanya cukup untuk mengubah keputusan, bukan cuma bikin kesal.",
+    content: `
+      <h2>Tiga potongan datang dalam satu bulan</h2>
+      <p>Pada 2 Mei 2026, biaya layanan program Gratis Ongkir XTRA di Shopee untuk sebagian kategori fashion naik dari 5,5% menjadi 7,5% per transaksi, sementara kategori standarnya naik dari 1,5% ke 2%. Sejak 1 Mei, Tokopedia dan TikTok Shop menambahkan biaya logistik per pesanan, sekitar Rp5.000 di TikTok Shop dan di atas Rp10.000 di Tokopedia sebelum pajak. Pada 18 Mei, batas komisi Tokopedia naik dari Rp40.000 menjadi Rp650.000 per item, hampir 15 kali lipat.</p>
+      <p>Kenaikan terakhir itu nyaris tidak terasa bagi penjual barang murah, dan terasa sangat berbeda bagi penjual barang mahal. Kalau harga jual Anda di atas dua juta, plafon yang dulu melindungi margin sudah tidak ada lagi.</p>
+
+      <h2>Satu produk, dihitung apa adanya</h2>
+      <p>Ambil produk fashion Rp150.000 dengan HPP Rp80.000 yang mengikuti program Gratis Ongkir XTRA:</p>
+      <ul>
+        <li>Biaya program 7,5% dari harga jual, Rp11.250</li>
+        <li>Biaya logistik per pesanan, Rp5.000</li>
+        <li>Estimasi biaya iklan yang menempel pada pesanan itu, Rp8.000</li>
+      </ul>
+      <p>Sisa marginnya Rp45.750, atau 30,5% dari harga jual. Potongan platformnya sendiri Rp24.250, sekitar 16% dari harga jual. Bukan 30% seperti yang sering disebut orang, tapi cukup besar untuk menentukan apakah Anda masih sanggup ikut perang diskon berikutnya.</p>
+
+      <h2>Yang berubah pada 1 Agustus 2026</h2>
+      <p>PMK 37/2025 menunjuk pihak lain sebagai pemungut PPh atas penghasilan pedagang dalam negeri lewat sistem elektronik. DJP kemudian menetapkan empat pemungut pertama, yaitu Tokopedia, Shopee, Lazada, dan Blibli, yang mulai memungut PPh Pasal 22 final 0,5% pada 1 Agustus 2026. Dasarnya nilai transaksi bruto tanpa PPN, dan pemungutannya terjadi setiap transaksi, bukan saat dana ditarik ke rekening. Pedagang dengan omzet setahun belum melampaui Rp500 juta dikecualikan, dengan syarat surat pernyataannya sudah disampaikan ke marketplace.</p>
+      <p>Perlu jujur soal ini: kalau pajaknya memang Anda setor, ini bukan beban baru, hanya berpindah waktu penyetorannya. Yang benar-benar berubah adalah arus kas. Uang yang dulu masuk penuh lalu disetor kemudian sekarang terpotong sejak transaksi pertama, dan bagi bisnis yang perputaran stoknya cepat, selisih waktu itu terasa di modal belanja.</p>
+
+      <h2>Pertanyaan yang lebih berguna daripada "pindah atau tidak"</h2>
+      <p>Meninggalkan marketplace hampir selalu keputusan buruk. Di sana ada pembeli yang tidak akan pernah mengetik nama toko Anda di browser, dan biaya menemukan mereka lewat jalur lain umumnya lebih mahal daripada komisi yang Anda keluhkan.</p>
+      <p>Pertanyaan yang lebih layak dihitung: berapa persen pesanan bulan lalu datang dari orang yang sudah pernah belanja di Anda? Angka itu ada di laporan penjualan Anda sendiri, tinggal dihitung dari nomor telepon atau nama penerima yang berulang. Untuk porsi itulah tarif akuisisi tidak masuk akal dibayar untuk kedua kalinya.</p>
+
+      <blockquote>
+        "Marketplace mahal untuk pembeli lama dan murah untuk pembeli baru. Yang perlu Anda putuskan bukan mana yang menang, tapi pesanan yang mana lewat mana."
+      </blockquote>
+
+      <h2>Kanal sendiri juga punya biaya, sebut saja</h2>
+      <p>Toko sendiri bukan gratis. Ada server, domain, dan payment gateway yang memungut per transaksi. Ada juga biaya yang jarang ditulis di penawaran, yaitu mendatangkan orangnya. Kalau Anda memindahkan pembeli baru ke toko sendiri tanpa memasok trafik, hasilnya halaman sepi dengan tagihan bulanan. Karena itu urutan yang biasanya masuk akal adalah membuka kanal sendiri untuk pesanan ulang lebih dulu, lalu menambah akuisisi setelah kanal itu terbukti dipakai.</p>
+
+      <h2>Cara termurah mengujinya</h2>
+      <p>Tidak perlu toko lengkap untuk menguji asumsi ini. Satu halaman produk dengan checkout yang jalan, satu nomor WhatsApp yang menjawab cepat, dan satu penawaran yang hanya ada di kanal Anda sendiri sudah cukup untuk melihat apakah pembeli lama mau pindah. Kalau ternyata tidak mau, yang hilang cuma biaya satu halaman. Kalau mau, Anda punya angka nyata untuk memutuskan seberapa besar yang layak dibangun berikutnya.</p>
+    `
+  },
+  {
+    slug: "pencarian-tanpa-klik-2026",
+    title: "68% Pencarian Berakhir Tanpa Klik. Yang Dikutip Mesin yang Dibaca Orang.",
+    date: "05 Agustus 2026, 11:40 WIB",
+    category: "Pencarian & AI",
+    excerpt: "Situs Anda tidak jadi tidak penting. Pekerjaannya bergeser dari tempat orang mendarat menjadi bahan yang dikutip mesin, dan dua pekerjaan itu butuh halaman yang berbeda.",
+    content: `
+      <h2>Angkanya</h2>
+      <p>Analisis SparkToro atas panel Similarweb untuk pencarian Google di Amerika Serikat periode Januari sampai April 2026 mencatat 68,01% pencarian berakhir tanpa satu pun klik. Dua tahun sebelumnya 60,45%. Pada kueri yang memunculkan AI Overviews, rasio klik ke situs turun hampir 60%.</p>
+      <p>Data itu bukan data Indonesia dan sebaiknya tidak dipakai seolah-olah begitu. Yang bisa Anda periksa sendiri lebih meyakinkan: buka laporan pencarian situs Anda dua tahun terakhir, lalu bandingkan jumlah tayangan dengan jumlah klik. Pola yang paling sering muncul adalah tayangan naik sementara klik jalan di tempat.</p>
+
+      <h2>Kenapa ini bukan berarti situs tidak berguna</h2>
+      <p>Model jawaban tidak menyimpan profil bisnis Anda di kepalanya. Ia mengambil dari halaman yang bisa ia baca, merangkumnya, lalu menyebut sebagian sumbernya. Kalau halaman paling jelas tentang perusahaan Anda adalah lapak marketplace, direktori vendor, atau unggahan orang lain, itu yang jadi bahan. Situs Anda tetap penting, hanya pekerjaannya berubah: dulu tempat orang mendarat, sekarang juga bahan mentah untuk ringkasan yang dibaca orang sebelum memutuskan mendarat.</p>
+      <p>Semrush melaporkan kunjungan yang datang dari jawaban AI beberapa kali lebih mungkin berujung transaksi dibanding rata-rata kunjungan organik. Itu wajar. Orang yang mengklik setelah membaca ringkasan sudah selesai membanding-bandingkan.</p>
+
+      <h2>Apa yang membuat satu halaman mudah dikutip</h2>
+      <ul>
+        <li>Jawabannya ada di kalimat pertama, bukan setelah tiga paragraf pemanasan.</li>
+        <li>Satu klaim per paragraf, dengan angka dan tanggal yang bisa dipisahkan dari kalimatnya tanpa kehilangan arti.</li>
+        <li>Fakta perusahaan ditulis sebagai teks, bukan hanya tergambar di banner atau terkubur di dalam PDF.</li>
+        <li>Tanya jawab disusun satu pertanyaan satu jawaban, format yang paling sering diambil utuh.</li>
+        <li>Penanda terstruktur JSON-LD yang menyebut entitasnya eksplisit: nama badan hukum, layanan, kontak, dan pertanyaan umum.</li>
+      </ul>
+      <p>Halaman yang sedang Anda baca dibangun begitu. Buka source beranda kami dan cari blok application/ld+json kalau ingin melihat bentuknya.</p>
+
+      <h2>Yang tidak menolong</h2>
+      <p>Menumpuk kata kunci tidak menolong, karena yang dicari mesin adalah pernyataan yang bisa dipertanggungjawabkan, bukan kepadatan istilah. Artikel dua ribu kata tanpa satu pun fakta baru juga tidak, dan sejak 2026 malah merugikan karena teks semacam itu sudah dikenali pembaca sebagai isi yang diproduksi massal. Tulisan yang layak dikutip biasanya pendek dan punya angka.</p>
+
+      <h2>Cara mengukur posisi Anda hari ini</h2>
+      <p>Ajukan ke dua atau tiga asisten AI pertanyaan yang biasa diajukan calon pembeli Anda, misalnya vendor untuk kebutuhan tertentu di kota Anda. Catat siapa saja yang disebut. Ulangi sebulan kemudian. Selain itu, periksa laporan trafik Anda untuk rujukan dari domain asisten AI. Jumlahnya biasanya kecil, tapi perilaku pengunjungnya berbeda. Dua pengukuran sederhana itu cukup untuk tahu apakah pembenahan struktur di situs Anda membuahkan hasil.</p>
+
+      <h2>Urutan yang masuk akal</h2>
+      <p>Perbaiki dulu halaman yang menjawab pertanyaan paling mahal dari calon pembeli: apa yang Anda jual, untuk siapa, berapa lama pengerjaannya, dan bukti apa yang bisa mereka periksa sendiri. Artikel menyusul setelah itu. Menerbitkan tulisan setiap minggu sementara halaman layanan Anda masih menyiratkan tanpa menyatakan adalah urutan yang terbalik.</p>
+    `
+  },
+  {
+    slug: "pembeli-anda-mungkin-program-2027",
+    title: "Di 2027 Pembeli Anda Mungkin Sebuah Program",
+    date: "04 Agustus 2026, 08:25 WIB",
+    category: "AI & Otomasi",
+    excerpt: "Tiga standar checkout untuk agen AI muncul sepanjang 2026 dan belum ada yang menang. Ada pekerjaan yang tetap berguna apa pun hasilnya, dan ada yang sebaiknya ditunda dulu.",
+    content: `
+      <h2>Apa yang sebenarnya terjadi</h2>
+      <p>OpenAI bersama Stripe memperkenalkan Agentic Commerce Protocol, standar terbuka untuk percakapan antara agen dan penjual soal pilihan produk, harga, dan pembayaran, dengan checkout yang selesai di dalam ChatGPT. Pada Januari 2026 di konferensi NRF, Google bersama Shopify mengumumkan Universal Commerce Protocol. Meta memperkenalkan Business Agent secara global pada 3 Juni 2026, membuka platformnya untuk mitra pada 1 Juli 2026, dan menagihnya per token sejak 1 Agustus 2026. Agen itu bisa menjawab pertanyaan, menyarankan produk dari katalog, mengatur jadwal, dan menutup transaksi di dalam percakapan WhatsApp, Instagram, atau Messenger.</p>
+      <p>Tiga jalur, tiga pemilik, belum ada yang jadi standar tunggal. Posisinya mirip masa ketika pembayaran online belum punya satu cara baku.</p>
+
+      <h2>Yang berubah kalau pembelinya sebuah program</h2>
+      <p>Agen tidak terbujuk foto produk yang bagus dan tidak membaca kalimat pemasaran. Ia membandingkan yang bisa ia baca: nama barang, varian, harga, stok, biaya kirim, estimasi tiba, syarat pengembalian. Toko yang datanya lengkap dan konsisten akan sering muncul di perbandingan itu. Toko yang harga aslinya hanya ada di gambar, dan stoknya baru diketahui setelah bertanya di chat, tidak ikut dibandingkan sama sekali.</p>
+      <p>Ini kebalikan dari keahlian yang sepuluh tahun terakhir dilatih penjual online, yaitu meyakinkan manusia. Keahlian itu tetap perlu untuk manusia. Bedanya sekarang ada satu lapis pembaca lain yang lebih rewel dan tidak bisa dibujuk.</p>
+
+      <h2>Pekerjaan yang tetap berguna apa pun standarnya</h2>
+      <ul>
+        <li>Data produk yang benar di satu tempat: harga, varian, berat, stok, dan aturan ongkir. Satu sumber, bukan tiga versi di tiga platform.</li>
+        <li>Katalog yang bisa dibaca program lewat feed atau endpoint, bukan cuma tampil rapi di halaman.</li>
+        <li>Checkout yang bisa dipanggil dari luar dan mengembalikan status pesanan yang jelas.</li>
+        <li>Fakta perusahaan yang eksplisit di situs Anda sendiri, karena agen tetap perlu memastikan penjualnya benar-benar ada.</li>
+      </ul>
+      <p>Empat hal itu sudah membayar dirinya sendiri hari ini, sebelum ada urusan agen. Yang pertama mengurangi salah kirim, yang kedua memperbaiki posisi Anda di pencarian, yang ketiga membuka jalan otomasi pesanan, yang keempat dipakai buyer B2B untuk memverifikasi Anda.</p>
+
+      <h2>Yang sebaiknya ditunda</h2>
+      <p>Integrasi penuh ke satu protokol tertentu sebaiknya ditunda sampai jelas mana yang dipakai pembeli Anda. Membangun dua kali karena standarnya berganti adalah biaya yang bisa dihindari hanya dengan menunggu beberapa bulan. Begitu juga membeli perangkat yang menjanjikan kesiapan agen tanpa mau memperlihatkan bagaimana data Anda dibaca.</p>
+
+      <h2>Cara mengecek kesiapan Anda dalam sepuluh menit</h2>
+      <p>Ambil satu produk andalan. Jawab dari data yang ada di sistem Anda, tanpa membuka chat dan tanpa menebak: harga hari ini, stok tersisa, berat kirim, biaya kirim ke tiga kota, dan estimasi tiba. Kalau ada satu saja yang harus ditanyakan ke orang, di situlah agen berhenti membandingkan Anda. Perbaikan pertamanya bukan soal AI, hanya pembenahan data yang selama ini ditunda.</p>
+    `
+  },
+  {
+    slug: "whatsapp-balasan-cs-berbayar-oktober-2026",
+    title: "1 Oktober 2026: Balasan Admin di WhatsApp Mulai Ditagih Per Pesan",
+    date: "03 Agustus 2026, 15:05 WIB",
+    category: "AI & Otomasi",
+    excerpt: "Meta mengumumkan pesan layanan tidak lagi gratis. Yang berubah bukan cuma tagihan, tapi cara menghitung apakah tim CS Anda sudah efisien.",
+    content: `
+      <h2>Apa yang diumumkan</h2>
+      <p>Pada 1 Juli 2026 Meta menyatakan bahwa mulai 1 Oktober 2026 pesan layanan ditagih per pesan, dengan tarif yang sama seperti kategori utility dan authentication di masing-masing pasar. Pesan layanan adalah balasan yang dikirim admin Anda di dalam jendela 24 jam setelah pelanggan menghubungi, yang selama ini tidak dikenai biaya. Tidak ada potongan volume: tarif per pesannya tetap, sebanyak apa pun yang Anda kirim dalam sebulan. Jendela 72 jam untuk percakapan yang dimulai dari iklan Click to WhatsApp tidak berubah.</p>
+      <p>Tarif resmi yang berlaku Oktober belum diterbitkan. Meta menjanjikan pengumumannya paling lambat 1 September 2026. Sementara itu, tarif utility untuk nomor Indonesia yang dipublikasikan penyedia layanan berada di kisaran Rp350 sampai Rp450 per pesan, dan itu angka yang wajar dipakai untuk ancar-ancar.</p>
+
+      <h2>Hitung dengan angka bisnis Anda</h2>
+      <p>Anggap 3.000 percakapan masuk sebulan, dan rata-rata admin mengirim enam balasan per percakapan. Pada Rp400 per pesan, itu 18.000 pesan atau Rp7,2 juta sebulan. Kalau rata-ratanya bisa ditekan ke dua balasan, angkanya jadi Rp2,4 juta. Selisih Rp4,8 juta itu tidak datang dari mengurangi jumlah pelanggan yang dilayani, hanya dari menjawab lebih tuntas di kesempatan pertama.</p>
+      <p>Perhatikan apa yang berubah pada cara mengukurnya. Yang mahal bukan lagi jumlah admin, tapi jumlah pesan. Kebiasaan membalas sepotong-sepotong, yang dulu terlihat responsif, sekarang muncul di tagihan.</p>
+
+      <h2>Empat hal yang menurunkan jumlah pesan</h2>
+      <ul>
+        <li>Jawaban standar yang lengkap sekali kirim: harga, stok, ongkir, dan estimasi tiba dalam satu pesan, bukan empat.</li>
+        <li>Hal yang bisa dicek sendiri dipindahkan ke halaman: status pesanan, katalog, dan aturan pengembalian dengan tautan permanen.</li>
+        <li>Balasan pertama otomatis yang benar-benar menjawab, bukan menyapa. Sapaan tanpa informasi sekarang ada tarifnya.</li>
+        <li>Serah terima ke admin yang sekali jalan, supaya percakapan tidak berputar antara bot dan manusia.</li>
+      </ul>
+
+      <h2>Otomasi berhenti jadi soal gaji admin</h2>
+      <p>Sebelum ini, alasan memasang asisten otomatis biasanya menghemat biaya orang. Alasan itu masih ada, tapi bukan lagi yang paling kuat. Yang lebih menentukan sejak Oktober: setiap percakapan punya biaya variabel, dan sistem yang menuntaskan urusan dalam dua pesan lebih murah daripada yang menuntaskannya dalam sepuluh, terlepas dari siapa yang mengetik.</p>
+      <p>Perlu dicatat juga bahwa asisten milik platform tidak gratis. Meta Business Agent ditagih per token sejak 1 Agustus 2026, jadi memakai agen bawaan bukan otomatis lebih murah daripada memasang asisten sendiri yang jawabannya lebih pendek dan lebih tepat.</p>
+
+      <h2>Yang layak dikerjakan sebelum September</h2>
+      <p>Ambil seratus percakapan terakhir Anda, lalu hitung dua hal: rata-rata pesan per percakapan, dan lima pertanyaan yang paling sering muncul. Dua angka itu menentukan tagihan Anda di Oktober, sekaligus memberi daftar pekerjaan yang paling cepat membayar dirinya sendiri. Pengukurannya bisa Anda kerjakan sendiri minggu ini tanpa membeli apa pun.</p>
+    `
+  },
+  {
     slug: "mengapa-toko-online-bangkrut",
     title: "Mengapa 80% Toko Online Bangkrut di Tahun Pertama (Dan Cara Mencegahnya)",
     date: "13 Juni 2026, 10:36 WIB",

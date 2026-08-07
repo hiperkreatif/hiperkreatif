@@ -1,25 +1,28 @@
 ---
 const technologies = [
-  "Astro", "React", "Tailwind CSS", "Laravel", "Go", "Python", 
-  "Docker", "PostgreSQL", "MySQL", "SQLite", "Vercel", 
+  "Astro", "React", "Tailwind CSS", "Laravel", "Go", "Python",
+  "Docker", "PostgreSQL", "MySQL", "SQLite", "Vercel",
   "Supabase", "Firebase", "OpenAI", "Claude", "Gemini", "Figma"
 ];
 ---
 
-<div class="w-full overflow-hidden bg-white/5 border-y border-white/10 py-6 mt-12 relative flex items-center">
-  <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none"></div>
-  <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none"></div>
-  
-  <div class="flex whitespace-nowrap animate-marquee">
-    {technologies.map((tech) => (
-      <div class="mx-8 text-xl font-semibold text-gray-400/50 hover:text-white transition-colors duration-300">
-        {tech}
+<section class="border-t border-line bg-surface" aria-label="Teknologi yang kami pakai">
+  <div class="wrap flex items-center gap-6 py-4">
+    <p class="m-0 shrink-0 font-mono text-[0.7rem] font-bold uppercase tracking-[0.12em] text-muted">
+      stack
+    </p>
+
+    <!-- Salinan kedua murni dekoratif; pembaca layar cukup baca yang pertama. -->
+    <div class="marquee min-w-0 flex-1">
+      <div class="marquee-track">
+        {[false, true].map((clone) => (
+          <ul class="m-0 flex shrink-0 list-none gap-x-8 p-0 pr-8" aria-hidden={clone || undefined}>
+            {technologies.map((tech) => (
+              <li class="font-mono text-[0.8rem] whitespace-nowrap text-ink-soft">{tech}</li>
+            ))}
+          </ul>
+        ))}
       </div>
-    ))}
-    {technologies.map((tech) => (
-      <div class="mx-8 text-xl font-semibold text-gray-400/50 hover:text-white transition-colors duration-300" aria-hidden="true">
-        {tech}
-      </div>
-    ))}
+    </div>
   </div>
-</div>
+</section>

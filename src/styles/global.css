@@ -1,238 +1,362 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── Self-hosted fonts (3 variable file, satu per peran) ───────
+   Archivo  = display  (Google latin subset)
+   Inter    = body     (Google latin subset)
+   JetBrains Mono = mono (Google latin subset — subset ini TIDAK memuat
+   ● ◐ ○ ✓ →, jadi jangan pakai glyph itu untuk hal yang penting;
+   status dot digambar pakai CSS, bukan teks). */
 @font-face {
-  font-family: 'Space Mono';
-  src: url('/src/assets/fonts/SpaceMono-Regular.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Archivo';
+  src: url('/src/assets/fonts/Archivo-Variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: 'Space Mono';
-  src: url('/src/assets/fonts/SpaceMono-Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Inter';
+  src: url('/src/assets/fonts/Inter-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/src/assets/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: 'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  /* PAPER = mode dasar. Nilai diambil apa adanya dari herdr.dev site.css
+     (html[data-mode="paper"]), termasuk mauve #8839ef. */
+  --color-bg: #efece5;
+  --color-surface: #e7e3da;
+  --color-mass: #ddd8cc;
+  --color-ink: #15140f;
+  --color-ink-soft: #55534a;
+  --color-muted: #86826f;
+  --color-line: #e2ded4;
+  --color-line-strong: #cbc5b6;
+  --color-grid: #e4e0d6;
+
+  --color-accent: #8839ef;
+  --color-accent-ink: #ffffff;
+  --color-accent-soft: color-mix(in srgb, #8839ef 8%, transparent);
+
+  --color-term: #faf7ef;
+  --color-term-2: #f2eee3;
+  --color-term-line: #dcd6c8;
+  --color-term-text: #3a3830;
+  --color-term-dim: #6e6a5e;
+  --color-term-accent: #8839ef;
+  --color-term-green: #3a7539;
+  --color-term-yellow: #8a5e00;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
 }
 
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-ExtraLight.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
+/* INK. Ground-nya sengaja hampir netral, bukan biru-violet gelap — warna
+   tinggal di aksen mauve. Kontras herdr: ink 14.7, dim 9.3, faint 5.3.
+   Semua utility Tailwind membaca var(--color-*), jadi override di sini
+   otomatis mengalir ke seluruh halaman. */
+html[data-mode='ink'] {
+  color-scheme: dark;
+
+  --color-bg: #17171a;
+  --color-surface: #1e1e22;
+  --color-mass: #26262b;
+  --color-ink: #eae8ee;
+  --color-ink-soft: #bdb9c9;
+  --color-muted: #8e8a98;
+  --color-line: #26262b;
+  --color-line-strong: #35353d;
+  --color-grid: #202024;
+
+  --color-accent: #cba6f7;
+  --color-accent-ink: #17171a;
+  --color-accent-soft: color-mix(in srgb, #cba6f7 14%, transparent);
+
+  --color-term: #0f0f12;
+  --color-term-2: #1a1a1f;
+  --color-term-line: #2b2b33;
+  --color-term-text: #d4d1dc;
+  --color-term-dim: #8e8a98;
+  --color-term-accent: #cba6f7;
+  --color-term-green: #8ecf7a;
+  --color-term-yellow: #e6c060;
 }
 
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/src/assets/fonts/Manrope-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-/* Native browser view transitions — zero JS overhead */
 @view-transition {
   navigation: auto;
 }
 
-/* Tailwind import tetap bisa */
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
-/* Decorative step numbers via pseudo-element — excluded from Lighthouse contrast checks */
-.step-num::before {
-  content: attr(data-step);
-  display: block;
-  font-family: 'Space Mono', ui-monospace, monospace;
-  font-size: 3.75rem;
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(255,255,255,0.08);
-  margin-bottom: 1rem;
-  transition: color 0.3s;
-  pointer-events: none;
-  user-select: none;
-}
-.group:hover .step-num::before {
-  color: rgba(255,255,255,0.14);
-}
-.step-num--sm::before {
-  font-family: 'Manrope', ui-sans-serif, sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-}
-
-body {
-  font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
+@layer base {
+  html {
+    color-scheme: light;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
   }
-  .animate-marquee:hover {
+
+  /* Tanah bergaris 72px. Yang menutupinya adalah .sheet, jadi garis hanya
+     terlihat di margin kiri/kanan — persis frame di herdr.dev. */
+  body {
+    min-width: 320px;
+    overflow-x: clip;
+    background-image:
+      linear-gradient(var(--color-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Lembar solid yang duduk di atas tanah bergaris. Membungkus header,
+     main, dan footer sekaligus. */
+  .sheet {
+    @apply mx-auto flex w-full max-w-[1320px] flex-grow flex-col bg-bg;
+    border-inline: 1px solid var(--color-line-strong);
+  }
+
+  /* Container tunggal — sama untuk header, section, dan footer */
+  .wrap {
+    @apply mx-auto w-full max-w-[1320px] px-5 md:px-8;
+  }
+
+  /* Sakelar INK / PAPER. h-9 = tinggi .btn-sm dan tombol hamburger, jadi
+     seluruh isi navbar duduk di garis yang sama. */
+  .mode {
+    @apply flex h-9 shrink-0 items-stretch overflow-hidden rounded-md border border-line-strong;
+  }
+  .mode button {
+    @apply inline-flex cursor-pointer items-center justify-center border-0
+           bg-transparent px-2.5 text-muted transition-colors;
+  }
+  .mode button:hover {
+    @apply text-ink;
+  }
+  .mode button[aria-pressed='true'] {
+    @apply bg-ink text-bg;
+  }
+
+  /* Jarak vertikal baku antar section. Titik penanda di kedua ujung garis
+     atas — ciri herdr.dev, digambar pakai pseudo-element biar tidak
+     menambah markup di tiap section. */
+  .section {
+    @apply relative border-t border-line py-16 md:py-20;
+  }
+  .section::before,
+  .section::after {
+    content: '';
+    @apply absolute top-0 z-10 block h-[5px] w-[5px] -translate-y-1/2
+           rounded-full bg-line-strong;
+  }
+  .section::before {
+    @apply left-0 -translate-x-1/2;
+  }
+  .section::after {
+    @apply right-0 translate-x-1/2;
+  }
+
+  /* Label kecil di atas heading */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-[0.78rem] font-bold tracking-[0.06em] text-muted;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-1.5 w-1.5 shrink-0 bg-accent;
+  }
+
+  /* Heading display: Archivo 900, tracking sangat rapat — angka dari herdr
+     (h1 -.055em/.88, h2 -.05em/.92). Leading dinaikkan ke .95 karena bahasa
+     Indonesia penuh descender (y g j p) yang bertabrakan di .88. */
+  .display {
+    @apply font-display font-black text-ink;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  /* Judul kartu: Archivo 800, tracking lebih longgar (herdr .caps h3 -.03em) */
+  .display-sm {
+    @apply font-display font-extrabold text-ink;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .lede {
+    @apply text-ink-soft;
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+  }
+
+  /* Kontrol interaktif pakai Inter, bukan mono — mono disimpan untuk label,
+     tag, dan terminal. Ukuran 0.9rem/600 = ambang nyaman baca tombol. */
+  .btn {
+    @apply inline-flex min-h-[2.7rem] items-center justify-center gap-2 rounded-md border
+           border-transparent px-[1.15rem] py-[0.6rem] text-center font-sans text-[0.9rem]
+           font-semibold tracking-[-0.005em] transition-colors duration-150;
+  }
+  /* Versi ramping untuk navbar. Tombol hero & CTA tetap ukuran penuh —
+     tap target besar hanya penting di aksi utama halaman. */
+  .btn-sm {
+    @apply min-h-[2.25rem] px-[0.9rem] py-[0.4rem] text-[0.82rem];
+  }
+  .btn-primary {
+    @apply bg-ink text-bg;
+  }
+  .btn-primary:hover {
+    @apply bg-accent text-accent-ink;
+  }
+  .btn-secondary {
+    @apply border-line-strong text-ink-soft;
+  }
+  .btn-secondary:hover {
+    @apply border-accent bg-accent-soft text-accent;
+  }
+
+  /* Kartu = sel bergaris, bukan kotak melayang. Tanpa shadow. */
+  .card {
+    @apply rounded-md border border-line bg-transparent transition-colors duration-150;
+  }
+  .card-hover:hover,
+  a.card:hover {
+    @apply border-line-strong bg-surface;
+  }
+
+  /* Kisi kartu dengan garis menyambung, full-bleed sampai tepi sheet.
+     Garisnya digambar sebagai box-shadow kiri+atas milik tiap sel, bukan
+     gap berwarna: kalau baris terakhir tidak penuh, sel kosong tetap polos
+     dan tidak muncul sebagai blok abu. overflow-hidden memotong bayangan
+     terluar; border-y container yang menutup atas dan bawah. */
+  .cells {
+    @apply grid overflow-hidden border-y border-line;
+  }
+  .cells > * {
+    @apply bg-bg transition-colors duration-150;
+    box-shadow:
+      -1px 0 0 var(--color-line),
+      0 -1px 0 var(--color-line);
+  }
+  .cells > a:hover,
+  .cells > .card-hover:hover {
+    @apply bg-surface;
+  }
+
+  /* Marquee stack. Track memuat dua salinan identik, jadi translateX(-50%)
+     tepat satu putaran tanpa jeda. */
+  .marquee {
+    @apply overflow-hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 4rem), transparent);
+  }
+  .marquee-track {
+    @apply flex w-max;
+    animation: marquee 45s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
     animation-play-state: paused;
   }
-  
-  .glass-card {
-    @apply bg-slate-900/50 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-500 ease-out;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
   }
 
-  .glass-card:hover {
-    @apply border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.5),_0_0_20px_rgba(255,255,255,0.05)] -translate-y-1.5;
-  }
-  
-  .glow-blob {
-    @apply absolute rounded-full mix-blend-screen filter blur-[100px] opacity-50;
-    animation: float 10s ease-in-out infinite;
-  }
-  
-  .glow-blob.delay-5s {
-    animation-delay: -5s;
-  }
-  
-  .animate-on-scroll {
-    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
-  }
-  
-  .animate-on-scroll.is-visible {
-    @apply opacity-100 translate-y-0;
+  /* Nomor urut / kategori */
+  /* w-fit wajib: tanpa itu badge melar penuh saat jadi anak flex-column / grid */
+  .tag {
+    @apply inline-block w-fit rounded-sm bg-accent-soft px-2 py-[0.15rem]
+           font-mono text-[0.68rem] font-bold tracking-[0.06em] text-accent;
   }
 
-  /* Grid Background Pattern */
-  .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  /* Label mikro kapital */
+  .label {
+    @apply font-mono text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent;
   }
 
-  /* Animated Border Gradient for Buttons/Cards */
-  .animated-border {
-    position: relative;
-    background: linear-gradient(to right, #0f172a, #020617);
-    background-clip: padding-box;
-    border: 1px solid transparent;
+  /* Status dot terminal. Digambar CSS, bukan glyph ● ◐ ○ — subset font
+     tidak memuatnya, dan lingkaran CSS lebih tajam di ukuran kecil. */
+  .dot {
+    @apply mt-[0.45em] inline-block h-[0.6em] w-[0.6em] shrink-0 rounded-full
+           border border-current;
   }
-  .animated-border::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    margin: -1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(156, 163, 175, 0.8), rgba(255, 255, 255, 0.1) 60%);
-    background-size: 200% 200%;
-    animation: gradientMove 3s ease infinite;
+  .dot-on {
+    @apply bg-current;
+  }
+  .dot-half {
+    background: linear-gradient(to right, currentColor 50%, transparent 50%);
   }
 
-  /* Beam Line */
-  .moving-beam {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6), transparent);
-    animation: beam 4s linear infinite;
-    z-index: 0;
+  /* Latar milimeter-block untuk panel elevated */
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  /* Shimmer sweep for buttons */
-  .btn-shimmer {
-    position: relative;
-    overflow: hidden;
+  /* Logo sumbernya hitam solid — dibalik saat mode ink */
+  html[data-mode='ink'] .logo-mark {
+    filter: invert(1);
   }
-  .btn-shimmer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-    transform: skewX(-20deg);
-    pointer-events: none;
+
+  /* Siluet logo raksasa sebagai latar hero. Sengaja dipotong tepi kanan,
+     disembunyikan di mobile karena bertabrakan dengan teks. */
+  .logo-ghost {
+    @apply pointer-events-none absolute right-[-8%] top-1/2 hidden h-[125%]
+           w-auto max-w-none -translate-y-1/2 select-none opacity-[0.05] md:block;
   }
-  .btn-shimmer:hover::after {
-    animation: shimmer-sweep 0.7s ease-out forwards;
+  html[data-mode='ink'] .logo-ghost {
+    @apply opacity-[0.07];
+    filter: invert(1);
   }
-}
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes beam {
-  0% { top: -10%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: 110%; opacity: 0; }
-}
-
-@keyframes shimmer-sweep {
-  0% { left: -100%; }
-  100% { left: 150%; }
+  /* Link inline bergaris bawah tipis */
+  .link {
+    @apply text-accent underline decoration-1 underline-offset-4 transition-colors hover:text-ink;
+  }
 }

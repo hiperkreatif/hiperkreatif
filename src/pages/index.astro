@@ -4,262 +4,247 @@ import LogoUrl from "../assets/logo-black.svg?url";
 import { SEO } from "../constants/seo";
 import { SERVICES } from "../constants/services";
 import { FAQS } from "../constants/faqs";
-import Button from "../components/Button.astro";
-import Hero from "../components/Hero.astro";
-import TechMarquee from '../components/TechMarquee.astro';
+import TechMarquee from "../components/TechMarquee.astro";
+
 const logo = LogoUrl;
+
+const STATS = [
+  { val: "15+", label: "proyek b2b selesai", icon: "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" },
+  { val: "100%", label: "kode & server milik klien", icon: "M15 7a4 4 0 1 1-3.9 5H7v3H4v-3l4.1-4a4 4 0 0 1 3.9-5z" },
+  { val: "1–4", label: "minggu sampai versi pertama", icon: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
+  { val: "24/7", label: "berjalan tanpa operator", icon: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
+];
+
+const STEPS = [
+  {
+    title: "Telepon 30 menit",
+    body: "Anda cerita apa yang macet, kami bilang terus terang kalau itu di luar jangkauan kami atau lebih murah dikerjakan orang lain.",
+  },
+  {
+    title: "Blueprint tertulis",
+    body: "Apa yang dibangun, berapa lama, berapa biayanya. Anda setujui dulu sebelum kami mulai.",
+  },
+  {
+    title: "Dibangun bertahap",
+    body: "Progres bisa Anda lihat tiap minggu, bukan cuma di akhir. Ganti arah masih murah di tahap ini.",
+  },
+  {
+    title: "Serah terima",
+    body: "Sistem berjalan di produksi. Kami dampingi tim Anda sampai tidak perlu bertanya lagi.",
+  },
+];
 ---
 
 <BaseLayout>
-  <!-- Architectural Layout Grid -->
-  <div class="w-full max-w-7xl mx-auto border-x border-white/10 relative">
-    
-    <!-- Top Nodes -->
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-30"></div>
-    <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-30"></div>
-    <section class="relative pt-24 pb-40 lg:pt-32 lg:pb-48 overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
-      <div class="absolute inset-0 z-0 bg-grid-pattern pointer-events-none"></div>
-      
-      <!-- Moving Beams -->
-      <div class="absolute left-[15%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: 0s;"></div></div>
-      <div class="absolute left-[35%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -1.5s;"></div></div>
-      <div class="absolute left-[65%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -0.8s;"></div></div>
-      <div class="absolute left-[85%] top-0 h-full w-[1px]"><div class="moving-beam" style="animation-delay: -3s;"></div></div>
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <!-- Siluet logo raksasa menggantikan mock terminal (lihat .logo-ghost) -->
+  <section class="relative overflow-hidden">
+    <img src={LogoUrl} alt="" aria-hidden="true" class="logo-ghost" />
 
-      <!-- Glow blobs -->
-      <div class="glow-blob bg-white/10 w-[500px] h-[500px] -top-32 -left-32"></div>
-      <div class="glow-blob delay-5s bg-white/5 w-[400px] h-[400px] top-32 -right-32"></div>
+    <div class="wrap relative py-16 md:py-24 lg:py-28">
+      <p class="eyebrow m-0">website · aplikasi · otomasi ai</p>
 
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card font-mono text-xs uppercase tracking-wider text-gray-300 mb-8 animate-on-scroll" style="transition-delay: 0ms;">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          Agency Jasa Website & Otomasi AI untuk bisnis modern
+      <h1 class="display mt-6 max-w-[16ch] text-[clamp(2.6rem,6.4vw,5rem)]">
+        Punya kanalnya, <span class="text-accent">bukan menyewanya.</span>
+      </h1>
+
+      <p class="lede mt-6 max-w-[56ch]">
+        Potongan platform naik lagi Mei 2026, dan sejak 1 Agustus marketplace memungut PPh 0,5%
+        tiap transaksi. Kami bangun toko online, profil perusahaan, dan otomasi AI atas nama
+        Anda sendiri: kode dan daftar pelanggannya milik Anda.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-2.5">
+        <a href="/consultation" class="btn btn-primary">Jadwalkan telepon 30 menit</a>
+        <a href="#layanan" class="btn btn-secondary">Lihat yang kami kerjakan</a>
+      </div>
+
+      <p class="mt-6 font-mono text-[0.75rem] text-muted">
+        Gratis, tanpa kewajiban lanjut setelahnya.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ STACK ═════════════════════════════════════════════ -->
+  <TechMarquee />
+
+  <!-- ══ ANGKA ═════════════════════════════════════════════ -->
+  <section class="cells grid-cols-2 md:grid-cols-4" aria-label="Angka">
+    {
+      STATS.map((s) => (
+        <div class="px-5 py-9 md:px-8">
+          <p class="display m-0 text-[clamp(1.9rem,3.6vw,2.7rem)]">{s.val}</p>
+          <p class="mt-2.5 mb-0 flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
+            <svg
+              class="h-3.5 w-3.5 shrink-0 text-accent"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d={s.icon} />
+            </svg>
+            {s.label}
+          </p>
         </div>
+      ))
+    }
+  </section>
 
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 animate-on-scroll leading-tight md:leading-tight" style="transition-delay: 100ms;">
-          <span class="block text-white pb-2">Dirancang untuk Solusi.</span>
-          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500 pb-2">Dibangun untuk Profitabilitas.</span>
-        </h1>
-
-        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-on-scroll" style="transition-delay: 200ms;">
-          Berhenti membuang waktu pada sistem digital yang lambat dan tidak efisien. Kami membangun website super cepat, aplikasi kustom presisi, dan otomasi AI yang memangkas biaya serta melipatgandakan ROI bisnis Anda.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll" style="transition-delay: 300ms;">
-          <a href="/consultation" class="px-8 py-4 bg-white text-slate-950 font-mono font-bold uppercase tracking-widest text-xs hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-            Atasi Kendala Bisnis Anda
-          </a>
-          <a href="#services" class="px-8 py-4 border-2 border-white/20 text-white font-mono font-bold uppercase tracking-widest text-xs hover:border-white transition-colors">
-            Jelajahi Ekosistem Kami
-          </a>
-        </div>
-      </div>
-
-      <div class="w-full absolute bottom-0 left-0">
-        <TechMarquee />
-        <!-- Marquee Nodes -->
-        <div class="absolute w-1.5 h-1.5 bg-white top-0 -left-[3px] z-20"></div>
-        <div class="absolute w-1.5 h-1.5 bg-white top-0 -right-[3px] z-20"></div>
-      </div>
-      
-      <!-- Hero Bottom Nodes -->
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-    </section>
-
-    <!-- STATS -->
-    <section class="py-12 md:py-20 relative z-10 border-b border-white/10" aria-label="Statistik">
-      <!-- Section Nodes -->
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-      
-      <div class="max-w-7xl mx-auto border-y border-white/10 bg-white/[0.01] animate-on-scroll">
-        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
-          {[ 
-            { val: "15+", label: "Proyek B2B Diselesaikan" },
-            { val: "-60%", label: "Reduksi Biaya Operasional" },
-            { val: "99.9%", label: "Uptime & Reliabilitas" },
-            { val: "24/7", label: "Sistem Bisnis Otomatis" }
-          ].map(stat => (
-            <div class="p-8 md:p-12 text-center hover:bg-white/[0.04] transition-colors flex flex-col justify-center relative group">
-              <p class="text-5xl md:text-6xl font-mono font-bold text-white tracking-tight mb-3 group-hover:scale-110 transition-transform duration-500">{stat.val}</p>
-              <p class="text-xs text-gray-400 font-mono font-bold uppercase tracking-wider">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="py-24 relative z-10 border-b border-white/10" aria-labelledby="services-title">
-      <!-- Section Nodes -->
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 animate-on-scroll px-4 lg:px-8">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-white font-mono text-xs uppercase tracking-wider mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-            Ekosistem Solusi Terintegrasi
-          </div>
-          <h2 id="services-title" class="text-4xl md:text-5xl font-bold text-white tracking-tight">
-            Sistem Cerdas untuk <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">Pertumbuhan Bisnis.</span>
-          </h2>
-        </div>
-        <a
-          href="/consultation"
-          class="inline-flex items-center gap-2 px-6 py-3 animated-border font-mono text-xs font-bold uppercase tracking-wider text-white transition-all hover:scale-105"
-        >
-          Diskusikan masalah bisnis Anda 
-          <span class="group-hover:translate-x-1 transition-transform">-&gt;</span>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 relative border-t border-white/10">
-        <!-- Center Node (Crosshair) -->
-        <div class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white z-30 shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
-        
-        {SERVICES.map((s, i) => (
-          <div class={`relative group p-8 lg:p-14 overflow-hidden border-b border-white/10 hover:bg-white/[0.06] transition-colors duration-300 flex flex-col min-h-[480px] ${i % 2 === 0 ? 'md:border-r border-white/10' : ''}`}>
-            
-            <!-- Huge Background Number -->
-            <div class="absolute -right-8 -bottom-16 text-[200px] font-mono font-bold text-white/[0.03] group-hover:text-white/[0.09] transition-colors duration-700 leading-none select-none">
-              0{i + 1}
-            </div>
-
-            <!-- Content -->
-            <div class="relative z-10 flex-grow">
-              <div class="inline-flex items-center gap-2 text-[10px] font-mono font-bold px-3 py-1.5 bg-white/10 text-white mb-8 border border-white/20 uppercase tracking-widest backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 bg-white animate-pulse"></span>
-                {s.badge}
-              </div>
-              
-              <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">{s.name}</h3>
-              <p class="text-gray-300 leading-relaxed mb-8 max-w-md text-lg">{s.tagline}</p>
-
-              <ul class="space-y-4 text-gray-400 mb-12">
-                {s.bullets.slice(0, 3).map((b) => (
-                  <li class="flex gap-4 items-start">
-                    <div class="w-1.5 h-1.5 bg-white/50 shrink-0 mt-2"></div>
-                    <span class="text-sm">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="relative z-10 mt-auto">
-              <a href={s.cta} class="group/cta inline-flex items-center gap-3 text-white font-mono font-bold uppercase text-xs tracking-widest">
-                <span class="group-hover/cta:translate-x-1 transition-transform duration-300 inline-block">Pelajari Detail</span>
-                <span class="w-8 h-[1px] bg-white group-hover:w-16 group-hover/cta:w-16 transition-all duration-300"></span>
-                <svg class="w-4 h-4 group-hover/cta:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-            </div>
-            
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section id="process" class="py-12 md:py-24 relative z-10 border-b border-white/10" aria-labelledby="process-title">
-      <!-- Section Nodes -->
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-
-      <div class="max-w-7xl mx-auto border-t border-white/10">
-        <div class="flex flex-col lg:flex-row border-b border-white/10">
-          <div class="lg:w-1/3 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
-            <h2 id="process-title" class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">
-              Cara Kerja
-            </h2>
-            <p class="text-gray-400 text-lg">Cepat, terukur, dan berorientasi hasil.</p>
-            <a href="/consultation" class="mt-8 inline-block px-6 py-3 bg-white text-black font-mono font-bold uppercase text-xs tracking-widest hover:bg-gray-200 transition-colors">Konsultasi Sekarang</a>
-          </div>
-          
-          <ol class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-            <li class="p-8 group hover:bg-white/[0.04] transition-colors relative border-b sm:border-b-0 border-white/10">
-              <span class="step-num" data-step="01"></span>
-              <h3 class="font-bold text-white text-xl mb-3">Ngobrol & Diskusi</h3>
-              <p class="text-gray-400 leading-relaxed">Kita teleponan. Anda ceritakan pusingnya di mana, kami siapkan solusinya.</p>
-            </li>
-            <li class="p-8 group hover:bg-white/[0.04] transition-colors relative border-b sm:border-b-0 border-white/10">
-              <span class="step-num" data-step="02"></span>
-              <h3 class="font-bold text-white text-xl mb-3">Blueprint Eksak</h3>
-              <p class="text-gray-400 leading-relaxed">Kami buatkan gambarannya secara detil. Tidak ada asumsi, semuanya terukur.</p>
-            </li>
-            <li class="p-8 group hover:bg-white/[0.04] transition-colors relative sm:border-t border-white/10 border-b sm:border-b-0 border-white/10">
-              <span class="step-num" data-step="03"></span>
-              <h3 class="font-bold text-white text-xl mb-3">Eksekusi Terukur</h3>
-              <p class="text-gray-400 leading-relaxed">Tim kami langsung merakit sistemnya. Anda terima laporan progres matang.</p>
-            </li>
-            <li class="p-8 group hover:bg-white/[0.04] transition-colors relative sm:border-t border-white/10 border-b sm:border-b-0 border-white/10">
-              <span class="step-num" data-step="04"></span>
-              <h3 class="font-bold text-white text-xl mb-3">Rilis & Profit</h3>
-              <p class="text-gray-400 leading-relaxed">Sistem aktif. Kami pandu tim Anda sampai 100% mandiri pakai mesin barunya.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- GUARANTEE -->
-    <section id="guarantee" class="py-16 md:py-24 relative z-10 border-b border-white/10 bg-white/[0.02]" aria-labelledby="guarantee-title">
-      <!-- Section Nodes -->
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -left-[3px] z-20"></div>
-      <div class="absolute w-1.5 h-1.5 bg-white -bottom-[3px] -right-[3px] z-20"></div>
-
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 id="guarantee-title" class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">Garansi Kepuasan</h2>
-        <p class="text-lg md:text-xl text-gray-300 font-medium leading-relaxed max-w-3xl mx-auto">
-          Jika sistem yang kami bangun gagal memberikan hasil yang dijanjikan, kami akan kembalikan investasi Anda. Kami hanya menerima pembayaran untuk solusi yang benar-benar berhasil.
-        </p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-24 relative z-10" aria-labelledby="faq-title">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 id="faq-title" class="text-4xl md:text-5xl font-black text-white mb-12 text-center uppercase tracking-tighter">
-          Pertanyaan Umum
+  <!-- ══ LAYANAN ═══════════════════════════════════════════ -->
+  <section id="layanan" class="section" aria-labelledby="layanan-title">
+    <div class="wrap mb-10 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.46fr)] md:gap-12">
+      <div>
+        <p class="eyebrow m-0">yang kami kerjakan</p>
+        <h2 id="layanan-title" class="display mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,3rem)]">
+          Empat lini yang saling menyambung.
         </h2>
-
-        <div class="border-t border-white/10">
-          {
-            FAQS.map((f, index) => (
-              <details class="group border-b border-white/10 bg-transparent hover:bg-white/[0.02] transition-colors">
-                <summary class="font-bold text-lg md:text-xl text-white cursor-pointer list-none flex justify-between items-center py-6 px-4 outline-none">
-                  {f.q}
-                  <span class="transition-transform group-open:rotate-45 text-white/50 group-hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                  </span>
-                </summary>
-                <div class="px-4 pb-8 text-gray-400 leading-relaxed text-base md:text-lg">
-                  {f.a}
-                </div>
-              </details>
-            ))
-          }
-        </div>
       </div>
-    </section>
+      <p class="m-0 text-muted">
+        Kebanyakan klien mulai dari satu yang paling mendesak, lalu menambah yang lain setelah
+        yang pertama terbukti jalan.
+      </p>
+    </div>
 
-    <!-- DOCUMENT GENERATOR LINK -->
-    <!-- <section class="px-6 mt-12">
-      <div class="bg-white rounded-2xl p-6 border-2 border-gray-100 text-center">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Document Generator</h2>
-        <p class="text-gray-700 mb-6">Buat dokumen profesional seperti quotation, invoice, kontrak, dan lainnya</p>
+    <div class="cells md:grid-cols-2">
+      {
+        SERVICES.map((s, i) => (
+          <article class="card-hover flex flex-col px-5 py-8 md:px-8 md:py-9">
+            <div class="flex items-center gap-3">
+              <span class="tag">{String(i + 1).padStart(2, "0")}</span>
+              <span class="font-mono text-[0.72rem] text-muted">{s.badge}</span>
+            </div>
+
+            <h3 class="display-sm mt-5 text-[1.3rem]">{s.name}</h3>
+            <p class="mt-3 mb-0 text-[0.95rem] leading-relaxed text-ink-soft">{s.tagline}</p>
+
+            <ul class="mt-6 mb-0 grid gap-2.5 border-t border-line pt-6">
+              {s.bullets.slice(0, 3).map((b: string) => (
+                <li class="flex gap-3 text-[0.88rem] leading-snug text-muted">
+                  <span class="mt-[0.55em] h-1 w-1 shrink-0 bg-accent" aria-hidden="true" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={s.cta}
+              class="mt-auto inline-flex items-center gap-2 pt-7 font-mono text-[0.8rem] font-bold text-accent transition-colors hover:text-ink"
+            >
+              Pelajari detail
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ══ CARA KERJA ════════════════════════════════════════ -->
+  <section id="proses" class="section" aria-labelledby="proses-title">
+    <div class="wrap mb-10 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.46fr)] md:gap-12">
+      <div>
+        <p class="eyebrow m-0">cara kerja</p>
+        <h2 id="proses-title" class="display mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,3rem)]">
+          Empat langkah sampai sistemnya jalan.
+        </h2>
+      </div>
+      <p class="m-0 text-muted">
+        Tiap tahap ada keluaran yang bisa Anda pegang: catatan telepon, blueprint tertulis,
+        demo mingguan, lalu akses penuh ke servernya.
+      </p>
+    </div>
+
+    <ol class="cells list-none p-0 md:grid-cols-2 lg:grid-cols-4">
+      {
+        STEPS.map((step, i) => (
+          <li class="flex min-h-[210px] flex-col px-5 py-8 md:px-8">
+            <span class="tag">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="display-sm mt-5 text-[1.1rem]">{step.title}</h3>
+            <p class="mt-3 mb-0 text-[0.9rem] leading-relaxed text-muted">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- ══ GARANSI ═══════════════════════════════════════════ -->
+  <section id="garansi" class="relative border-t border-line bg-surface" aria-labelledby="garansi-title">
+    <span class="absolute inset-x-0 top-0 h-[3px] bg-accent" aria-hidden="true"></span>
+    <div class="wrap py-16 md:py-20">
+      <p class="label m-0">garansi hasil</p>
+      <h2 id="garansi-title" class="display mt-4 max-w-[24ch] text-[clamp(1.6rem,3.4vw,2.4rem)]">
+        Tidak mencapai target, uang Anda kembali.
+      </h2>
+      <p class="lede mt-5 max-w-[68ch]">
+        Target terukurnya kita tetapkan bersama di awal dan ditulis di blueprint. Kalau sistem
+        yang kami bangun tidak sampai ke sana, investasi Anda kami kembalikan.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ═══════════════════════════════════════════════ -->
+  <section id="faq" class="section" aria-labelledby="faq-title">
+    <div class="wrap">
+      <p class="eyebrow m-0">pertanyaan umum</p>
+      <h2 id="faq-title" class="display mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,3rem)]">
+        Yang paling sering ditanyakan.
+      </h2>
+    </div>
+
+    <div class="mt-10 border-t border-line">
+      {
+        FAQS.map((f) => (
+          <details class="group border-b border-line">
+            <summary class="wrap display-sm flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[1.05rem] transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+              {f.q}
+              <span
+                class="mt-1 shrink-0 text-muted transition-transform duration-200 group-open:rotate-45"
+                aria-hidden="true"
+              >
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <!-- .wrap sudah mx-auto; max-w di elemen yang sama akan menimpanya
+                 dan bikin jawaban melayang ke tengah. Batasi lebar di anaknya. -->
+            <div class="wrap">
+              <p class="mb-6 mt-0 max-w-[75ch] text-[0.95rem] leading-relaxed text-muted">
+                {f.a}
+              </p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ══ CTA ═══════════════════════════════════════════════ -->
+  <section class="border-t border-line">
+    <div class="wrap py-16 text-center md:py-20">
+      <p class="eyebrow m-0 justify-center">konsultasi</p>
+      <h2 class="display mx-auto mt-4 max-w-[24ch] text-[clamp(1.8rem,4vw,2.8rem)]">
+        Mulai dari satu telepon.
+      </h2>
+      <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
+        30 menit, gratis. Anda keluar dengan gambaran solusi yang konkret, mau lanjut kerja
+        sama dengan kami atau tidak.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-2.5">
+        <a href="/consultation" class="btn btn-primary">Jadwalkan konsultasi</a>
         <a
-          href="/documents"
-          class="inline-flex items-center gap-2 h-12 px-6 rounded-full border-2 border-gray-900 bg-gray-900 text-white font-semibold transition-all duration-300 hover:shadow-xl"
+          href="https://wa.me/6285157445924?text=Halo%20Hiperkreatif%2C%20saya%20mau%20diskusi%20soal%20sistem%20digital%20bisnis%20saya."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary">Chat WhatsApp</a
         >
-          Akses Document Generator
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
-    </section> -->
-  </div>
+    </div>
+  </section>
 
   <!-- JSON-LD @graph tetap di head -->
   <script
@@ -272,6 +257,7 @@ const logo = LogoUrl;
           "@type": "Organization",
           "@id": "https://www.hiperkreatif.com/#org",
           name: "Hiperkreatif",
+          legalName: SEO.legalName,
           url: "https://www.hiperkreatif.com/",
           logo: {
             "@type": "ImageObject",
@@ -285,13 +271,13 @@ const logo = LogoUrl;
             "https://instagram.com/hiperkreatif",
             "https://tiktok.com/@hiperkreatif",
             "https://facebook.com/hiperkreatif",
-            "https://threads.net/@hiperkreatif"
+            "https://threads.net/@hiperkreatif",
           ],
           contactPoint: [
             {
               "@type": "ContactPoint",
               contactType: "customer support",
-              telephone: "+628157445924", // pakai E.164
+              telephone: "+628157445924",
               email: "hi@hiperkreatif.com",
               availableLanguage: "id",
             },
@@ -318,8 +304,7 @@ const logo = LogoUrl;
           inLanguage: "id-ID",
           potentialAction: {
             "@type": "SearchAction",
-            target:
-              "https://www.hiperkreatif.com/search?q={search_term_string}",
+            target: "https://www.hiperkreatif.com/search?q={search_term_string}",
             "query-input": "required name=search_term_string",
           },
         },
@@ -340,100 +325,37 @@ const logo = LogoUrl;
           },
         },
 
-        // NAVIGATION / SITEMAP-LIKE — bantu Google kenalin link penting (sitelinks candidate)
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.hiperkreatif.com/#faq",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        },
+
         {
           "@type": "SiteNavigationElement",
           name: "Primary navigation",
           url: "https://www.hiperkreatif.com/",
-          about: [
-            {
-              "@type": "WebPage",
-              name: "HyperSite Commerce",
-              url: "https://www.hiperkreatif.com/services/ecommerce",
-            },
-            {
-              "@type": "WebPage",
-              name: "HyperProfile Site",
-              url: "https://www.hiperkreatif.com/services/company-profile",
-            },
-            {
-              "@type": "WebPage",
-              name: "Social Media Management",
-              url: "https://www.hiperkreatif.com/services/social-media",
-            },
-            {
-              "@type": "WebPage",
-              name: "Gen-AI Solutions",
-              url: "https://www.hiperkreatif.com/services/ai-automation",
-            },
-          ],
+          about: SERVICES.map((s) => ({
+            "@type": "WebPage",
+            name: s.name,
+            url: `https://www.hiperkreatif.com/services/${s.slug}`,
+          })),
         },
 
-        // DESKRIPSI LAYANAN EXPLICIT — Google loves explicit entities
-        {
+        ...SERVICES.map((s) => ({
           "@type": "Service",
-          "@id": "https://www.hiperkreatif.com/services/ecommerce",
-          name: "HyperSite Commerce",
-          serviceType: "E-commerce Development",
-          url: "https://www.hiperkreatif.com/services/ecommerce",
+          "@id": `https://www.hiperkreatif.com/services/${s.slug}`,
+          name: s.name,
+          serviceType: s.badge,
+          url: `https://www.hiperkreatif.com/services/${s.slug}`,
           provider: { "@id": "https://www.hiperkreatif.com/#org" },
-          description:
-            "Toko online kencang, aman, SEO-ready, integrasi pembayaran & CRM.",
-        },
-        {
-          "@type": "Service",
-          "@id": "https://www.hiperkreatif.com/services/company-profile",
-          name: "HyperProfile Site",
-          serviceType: "Company Profile Website",
-          url: "https://www.hiperkreatif.com/services/company-profile",
-          provider: { "@id": "https://www.hiperkreatif.com/#org" },
-          description:
-            "Company profile profesional, CMS ramah editor, multi bahasa opsional.",
-        },
-        {
-          "@type": "Service",
-          "@id": "https://www.hiperkreatif.com/services/social-media",
-          name: "Social Media Management",
-          serviceType: "Social Media Management",
-          url: "https://www.hiperkreatif.com/services/social-media",
-          provider: { "@id": "https://www.hiperkreatif.com/#org" },
-          description:
-            "Manajemen sosial media profesional untuk Instagram, TikTok, Facebook, dan Threads.",
-        },
-        {
-          "@type": "Service",
-          "@id": "https://www.hiperkreatif.com/services/ai-automation",
-          name: "Gen-AI Solutions",
-          serviceType: "Generative AI & Automation",
-          url: "https://www.hiperkreatif.com/services/ai-automation",
-          provider: { "@id": "https://www.hiperkreatif.com/#org" },
-          description:
-            "Asisten AI, RAG untuk SOP & katalog, chat CS otomatis, integrasi multichannel.",
-        },
+          description: s.tagline,
+        })),
       ],
     })}
   />
-
-  <script>
-    function initScrollAnimations() {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.animate-on-scroll:not(.is-visible)').forEach((el) => {
-        observer.observe(el);
-      });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initScrollAnimations);
-    } else {
-      initScrollAnimations();
-    }
-  </script>
 </BaseLayout>
