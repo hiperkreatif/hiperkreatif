@@ -17,7 +17,8 @@ export const BLOGS = [
     slug: "potongan-naik-pajak-dipungut-2026",
     title: "Potongan Naik, Pajak Dipungut di Muka: Hitung Ulang Letak Pesanan Ulang Anda",
     date: "06 Agustus 2026, 09:10 WIB",
-    category: CATEGORY["ecommerce"],
+    service: "ecommerce",
+    iso: "2026-08-06T09:10:00+07:00",
     excerpt: "Mei 2026 menambah potongan di tiga tempat sekaligus, dan sejak 1 Agustus empat marketplace memungut PPh 0,5% tiap transaksi. Angkanya cukup untuk mengubah keputusan, bukan cuma bikin kesal.",
     content: `
       <h2>Tiga potongan datang dalam satu bulan</h2>
@@ -34,7 +35,7 @@ export const BLOGS = [
       <p>Sisa marginnya Rp45.750, atau 30,5% dari harga jual. Potongan platformnya sendiri Rp24.250, sekitar 16% dari harga jual. Bukan 30% seperti yang sering disebut orang, tapi cukup besar untuk menentukan apakah Anda masih sanggup ikut perang diskon berikutnya.</p>
 
       <h2>Yang berubah pada 1 Agustus 2026</h2>
-      <p>PMK 37/2025 menunjuk pihak lain sebagai pemungut PPh atas penghasilan pedagang dalam negeri lewat sistem elektronik. DJP kemudian menetapkan empat pemungut pertama, yaitu Tokopedia, Shopee, Lazada, dan Blibli, yang mulai memungut PPh Pasal 22 final 0,5% pada 1 Agustus 2026. Dasarnya nilai transaksi bruto tanpa PPN, dan pemungutannya terjadi setiap transaksi, bukan saat dana ditarik ke rekening. Pedagang dengan omzet setahun belum melampaui Rp500 juta dikecualikan, dengan syarat surat pernyataannya sudah disampaikan ke marketplace.</p>
+      <p><a href="https://www.pajak.go.id/id/artikel/pmk-372025-bisnis-makin-praktis-bebas-ribet-potongan-pajak-otomatis-di-marketplace" rel="noopener">PMK 37/2025</a> menunjuk pihak lain sebagai pemungut PPh atas penghasilan pedagang dalam negeri lewat sistem elektronik. DJP kemudian menetapkan empat pemungut pertama, yaitu Tokopedia, Shopee, Lazada, dan Blibli, yang mulai memungut PPh Pasal 22 final 0,5% pada 1 Agustus 2026. Dasarnya nilai transaksi bruto tanpa PPN, dan pemungutannya terjadi setiap transaksi, bukan saat dana ditarik ke rekening. Pedagang dengan omzet setahun belum melampaui Rp500 juta dikecualikan, dengan syarat surat pernyataannya sudah disampaikan ke marketplace.</p>
       <p>Perlu jujur soal ini: kalau pajaknya memang Anda setor, ini bukan beban baru, hanya berpindah waktu penyetorannya. Yang benar-benar berubah adalah arus kas. Uang yang dulu masuk penuh lalu disetor kemudian sekarang terpotong sejak transaksi pertama, dan bagi bisnis yang perputaran stoknya cepat, selisih waktu itu terasa di modal belanja.</p>
 
       <h2>Pertanyaan yang lebih berguna daripada "pindah atau tidak"</h2>
@@ -56,11 +57,12 @@ export const BLOGS = [
     slug: "pencarian-tanpa-klik-2026",
     title: "68% Pencarian Berakhir Tanpa Klik. Yang Dikutip Mesin yang Dibaca Orang.",
     date: "05 Agustus 2026, 11:40 WIB",
-    category: CATEGORY["company-profile"],
+    service: "company-profile",
+    iso: "2026-08-05T11:40:00+07:00",
     excerpt: "Situs Anda tidak jadi tidak penting. Pekerjaannya bergeser dari tempat orang mendarat menjadi bahan yang dikutip mesin, dan dua pekerjaan itu butuh halaman yang berbeda.",
     content: `
       <h2>Angkanya</h2>
-      <p>Analisis SparkToro atas panel Similarweb untuk pencarian Google di Amerika Serikat periode Januari sampai April 2026 mencatat 68,01% pencarian berakhir tanpa satu pun klik. Dua tahun sebelumnya 60,45%. Pada kueri yang memunculkan AI Overviews, rasio klik ke situs turun hampir 60%.</p>
+      <p>Analisis <a href="https://searchengineland.com/google-zero-click-searches-2026-study-479717" rel="noopener">SparkToro atas panel Similarweb</a> untuk pencarian Google di Amerika Serikat periode Januari sampai April 2026 mencatat 68,01% pencarian berakhir tanpa satu pun klik. Dua tahun sebelumnya 60,45%. Pada kueri yang memunculkan AI Overviews, rasio klik ke situs turun hampir 60%.</p>
       <p>Data itu bukan data Indonesia dan sebaiknya tidak dipakai seolah-olah begitu. Yang bisa Anda periksa sendiri lebih meyakinkan: buka laporan pencarian situs Anda dua tahun terakhir, lalu bandingkan jumlah tayangan dengan jumlah klik. Pola yang paling sering muncul adalah tayangan naik sementara klik jalan di tempat.</p>
 
       <h2>Kenapa ini bukan berarti situs tidak berguna</h2>
@@ -91,11 +93,12 @@ export const BLOGS = [
     slug: "pembeli-anda-mungkin-program-2027",
     title: "Di 2027 Pembeli Anda Mungkin Sebuah Program",
     date: "04 Agustus 2026, 08:25 WIB",
-    category: CATEGORY["ecommerce"],
+    service: "ecommerce",
+    iso: "2026-08-04T08:25:00+07:00",
     excerpt: "Tiga standar checkout untuk agen AI muncul sepanjang 2026 dan belum ada yang menang. Ada pekerjaan yang tetap berguna apa pun hasilnya, dan ada yang sebaiknya ditunda dulu.",
     content: `
       <h2>Apa yang sebenarnya terjadi</h2>
-      <p>OpenAI bersama Stripe memperkenalkan Agentic Commerce Protocol, standar terbuka untuk percakapan antara agen dan penjual soal pilihan produk, harga, dan pembayaran, dengan checkout yang selesai di dalam ChatGPT. Pada Januari 2026 di konferensi NRF, Google bersama Shopify mengumumkan Universal Commerce Protocol. Meta memperkenalkan Business Agent secara global pada 3 Juni 2026, membuka platformnya untuk mitra pada 1 Juli 2026, dan menagihnya per token sejak 1 Agustus 2026. Agen itu bisa menjawab pertanyaan, menyarankan produk dari katalog, mengatur jadwal, dan menutup transaksi di dalam percakapan WhatsApp, Instagram, atau Messenger.</p>
+      <p>OpenAI bersama Stripe memperkenalkan <a href="https://openai.com/index/buy-it-in-chatgpt/" rel="noopener">Agentic Commerce Protocol</a>, standar terbuka untuk percakapan antara agen dan penjual soal pilihan produk, harga, dan pembayaran, dengan checkout yang selesai di dalam ChatGPT. Pada Januari 2026 di konferensi NRF, Google bersama Shopify mengumumkan Universal Commerce Protocol. Meta memperkenalkan <a href="https://about.fb.com/news/2026/06/meta-business-agent/" rel="noopener">Business Agent</a> secara global pada 3 Juni 2026, membuka platformnya untuk mitra pada 1 Juli 2026, dan menagihnya per token sejak 1 Agustus 2026. Agen itu bisa menjawab pertanyaan, menyarankan produk dari katalog, mengatur jadwal, dan menutup transaksi di dalam percakapan WhatsApp, Instagram, atau Messenger.</p>
       <p>Tiga jalur, tiga pemilik, belum ada yang jadi standar tunggal. Posisinya mirip masa ketika pembayaran online belum punya satu cara baku.</p>
 
       <h2>Yang berubah kalau pembelinya sebuah program</h2>
@@ -122,7 +125,8 @@ export const BLOGS = [
     slug: "whatsapp-balasan-cs-berbayar-oktober-2026",
     title: "1 Oktober 2026: Balasan Admin di WhatsApp Mulai Ditagih Per Pesan",
     date: "03 Agustus 2026, 15:05 WIB",
-    category: CATEGORY["ai-automation"],
+    service: "ai-automation",
+    iso: "2026-08-03T15:05:00+07:00",
     excerpt: "Meta mengumumkan pesan layanan tidak lagi gratis. Yang berubah bukan cuma tagihan, tapi cara menghitung apakah tim CS Anda sudah efisien.",
     content: `
       <h2>Apa yang diumumkan</h2>
@@ -153,11 +157,13 @@ export const BLOGS = [
     slug: "mengapa-toko-online-bangkrut",
     title: "Yang Menutup Toko Online Bukan Produknya, Tapi Aturan yang Berubah",
     date: "13 Juni 2026, 10:36 WIB",
-    category: CATEGORY["ecommerce"],
+    service: "ecommerce",
+    iso: "2026-06-13T10:36:00+07:00",
+    updated: "2026-08-07T15:00:00+07:00",
     excerpt: "Permendag 19/2026 berlaku 8 Juni: pedagang tanpa NIB wajib dihentikan transaksinya setelah tenggat. Risiko terbesar toko online sekarang datang dari perubahan aturan, bukan dari sepinya pembeli.",
     content: `
       <h2>Aturan yang berlaku 8 Juni 2026</h2>
-      <p>Peraturan Menteri Perdagangan Nomor 19 Tahun 2026 tentang Penyelenggaraan Perdagangan melalui Sistem Elektronik mulai berlaku 8 Juni 2026. Isinya: setiap pelaku usaha yang berjualan lewat sistem elektronik wajib punya izin berusaha yang dibuktikan dengan NIB.</p>
+      <p><a href="https://news.ddtc.co.id/berita/nasional/1820139/permendag-192026-berlaku-pedagang-di-e-commerce-kini-wajib-punya-nib" rel="noopener">Peraturan Menteri Perdagangan Nomor 19 Tahun 2026</a> tentang Penyelenggaraan Perdagangan melalui Sistem Elektronik mulai berlaku 8 Juni 2026. Isinya: setiap pelaku usaha yang berjualan lewat sistem elektronik wajib punya izin berusaha yang dibuktikan dengan NIB.</p>
       <p>Tenggatnya dibedakan. Pedagang baru diberi waktu 6 bulan dihitung dari tanggal pendaftaran akun. Kalau setelah 6 bulan NIB belum ada, marketplace wajib menghentikan transaksi akun tersebut. Pedagang yang sudah lebih dulu berjualan diberi 18 bulan, dihitung dari 8 Juni 2026. Selama masa itu marketplace boleh tetap menerima pedagang yang izinnya belum selesai, dengan label status Dalam Proses Legalisasi.</p>
       <p>Ini bukan kabar buruk yang setara dengan bencana. NIB diurus lewat OSS, tidak berbiaya, dan bagi usaha kecil biasanya selesai dalam sehari. Yang berisiko adalah menundanya sampai mendekati tenggat, karena konsekuensinya bukan teguran bertahap melainkan penghentian transaksi.</p>
 
@@ -187,13 +193,15 @@ export const BLOGS = [
     slug: "website-perusahaan-murahan",
     title: "Buyer B2B Cuma Memakai 17% Waktunya untuk Bertemu Vendor",
     date: "11 Juni 2026, 14:20 WIB",
-    category: CATEGORY["company-profile"],
+    service: "company-profile",
+    iso: "2026-06-11T14:20:00+07:00",
+    updated: "2026-08-07T15:00:00+07:00",
     excerpt: "Menurut Gartner, hanya 17% dari total waktu pembelian B2B dipakai untuk bertemu calon pemasok. Yang menentukan Anda lolos kurasi terjadi di sisa waktunya, saat tidak ada orang Anda di ruangan.",
     content: `
       <h2>Angkanya</h2>
-      <p>Gartner mencatat pembeli B2B hanya memakai 17% dari total waktu perjalanan pembeliannya untuk bertemu calon pemasok, dan 27% dipakai untuk meneliti sendiri secara daring. Sisanya habis di rapat internal, penyusunan syarat, dan pembandingan dokumen.</p>
-      <p>Arahnya juga terukur. Pada survei yang dirilis Juni 2025, 61% pembeli B2B menyatakan lebih suka pengalaman pembelian tanpa perantara penjual. Pada rilis Maret 2026, angkanya 67%. Naik enam poin dalam sembilan bulan.</p>
-      <p>Satu temuan Gartner yang dirilis Mei 2026 melengkapi gambarannya: 69% pembeli B2B mendatangi tenaga penjual untuk memverifikasi wawasan yang dihasilkan AI. Jadi bukan orang penjualan yang tidak diperlukan lagi. Perannya bergeser, dari sumber informasi pertama menjadi pemeriksa informasi yang sudah pembeli kumpulkan sendiri, termasuk yang dikumpulkan dari ringkasan mesin.</p>
+      <p><a href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" rel="noopener">Gartner</a> mencatat pembeli B2B hanya memakai 17% dari total waktu perjalanan pembeliannya untuk bertemu calon pemasok, dan 27% dipakai untuk meneliti sendiri secara daring. Sisanya habis di rapat internal, penyusunan syarat, dan pembandingan dokumen.</p>
+      <p>Arahnya juga terukur. Pada survei yang dirilis Juni 2025, 61% pembeli B2B menyatakan lebih suka pengalaman pembelian tanpa perantara penjual. Pada <a href="https://www.gartner.com/en/newsroom/press-releases/2026-03-09-gartner-sales-survey-finds-67-percent-of-b2b-buyers-prefer-a-rep-free-experience" rel="noopener">rilis Maret 2026</a>, angkanya 67%. Naik enam poin dalam sembilan bulan.</p>
+      <p>Satu <a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-20-gartner-survey-finds-sixty-nine-percent-of-b-two-b-buyers-turn-to-sales-reps-to-validate-ai-generated-insights" rel="noopener">temuan Gartner yang dirilis Mei 2026</a> melengkapi gambarannya: 69% pembeli B2B mendatangi tenaga penjual untuk memverifikasi wawasan yang dihasilkan AI. Jadi bukan orang penjualan yang tidak diperlukan lagi. Perannya bergeser, dari sumber informasi pertama menjadi pemeriksa informasi yang sudah pembeli kumpulkan sendiri, termasuk yang dikumpulkan dari ringkasan mesin.</p>
       <p>Konsekuensinya konkret. Kalau ringkasan itu keliru atau kosong soal perusahaan Anda, pertemuan pertama habis untuk membantah dan menjelaskan hal dasar, bukan untuk membicarakan pekerjaan. Data Gartner ini global dan lintas industri, bukan data Indonesia, dan pengadaan di sini menambah satu lapis lagi berupa pemeriksaan dokumen.</p>
 
       <h2>Yang diperiksa saat Anda tidak bisa menemani</h2>
@@ -218,11 +226,13 @@ export const BLOGS = [
     slug: "rahasia-sosmed-ratusan-juta",
     title: "Engagement Instagram Rata-rata 0,48% dan Turun 24% Setahun",
     date: "09 Juni 2026, 09:15 WIB",
-    category: CATEGORY["social-media"],
+    service: "social-media",
+    iso: "2026-06-09T09:15:00+07:00",
+    updated: "2026-08-07T15:00:00+07:00",
     excerpt: "Socialinsider menganalisis 35 juta unggahan dari 447.613 halaman. Kalau target akun Anda masih ditetapkan dengan asumsi beberapa tahun lalu, laporan bulanannya akan selalu terlihat gagal.",
     content: `
       <h2>Angkanya, dan dari mana asalnya</h2>
-      <p>Socialinsider menganalisis 35 juta unggahan Instagram dari 447.613 halaman aktif sepanjang Januari sampai Desember 2025. Hasilnya: rata-rata engagement rate 0,48%, turun 24% dibanding periode sebelumnya. Per format, karusel 0,55%, Reels 0,52%, dan gambar tunggal 0,37%.</p>
+      <p><a href="https://www.socialinsider.io/social-media-benchmarks/instagram" rel="noopener">Socialinsider</a> menganalisis 35 juta unggahan Instagram dari 447.613 halaman aktif sepanjang Januari sampai Desember 2025. Hasilnya: rata-rata engagement rate 0,48%, turun 24% dibanding periode sebelumnya. Per format, karusel 0,55%, Reels 0,52%, dan gambar tunggal 0,37%.</p>
       <p>Cara hitungnya perlu disebut supaya angkanya bisa dibandingkan dengan laporan Anda sendiri: jumlah like dan komentar pada unggahan dalam satu periode, dibagi jumlah follower, dikali 100. Kalau alat yang Anda pakai menghitung berdasarkan jangkauan alih-alih jumlah follower, angkanya tidak sebanding.</p>
       <p>Dua catatan yang jujur soal data ini. Pertama, studinya diberi label 2026 tapi isinya nilai 2025; penerbitnya menyatakan sendiri datanya belum cukup saat tahun baru berjalan. Jadi ini patokan tahun lalu. Kedua, angka penurunan jangkauan organik yang banyak beredar, dari 9% ke sekitar 6%, tidak kami pakai di sini karena tidak menemukan metodologi yang bisa diperiksa di baliknya.</p>
 
@@ -247,7 +257,9 @@ export const BLOGS = [
     slug: "ai-mengambil-alih-efisiensi",
     title: "Klarna Memangkas Setara 700 Agen CS karena AI, Lalu Menarik Manusianya Kembali",
     date: "06 Juni 2026, 16:45 WIB",
-    category: CATEGORY["ai-automation"],
+    service: "ai-automation",
+    iso: "2026-06-06T16:45:00+07:00",
+    updated: "2026-08-07T15:00:00+07:00",
     excerpt: "Deflection 85% bisa berarti resolution 60%, artinya 25 orang menyerah tanpa masalahnya selesai. Angka yang biasa dipakai menjual otomasi CS sering mengukur hal yang salah.",
     content: `
       <h2>Yang terjadi di Klarna</h2>

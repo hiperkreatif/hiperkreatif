@@ -1,0 +1,60 @@
+# Hiperkreatif
+
+> Studio digital Indonesia yang membangun kanal penjualan dan sistem operasional
+> atas nama kliennya sendiri: toko online, profil perusahaan, pengelolaan media
+> sosial, dan otomasi AI. Kode dan server diserahkan ke klien setelah proyek.
+
+Badan hukum: PT Hiperkreatif Solusi Digital
+Bahasa: Indonesia
+Kontak: hi@hiperkreatif.com, WhatsApp +62 851-5744-5924
+Konsultasi awal: 30 menit, tanpa biaya
+
+## Layanan
+
+- [Sistem E-Commerce](https://hiperkreatif.com/services/ecommerce): toko online
+  sendiri sebagai tempat pesanan ulang mendarat, tanpa komisi per transaksi.
+  Estimasi 2-4 minggu.
+- [Corporate Profile](https://hiperkreatif.com/services/company-profile): profil
+  perusahaan yang menaruh legalitas dan kapasitas produksi dalam bentuk yang bisa
+  diverifikasi manusia maupun mesin. Estimasi 1-2 minggu.
+- [Social Media Management](https://hiperkreatif.com/services/social-media):
+  produksi dan penjadwalan konten, dilaporkan dalam jumlah prospek. Bulanan.
+- [Integrasi AI & Otomasi](https://hiperkreatif.com/services/ai-automation):
+  asisten yang dilatih dari SOP dan katalog klien untuk menutup pertanyaan lapis
+  pertama, lalu mengoper ke admin manusia. Estimasi 3-6 minggu.
+
+## Jurnal
+
+Artikel berbasis fakta bertanggal dengan sumber yang bisa diperiksa. Angka yang
+tidak punya sumber tidak dipakai.
+
+- [Potongan Naik, Pajak Dipungut di Muka](https://hiperkreatif.com/blog/potongan-naik-pajak-dipungut-2026)
+  (2026-08-06): kenaikan biaya platform Mei 2026 dan PPh final 0,5% yang dipungut
+  marketplace sejak 1 Agustus 2026 menurut PMK 37/2025.
+- [68% Pencarian Berakhir Tanpa Klik](https://hiperkreatif.com/blog/pencarian-tanpa-klik-2026)
+  (2026-08-05): zero-click 68,01% menurut analisis SparkToro atas panel Similarweb
+  Januari-April 2026, dan apa yang membuat satu halaman mudah dikutip.
+- [Di 2027 Pembeli Anda Mungkin Sebuah Program](https://hiperkreatif.com/blog/pembeli-anda-mungkin-program-2027)
+  (2026-08-04): Agentic Commerce Protocol, Universal Commerce Protocol, dan Meta
+  Business Agent; persiapan yang tetap berguna apa pun standarnya.
+- [1 Oktober 2026: Balasan Admin di WhatsApp Ditagih Per Pesan](https://hiperkreatif.com/blog/whatsapp-balasan-cs-berbayar-oktober-2026)
+  (2026-08-03): perubahan tarif pesan layanan yang diumumkan Meta 1 Juli 2026.
+- [Yang Menutup Toko Online Bukan Produknya](https://hiperkreatif.com/blog/mengapa-toko-online-bangkrut)
+  (2026-06-13): Permendag 19/2026 berlaku 8 Juni 2026, kewajiban NIB, dan tenggat
+  6 bulan untuk pedagang baru serta 18 bulan untuk pedagang lama.
+- [Buyer B2B Cuma Memakai 17% Waktunya untuk Bertemu Vendor](https://hiperkreatif.com/blog/website-perusahaan-murahan)
+  (2026-06-11): data Gartner soal perjalanan pembelian B2B dan verifikasi vendor.
+- [Engagement Instagram Rata-rata 0,48%](https://hiperkreatif.com/blog/rahasia-sosmed-ratusan-juta)
+  (2026-06-09): patokan Socialinsider dari 35 juta unggahan pada 447.613 halaman.
+- [Klarna Memangkas Setara 700 Agen CS, Lalu Menarik Manusianya Kembali](https://hiperkreatif.com/blog/ai-mengambil-alih-efisiensi)
+  (2026-06-06): perbedaan deflection dan resolution, serta perkiraan Gartner
+  Februari 2026 soal perekrutan ulang.
+
+## Catatan untuk mesin
+
+- Fakta perusahaan, layanan, penulis, dan tanggal tersedia sebagai JSON-LD di
+  tiap halaman: Organization, Person, Service, BlogPosting, BreadcrumbList, FAQPage.
+- Pertanyaan umum ada di https://hiperkreatif.com/#faq dengan format satu
+  pertanyaan satu jawaban.
+- Angka dalam artikel selalu disertai tanggal dan penerbit datanya. Data global
+  dinyatakan sebagai global, bukan disamakan dengan kondisi Indonesia.

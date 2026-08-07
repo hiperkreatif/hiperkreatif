@@ -5,8 +5,10 @@ import { SEO } from "../constants/seo";
 import { SERVICES } from "../constants/services";
 import { FAQS } from "../constants/faqs";
 import TechMarquee from "../components/TechMarquee.astro";
+import { ids } from "../constants/schema";
 
 const logo = LogoUrl;
+const S = ids(Astro.site);
 
 const STATS = [
   { val: "15+", label: "proyek b2b selesai", icon: "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" },
@@ -44,11 +46,19 @@ const STEPS = [
     <div class="wrap relative py-16 md:py-24 lg:py-28">
       <p class="eyebrow m-0">website · aplikasi · otomasi ai</p>
 
-      <h1 class="display mt-6 max-w-[16ch] text-[clamp(2.6rem,6.4vw,5rem)]">
-        Punya kanalnya, <span class="text-accent">bukan menyewanya.</span>
+      <!-- Skala hero herdr: clamp(38px,6.6vw,132px), -.055em, max-width 20ch.
+           Batas atasnya di sini 5.5rem, bukan 132px, karena headline ini 54
+           karakter sementara herdr 37 — pada 132px kalimat kedua saja butuh
+           ~1.900px dan pecah jadi dua baris raksasa. Leading tetap 0.95 dari
+           .display, bukan 0.88 punya herdr: 'g' di Dirancang menabrak huruf
+           besar baris bawahnya.
+           Span block supaya kalimat kedua selalu mulai di baris baru. -->
+      <h1 class="display mt-6 max-w-[27ch] text-[clamp(2.6rem,6vw,5.75rem)] tracking-[-0.055em]">
+        Dirancang untuk solusi.
+        <span class="text-accent block">Dibangun untuk profitabilitas.</span>
       </h1>
 
-      <p class="lede mt-6 max-w-[56ch]">
+      <p class="lede mt-6 max-w-[64ch]">
         Potongan platform naik lagi Mei 2026, dan sejak 1 Agustus marketplace memungut PPh 0,5%
         tiap transaksi. Kami bangun toko online, profil perusahaan, dan otomasi AI atas nama
         Anda sendiri: kode dan daftar pelanggannya milik Anda.
@@ -199,7 +209,7 @@ const STEPS = [
       {
         FAQS.map((f) => (
           <details class="group border-b border-line">
-            <summary class="wrap display-sm flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[1.05rem] transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+            <summary class="wrap display-sm flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-[1.15rem] transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
               {f.q}
               <span
                 class="mt-1 shrink-0 text-muted transition-transform duration-200 group-open:rotate-45"
@@ -255,10 +265,10 @@ const STEPS = [
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://www.hiperkreatif.com/#org",
+          "@id": S.org,
           name: "Hiperkreatif",
           legalName: SEO.legalName,
-          url: "https://www.hiperkreatif.com/",
+          url: S.base,
           logo: {
             "@type": "ImageObject",
             url: logo,
@@ -282,44 +292,39 @@ const STEPS = [
               availableLanguage: "id",
             },
           ],
-          founder: { "@id": "https://www.hiperkreatif.com/#person" },
+          founder: { "@id": S.person },
         },
 
         {
           "@type": "Person",
-          "@id": "https://www.hiperkreatif.com/#person",
+          "@id": S.person,
           name: "Kang Dadan",
           jobTitle: "Software Engineer & Solo Founder",
-          url: "https://www.hiperkreatif.com/",
-          image: "https://www.hiperkreatif.com/dadan.jpg",
-          worksFor: { "@id": "https://www.hiperkreatif.com/#org" },
+          url: S.base,
+          image: S.url("/dadan.jpg"),
+          worksFor: { "@id": S.org },
         },
 
         {
           "@type": "WebSite",
-          "@id": "https://www.hiperkreatif.com/#website",
-          url: "https://www.hiperkreatif.com/",
+          "@id": S.website,
+          url: S.base,
           name: "Hiperkreatif",
-          publisher: { "@id": "https://www.hiperkreatif.com/#org" },
+          publisher: { "@id": S.org },
           inLanguage: "id-ID",
-          potentialAction: {
-            "@type": "SearchAction",
-            target: "https://www.hiperkreatif.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string",
-          },
         },
 
         {
           "@type": "WebPage",
-          "@id": "https://www.hiperkreatif.com/#webpage",
-          url: "https://www.hiperkreatif.com/",
+          "@id": `${S.base}#webpage`,
+          url: S.base,
           name: SEO.title,
           description: SEO.description,
-          isPartOf: { "@id": "https://www.hiperkreatif.com/#website" },
-          about: { "@id": "https://www.hiperkreatif.com/#org" },
+          isPartOf: { "@id": S.website },
+          about: { "@id": S.org },
           primaryImageOfPage: {
             "@type": "ImageObject",
-            url: `https://www.hiperkreatif.com${SEO.ogImage || "/og-cover-1200x630.jpg"}`,
+            url: S.url(SEO.ogImage || "/og.webp"),
             width: 1200,
             height: 630,
           },
@@ -327,7 +332,7 @@ const STEPS = [
 
         {
           "@type": "FAQPage",
-          "@id": "https://www.hiperkreatif.com/#faq",
+          "@id": `${S.base}#faq`,
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
@@ -338,21 +343,21 @@ const STEPS = [
         {
           "@type": "SiteNavigationElement",
           name: "Primary navigation",
-          url: "https://www.hiperkreatif.com/",
+          url: S.base,
           about: SERVICES.map((s) => ({
             "@type": "WebPage",
             name: s.name,
-            url: `https://www.hiperkreatif.com/services/${s.slug}`,
+            url: S.url(`/services/${s.slug}`),
           })),
         },
 
         ...SERVICES.map((s) => ({
           "@type": "Service",
-          "@id": `https://www.hiperkreatif.com/services/${s.slug}`,
+          "@id": `${S.url(`/services/${s.slug}`)}#service`,
           name: s.name,
           serviceType: s.badge,
-          url: `https://www.hiperkreatif.com/services/${s.slug}`,
-          provider: { "@id": "https://www.hiperkreatif.com/#org" },
+          url: S.url(`/services/${s.slug}`),
+          provider: { "@id": S.org },
           description: s.tagline,
         })),
       ],

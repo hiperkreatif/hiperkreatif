@@ -221,16 +221,26 @@ html[data-mode='ink'] {
   }
 
   /* Judul kartu: Archivo 800, tracking lebih longgar (herdr .caps h3 -.03em) */
+  /* Tracking -0.015em, bukan -0.03em seperti .display. Kelas ini dipakai di
+     0.98rem sampai 1.5rem, dan tracking rapat itu porsinya huruf besar: pada
+     17px, -0.03em membuat Archivo 800 saling menempel dan terbaca padat.
+     Aturan umumnya berbanding balik — makin kecil ukurannya, makin longgar
+     tracking-nya. .display yang jalan di 30px ke atas tetap -0.045em. */
   .display-sm {
     @apply font-display font-extrabold text-ink;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.015em;
     line-height: 1.2;
   }
 
+  /* Disamakan dengan .lede herdr: 15px / 1.75 / warna dim (= ink-soft di sini).
+     Sengaja di bawah 16px default browser — itu pilihan desain, bukan kelalaian:
+     lede-nya jadi jelas lebih kecil dari body prose, sehingga kontras ukuran
+     dengan headline raksasa terbaca sebagai hierarki, bukan sebagai dua blok
+     teks yang bersaing. */
   .lede {
     @apply text-ink-soft;
-    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.75;
   }
 
   /* Kontrol interaktif pakai Inter, bukan mono — mono disimpan untuk label,

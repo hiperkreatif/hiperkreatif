@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { BLOGS } from "../../constants/blogs";
+import { BLOGS, CATEGORY } from "../../constants/blogs";
+import { SERVICES } from "../../constants/services";
+import { ids, breadcrumb } from "../../constants/schema";
 
 export function getStaticPaths() {
   return BLOGS.map((blog) => ({
@@ -26,6 +28,13 @@ const content = blog.content.replace(
   /<h2>(.*?)<\/h2>/g,
   (_: string, t: string) => `<h2 id="${slugify(t)}">${t}</h2>`
 );
+
+// Layanan yang menjawab artikel ini. Diturunkan dari blog.service, bukan
+// dipetakan ulang manual — kunci itu memang slug layanan.
+const service = SERVICES.find((s) => s.slug === blog.service);
+const S = ids(Astro.site);
+const articleUrl = S.url(`/blog/${blog.slug}`);
+const words = blog.content.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
 ---
 
 <BaseLayout
@@ -42,15 +51,18 @@ const content = blog.content.replace(
 
     <header class="border-b border-line pb-10">
       <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
-        <span class="tag">{blog.category}</span>
-        <span class="text-muted">{blog.date}</span>
+        <span class="tag">{CATEGORY[blog.service]}</span>
+        <time datetime={blog.iso} class="text-muted">{blog.date}</time>
       </div>
 
       <h1 class="display mt-6 max-w-[26ch] text-[clamp(2.2rem,4.8vw,3.4rem)]">
         {blog.title}
       </h1>
 
-      <p class="lede mt-5 max-w-[64ch]">{blog.excerpt}</p>
+      <!-- .lede kini 15px mengikuti herdr, dan itu benar untuk hero. Di sini
+           tidak: prose-lg di bawahnya 18px, jadi lede 15px membuat intro lebih
+           kecil dari isinya. Dinaikkan ke 1.15rem supaya tetap di atas body. -->
+      <p class="lede mt-5 max-w-[64ch] text-[1.15rem]">{blog.excerpt}</p>
     </header>
 
     {/* Kolom teks dibatasi 90ch (±103 karakter per baris pada prose-lg).
@@ -87,7 +99,7 @@ const content = blog.content.replace(
                 <li class="border-b border-line">
                   <a href={`/blog/${b.slug}`} class="group block py-4">
                     <span class="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
-                      {b.category}
+                      {CATEGORY[b.service]}
                     </span>
                     <h3 class="display-sm mt-2 text-[0.98rem] leading-snug transition-colors group-hover:text-accent">
                       {b.title}
@@ -111,7 +123,52 @@ const content = blog.content.replace(
       <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
         Kami membantu perusahaan ambisius memangkas inefisiensi lewat teknologi tepat guna.
       </p>
-      <a href="/consultation" class="btn btn-primary mt-7">Jadwalkan konsultasi</a>
+      <div class="mt-7 flex flex-wrap justify-center gap-2.5">
+        <a href="/consultation" class="btn btn-primary">Jadwalkan konsultasi</a>
+        {
+          service && (
+            <a href={`/services/${service.slug}`} class="btn btn-secondary">
+              {service.name}
+            </a>
+          )
+        }
+      </div>
     </div>
   </section>
+
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": `${articleUrl}#article`,
+          url: articleUrl,
+          mainEntityOfPage: articleUrl,
+          headline: blog.title,
+          description: blog.excerpt,
+          datePublished: blog.iso,
+          dateModified: blog.updated || blog.iso,
+          inLanguage: "id-ID",
+          wordCount: words,
+          articleSection: CATEGORY[blog.service],
+          author: { "@id": S.person },
+          publisher: { "@id": S.org },
+          isPartOf: {
+            "@type": "Blog",
+            "@id": `${S.url("/blog")}#blog`,
+            name: "Jurnal Hiperkreatif",
+          },
+          ...(service && { about: { "@id": `${S.url(`/services/${service.slug}`)}#service` } }),
+        },
+        breadcrumb(Astro.site, [
+          { name: "Beranda", path: "/" },
+          { name: "Jurnal", path: "/blog" },
+          { name: blog.title, path: `/blog/${blog.slug}` },
+        ]),
+      ],
+    })}
+  />
 </BaseLayout>

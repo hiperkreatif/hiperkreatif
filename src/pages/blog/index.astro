@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { BLOGS } from "../../constants/blogs";
+import { BLOGS, CATEGORY } from "../../constants/blogs";
 ---
 
 <BaseLayout
@@ -44,8 +44,8 @@ import { BLOGS } from "../../constants/blogs";
                    ikut naik sebaris dengan chip sementara yang panjang turun,
                    jadi barisnya tidak rata antar item. -->
               <div class="flex flex-col items-start gap-2 font-mono text-[0.72rem]">
-                <span class="tag">{blog.category}</span>
-                <span class="text-muted">{blog.date}</span>
+                <span class="tag">{CATEGORY[blog.service]}</span>
+                <time datetime={blog.iso} class="text-muted">{blog.date}</time>
               </div>
 
               <div>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { SERVICES } from "../../constants/services";
+import { ids, breadcrumb } from "../../constants/schema";
 
 export function getStaticPaths() {
   return SERVICES.map((service) => ({
@@ -16,6 +17,11 @@ const whatsappLink = `https://wa.me/6285157445924?text=Halo%20Hiperkreatif,%20sa
 
 const others = SERVICES.filter((s) => s.slug !== service.slug);
 const weeks = service.timeline;
+
+// @id-nya sengaja sama dengan node Service di @graph beranda supaya dua-duanya
+// dibaca sebagai satu entitas, bukan dua layanan berbeda dengan nama sama.
+const S = ids(Astro.site);
+const serviceUrl = S.url(`/services/${service.slug}`);
 ---
 
 <BaseLayout
@@ -151,4 +157,29 @@ const weeks = service.timeline;
       </div>
     </div>
   </section>
+
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": `${serviceUrl}#service`,
+          url: serviceUrl,
+          name: service.name,
+          serviceType: service.badge,
+          description: service.desc,
+          provider: { "@id": S.org },
+          areaServed: { "@type": "Country", name: "Indonesia" },
+          inLanguage: "id-ID",
+        },
+        breadcrumb(Astro.site, [
+          { name: "Beranda", path: "/" },
+          { name: service.name, path: `/services/${service.slug}` },
+        ]),
+      ],
+    })}
+  />
 </BaseLayout>
