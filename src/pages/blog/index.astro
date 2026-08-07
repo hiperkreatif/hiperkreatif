@@ -30,7 +30,9 @@ import { BLOGS } from "../../constants/blogs";
 
   <!-- ══ DAFTAR ════════════════════════════════════════════ -->
   <section class="wrap py-4">
-    <ul class="m-0 list-none divide-y divide-line p-0 border-b border-line">
+    <!-- Tanpa border-b: section CTA di bawah sudah punya border-t, dan dua
+         garis berjarak py-4 terbaca sebagai garis dobel. -->
+    <ul class="m-0 list-none divide-y divide-line p-0">
       {
         BLOGS.map((blog) => (
           <li>
@@ -38,7 +40,10 @@ import { BLOGS } from "../../constants/blogs";
               href={`/blog/${blog.slug}`}
               class="group grid gap-4 py-8 transition-colors md:grid-cols-[minmax(0,0.26fr)_minmax(0,1fr)_auto] md:items-start md:gap-8"
             >
-              <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
+              <!-- flex-col, bukan flex-wrap: dengan wrap, tanggal yang pendek
+                   ikut naik sebaris dengan chip sementara yang panjang turun,
+                   jadi barisnya tidak rata antar item. -->
+              <div class="flex flex-col items-start gap-2 font-mono text-[0.72rem]">
                 <span class="tag">{blog.category}</span>
                 <span class="text-muted">{blog.date}</span>
               </div>

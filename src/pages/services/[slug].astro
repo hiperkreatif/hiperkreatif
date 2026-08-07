@@ -97,7 +97,7 @@ const weeks = service.timeline;
     <div class="cells md:grid-cols-2 lg:grid-cols-3">
       {
         service.bullets.map((b: string, i: number) => (
-          <article class="flex min-h-[180px] flex-col px-5 py-8 md:px-8">
+          <article class="flex min-h-[180px] flex-col py-8">
             <span class="tag">{String(i + 1).padStart(2, "0")}</span>
             <p class="mt-5 mb-0 text-[0.92rem] leading-relaxed text-ink-soft">{b}</p>
           </article>
@@ -118,7 +118,7 @@ const weeks = service.timeline;
     <div class="cells md:grid-cols-3">
       {
         others.map((s) => (
-          <a href={s.cta} class="group flex flex-col px-5 py-8 md:px-8">
+          <a href={s.cta} class="group flex flex-col py-8">
             <span class="font-mono text-[0.7rem] uppercase tracking-[0.1em] text-muted">
               {s.badge}
             </span>

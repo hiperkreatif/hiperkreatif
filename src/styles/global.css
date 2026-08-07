@@ -37,8 +37,11 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
-  /* PAPER = mode dasar. Nilai diambil apa adanya dari herdr.dev site.css
-     (html[data-mode="paper"]), termasuk mauve #8839ef. */
+  /* PAPER = mode dasar. Nilai netralnya diambil apa adanya dari herdr.dev
+     site.css (html[data-mode="paper"]). Aksennya TIDAK: mauve herdr diganti
+     olive karena seluruh ground di sini hangat. Nilai paper sengaja lebih pekat
+     dari padanan Catppuccin-nya supaya lolos AA di atas --color-surface juga
+     (4.50), bukan cuma di atas --color-bg. */
   --color-bg: #efece5;
   --color-surface: #e7e3da;
   --color-mass: #ddd8cc;
@@ -49,16 +52,16 @@
   --color-line-strong: #cbc5b6;
   --color-grid: #e4e0d6;
 
-  --color-accent: #8839ef;
+  --color-accent: #5e6b20;
   --color-accent-ink: #ffffff;
-  --color-accent-soft: color-mix(in srgb, #8839ef 8%, transparent);
+  --color-accent-soft: color-mix(in srgb, #5e6b20 8%, transparent);
 
   --color-term: #faf7ef;
   --color-term-2: #f2eee3;
   --color-term-line: #dcd6c8;
   --color-term-text: #3a3830;
   --color-term-dim: #6e6a5e;
-  --color-term-accent: #8839ef;
+  --color-term-accent: #5e6b20;
   --color-term-green: #3a7539;
   --color-term-yellow: #8a5e00;
 
@@ -69,7 +72,7 @@
 }
 
 /* INK. Ground-nya sengaja hampir netral, bukan biru-violet gelap — warna
-   tinggal di aksen mauve. Kontras herdr: ink 14.7, dim 9.3, faint 5.3.
+   tinggal di aksen olive. Kontras herdr: ink 14.7, dim 9.3, faint 5.3.
    Semua utility Tailwind membaca var(--color-*), jadi override di sini
    otomatis mengalir ke seluruh halaman. */
 html[data-mode='ink'] {
@@ -85,16 +88,16 @@ html[data-mode='ink'] {
   --color-line-strong: #35353d;
   --color-grid: #202024;
 
-  --color-accent: #cba6f7;
+  --color-accent: #c3d17a;
   --color-accent-ink: #17171a;
-  --color-accent-soft: color-mix(in srgb, #cba6f7 14%, transparent);
+  --color-accent-soft: color-mix(in srgb, #c3d17a 14%, transparent);
 
   --color-term: #0f0f12;
   --color-term-2: #1a1a1f;
   --color-term-line: #2b2b33;
   --color-term-text: #d4d1dc;
   --color-term-dim: #8e8a98;
-  --color-term-accent: #cba6f7;
+  --color-term-accent: #c3d17a;
   --color-term-green: #8ecf7a;
   --color-term-yellow: #e6c060;
 }
@@ -152,13 +155,15 @@ html[data-mode='ink'] {
   /* Lembar solid yang duduk di atas tanah bergaris. Membungkus header,
      main, dan footer sekaligus. */
   .sheet {
-    @apply mx-auto flex w-full max-w-[1320px] flex-grow flex-col bg-bg;
+    @apply mx-auto flex w-full max-w-[1440px] flex-grow flex-col bg-bg;
     border-inline: 1px solid var(--color-line-strong);
   }
 
-  /* Container tunggal — sama untuk header, section, dan footer */
+  /* Container tunggal — sama untuk header, section, dan footer.
+     1520 (herdr pakai 1320) + padding naik di lg supaya isinya tidak menempel
+     ke garis .sheet begitu lembarnya dilebarkan. */
   .wrap {
-    @apply mx-auto w-full max-w-[1320px] px-5 md:px-8;
+    @apply mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12;
   }
 
   /* Sakelar INK / PAPER. h-9 = tinggi .btn-sm dan tombol hamburger, jadi
@@ -270,8 +275,12 @@ html[data-mode='ink'] {
   .cells {
     @apply grid overflow-hidden border-y border-line;
   }
+  /* Padding inline-nya dikunci sama dengan .wrap. Kalau tidak, isi sel tidak
+     lurus dengan judul section yang duduk di dalam .wrap — dan tiap kali lebar
+     .wrap diubah, keenam pemakai .cells harus diubah satu-satu. Padding
+     vertikal tetap di masing-masing halaman karena beda per kisi. */
   .cells > * {
-    @apply bg-bg transition-colors duration-150;
+    @apply bg-bg px-5 transition-colors duration-150 md:px-8 lg:px-12;
     box-shadow:
       -1px 0 0 var(--color-line),
       0 -1px 0 var(--color-line);
