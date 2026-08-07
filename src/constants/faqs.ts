@@ -17,7 +17,7 @@ export const FAQS = [
   },
   {
     q: "Apa yang terjadi setelah serah terima?",
-    a: "Ada 30 hari garansi perbaikan bug tanpa biaya tambahan, plus pelatihan untuk tim Anda. Setelah itu Anda bebas memilih: lanjut kontrak pemeliharaan, atau jalan sendiri. Kode dan akses server sepenuhnya milik Anda, bukan disandera di server kami."
+    a: "Ada 30 hari garansi perbaikan bug tanpa biaya tambahan, plus pelatihan untuk tim Anda. Setelah itu Anda bebas memilih: lanjut kontrak pemeliharaan, atau jalan sendiri. Soal kode dan akses server, cakupan serah terimanya kami tulis di blueprint sebelum mulai — bisa berpindah sepenuhnya ke nama Anda, bisa juga tetap kami yang mengelola kalau itu yang lebih masuk akal untuk tim Anda. Yang tidak kami lakukan adalah menahannya sebagai alat tawar."
   },
   {
     q: "Kenapa lebih mahal dari freelancer?",

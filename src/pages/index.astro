@@ -12,14 +12,18 @@ const S = ids(Astro.site);
 
 const STATS = [
   { val: "15+", label: "proyek b2b selesai", icon: "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" },
-  { val: "100%", label: "kode & server milik klien", icon: "M15 7a4 4 0 1 1-3.9 5H7v3H4v-3l4.1-4a4 4 0 0 1 3.9-5z" },
+  // Dulu "100% kode & server milik klien". Dicabut karena cakupan serah terima
+  // itu hasil kesepakatan per proyek, bukan janji yang berlaku untuk semua —
+  // dan angka di baris ini terbaca sebagai jaminan. Diganti fakta yang memang
+  // berlaku di tiap proyek dan sudah tertulis di FAQ serta halaman layanan.
+  { val: "30 hari", label: "garansi perbaikan bug", icon: "M12 3l7 3v6c0 4.2-3 7.4-7 9-4-1.6-7-4.8-7-9V6l7-3zM9 12l2 2 4-4" },
   { val: "1–4", label: "minggu sampai versi pertama", icon: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
   { val: "24/7", label: "berjalan tanpa operator", icon: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
 ];
 
 const STEPS = [
   {
-    title: "Telepon 30 menit",
+    title: "Telepon perkenalan",
     body: "Anda cerita apa yang macet, kami bilang terus terang kalau itu di luar jangkauan kami atau lebih murah dikerjakan orang lain.",
   },
   {
@@ -61,11 +65,11 @@ const STEPS = [
       <p class="lede mt-6 max-w-[64ch]">
         Potongan platform naik lagi Mei 2026, dan sejak 1 Agustus marketplace memungut PPh 0,5%
         tiap transaksi. Kami bangun toko online, profil perusahaan, dan otomasi AI atas nama
-        Anda sendiri: kode dan daftar pelanggannya milik Anda.
+        Anda sendiri, dan pelanggannya masuk ke basis data Anda, bukan ke basis data platform.
       </p>
 
       <div class="mt-9 flex flex-wrap gap-2.5">
-        <a href="/consultation" class="btn btn-primary">Jadwalkan telepon 30 menit</a>
+        <a href="/consultation" class="btn btn-primary">Jadwalkan telepon</a>
         <a href="#layanan" class="btn btn-secondary">Lihat yang kami kerjakan</a>
       </div>
 
@@ -241,7 +245,7 @@ const STEPS = [
         Mulai dari satu telepon.
       </h2>
       <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
-        30 menit, gratis. Anda keluar dengan gambaran solusi yang konkret, mau lanjut kerja
+        Gratis, dan lamanya menyesuaikan kebutuhan Anda. Anda keluar dengan gambaran solusi yang konkret, mau lanjut kerja
         sama dengan kami atau tidak.
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-2.5">
