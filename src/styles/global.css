@@ -173,7 +173,7 @@ html[data-mode='ink'] {
   /* Jarak vertikal baku antar section. Titik penanda di kedua ujung garis atas
      digambar pakai pseudo-element biar tidak menambah markup tiap section. */
   .section {
-    @apply relative border-t border-line py-16 md:py-20;
+    @apply relative border-t border-line py-20 md:py-24;
   }
   .section::before,
   .section::after {
@@ -298,31 +298,6 @@ html[data-mode='ink'] {
     }
   }
 
-  /* Marquee stack. Track memuat dua salinan identik, jadi translateX(-50%)
-     tepat satu putaran tanpa jeda. */
-  .marquee {
-    @apply overflow-hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 4rem), transparent);
-  }
-  .marquee-track {
-    @apply flex w-max;
-    animation: marquee 45s linear infinite;
-  }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none;
-    }
-  }
-
   /* w-fit wajib: tanpa itu badge melar penuh saat jadi anak flex-column / grid */
   .tag {
     @apply inline-block w-fit rounded-sm bg-accent-soft px-2 py-[0.15rem]
@@ -385,11 +360,9 @@ html[data-mode='ink'] {
      jadi halaman tercetak mulai dari subjudul tanpa judul sama sekali. */
   .sheet > header,
   .sheet > footer,
-  .marquee,
   .mode,
   details[name="nav"],
-  a[href^="#main"],
-  [aria-label="Teknologi yang kami pakai"] {
+  a[href^="#main"] {
     display: none !important;
   }
 
@@ -397,6 +370,7 @@ html[data-mode='ink'] {
   .print-hide {
     display: none !important;
   }
+
 
   /* Tujuan tautan dicetak, kalau tidak pembaca kertas kehilangan rujukannya.
      Tautan internal dilewati: pathnya saja tidak menolong tanpa domain. */

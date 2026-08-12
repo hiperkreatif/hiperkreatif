@@ -69,7 +69,11 @@ export default async function handler(req, res) {
 
   const webhook = process.env.LEAD_WEBHOOK_URL;
   if (!webhook) {
-    console.error("LEAD_WEBHOOK_URL belum diset — lead tidak tercatat:", lead.name);
+    // Jaring pengaman: seluruh isinya ditulis ke log function, bukan cuma
+    // namanya. Log Vercel bisa dibuka dan dicari, jadi lead tetap bisa
+    // diselamatkan selama webhook belum dipasang. Bukan pengganti webhook —
+    // log Vercel punya masa simpan terbatas, tidak memberi notifikasi.
+    console.error("LEAD_WEBHOOK_URL belum diset. LEAD:", JSON.stringify(lead));
     return res.status(503).json({ ok: false, alasan: "webhook_belum_diset" });
   }
 

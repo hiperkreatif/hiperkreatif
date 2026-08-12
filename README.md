@@ -135,11 +135,32 @@ tujuan. Set satu variabel lingkungan di Vercel:
 LEAD_WEBHOOK_URL = <URL yang menerima POST JSON>
 ```
 
-Apa pun yang menerima POST JSON bisa: Google Apps Script (`doPost` menulis ke
-Sheet), Slack incoming webhook, n8n, Make. Selama variabel ini kosong endpoint
-menjawab `503` dan **tidak ada lead yang tercatat** — form tetap membuka
-WhatsApp seperti biasa, jadi kegagalannya sunyi. Periksa log function setelah
-deploy pertama.
+Apa pun yang menerima POST JSON bisa: Google Apps Script, Slack incoming
+webhook, n8n, Make.
+
+Selama variabel ini kosong, endpoint menjawab `503` dan seluruh isi lead ditulis
+ke **log function** sebagai `LEAD: {...}` — masih bisa diselamatkan, tapi log
+Vercel punya masa simpan terbatas dan tidak memberi notifikasi. Anggap itu
+jaring, bukan tujuan. Form tetap membuka WhatsApp seperti biasa.
+
+### Cara tercepat: Google Sheet lewat Apps Script
+
+Buat Sheet baru → Extensions → Apps Script → tempel ini → Deploy as web app
+(Execute as: me, Who has access: **Anyone**) → salin URL-nya ke
+`LEAD_WEBHOOK_URL`:
+
+```js
+function doPost(e) {
+  const d = JSON.parse(e.postData.contents);
+  SpreadsheetApp.getActiveSheet().appendRow([
+    d.waktu, d.name, d.company, d.brief, d.sumber,
+  ]);
+  return ContentService.createTextOutput("ok");
+}
+```
+
+Baris pertama Sheet-nya isi manual sebagai judul kolom: `waktu`, `nama`,
+`perusahaan`, `brief`, `sumber`.
 
 Payload yang dikirim:
 

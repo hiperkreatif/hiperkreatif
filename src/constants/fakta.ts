@@ -35,9 +35,10 @@ export const FAKTA = {
   metaBusinessAgent: {
     rilis: "11 Agustus 2026",
     diperiksa: "2026-08-12",
-    sumber: "",
+    sumber:
+      "https://tekno.kompas.com/read/2026/08/11/15125137/meta-business-agent-resmi-di-indonesia-karyawan-ai-yang-bisa-kerja-24-jam",
     catatan:
-      "Belum ada URL publik yang tercatat untuk tanggal rilisnya. Seluruh posisi layanan ai-otomasi bertumpu pada fakta ini, jadi sumbernya perlu dilengkapi sebelum dipakai sebagai klaim di halaman lain.",
+      "Diumumkan di WhatsApp Business Summit Indonesia 2026, Jakarta. Dua skema: terintegrasi di aplikasi WhatsApp Business untuk UKM, dan Business Agent Platform untuk perusahaan besar. Seluruh posisi layanan ai-otomasi bertumpu pada fakta ini.",
   },
 } as const;
 

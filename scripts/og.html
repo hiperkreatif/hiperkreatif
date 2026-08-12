@@ -1,0 +1,290 @@
+<!doctype html>
+<!--
+  Sumber gambar Open Graph (src/assets/og.{png,webp}). Bukan bagian dari build
+  Astro — dijalankan manual saat headline beranda berubah.
+
+  Semua nilai di bawah disalin dari src/styles/global.css. Kalau token di sana
+  berubah, berkas ini ikut diperbarui, kalau tidak OG-nya melenceng dari situs.
+
+  Cara membuat ulang:
+  1. Buka berkas ini di Chrome/Brave headless dengan --allow-file-access-from-files
+     (tanpa flag itu font dan SVG lokal tidak dimuat), viewport 1200x630, DPR 2.
+  2. Screenshot penuh, lalu turunkan ke 1200x630 dengan sharp dari node_modules:
+     node -e "import('sharp').then(async({default:s})=>{const b=()=>s('SHOT.png').resize(1200,630,{kernel:'lanczos3'});await b().png({compressionLevel:9}).toFile('src/assets/og.png');await b().webp({quality:88,effort:6}).toFile('src/assets/og.webp')})"
+     Jalankan dari root proyek, bukan dari scripts/ — kalau tidak, sharp tidak ditemukan.
+  3. Perbarui SEO.ogImageAlt di src/constants/seo.ts kalau teksnya berubah.
+
+  Jebakan yang sudah memakan waktu: body WAJIB position: relative. Tanpa itu
+  .sheet yang position: absolute berpatokan ke viewport, dan footer jatuh di
+  luar kanvas tanpa gejala apa pun.
+-->
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Archivo";
+        src: url("../src/assets/fonts/Archivo-Variable.woff2") format("woff2");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("../src/assets/fonts/Inter-Variable.woff2") format("woff2");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("../src/assets/fonts/JetBrainsMono-Variable.woff2") format("woff2");
+        font-weight: 100 800;
+      }
+
+      /* Token PAPER, disalin apa adanya dari @theme di global.css */
+      :root {
+        --bg: #efece5;
+        --surface: #e7e3da;
+        --ink: #15140f;
+        --ink-soft: #55534a;
+        --muted: #666253;
+        --line: #e2ded4;
+        --line-strong: #cbc5b6;
+        --accent: #586420;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Titik tabur body, sama persis dengan global.css */
+      body {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(circle at 23px 47px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 91px 19px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 152px 88px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 61px 140px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 187px 171px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 34px 112px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 213px 201px, var(--line-strong) 1.8px, transparent 1.9px),
+          radial-gradient(circle at 128px 246px, var(--line-strong) 1.8px, transparent 1.9px);
+        background-size:
+          216px 216px, 216px 216px, 216px 216px, 216px 216px, 216px 216px,
+          271px 271px, 271px 271px, 271px 271px;
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* .sheet: lembar solid di atas latar bertitik, hairline hanya di sisi
+         kiri/kanan (border-inline), tanpa radius. Di-inset 40px supaya titiknya
+         terlihat, persis tampilan situs di viewport > 1440px. */
+      .sheet {
+        position: absolute;
+        inset: 0 40px;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+        border-inline: 1px solid var(--line-strong);
+      }
+
+      /* header: border-b border-line, .wrap px-12 py-3 */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 44px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo-box {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+      }
+      .logo-box img {
+        width: 27px;
+        height: 27px;
+      }
+      .wordmark {
+        font-family: "Archivo", sans-serif;
+        font-weight: 900;
+        font-size: 27px;
+        letter-spacing: -0.045em;
+        color: var(--ink);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        font-size: 17px;
+        font-weight: 500;
+        color: var(--ink-soft);
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 4px;
+        background: var(--ink);
+        color: var(--bg);
+        padding: 13px 22px;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+
+      /* hero */
+      .hero {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+        padding: 50px 44px 24px;
+      }
+      /* .logo-ghost: siluet dipotong tepi kanan, opacity .05 */
+      .ghost {
+        position: absolute;
+        right: -16%;
+        top: 50%;
+        height: 132%;
+        width: auto;
+        transform: translateY(-50%);
+        opacity: 0.045;
+        pointer-events: none;
+      }
+      .stack {
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 9px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 17px;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-top: 0.5em;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+      h1 {
+        font-family: "Archivo", sans-serif;
+        font-weight: 900;
+        font-size: 60px;
+        letter-spacing: -0.055em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin-top: 22px;
+      }
+      h1 span {
+        display: block;
+        color: var(--accent);
+      }
+      .lede {
+        margin-top: 22px;
+        max-width: 925px;
+        font-size: 21px;
+        line-height: 1.75;
+        color: var(--ink-soft);
+      }
+      .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 4px;
+        padding: 15px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .btn-secondary {
+        border: 1px solid var(--line-strong);
+        color: var(--ink-soft);
+      }
+
+      /* footer: hairline + domain, meniru footer situs */
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 44px;
+        border-top: 1px solid var(--line);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      footer b {
+        font-weight: 700;
+        color: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <header>
+        <div class="brand">
+          <span class="logo-box">
+            <img src="../src/assets/logo-black.svg" alt="" />
+          </span>
+          <span class="wordmark">hiperkreatif</span>
+        </div>
+        <nav>
+          <span>Layanan</span>
+          <span>Jurnal</span>
+          <span>GitHub</span>
+          <span class="cta">Jadwalkan konsultasi</span>
+        </nav>
+      </header>
+
+      <div class="hero">
+        <img class="ghost" src="../src/assets/logo-black.svg" alt="" />
+        <div class="stack">
+          <p class="eyebrow">toko online · profil perusahaan · media sosial · otomasi ai</p>
+          <h1>
+            Dirancang untuk masalah nyata.
+            <span>Dibangun untuk profitabilitas.</span>
+          </h1>
+          <p class="lede">
+            Mengubah masalah nyata menjadi solusi yang tepat guna, dengan pendekatan yang
+            berorientasi pada hasil, efisiensi, dan profitabilitas bisnis yang berkelanjutan.
+          </p>
+          <div class="buttons">
+            <span class="btn btn-primary">Jadwalkan konsultasi</span>
+            <span class="btn btn-secondary">Lihat layanannya</span>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <span>Gratis, tanpa kewajiban lanjut setelahnya.</span>
+        <span><b>hiperkreatif.com</b></span>
+      </footer>
+    </div>
+  </body>
+</html>
