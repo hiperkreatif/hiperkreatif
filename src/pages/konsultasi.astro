@@ -130,17 +130,6 @@ const EXPECTATIONS = [
             ></textarea>
           </div>
 
-          {/* Honeypot. Bot pengisi-semua-kolom akan mengisinya; manusia tidak
-              pernah melihatnya. Dicek di api/lead.js sebelum diteruskan. */}
-          <input
-            type="text"
-            name="fax"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-            class="absolute left-[-9999px] h-0 w-0 opacity-0"
-          />
-
           <div class="flex flex-wrap items-center gap-4">
             <button type="submit" class="btn btn-primary">
               Kirim via WhatsApp
@@ -191,22 +180,6 @@ const EXPECTATIONS = [
     ];
 
     const url = `https://wa.me/6285157445924?text=${encodeURIComponent(lines.join('\n'))}`;
-
-    // Catat lead ke sisi kami dulu, supaya orang yang batal di layar WhatsApp
-    // tetap terekam. `keepalive` supaya request selesai walau tab berganti.
-    // Sengaja tanpa await dan galatnya ditelan: pencatatan tidak boleh pernah
-    // menunda atau membatalkan pembukaan WhatsApp.
-    fetch('/api/lead', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      keepalive: true,
-      body: JSON.stringify({
-        name: data.get('name'),
-        company: company || '',
-        brief: data.get('brief'),
-        fax: data.get('fax') || '',
-      }),
-    }).catch(() => {});
 
     if (fallback) fallback.href = url;
     hint?.classList.add('hidden');

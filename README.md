@@ -117,64 +117,24 @@ tampil, judul tab, breadcrumb, navigasi, maupun footer.
   layanan di belakangnya membuat pembaca yang selesai membaca tidak punya
   tujuan.
 
-## Pencatatan lead (`api/lead.js`)
+## Jalur lead: WhatsApp saja
 
-Form `/konsultasi` bermuara ke WhatsApp. Sebelum tab WhatsApp dibuka, isinya
-di-POST ke `/api/lead` supaya orang yang **batal di layar WhatsApp** tetap
-terekam. Tanpa ini, satu-satunya jejak lead ada di aplikasi WhatsApp, dan yang
-tidak sampai ke sana hilang tanpa bekas.
+Form `/konsultasi` menyusun pesan lalu membuka `wa.me`. Tidak ada penangkap di
+sisi server, dan itu keputusan sadar: satu-satunya jejak lead ada di aplikasi
+WhatsApp.
 
-`api/` sengaja di luar `src/`: Vercel membangun direktori itu sebagai serverless
-function tanpa adapter Astro, jadi situsnya tetap statis penuh. Astro tidak
-menyentuhnya, dan `dist/` tidak memuatnya.
+Konsekuensinya perlu diketahui sebelum diubah: orang yang mengisi form lalu
+batal di layar WhatsApp tidak meninggalkan bekas apa pun, jadi tidak ada cara
+membedakan "tidak ada yang tertarik" dari "tombolnya gagal".
 
-**Satu langkah manual yang belum bisa diotomatiskan** — endpoint ini butuh
-tujuan. Set satu variabel lingkungan di Vercel:
-
-```
-LEAD_WEBHOOK_URL = <URL yang menerima POST JSON>
-```
-
-Apa pun yang menerima POST JSON bisa: Google Apps Script, Slack incoming
-webhook, n8n, Make.
-
-Selama variabel ini kosong, endpoint menjawab `503` dan seluruh isi lead ditulis
-ke **log function** sebagai `LEAD: {...}` — masih bisa diselamatkan, tapi log
-Vercel punya masa simpan terbatas dan tidak memberi notifikasi. Anggap itu
-jaring, bukan tujuan. Form tetap membuka WhatsApp seperti biasa.
-
-### Cara tercepat: Google Sheet lewat Apps Script
-
-Buat Sheet baru → Extensions → Apps Script → tempel ini → Deploy as web app
-(Execute as: me, Who has access: **Anyone**) → salin URL-nya ke
-`LEAD_WEBHOOK_URL`:
-
-```js
-function doPost(e) {
-  const d = JSON.parse(e.postData.contents);
-  SpreadsheetApp.getActiveSheet().appendRow([
-    d.waktu, d.name, d.company, d.brief, d.sumber,
-  ]);
-  return ContentService.createTextOutput("ok");
-}
-```
-
-Baris pertama Sheet-nya isi manual sebagai judul kolom: `waktu`, `nama`,
-`perusahaan`, `brief`, `sumber`.
-
-Payload yang dikirim:
-
-```json
-{ "name": "…", "company": "…", "brief": "…", "waktu": "ISO-8601", "sumber": "form /konsultasi" }
-```
-
-Yang sudah dijaga: honeypot (kolom `fax` tersembunyi), kolom wajib, batas
-panjang, karakter kontrol dibuang, timeout 5s, dan pesan galat webhook tidak
-pernah diteruskan ke browser (bisa memuat token). Tidak ada rate limit — kalau
-perlu, pakai Vercel Firewall, jangan menulis penghitung di function stateless.
-
-`npm test` menjalankan `api/lead.test.mjs`: validasi, honeypot, dan semua jalur
-gagal webhook. Tanpa framework, tanpa dependensi.
+Endpoint `api/lead.js` pernah ada untuk menutup celah itu — sengaja dicabut
+karena butuh satu tujuan eksternal (`LEAD_WEBHOOK_URL`) yang tidak dipasang.
+Kalau nanti diperlukan, yang dibutuhkan: satu berkas di `api/` (Vercel
+membangunnya sebagai serverless function tanpa adapter Astro, jadi situsnya
+tetap statis penuh), satu `fetch` ber-`keepalive` di `konsultasi.astro` sebelum
+`window.open`, dan satu penampung POST JSON — Apps Script ke Google Sheet paling
+cepat. Aturan yang tidak boleh dilanggar: pencatatan tidak pernah menunda atau
+membatalkan pembukaan WhatsApp.
 
 ## Fakta bertanggal (`src/constants/fakta.ts`)
 
