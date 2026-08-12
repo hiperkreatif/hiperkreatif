@@ -7,9 +7,9 @@ export interface NavMenuItem {
 }
 
 export const NAV_MENU: NavMenuItem[] = [
-  { label: "Blog / Jurnal", href: "/blog" },
-  { label: "Community", href: "#community" },
-  { label: "Github", href: "https://github.com/hiperkreatif", external: true },
+  { label: "Layanan", href: "/#layanan" },
+  { label: "Jurnal", href: "/jurnal" },
+  { label: "GitHub", href: "https://github.com/hiperkreatif", external: true },
 ];
 
 export interface NavCta {
@@ -18,6 +18,6 @@ export interface NavCta {
 }
 
 export const NAV_CTA: NavCta = {
-  label: "Jadwalkan Konsultasi",
-  href: "/consultation",
+  label: "Jadwalkan konsultasi",
+  href: "/konsultasi",
 };

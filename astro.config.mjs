@@ -2,7 +2,12 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import { BLOGS } from "./src/constants/blogs.ts";
+import { JURNAL } from "./src/constants/jurnal.ts";
+import { periksaKesegaran } from "./src/constants/fakta.ts";
+
+// Sekali per build/dev-start: peringatkan kalau fakta bertanggal di copy layanan
+// sudah lama tidak dicocokkan ke sumbernya. Tidak menggagalkan build.
+periksaKesegaran();
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,8 +21,8 @@ export default defineConfig({
       // memberi tahu crawler bahwa semua halaman berubah tiap deploy —
       // sinyal palsu yang lama-lama diabaikan.
       serialize(item) {
-        const slug = new URL(item.url).pathname.replace(/^\/blog\//, "").replace(/\/$/, "");
-        const post = BLOGS.find((b) => b.slug === slug);
+        const slug = new URL(item.url).pathname.replace(/^\/jurnal\//, "").replace(/\/$/, "");
+        const post = JURNAL.find((b) => b.slug === slug);
         if (post) item.lastmod = post.updated || post.iso;
         return item;
       },

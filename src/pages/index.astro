@@ -1,24 +1,31 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LogoUrl from "../assets/logo-black.svg?url";
+// Aset, bukan "/og.webp": file itu tidak ada di public/, jadi URL literalnya 404.
+import og from "../assets/og.webp";
 import { SEO } from "../constants/seo";
-import { SERVICES } from "../constants/services";
+import { LAYANAN } from "../constants/layanan";
 import { FAQS } from "../constants/faqs";
 import TechMarquee from "../components/TechMarquee.astro";
 import { ids } from "../constants/schema";
 
-const logo = LogoUrl;
 const S = ids(Astro.site);
 
+// Diturunkan dari layanan.ts, jangan diketik ulang: pernah melenceng dari angka
+// di halaman layanannya. Lini berlangganan dikeluarkan karena tidak punya
+// "versi pertama" maupun masa garansi.
+const sekaliJadi = LAYANAN.filter((s) => s.price.unit === "project");
+const mingguProyek = `${Math.min(...sekaliJadi.map((s) => s.timeline.minWeeks))}\u2013${Math.max(
+  ...sekaliJadi.map((s) => s.timeline.maxWeeks)
+)}`;
+const hariGaransi = Math.min(...sekaliJadi.map((s) => s.support.warrantyDays));
+const jamBalasan = Math.max(...LAYANAN.map((s) => s.support.slaHours));
+
 const STATS = [
-  { val: "15+", label: "proyek b2b selesai", icon: "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" },
-  // Dulu "100% kode & server milik klien". Dicabut karena cakupan serah terima
-  // itu hasil kesepakatan per proyek, bukan janji yang berlaku untuk semua —
-  // dan angka di baris ini terbaca sebagai jaminan. Diganti fakta yang memang
-  // berlaku di tiap proyek dan sudah tertulis di FAQ serta halaman layanan.
-  { val: "30 hari", label: "garansi perbaikan bug", icon: "M12 3l7 3v6c0 4.2-3 7.4-7 9-4-1.6-7-4.8-7-9V6l7-3zM9 12l2 2 4-4" },
-  { val: "1–4", label: "minggu sampai versi pertama", icon: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
-  { val: "24/7", label: "berjalan tanpa operator", icon: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
+  { val: "15+", label: "proyek selesai", icon: "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" },
+  { val: `${hariGaransi} hari`, label: "garansi bug, proyek sekali jadi", icon: "M12 3l7 3v6c0 4.2-3 7.4-7 9-4-1.6-7-4.8-7-9V6l7-3zM9 12l2 2 4-4" },
+  { val: mingguProyek, label: "minggu sampai versi pertama", icon: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
+  { val: `${jamBalasan} jam`, label: "batas waktu balasan", icon: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
 ];
 
 const STEPS = [
@@ -42,34 +49,27 @@ const STEPS = [
 ---
 
 <BaseLayout>
-  <!-- ══ HERO ══════════════════════════════════════════════ -->
-  <!-- Siluet logo raksasa menggantikan mock terminal (lihat .logo-ghost) -->
+  {/* ══ HERO ══════════════════════════════════════════════ */}
   <section class="relative overflow-hidden">
     <img src={LogoUrl} alt="" aria-hidden="true" class="logo-ghost" />
 
-    <div class="wrap relative py-16 md:py-24 lg:py-28">
-      <p class="eyebrow m-0">website · aplikasi · otomasi ai</p>
+    <div class="wrap relative py-10 md:py-20 lg:py-24">
+      <p class="eyebrow m-0">toko online · profil perusahaan · media sosial · otomasi ai</p>
 
-      <!-- Skala hero herdr: clamp(38px,6.6vw,132px), -.055em, max-width 20ch.
-           Batas atasnya di sini 5.5rem, bukan 132px, karena headline ini 54
-           karakter sementara herdr 37 — pada 132px kalimat kedua saja butuh
-           ~1.900px dan pecah jadi dua baris raksasa. Leading tetap 0.95 dari
-           .display, bukan 0.88 punya herdr: 'g' di Dirancang menabrak huruf
-           besar baris bawahnya.
-           Span block supaya kalimat kedua selalu mulai di baris baru. -->
+      {/* Batas atas clamp dipatok 5.75rem: headline ini 54 karakter, di atas
+           itu pecah jadi dua baris raksasa. */}
       <h1 class="display mt-6 max-w-[27ch] text-[clamp(2.6rem,6vw,5.75rem)] tracking-[-0.055em]">
-        Dirancang untuk solusi.
+        Dirancang untuk masalah nyata.
         <span class="text-accent block">Dibangun untuk profitabilitas.</span>
       </h1>
 
       <p class="lede mt-6 max-w-[64ch]">
-        Potongan platform naik lagi Mei 2026, dan sejak 1 Agustus marketplace memungut PPh 0,5%
-        tiap transaksi. Kami bangun toko online, profil perusahaan, dan otomasi AI atas nama
-        Anda sendiri, dan pelanggannya masuk ke basis data Anda, bukan ke basis data platform.
+        Mengubah masalah nyata menjadi solusi yang tepat guna, dengan pendekatan yang
+        berorientasi pada hasil, efisiensi, dan profitabilitas bisnis yang berkelanjutan.
       </p>
 
       <div class="mt-9 flex flex-wrap gap-2.5">
-        <a href="/consultation" class="btn btn-primary">Jadwalkan telepon</a>
+        <a href="/konsultasi" class="btn btn-primary">Jadwalkan konsultasi</a>
         <a href="#layanan" class="btn btn-secondary">Lihat yang kami kerjakan</a>
       </div>
 
@@ -79,10 +79,10 @@ const STEPS = [
     </div>
   </section>
 
-  <!-- ══ STACK ═════════════════════════════════════════════ -->
+  {/* ══ STACK ═════════════════════════════════════════════ */}
   <TechMarquee />
 
-  <!-- ══ ANGKA ═════════════════════════════════════════════ -->
+  {/* ══ ANGKA ═════════════════════════════════════════════ */}
   <section class="cells grid-cols-2 md:grid-cols-4" aria-label="Angka">
     {
       STATS.map((s) => (
@@ -108,7 +108,7 @@ const STEPS = [
     }
   </section>
 
-  <!-- ══ LAYANAN ═══════════════════════════════════════════ -->
+  {/* ══ LAYANAN ═══════════════════════════════════════════ */}
   <section id="layanan" class="section" aria-labelledby="layanan-title">
     <div class="wrap mb-10 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.46fr)] md:gap-12">
       <div>
@@ -118,14 +118,14 @@ const STEPS = [
         </h2>
       </div>
       <p class="m-0 text-muted">
-        Kebanyakan klien mulai dari satu yang paling mendesak, lalu menambah yang lain setelah
-        yang pertama terbukti jalan.
+        Media sosial memasok pengunjung, toko dan profil menampung mereka, otomasi mengurus
+        yang tersisa setelah pesanan masuk.
       </p>
     </div>
 
     <div class="cells md:grid-cols-2">
       {
-        SERVICES.map((s, i) => (
+        LAYANAN.map((s, i) => (
           <article class="card-hover flex flex-col py-8 md:py-9">
             <div class="flex items-center gap-3">
               <span class="tag">{String(i + 1).padStart(2, "0")}</span>
@@ -157,7 +157,7 @@ const STEPS = [
     </div>
   </section>
 
-  <!-- ══ CARA KERJA ════════════════════════════════════════ -->
+  {/* ══ CARA KERJA ════════════════════════════════════════ */}
   <section id="proses" class="section" aria-labelledby="proses-title">
     <div class="wrap mb-10 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.46fr)] md:gap-12">
       <div>
@@ -185,22 +185,26 @@ const STEPS = [
     </ol>
   </section>
 
-  <!-- ══ GARANSI ═══════════════════════════════════════════ -->
+  {/* ══ GARANSI ═══════════════════════════════════════════ */}
   <section id="garansi" class="relative border-t border-line bg-surface" aria-labelledby="garansi-title">
     <span class="absolute inset-x-0 top-0 h-[3px] bg-accent" aria-hidden="true"></span>
     <div class="wrap py-16 md:py-20">
-      <p class="label m-0">garansi hasil</p>
-      <h2 id="garansi-title" class="display mt-4 max-w-[24ch] text-[clamp(1.6rem,3.4vw,2.4rem)]">
-        Tidak mencapai target, uang Anda kembali.
+      <p class="label m-0">cakupan dan batas</p>
+      <h2 id="garansi-title" class="display mt-4 max-w-[26ch] text-[clamp(1.6rem,3.4vw,2.4rem)]">
+        Yang kami janjikan ditulis. Yang tidak kami janjikan, juga.
       </h2>
-      <p class="lede mt-5 max-w-[68ch]">
-        Target terukurnya kita tetapkan bersama di awal dan ditulis di blueprint. Kalau sistem
-        yang kami bangun tidak sampai ke sana, investasi Anda kami kembalikan.
+      <p class="lede mt-5 mb-0 max-w-[68ch]">
+        Untuk proyek sekali jadi ada {hariGaransi} hari perbaikan bug tanpa biaya tambahan
+        setelah serah terima. Itu satu-satunya jaminan yang kami tulis, dan lingkupnya bug pada
+        pekerjaan kami. Hasil bisnisnya tidak, karena sebagian penentunya bukan milik kami:
+        algoritma platform, harga pasar, dan besaran budget iklan Anda. Yang kita sepakati di
+        blueprint adalah indikator kerjanya, dan batas itu kami sebut di panggilan pertama,
+        sebelum ada tanda tangan.
       </p>
     </div>
   </section>
 
-  <!-- ══ FAQ ═══════════════════════════════════════════════ -->
+  {/* ══ FAQ ═══════════════════════════════════════════════ */}
   <section id="faq" class="section" aria-labelledby="faq-title">
     <div class="wrap">
       <p class="eyebrow m-0">pertanyaan umum</p>
@@ -224,8 +228,8 @@ const STEPS = [
                 </svg>
               </span>
             </summary>
-            <!-- .wrap sudah mx-auto; max-w di elemen yang sama akan menimpanya
-                 dan bikin jawaban melayang ke tengah. Batasi lebar di anaknya. -->
+            {/* .wrap sudah mx-auto; max-w di elemen yang sama akan menimpanya
+                 dan bikin jawaban melayang ke tengah. Batasi lebar di anaknya. */}
             <div class="wrap">
               <p class="mb-6 mt-0 max-w-[75ch] text-[0.95rem] leading-relaxed text-muted">
                 {f.a}
@@ -237,19 +241,19 @@ const STEPS = [
     </div>
   </section>
 
-  <!-- ══ CTA ═══════════════════════════════════════════════ -->
-  <section class="border-t border-line">
+  {/* ══ CTA ═══════════════════════════════════════════════ */}
+  <section class="print-hide border-t border-line">
     <div class="wrap py-16 text-center md:py-20">
       <p class="eyebrow m-0 justify-center">konsultasi</p>
       <h2 class="display mx-auto mt-4 max-w-[24ch] text-[clamp(1.8rem,4vw,2.8rem)]">
         Mulai dari satu telepon.
       </h2>
       <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
-        Gratis, dan lamanya menyesuaikan kebutuhan Anda. Anda keluar dengan gambaran solusi yang konkret, mau lanjut kerja
-        sama dengan kami atau tidak.
+        Gratis dan tanpa kewajiban lanjut. Anda keluar dengan gambaran solusi yang konkret, mau
+        kerja sama dengan kami atau tidak.
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-2.5">
-        <a href="/consultation" class="btn btn-primary">Jadwalkan konsultasi</a>
+        <a href="/konsultasi" class="btn btn-primary">Jadwalkan konsultasi</a>
         <a
           href="https://wa.me/6285157445924?text=Halo%20Hiperkreatif%2C%20saya%20mau%20diskusi%20soal%20sistem%20digital%20bisnis%20saya."
           target="_blank"
@@ -260,7 +264,7 @@ const STEPS = [
     </div>
   </section>
 
-  <!-- JSON-LD @graph tetap di head -->
+  {/* JSON-LD @graph tetap di head */}
   <script
     type="application/ld+json"
     slot="head"
@@ -273,9 +277,12 @@ const STEPS = [
           name: "Hiperkreatif",
           legalName: SEO.legalName,
           url: S.base,
+          // Bidang yang dikuasai, memakai istilah yang benar-benar diketik
+          // orang, termasuk bentuk Inggris yang tidak muncul di teks tampil.
+          knowsAbout: [...new Set(LAYANAN.flatMap((s: any) => [s.name, ...s.aliases]))],
           logo: {
             "@type": "ImageObject",
-            url: logo,
+            url: LogoUrl,
             width: 112,
             height: 112,
           },
@@ -291,7 +298,7 @@ const STEPS = [
             {
               "@type": "ContactPoint",
               contactType: "customer support",
-              telephone: "+628157445924",
+              telephone: "+6285157445924",
               email: "hi@hiperkreatif.com",
               availableLanguage: "id",
             },
@@ -302,8 +309,8 @@ const STEPS = [
         {
           "@type": "Person",
           "@id": S.person,
-          name: "Kang Dadan",
-          jobTitle: "Software Engineer & Solo Founder",
+          name: SEO.personName,
+          jobTitle: SEO.personRole,
           url: S.base,
           image: S.url("/dadan.jpg"),
           worksFor: { "@id": S.org },
@@ -328,7 +335,7 @@ const STEPS = [
           about: { "@id": S.org },
           primaryImageOfPage: {
             "@type": "ImageObject",
-            url: S.url(SEO.ogImage || "/og.webp"),
+            url: S.url(og.src),
             width: 1200,
             height: 630,
           },
@@ -348,21 +355,24 @@ const STEPS = [
           "@type": "SiteNavigationElement",
           name: "Primary navigation",
           url: S.base,
-          about: SERVICES.map((s) => ({
+          about: LAYANAN.map((s) => ({
             "@type": "WebPage",
             name: s.name,
-            url: S.url(`/services/${s.slug}`),
+            url: S.url(`/layanan/${s.slug}`),
           })),
         },
 
-        ...SERVICES.map((s) => ({
+        ...LAYANAN.map((s) => ({
           "@type": "Service",
-          "@id": `${S.url(`/services/${s.slug}`)}#service`,
+          "@id": `${S.url(`/layanan/${s.slug}`)}#service`,
+          alternateName: s.aliases,
           name: s.name,
           serviceType: s.badge,
-          url: S.url(`/services/${s.slug}`),
+          url: S.url(`/layanan/${s.slug}`),
           provider: { "@id": S.org },
-          description: s.tagline,
+          // Bukan tagline: tagline kini sengaja dipendekkan untuk kartu, terlalu
+          // tipis sebagai deskripsi schema. Sama dengan halaman layanannya.
+          description: s.desc,
         })),
       ],
     })}

@@ -1,18 +1,20 @@
 export const SEO = {
   // Kata kunci pencarian ("jasa website", "toko online", "otomasi ai") sengaja
-  // dipertahankan di title — problem-first-nya ditaruh di description.
+  // dipertahankan di title, problem-first-nya ditaruh di description.
   title: "Jasa Website, Toko Online & Otomasi AI untuk UMKM | Hiperkreatif",
 
-  headline: "Kanal jualan dan sistem operasional milik bisnis Anda sendiri",
-
   description:
-    "Margin habis di potongan marketplace dan kerja manual? Kami bangun toko online, profil perusahaan, dan otomasi AI milik Anda sendiri. Konsultasi gratis.",
+    "Margin habis di potongan marketplace dan kerja manual? Kami bangun toko online, profil perusahaan, otomasi AI, dan kelola media sosialnya. Konsultasi gratis.",
 
-  author: "Hiperkreatif",
+  personName: "Kang Dadan",
+  personRole: "Software Engineer & Solo Founder",
 
   // Open Graph / Twitter
-  ogImage: "/og.webp",
-  ogImageAlt: "Hiperkreatif — Agency Digital: Website, Aplikasi & Otomasi AI",
+  // Gambarnya diimpor sebagai aset di BaseLayout, jadi tidak ada path di sini:
+  // src/assets/og.webp, bukan public/og.webp. Alt harus mengutip teks di dalam
+  // gambarnya, bukan menuliskan klaim lain.
+  ogImageAlt:
+    "Hiperkreatif — toko online, profil perusahaan, media sosial, otomasi AI. Dirancang untuk masalah nyata, dibangun untuk profitabilitas.",
   ogType: "website",
   twitterCard: "summary_large_image",
 
@@ -20,8 +22,6 @@ export const SEO = {
   robots:
     "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
 
-  // Optional untuk UI internal
-  badgeTitle: "Website • Social Media • AI-Powered",
   siteName: "Hiperkreatif",
 
   // Nama merek tetap "Hiperkreatif"; badan hukumnya dipakai di footer dan

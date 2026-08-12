@@ -1,11 +1,11 @@
 export const FAQS = [
   {
     q: "Sudah jualan di marketplace, masih perlu website sendiri?",
-    a: "Perlu, tapi bukan untuk menggantikan. Marketplace tetap kanal terbaik untuk ditemukan pembeli baru. Yang merugikan adalah pembeli yang sudah pernah belanja tetap dipotong komisi seperti pembeli baru, setiap kali mereka pesan lagi. Website sendiri dipakai untuk menampung pembelian ulang, dan di sana potongannya nol serta nomor pelanggannya jadi milik Anda."
+    a: "Perlu, tapi bukan untuk menggantikan. Marketplace tetap kanal termurah untuk ditemukan pembeli baru. Yang merugikan adalah pembeli lama tetap dipotong komisi seperti pembeli baru, setiap kali mereka pesan lagi. Website sendiri menampung pembelian ulang itu: tanpa komisi per transaksi, dan nomor pelanggannya jadi milik Anda. Biaya tetapnya server dan payment gateway, angkanya kami tunjukkan sebelum Anda memilih."
   },
   {
     q: "Berapa lama sampai sistemnya bisa dipakai?",
-    a: "Website profil biasanya 1–2 minggu. Untuk sistem kustom atau AI, versi pertama yang sudah bisa dipakai kerja siap dalam 3–4 minggu, lalu kami tambah bertahap. Kami tidak menahan rilis sampai semuanya sempurna, karena sistem yang sudah jalan lebih berguna daripada sistem yang masih dirapikan."
+    a: "Website profil biasanya 1 sampai 2 minggu. Untuk toko online 2 sampai 4 minggu, dan untuk sistem AI 3 sampai 6 minggu, terhitung sampai versi pertama yang sudah bisa dipakai kerja. Sisanya kami tambah bertahap. Kami tidak menahan rilis sampai semuanya sempurna, karena sistem yang sudah jalan lebih berguna daripada sistem yang masih dirapikan."
   },
   {
     q: "Bagaimana kalau saya tidak mengerti teknis sama sekali?",
@@ -17,7 +17,7 @@ export const FAQS = [
   },
   {
     q: "Apa yang terjadi setelah serah terima?",
-    a: "Ada 30 hari garansi perbaikan bug tanpa biaya tambahan, plus pelatihan untuk tim Anda. Setelah itu Anda bebas memilih: lanjut kontrak pemeliharaan, atau jalan sendiri. Soal kode dan akses server, cakupan serah terimanya kami tulis di blueprint sebelum mulai — bisa berpindah sepenuhnya ke nama Anda, bisa juga tetap kami yang mengelola kalau itu yang lebih masuk akal untuk tim Anda. Yang tidak kami lakukan adalah menahannya sebagai alat tawar."
+    a: "Untuk proyek sekali jadi ada 30 hari perbaikan bug tanpa biaya tambahan, plus pelatihan untuk tim Anda. Media sosial tidak memakai skema ini karena sifatnya berlangganan bulanan. Setelah itu Anda bebas memilih: lanjut kontrak pemeliharaan, atau jalan sendiri. Cakupan serah terima kode dan akses server ditulis di blueprint sebelum mulai. Yang tidak kami lakukan adalah menahannya sebagai alat tawar."
   },
   {
     q: "Kenapa lebih mahal dari freelancer?",

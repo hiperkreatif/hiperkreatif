@@ -8,7 +8,6 @@ import Logo from "../assets/logo-black.svg";
 import { SEO as DEFAULTS } from "../constants/seo.ts";
 import og from "../assets/og.webp";
 const ogUrl = new URL(og.src, Astro.site).toString();
-import LogoUrl from "../assets/logo-black.svg?url";
 import ArchivoUrl from "../assets/fonts/Archivo-Variable.woff2?url";
 import InterUrl from "../assets/fonts/Inter-Variable.woff2?url";
 import JetBrainsMonoUrl from "../assets/fonts/JetBrainsMono-Variable.woff2?url";
@@ -17,7 +16,6 @@ const {
   title = DEFAULTS.title,
   description = DEFAULTS.description,
   robots = DEFAULTS.robots,
-  logo = LogoUrl,
   ogImageAlt = DEFAULTS.ogImageAlt,
   ogType = DEFAULTS.ogType,
   twitterCard = DEFAULTS.twitterCard,
@@ -29,8 +27,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
 const year = new Date().getFullYear();
 
-// Sakelar mode pakai ikon, bukan teks — glyph ☾ ☀ tidak ada di subset font
-// yang kita self-host, jadi digambar sebagai SVG stroke.
 const MODES = [
   {
     id: "ink",
@@ -81,7 +77,7 @@ const SOCIALS = [
     <meta name="color-scheme" content="dark light" />
     <meta id="theme-color" name="theme-color" content="#efece5" />
 
-    <!-- Harus sinkron & sebelum paint pertama, kalau tidak mode-nya berkedip -->
+    {/* Harus sinkron & sebelum paint pertama, kalau tidak mode-nya berkedip */}
     <script is:inline>
       (() => {
         const saved = localStorage.getItem("hk-mode");
@@ -95,7 +91,7 @@ const SOCIALS = [
       })();
     </script>
 
-    <!-- Open Graph -->
+    {/* Open Graph */}
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content={siteName} />
@@ -108,7 +104,7 @@ const SOCIALS = [
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogImageAlt} />
 
-    <!-- Twitter / X -->
+    {/* Twitter / X */}
     <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:site" content="@hiperkreatif" />
     <meta name="twitter:title" content={title} />
@@ -118,17 +114,19 @@ const SOCIALS = [
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Preload font: 3 file variable, satu per peran -->
+    {/* Preload font: 3 file variable, satu per peran */}
     <link rel="preload" href={ArchivoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={InterUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={JetBrainsMonoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
 
-    <!-- Tanpa slot bernama ini, `slot="head"` di halaman dibuang diam-diam
-         oleh Astro — itu sebabnya JSON-LD tidak pernah terbit. -->
+    {/* Tanpa slot bernama ini, `slot="head"` di halaman dibuang diam-diam
+         oleh Astro, itu sebabnya JSON-LD tidak pernah terbit. */}
     <slot name="head" />
   </head>
 
-  <body class="flex min-h-screen flex-col bg-bg text-ink">
+  <body class="flex min-h-[100dvh] flex-col bg-bg text-ink">
+    {/* 100dvh, bukan 100vh: di iOS Safari 100vh melebihi viewport terlihat dan
+        menyisakan scroll semu di halaman pendek. */}
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-bg"
@@ -141,7 +139,7 @@ const SOCIALS = [
     >
       <nav class="wrap flex items-center justify-between gap-4 py-3" aria-label="Navigasi utama">
         <a href="/" class="group inline-flex items-center gap-2.5">
-          <!-- Kotak logo dipatok setinggi .btn-sm (2.25rem) supaya sejajar CTA -->
+          {/* Kotak logo dipatok setinggi .btn-sm (2.25rem) supaya sejajar CTA */}
           <span
             class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-line bg-surface transition-colors group-hover:border-line-strong"
           >
@@ -159,13 +157,13 @@ const SOCIALS = [
           </span>
         </a>
 
-        <!-- Desktop -->
+        {/* Desktop */}
         <div class="hidden items-center gap-6 md:flex">
           {
             NAV_MENU.map((item) => (
               <a
                 href={item.href}
-                class="text-[0.875rem] font-medium text-ink-soft transition-colors hover:text-accent"
+                class="py-1 text-[0.875rem] font-medium text-ink-soft transition-colors hover:text-accent"
                 aria-current={currentPath === item.href ? "page" : undefined}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
@@ -203,7 +201,7 @@ const SOCIALS = [
           <a href={NAV_CTA.href} class="btn btn-primary btn-sm">{NAV_CTA.label}</a>
         </div>
 
-        <!-- Mobile: sakelar mode di luar disclosure supaya selalu terjangkau -->
+        {/* Mobile: sakelar mode di luar disclosure supaya selalu terjangkau */}
         <div class="flex items-center gap-2 md:hidden">
           <div class="mode" role="group" aria-label="Mode tampilan">
             {
@@ -232,7 +230,7 @@ const SOCIALS = [
             }
           </div>
 
-        <details class="relative" name="nav">
+        <details id="nav-mobile" class="relative" name="nav">
           <summary
             class="grid h-9 w-9 cursor-pointer list-none place-items-center gap-[0.22rem] rounded-md border border-line text-ink-soft transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent [&::-webkit-details-marker]:hidden"
             aria-label="Buka menu"
@@ -276,11 +274,10 @@ const SOCIALS = [
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-          <a href="/blog" class="transition-colors hover:text-accent">blog</a>
-          <a href="/consultation" class="transition-colors hover:text-accent">konsultasi</a>
-          <a
-            href="mailto:hi@hiperkreatif.com"
-            class="transition-colors hover:text-accent">hi@hiperkreatif.com</a
+          <a href="/jurnal" class="py-1 transition-colors hover:text-accent">jurnal</a>
+          <a href="/konsultasi" class="py-1 transition-colors hover:text-accent">konsultasi</a>
+          <a href="mailto:hi@hiperkreatif.com" class="py-1 transition-colors hover:text-accent"
+            >hi@hiperkreatif.com</a
           >
         </div>
 
@@ -313,7 +310,6 @@ const SOCIALS = [
 
         const paint = (mode) => {
           root.dataset.mode = mode;
-          // Diambil dari CSS, bukan diketik ulang — satu sumber kebenaran.
           meta.content = getComputedStyle(root).getPropertyValue("--color-bg").trim();
           buttons.forEach((b) =>
             b.setAttribute("aria-pressed", String(b.dataset.modeBtn === mode))
@@ -333,6 +329,25 @@ const SOCIALS = [
         });
 
         paint(root.dataset.mode);
+      })();
+    </script>
+
+    {/* <details> tidak punya light-dismiss bawaan seperti popover. */}
+    <script is:inline>
+      (() => {
+        const nav = document.getElementById("nav-mobile");
+        if (!nav) return;
+
+        document.addEventListener("click", (e) => {
+          if (nav.open && !nav.contains(e.target)) nav.open = false;
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && nav.open) {
+            nav.open = false;
+            nav.querySelector("summary")?.focus();
+          }
+        });
       })();
     </script>
 

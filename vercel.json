@@ -1,4 +1,46 @@
 {
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/jurnal",
+      "permanent": true
+    },
+    {
+      "source": "/consultation",
+      "destination": "/konsultasi",
+      "permanent": true
+    },
+    {
+      "source": "/services/ecommerce",
+      "destination": "/layanan/ecommerce",
+      "permanent": true
+    },
+    {
+      "source": "/services/company-profile",
+      "destination": "/layanan/profil-perusahaan",
+      "permanent": true
+    },
+    {
+      "source": "/services/social-media",
+      "destination": "/layanan/media-sosial",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-automation",
+      "destination": "/layanan/ai-otomasi",
+      "permanent": true
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/#layanan",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/#layanan",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

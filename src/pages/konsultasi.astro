@@ -21,17 +21,10 @@ const EXPECTATIONS = [
   title="Konsultasi Gratis | Hiperkreatif"
   description="Ceritakan kendala operasional bisnis Anda. Kami petakan di mana margin bocor dan apakah sistem digital bisa menutupnya. Tanpa kewajiban."
 >
-  <!-- ══ HERO ══════════════════════════════════════════════ -->
-  <section class="relative overflow-hidden border-b border-line bg-surface">
-    <div class="grid-bg pointer-events-none absolute inset-0 opacity-35" aria-hidden="true"></div>
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_20%,var(--color-surface)_85%)]"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="wrap relative z-10 py-14 md:py-20">
-      <p class="eyebrow m-0">discovery call</p>
+  {/* ══ HERO ══════════════════════════════════════════════ */}
+  <section class="border-b border-line bg-surface">
+    <div class="wrap py-12 md:py-20">
+      <p class="eyebrow m-0">telepon perkenalan</p>
       <h1 class="display mt-5 max-w-[16ch] text-[clamp(2.4rem,5.2vw,3.8rem)]">
         Ceritakan kendalanya.
       </h1>
@@ -43,10 +36,10 @@ const EXPECTATIONS = [
     </div>
   </section>
 
-  <!-- ══ EKSPEKTASI + FORM ═════════════════════════════════ -->
+  {/* ══ EKSPEKTASI + FORM ═════════════════════════════════ */}
   <section class="wrap">
     <div class="grid divide-y divide-line lg:grid-cols-[minmax(260px,0.55fr)_minmax(0,1fr)] lg:divide-x lg:divide-y-0">
-      <!-- Kiri -->
+      {/* Kiri */}
       <div class="py-12 lg:pr-10">
         <p class="label m-0">ekspektasi kerja sama</p>
 
@@ -70,14 +63,22 @@ const EXPECTATIONS = [
             href="https://wa.me/6285157445924"
             target="_blank"
             rel="noopener noreferrer"
-            class="link">wa.me/6285157445924</a
+            class="link inline-block py-1">wa.me/6285157445924</a
           >
         </p>
       </div>
 
-      <!-- Kanan: form -->
+      {/* Kanan: form */}
       <div class="py-12 lg:pl-10">
-        <form id="consultation-form" class="grid gap-6">
+        {/* action/method/target adalah jalur cadangan: kalau skripnya gagal,
+             submit tetap membuka WhatsApp alih-alih menghapus semua isian. */}
+        <form
+          id="konsultasi-form"
+          class="grid gap-6"
+          action="https://wa.me/6285157445924"
+          method="get"
+          target="_blank"
+        >
           <div class="grid gap-6 md:grid-cols-2">
             <div class="grid gap-2">
               <label
@@ -91,7 +92,7 @@ const EXPECTATIONS = [
                 name="name"
                 required
                 autocomplete="name"
-                placeholder="Cth: John Doe"
+                placeholder="Cth: Budi Santoso"
                 class="w-full rounded-md border border-line bg-bg px-3 py-2.5 text-[0.95rem] text-ink transition-colors placeholder:text-muted/70 focus:border-accent focus:outline-none"
               />
             </div>
@@ -100,13 +101,12 @@ const EXPECTATIONS = [
               <label
                 for="company"
                 class="font-mono text-[0.72rem] font-bold uppercase tracking-[0.1em] text-muted"
-                >Nama perusahaan</label
+                >Nama perusahaan <span class="font-normal normal-case tracking-normal">(opsional)</span></label
               >
               <input
                 type="text"
                 id="company"
                 name="company"
-                required
                 autocomplete="organization"
                 placeholder="Cth: PT Sukses Makmur"
                 class="w-full rounded-md border border-line bg-bg px-3 py-2.5 text-[0.95rem] text-ink transition-colors placeholder:text-muted/70 focus:border-accent focus:outline-none"
@@ -130,15 +130,39 @@ const EXPECTATIONS = [
             ></textarea>
           </div>
 
+          {/* Honeypot. Bot pengisi-semua-kolom akan mengisinya; manusia tidak
+              pernah melihatnya. Dicek di api/lead.js sebelum diteruskan. */}
+          <input
+            type="text"
+            name="fax"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            class="absolute left-[-9999px] h-0 w-0 opacity-0"
+          />
+
           <div class="flex flex-wrap items-center gap-4">
             <button type="submit" class="btn btn-primary">
               Kirim via WhatsApp
               <span aria-hidden="true">→</span>
             </button>
-            <p class="m-0 font-mono text-[0.72rem] text-muted">
+            <p id="form-hint" class="m-0 font-mono text-[0.72rem] text-muted">
               Membuka WhatsApp dengan brief terisi otomatis.
             </p>
           </div>
+
+          <p
+            id="form-status"
+            class="m-0 hidden max-w-[52ch] font-mono text-[0.72rem] leading-relaxed text-muted"
+            role="status"
+            aria-live="polite"
+          >
+            WhatsApp dibuka di tab baru. Tidak muncul?
+            <a id="form-fallback" href="#" target="_blank" rel="noopener noreferrer" class="link"
+              >buka manual</a
+            >, atau kirim ke
+            <a href="mailto:hi@hiperkreatif.com" class="link">hi@hiperkreatif.com</a>.
+          </p>
         </form>
       </div>
     </div>
@@ -146,17 +170,48 @@ const EXPECTATIONS = [
 </BaseLayout>
 
 <script>
-  const form = document.getElementById('consultation-form') as HTMLFormElement | null;
+  const form = document.getElementById('konsultasi-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const fallback = document.getElementById('form-fallback') as HTMLAnchorElement | null;
+  const hint = document.getElementById('form-hint');
+
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
-    const rawMessage = `*INISIASI PROYEK BARU*\n\n*Nama:* ${data.get('name')}\n*Perusahaan:* ${data.get('company')}\n*Tantangan Bisnis:* ${data.get('brief')}\n\nMohon bantuannya untuk menjadwalkan Discovery Call.`;
+    const company = (data.get('company') as string)?.trim();
+    const lines = [
+      'Halo Hiperkreatif, saya mau konsultasi.',
+      '',
+      `*Nama:* ${data.get('name')}`,
+      ...(company ? [`*Perusahaan:* ${company}`] : []),
+      `*Yang sedang macet:* ${data.get('brief')}`,
+      '',
+      'Kapan bisa telepon?',
+    ];
 
-    window.open(
-      `https://wa.me/6285157445924?text=${encodeURIComponent(rawMessage)}`,
-      '_blank',
-      'noopener,noreferrer'
-    );
+    const url = `https://wa.me/6285157445924?text=${encodeURIComponent(lines.join('\n'))}`;
+
+    // Catat lead ke sisi kami dulu, supaya orang yang batal di layar WhatsApp
+    // tetap terekam. `keepalive` supaya request selesai walau tab berganti.
+    // Sengaja tanpa await dan galatnya ditelan: pencatatan tidak boleh pernah
+    // menunda atau membatalkan pembukaan WhatsApp.
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      keepalive: true,
+      body: JSON.stringify({
+        name: data.get('name'),
+        company: company || '',
+        brief: data.get('brief'),
+        fax: data.get('fax') || '',
+      }),
+    }).catch(() => {});
+
+    if (fallback) fallback.href = url;
+    hint?.classList.add('hidden');
+    status?.classList.remove('hidden');
+
+    window.open(url, '_blank', 'noopener');
   });
 </script>

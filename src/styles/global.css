@@ -1,12 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* ── Self-hosted fonts (3 variable file, satu per peran) ───────
-   Archivo  = display  (Google latin subset)
-   Inter    = body     (Google latin subset)
-   JetBrains Mono = mono (Google latin subset — subset ini TIDAK memuat
-   ● ◐ ○ ✓ →, jadi jangan pakai glyph itu untuk hal yang penting;
-   status dot digambar pakai CSS, bukan teks). */
+/* Archivo = display, Inter = body, JetBrains Mono = mono. Ketiganya Google
+   latin subset, dan subset itu TIDAK memuat ● ◐ ○ ✓ → — jangan pakai glyph
+   tersebut untuk hal yang penting. */
 @font-face {
   font-family: 'Archivo';
   src: url('/src/assets/fonts/Archivo-Variable.woff2') format('woff2');
@@ -37,69 +34,49 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
-  /* PAPER = mode dasar. Nilai netralnya diambil apa adanya dari herdr.dev
-     site.css (html[data-mode="paper"]). Aksennya TIDAK: mauve herdr diganti
-     olive karena seluruh ground di sini hangat. Nilai paper sengaja lebih pekat
-     dari padanan Catppuccin-nya supaya lolos AA di atas --color-surface juga
-     (4.50), bukan cuma di atas --color-bg. */
+  /* PAPER = mode dasar. Aksen olive dipekatkan supaya lolos AA di atas
+     --color-surface juga, bukan cuma di atas --color-bg. */
   --color-bg: #efece5;
   --color-surface: #e7e3da;
-  --color-mass: #ddd8cc;
   --color-ink: #15140f;
   --color-ink-soft: #55534a;
-  --color-muted: #86826f;
+  --color-muted: #666253;
   --color-line: #e2ded4;
   --color-line-strong: #cbc5b6;
-  --color-grid: #e4e0d6;
 
-  --color-accent: #5e6b20;
+  --color-accent: #586420;
   --color-accent-ink: #ffffff;
-  --color-accent-soft: color-mix(in srgb, #5e6b20 8%, transparent);
+  --color-accent-soft: color-mix(in srgb, #586420 8%, transparent);
 
+  /* Blok kode di artikel jurnal (prose-pre:*) */
   --color-term: #faf7ef;
-  --color-term-2: #f2eee3;
   --color-term-line: #dcd6c8;
   --color-term-text: #3a3830;
-  --color-term-dim: #6e6a5e;
-  --color-term-accent: #5e6b20;
-  --color-term-green: #3a7539;
-  --color-term-yellow: #8a5e00;
 
   --radius-sm: 2px;
   --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
 }
 
-/* INK. Ground-nya sengaja hampir netral, bukan biru-violet gelap — warna
-   tinggal di aksen olive. Kontras herdr: ink 14.7, dim 9.3, faint 5.3.
-   Semua utility Tailwind membaca var(--color-*), jadi override di sini
-   otomatis mengalir ke seluruh halaman. */
+/* INK. Ground hampir netral, warna tinggal di aksen. Semua utility Tailwind
+   membaca var(--color-*), jadi override di sini mengalir ke seluruh halaman. */
 html[data-mode='ink'] {
   color-scheme: dark;
 
   --color-bg: #17171a;
   --color-surface: #1e1e22;
-  --color-mass: #26262b;
   --color-ink: #eae8ee;
   --color-ink-soft: #bdb9c9;
   --color-muted: #8e8a98;
   --color-line: #26262b;
   --color-line-strong: #35353d;
-  --color-grid: #202024;
 
   --color-accent: #c3d17a;
   --color-accent-ink: #17171a;
   --color-accent-soft: color-mix(in srgb, #c3d17a 14%, transparent);
 
   --color-term: #0f0f12;
-  --color-term-2: #1a1a1f;
   --color-term-line: #2b2b33;
   --color-term-text: #d4d1dc;
-  --color-term-dim: #8e8a98;
-  --color-term-accent: #c3d17a;
-  --color-term-green: #8ecf7a;
-  --color-term-yellow: #e6c060;
 }
 
 @view-transition {
@@ -118,19 +95,32 @@ html[data-mode='ink'] {
     scroll-behavior: smooth;
   }
 
-  /* Tanah bergaris 72px. Yang menutupinya adalah .sheet, jadi garis hanya
-     terlihat di margin kiri/kanan — persis frame di herdr.dev. */
+  /* Dua petak saling prima (216 & 271px) memalsukan keacakan: pola gabungannya
+     baru berulang tiap 58.536px. */
   body {
     min-width: 320px;
     overflow-x: clip;
     background-image:
-      linear-gradient(var(--color-grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
-    background-size: 72px 72px;
+      radial-gradient(circle at 23px 47px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 91px 19px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 152px 88px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 61px 140px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 187px 171px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 34px 112px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 213px 201px, var(--color-line-strong) 1.8px, transparent 1.9px),
+      radial-gradient(circle at 128px 246px, var(--color-line-strong) 1.8px, transparent 1.9px);
+    background-size:
+      216px 216px, 216px 216px, 216px 216px, 216px 216px, 216px 216px,
+      271px 271px, 271px 271px, 271px 271px;
   }
 
   ::selection {
     background: var(--color-accent-soft);
+  }
+
+  /* Heading pakai `balance` (lihat .display), prose panjang `pretty`. */
+  p {
+    text-wrap: pretty;
   }
 
   :focus-visible {
@@ -152,16 +142,14 @@ html[data-mode='ink'] {
 }
 
 @layer components {
-  /* Lembar solid yang duduk di atas tanah bergaris. Membungkus header,
-     main, dan footer sekaligus. */
+  /* Lembar solid di atas latar bertitik, membungkus header + main + footer. */
   .sheet {
     @apply mx-auto flex w-full max-w-[1440px] flex-grow flex-col bg-bg;
     border-inline: 1px solid var(--color-line-strong);
   }
 
-  /* Container tunggal — sama untuk header, section, dan footer.
-     1520 (herdr pakai 1320) + padding naik di lg supaya isinya tidak menempel
-     ke garis .sheet begitu lembarnya dilebarkan. */
+  /* Container tunggal untuk header, section, dan footer. Padding naik di lg
+     supaya isinya tidak menempel ke garis tepi .sheet. */
   .wrap {
     @apply mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12;
   }
@@ -182,9 +170,8 @@ html[data-mode='ink'] {
     @apply bg-ink text-bg;
   }
 
-  /* Jarak vertikal baku antar section. Titik penanda di kedua ujung garis
-     atas — ciri herdr.dev, digambar pakai pseudo-element biar tidak
-     menambah markup di tiap section. */
+  /* Jarak vertikal baku antar section. Titik penanda di kedua ujung garis atas
+     digambar pakai pseudo-element biar tidak menambah markup tiap section. */
   .section {
     @apply relative border-t border-line py-16 md:py-20;
   }
@@ -201,18 +188,19 @@ html[data-mode='ink'] {
     @apply right-0 translate-x-1/2;
   }
 
-  /* Label kecil di atas heading */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-[0.78rem] font-bold tracking-[0.06em] text-muted;
+    @apply inline-flex items-start gap-2 font-mono text-[0.78rem] font-bold tracking-[0.06em] text-muted;
   }
+  /* items-start + margin, bukan items-center: eyebrow yang panjang pecah dua
+     baris di ponsel, dan kotaknya ikut turun ke tengah seperti bullet daftar.
+     Margin ini menyamakannya dengan posisi tengah huruf di baris pertama. */
   .eyebrow::before {
     content: '';
-    @apply inline-block h-1.5 w-1.5 shrink-0 bg-accent;
+    @apply mt-[0.5em] inline-block h-1.5 w-1.5 shrink-0 bg-accent;
   }
 
-  /* Heading display: Archivo 900, tracking sangat rapat — angka dari herdr
-     (h1 -.055em/.88, h2 -.05em/.92). Leading dinaikkan ke .95 karena bahasa
-     Indonesia penuh descender (y g j p) yang bertabrakan di .88. */
+  /* Leading 0.95, bukan 0.88 yang lazim untuk display sepadat ini: bahasa
+     Indonesia penuh descender (y g j p) yang bertabrakan di 0.88. */
   .display {
     @apply font-display font-black text-ink;
     letter-spacing: -0.045em;
@@ -220,38 +208,34 @@ html[data-mode='ink'] {
     text-wrap: balance;
   }
 
-  /* Judul kartu: Archivo 800, tracking lebih longgar (herdr .caps h3 -.03em) */
-  /* Tracking -0.015em, bukan -0.03em seperti .display. Kelas ini dipakai di
-     0.98rem sampai 1.5rem, dan tracking rapat itu porsinya huruf besar: pada
-     17px, -0.03em membuat Archivo 800 saling menempel dan terbaca padat.
-     Aturan umumnya berbanding balik — makin kecil ukurannya, makin longgar
-     tracking-nya. .display yang jalan di 30px ke atas tetap -0.045em. */
+  /* Tracking -0.015em, bukan -0.045em punya .display: kelas ini jalan di 0.98rem
+     sampai 1.5rem, dan tracking rapat bikin Archivo 800 menempel di ukuran itu. */
   .display-sm {
     @apply font-display font-extrabold text-ink;
     letter-spacing: -0.015em;
     line-height: 1.2;
   }
 
-  /* Disamakan dengan .lede herdr: 15px / 1.75 / warna dim (= ink-soft di sini).
-     Sengaja di bawah 16px default browser — itu pilihan desain, bukan kelalaian:
-     lede-nya jadi jelas lebih kecil dari body prose, sehingga kontras ukuran
-     dengan headline raksasa terbaca sebagai hierarki, bukan sebagai dua blok
-     teks yang bersaing. */
+  /* 15px, di bawah default browser. Pilihan desain, bukan kelalaian: lede perlu
+     jelas lebih kecil dari body prose supaya hierarkinya terbaca. */
   .lede {
     @apply text-ink-soft;
     font-size: 15px;
     line-height: 1.75;
   }
 
-  /* Kontrol interaktif pakai Inter, bukan mono — mono disimpan untuk label,
-     tag, dan terminal. Ukuran 0.9rem/600 = ambang nyaman baca tombol. */
+  /* Kontrol interaktif pakai Inter, bukan mono, mono disimpan untuk label dan
+     tag. Ukuran 0.9rem/600 = ambang nyaman baca tombol. */
   .btn {
     @apply inline-flex min-h-[2.7rem] items-center justify-center gap-2 rounded-md border
            border-transparent px-[1.15rem] py-[0.6rem] text-center font-sans text-[0.9rem]
-           font-semibold tracking-[-0.005em] transition-colors duration-150;
+           font-semibold tracking-[-0.005em] transition duration-150;
   }
-  /* Versi ramping untuk navbar. Tombol hero & CTA tetap ukuran penuh —
-     tap target besar hanya penting di aksi utama halaman. */
+  /* `transition` di atas, bukan transition-colors, supaya scale ini ikut halus */
+  .btn:active {
+    @apply scale-[0.98];
+  }
+  /* Versi ramping untuk navbar. Tombol hero & CTA tetap ukuran penuh, tap target besar hanya penting di aksi utama halaman. */
   .btn-sm {
     @apply min-h-[2.25rem] px-[0.9rem] py-[0.4rem] text-[0.82rem];
   }
@@ -277,18 +261,14 @@ html[data-mode='ink'] {
     @apply border-line-strong bg-surface;
   }
 
-  /* Kisi kartu dengan garis menyambung, full-bleed sampai tepi sheet.
-     Garisnya digambar sebagai box-shadow kiri+atas milik tiap sel, bukan
-     gap berwarna: kalau baris terakhir tidak penuh, sel kosong tetap polos
-     dan tidak muncul sebagai blok abu. overflow-hidden memotong bayangan
-     terluar; border-y container yang menutup atas dan bawah. */
+  /* Garis digambar sebagai box-shadow kiri+atas milik tiap sel, bukan gap
+     berwarna: sel yang absen di baris terakhir jadi polos, bukan blok abu.
+     overflow-hidden memotong bayangan terluar, border-y menutup atas-bawah. */
   .cells {
     @apply grid overflow-hidden border-y border-line;
   }
-  /* Padding inline-nya dikunci sama dengan .wrap. Kalau tidak, isi sel tidak
-     lurus dengan judul section yang duduk di dalam .wrap — dan tiap kali lebar
-     .wrap diubah, keenam pemakai .cells harus diubah satu-satu. Padding
-     vertikal tetap di masing-masing halaman karena beda per kisi. */
+  /* Padding inline dikunci sama dengan .wrap supaya isi sel lurus dengan judul
+     section. Padding vertikal tetap di masing-masing halaman, beda per kisi. */
   .cells > * {
     @apply bg-bg px-5 transition-colors duration-150 md:px-8 lg:px-12;
     box-shadow:
@@ -298,6 +278,24 @@ html[data-mode='ink'] {
   .cells > a:hover,
   .cells > .card-hover:hover {
     @apply bg-surface;
+  }
+
+  /* Melebarkan sel terakhir kalau barisnya tidak penuh (5 butir di 3 kolom).
+     grid-column-end:-1 tidak bisa dipakai: tanpa start eksplisit sel itu pindah,
+     bukan melebar. Span butuh jumlah kolom, jadi dipecah per breakpoint mengikuti
+     md:grid-cols-2 lg:grid-cols-3 di pemakainya. Ganti kolom, ganti aturan ini. */
+  @media (min-width: 48rem) {
+    .cells-fill > *:last-child:nth-child(odd) {
+      grid-column: span 2;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cells-fill > *:last-child {
+      grid-column: span 1;
+    }
+    .cells-fill > *:last-child:nth-child(3n + 2) {
+      grid-column: span 2;
+    }
   }
 
   /* Marquee stack. Track memuat dua salinan identik, jadi translateX(-50%)
@@ -325,40 +323,17 @@ html[data-mode='ink'] {
     }
   }
 
-  /* Nomor urut / kategori */
   /* w-fit wajib: tanpa itu badge melar penuh saat jadi anak flex-column / grid */
   .tag {
     @apply inline-block w-fit rounded-sm bg-accent-soft px-2 py-[0.15rem]
            font-mono text-[0.68rem] font-bold tracking-[0.06em] text-accent;
   }
 
-  /* Label mikro kapital */
   .label {
     @apply font-mono text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent;
   }
 
-  /* Status dot terminal. Digambar CSS, bukan glyph ● ◐ ○ — subset font
-     tidak memuatnya, dan lingkaran CSS lebih tajam di ukuran kecil. */
-  .dot {
-    @apply mt-[0.45em] inline-block h-[0.6em] w-[0.6em] shrink-0 rounded-full
-           border border-current;
-  }
-  .dot-on {
-    @apply bg-current;
-  }
-  .dot-half {
-    background: linear-gradient(to right, currentColor 50%, transparent 50%);
-  }
-
-  /* Latar milimeter-block untuk panel elevated */
-  .grid-bg {
-    background-image:
-      linear-gradient(var(--color-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  /* Logo sumbernya hitam solid — dibalik saat mode ink */
+  /* Logo sumbernya hitam solid, dibalik saat mode ink */
   html[data-mode='ink'] .logo-mark {
     filter: invert(1);
   }
@@ -374,8 +349,76 @@ html[data-mode='ink'] {
     filter: invert(1);
   }
 
-  /* Link inline bergaris bawah tipis */
   .link {
     @apply text-accent underline decoration-1 underline-offset-4 transition-colors hover:text-ink;
+  }
+}
+
+/* JANGAN pindahkan blok ini ke dalam @layer components. Palet INK ditulis tanpa
+   layer, dan aturan tanpa layer selalu menang atas aturan berlayer. Di dalam
+   layer, override token di bawah tidak berlaku dan cetakan mode INK jadi teks
+   abu di atas kertas putih, tanpa error apa pun. */
+@media print {
+  /* Token yang ditimpa, bukan `body { color }`. Teks diwarnai lewat kelas
+     turunan token yang menang atas aturan di body. */
+  html[data-mode="ink"],
+  html[data-mode="paper"] {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-ink: #000000;
+    --color-ink-soft: #1a1a1a;
+    --color-muted: #3d3d3d;
+    --color-line: #cccccc;
+    --color-line-strong: #999999;
+    --color-accent: #2f2f2f;
+    --color-accent-soft: transparent;
+  }
+
+  body,
+  .sheet {
+    background: #fff !important;
+    border: 0 !important;
+  }
+
+  /* `.sheet >` wajib: <header> juga dipakai untuk kepala artikel (judul,
+     kategori, tanggal, byline). Selektor `header` polos ikut membuangnya,
+     jadi halaman tercetak mulai dari subjudul tanpa judul sama sekali. */
+  .sheet > header,
+  .sheet > footer,
+  .marquee,
+  .mode,
+  details[name="nav"],
+  a[href^="#main"],
+  [aria-label="Teknologi yang kami pakai"] {
+    display: none !important;
+  }
+
+  /* Blok ajakan tidak berguna di atas kertas, tidak bisa diklik. */
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Tujuan tautan dicetak, kalau tidak pembaca kertas kehilangan rujukannya.
+     Tautan internal dilewati: pathnya saja tidak menolong tanpa domain. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    word-break: break-all;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  p,
+  li,
+  blockquote {
+    break-inside: avoid;
+  }
+
+  .wrap {
+    max-width: none;
+    padding: 0;
   }
 }

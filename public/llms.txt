@@ -12,44 +12,62 @@ Konsultasi awal tanpa biaya, durasinya menyesuaikan kebutuhan
 
 ## Layanan
 
-- [Sistem E-Commerce](https://hiperkreatif.com/services/ecommerce): toko online
+- [Sistem E-Commerce](https://hiperkreatif.com/layanan/ecommerce): toko online
   sendiri sebagai tempat pesanan ulang mendarat, tanpa komisi per transaksi.
   Estimasi 2-4 minggu.
-- [Corporate Profile](https://hiperkreatif.com/services/company-profile): profil
+- [Profil Perusahaan](https://hiperkreatif.com/layanan/profil-perusahaan): profil
   perusahaan yang menaruh legalitas dan kapasitas produksi dalam bentuk yang bisa
   diverifikasi manusia maupun mesin. Estimasi 1-2 minggu.
-- [Social Media Management](https://hiperkreatif.com/services/social-media):
+- [Pengelolaan Media Sosial](https://hiperkreatif.com/layanan/media-sosial):
   produksi dan penjadwalan konten, dilaporkan dalam jumlah prospek. Bulanan.
-- [Integrasi AI & Otomasi](https://hiperkreatif.com/services/ai-automation):
-  asisten yang dilatih dari SOP dan katalog klien untuk menutup pertanyaan lapis
-  pertama, lalu mengoper ke admin manusia. Estimasi 3-6 minggu.
+- [Otomasi Operasional](https://hiperkreatif.com/layanan/ai-otomasi): pekerjaan
+  yang tersisa setelah percakapan ditutup, dari pencatatan pesanan sampai
+  penagihan, disambungkan ke sistem yang sudah dipakai klien. Batas wewenang dan
+  jejak audit ditetapkan sebelum dibangun. Estimasi 3-6 minggu.
 
 ## Jurnal
 
-Artikel berbasis fakta bertanggal dengan sumber yang bisa diperiksa. Angka yang
-tidak punya sumber tidak dipakai.
+Artikel berbasis fakta bertanggal dengan sumber yang bisa diperiksa. Tiap angka
+menautkan penerbit datanya. Klaim yang hanya bisa ditelusuri sampai blog vendor
+yang menjual solusinya tidak dipakai.
 
-- [Potongan Naik, Pajak Dipungut di Muka](https://hiperkreatif.com/blog/potongan-naik-pajak-dipungut-2026)
-  (2026-08-06): kenaikan biaya platform Mei 2026 dan PPh final 0,5% yang dipungut
-  marketplace sejak 1 Agustus 2026 menurut PMK 37/2025.
-- [68% Pencarian Berakhir Tanpa Klik](https://hiperkreatif.com/blog/pencarian-tanpa-klik-2026)
-  (2026-08-05): zero-click 68,01% menurut analisis SparkToro atas panel Similarweb
-  Januari-April 2026, dan apa yang membuat satu halaman mudah dikutip.
-- [Di 2027 Pembeli Anda Mungkin Sebuah Program](https://hiperkreatif.com/blog/pembeli-anda-mungkin-program-2027)
-  (2026-08-04): Agentic Commerce Protocol, Universal Commerce Protocol, dan Meta
-  Business Agent; persiapan yang tetap berguna apa pun standarnya.
-- [1 Oktober 2026: Balasan Admin di WhatsApp Ditagih Per Pesan](https://hiperkreatif.com/blog/whatsapp-balasan-cs-berbayar-oktober-2026)
-  (2026-08-03): perubahan tarif pesan layanan yang diumumkan Meta 1 Juli 2026.
-- [Yang Menutup Toko Online Bukan Produknya](https://hiperkreatif.com/blog/mengapa-toko-online-bangkrut)
-  (2026-06-13): Permendag 19/2026 berlaku 8 Juni 2026, kewajiban NIB, dan tenggat
-  6 bulan untuk pedagang baru serta 18 bulan untuk pedagang lama.
-- [Buyer B2B Cuma Memakai 17% Waktunya untuk Bertemu Vendor](https://hiperkreatif.com/blog/website-perusahaan-murahan)
-  (2026-06-11): data Gartner soal perjalanan pembelian B2B dan verifikasi vendor.
-- [Engagement Instagram Rata-rata 0,48%](https://hiperkreatif.com/blog/rahasia-sosmed-ratusan-juta)
-  (2026-06-09): patokan Socialinsider dari 35 juta unggahan pada 447.613 halaman.
-- [Klarna Memangkas Setara 700 Agen CS, Lalu Menarik Manusianya Kembali](https://hiperkreatif.com/blog/ai-mengambil-alih-efisiensi)
-  (2026-06-06): perbedaan deflection dan resolution, serta perkiraan Gartner
-  Februari 2026 soal perekrutan ulang.
+- [PPh Marketplace Dipungut Empat Hari, Lalu Ditunda ke November](https://hiperkreatif.com/jurnal/pph-marketplace-ditunda-1-november-2026)
+  (2026-08-11): DJP menunjuk Tokopedia, Shopee, Lazada, dan Blibli sebagai
+  pemungut PPh Pasal 22 pada 1 Juli 2026, pemungutan mulai 1 Agustus 2026, lalu
+  ditunda lewat Pengumuman PENG-46/PJ.09/2026 tanggal 5 Agustus 2026 sampai
+  31 Oktober 2026 sehingga berlaku 1 November 2026. Pungutan yang terlanjur
+  diambil dikembalikan. Tarif 0,5% dari peredaran bruto di luar PPN dan PPnBM;
+  WP orang pribadi beromzet sampai Rp500 juta setahun dikecualikan sepanjang
+  sudah menyampaikan surat pernyataan. Memuat juga kenaikan biaya platform Mei
+  2026 yang tidak ikut ditunda: biaya layanan Gratis Ongkir XTRA Shopee per
+  2 Mei (sub-kategori fashion aksesori 5,5% ke 7,5%, logam mulia 1,5% ke 2%
+  berbatas Rp40.000), dan batas maksimum komisi Tokopedia serta TikTok Shop
+  yang naik dari Rp40.000 ke Rp650.000 per item pada 18 Mei 2026.
+  Sumber: pajak.go.id, DDTC News, Katadata.
+- [NIB Jadi Syarat Transaksi, dan Statusnya Terpampang di Profil Toko](https://hiperkreatif.com/jurnal/nib-wajib-permendag-19-2026)
+  (2026-08-10): Permendag 19/2026 berlaku 8 Juni 2026 menggantikan Permendag
+  31/2023. Tenggat 18 bulan untuk pedagang lama dan 6 bulan untuk pedagang baru
+  sejak pendaftaran. Pasal 17 ayat (5) mewajibkan marketplace menghentikan
+  transaksi akun yang tidak memenuhi. Kemendag memperkirakan dari sekitar 22
+  juta penjual aktif, yang ber-NIB belum menyentuh 10%. Sumber: DDTC News,
+  InfoPublik, CNN Indonesia.
+- [Gartner: Lebih dari 40% Proyek Agentic AI Batal Sebelum Akhir 2027](https://hiperkreatif.com/jurnal/gartner-proyek-agentic-ai-dibatalkan)
+  (2026-08-09): penyebabnya biaya membengkak, nilai bisnis tidak jelas, dan
+  kontrol risiko tidak memadai. Gartner memperkirakan hanya sekitar 130 dari
+  ribuan vendor yang mengaku agentic benar-benar begitu (agent washing). Jajak
+  pendapat Januari 2025 atas 3.412 responden: 19% investasi signifikan, 42%
+  konservatif, 31% menunggu. Sumber: siaran pers Gartner 25 Juni 2025.
+
+- [Komentar Orang Lain Hampir Sekuat Iklan Anda Sendiri](https://hiperkreatif.com/jurnal/komentar-hampir-sekuat-iklan-media-sosial)
+  (2026-08-08): laporan Digital 2026 Indonesia (We Are Social & Meltwater,
+  terbit 11 November 2025) mencatat kanal penemuan merek: mesin pencari 38,3%,
+  iklan media sosial 37,3%, komentar media sosial 32,6%. Tiga dari lima orang
+  Indonesia memakai media sosial sebagai kanal utama meneliti merek. Waktu di
+  media sosial 21 jam 50 menit per minggu, tersebar ke rata-rata 7,7 platform
+  per bulan. TikTok 1 jam 53 menit per hari, WhatsApp 1 jam 52 menit dan
+  dipakai sembilan dari sepuluh orang; sesi terpanjang YouTube 16 menit 49
+  detik. Angka 180 juta adalah identitas pengguna, bukan jumlah orang.
+  Sumber: We Are Social, Campaign Brief Asia.
 
 ## Catatan untuk mesin
 

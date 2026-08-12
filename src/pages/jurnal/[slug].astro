@@ -1,0 +1,220 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { JURNAL, CATEGORY } from "../../constants/jurnal";
+import { LAYANAN } from "../../constants/layanan";
+import { SEO } from "../../constants/seo";
+import { ids, breadcrumb } from "../../constants/schema";
+
+export function getStaticPaths() {
+  return JURNAL.map((artikel) => ({
+    params: { slug: artikel.slug },
+    props: { artikel },
+  }));
+}
+
+const { artikel } = Astro.props;
+const others = JURNAL.filter((b) => b.slug !== artikel.slug).slice(0, 3);
+
+// id disuntikkan ke tiap <h2> supaya subjudulnya bisa ditautkan langsung, // dipakai untuk berbagi tautan ke bagian tertentu, dan supaya mesin bisa
+// merujuk potongan yang spesifik, bukan cuma halamannya.
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/<[^>]+>/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+const content = artikel.content.replace(
+  /<h2>(.*?)<\/h2>/g,
+  (_: string, t: string) => `<h2 id="${slugify(t)}">${t}</h2>`
+);
+
+// Layanan yang menjawab artikel ini. Diturunkan dari artikel.service, bukan
+// dipetakan ulang manual, kunci itu memang slug layanan.
+const service = LAYANAN.find((s) => s.slug === artikel.service);
+const S = ids(Astro.site);
+const articleUrl = S.url(`/jurnal/${artikel.slug}`);
+const words = artikel.content.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
+---
+
+<BaseLayout
+  title={`${artikel.title} | Jurnal | Hiperkreatif`}
+  description={artikel.excerpt}
+  ogImageAlt={`${artikel.title} | Jurnal Hiperkreatif`}
+>
+  <article class="wrap py-14 md:py-20">
+    <nav class="mb-8 font-mono text-[0.75rem] text-muted" aria-label="Breadcrumb">
+      <a href="/" class="inline-block py-1 transition-colors hover:text-accent">beranda</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <a href="/jurnal" class="inline-block py-1 transition-colors hover:text-accent">jurnal</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink-soft"
+        >{artikel.title.length > 42 ? `${artikel.title.slice(0, 42).trimEnd()}…` : artikel.title}</span
+      >
+    </nav>
+
+    <header class="border-b border-line pb-10">
+      <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
+        <span class="tag">{CATEGORY[artikel.service]}</span>
+        <time datetime={artikel.iso} class="text-muted">{artikel.date}</time>
+      </div>
+
+      <h1 class="display mt-6 max-w-[26ch] text-[clamp(2.2rem,4.8vw,3.4rem)]">
+        {artikel.title}
+      </h1>
+
+      {/* .lede 15px benar untuk hero, tidak di sini: prose-lg di bawahnya 18px,
+           jadi intro jadi lebih kecil dari isinya. Dinaikkan ke 1.15rem. */}
+      <p class="lede mt-5 max-w-[64ch] text-[1.15rem]">{artikel.excerpt}</p>
+
+      <p class="mt-6 mb-0 font-mono text-[0.75rem] text-muted">
+        Ditulis oleh <span class="font-bold text-ink-soft">{SEO.personName}</span>, {SEO.personRole}
+      </p>
+    </header>
+
+    {/* 90ch, bukan max-w-none: yang terakhir jadi 142 karakter per baris.
+        Rail kanan tidak disembunyikan di mobile, isinya konten. */}
+    <div class="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+      <div
+        class="prose prose-lg max-w-[90ch]
+             prose-headings:font-display prose-headings:font-extrabold prose-headings:tracking-[-0.03em] prose-headings:text-ink
+             prose-h2:text-[1.6rem] prose-h3:text-[1.2rem]
+             prose-p:text-ink-soft prose-p:leading-relaxed
+             prose-a:text-accent prose-a:decoration-1 prose-a:underline-offset-4
+             prose-strong:font-bold prose-strong:text-ink
+             prose-ul:text-ink-soft prose-ol:text-ink-soft prose-li:marker:text-accent
+             prose-code:rounded-sm prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-[0.85em] prose-code:text-ink prose-code:before:content-none prose-code:after:content-none
+             prose-pre:rounded-md prose-pre:border prose-pre:border-term-line prose-pre:bg-term prose-pre:text-term-text
+             prose-blockquote:border-l-2 prose-blockquote:border-accent prose-blockquote:pl-5 prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-muted
+             prose-hr:border-line
+             prose-img:rounded-md prose-img:border prose-img:border-line"
+        set:html={content}
+      />
+
+      {/* Nama penerbit dan domain ditulis terbuka: di ponsel pembaca tidak bisa
+           menahan kursor untuk melihat tujuan tautan. */}
+      <section class="lg:col-start-1" aria-labelledby="sumber-title">
+        <h2 id="sumber-title" class="label m-0">sumber</h2>
+        <ol class="mt-4 mb-0 grid gap-4 border-t border-line pt-5 pl-0" style="list-style: none">
+          {
+            artikel.sources.map(
+              (
+                src: { title: string; publisher: string; date: string; url: string },
+                i: number
+              ) => (
+                <li class="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4">
+                  {/* self-start wajib, tanpa itu chip meregang setinggi barisnya. */}
+                  <span class="tag mt-0.5 self-start">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <a
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="link inline-block py-1 text-[0.92rem] leading-snug font-medium"
+                    >
+                      {src.title}
+                    </a>
+                    <p class="mt-1.5 mb-0 font-mono text-[0.72rem] text-muted">
+                      {src.publisher} · {src.date} · {new URL(src.url).hostname.replace(/^www\./, "")}
+                    </p>
+                  </div>
+                </li>
+              )
+            )
+          }
+        </ol>
+      </section>
+
+      {
+        others.length > 0 && (
+          <aside class="lg:sticky lg:top-24 lg:self-start" aria-labelledby="lainnya-title">
+            <p id="lainnya-title" class="label m-0">
+              baca juga
+            </p>
+            <ul class="mt-4 mb-0 list-none border-t border-line p-0">
+              {others.map((b) => (
+                <li class="border-b border-line">
+                  <a href={`/jurnal/${b.slug}`} class="group block py-4">
+                    <span class="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
+                      {CATEGORY[b.service]}
+                    </span>
+                    <h3 class="display-sm mt-2 text-[0.98rem] leading-snug transition-colors group-hover:text-accent">
+                      {b.title}
+                    </h3>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+    </div>
+  </article>
+
+  {/* ══ CTA ═══════════════════════════════════════════════ */}
+  <section class="print-hide border-t border-line">
+    <div class="wrap py-16 text-center md:py-20">
+      <h2 class="display mx-auto max-w-[24ch] text-[clamp(1.5rem,3.2vw,2.2rem)]">
+        Butuh solusi spesifik untuk bisnis Anda?
+      </h2>
+      <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
+        Ceritakan angka Anda sendiri di telepon pertama, dan kami hitung apakah pekerjaannya
+        layak dibangun atau lebih murah ditunda.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-2.5">
+        <a href="/konsultasi" class="btn btn-primary">Jadwalkan konsultasi</a>
+        {
+          service && (
+            <a href={`/layanan/${service.slug}`} class="btn btn-secondary">
+              {service.name}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": `${articleUrl}#article`,
+          url: articleUrl,
+          mainEntityOfPage: articleUrl,
+          citation: artikel.sources.map(
+            (src: { title: string; publisher: string; url: string }) => ({
+              "@type": "CreativeWork",
+              name: src.title,
+              url: src.url,
+              publisher: { "@type": "Organization", name: src.publisher },
+            })
+          ),
+          headline: artikel.title,
+          description: artikel.excerpt,
+          datePublished: artikel.iso,
+          dateModified: artikel.updated || artikel.iso,
+          inLanguage: "id-ID",
+          wordCount: words,
+          articleSection: CATEGORY[artikel.service],
+          author: { "@id": S.person },
+          publisher: { "@id": S.org },
+          isPartOf: {
+            "@type": "Blog",
+            "@id": `${S.url("/jurnal")}#jurnal`,
+            name: "Jurnal Hiperkreatif",
+          },
+          ...(service && { about: { "@id": `${S.url(`/layanan/${service.slug}`)}#service` } }),
+        },
+        breadcrumb(Astro.site, [
+          { name: "Beranda", path: "/" },
+          { name: "Jurnal", path: "/jurnal" },
+          { name: artikel.title, path: `/jurnal/${artikel.slug}` },
+        ]),
+      ],
+    })}
+  />
+</BaseLayout>

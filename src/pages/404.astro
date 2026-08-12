@@ -7,15 +7,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Halaman yang Anda cari tidak ditemukan. Kembali ke halaman utama Hiperkreatif."
   robots="noindex, nofollow"
 >
-  <section class="relative flex flex-grow items-center overflow-hidden bg-surface">
-    <div class="grid-bg pointer-events-none absolute inset-0 opacity-35" aria-hidden="true"></div>
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,transparent_15%,var(--color-surface)_80%)]"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="wrap relative z-10 py-20 md:py-28">
+  <section class="flex flex-grow items-center bg-surface">
+    <div class="wrap py-20 md:py-28">
       <div class="max-w-[60ch]">
         <p class="eyebrow m-0">error 404</p>
 
@@ -39,9 +32,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="mt-12 border-t border-line pt-6">
           <p class="m-0 font-mono text-[0.75rem] text-muted">coba salah satu ini:</p>
           <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[0.8rem]">
-            <a href="/#layanan" class="link">layanan</a>
-            <a href="/blog" class="link">jurnal</a>
-            <a href="/consultation" class="link">konsultasi</a>
+            <a href="/#layanan" class="link inline-block py-1">layanan</a>
+            <a href="/jurnal" class="link inline-block py-1">jurnal</a>
+            <a href="/konsultasi" class="link inline-block py-1">konsultasi</a>
           </div>
         </div>
       </div>
