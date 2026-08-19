@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Archivo = display, Inter = body, JetBrains Mono = mono. Ketiganya Google
-   latin subset, dan subset itu TIDAK memuat ● ◐ ○ ✓ → — jangan pakai glyph
-   tersebut untuk hal yang penting. */
 @font-face {
   font-family: 'Archivo';
   src: url('/src/assets/fonts/Archivo-Variable.woff2') format('woff2');
@@ -12,9 +9,9 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Inter';
-  src: url('/src/assets/fonts/Inter-Variable.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: 'Schibsted Grotesk';
+  src: url('/src/assets/fonts/SchibstedGrotesk-Variable.woff2') format('woff2');
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
@@ -26,16 +23,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/src/assets/fonts/Newsreader-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --font-display: 'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-accent: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
-  /* PAPER = mode dasar. Aksen olive dipekatkan supaya lolos AA di atas
-     --color-surface juga, bukan cuma di atas --color-bg. */
   --color-bg: #efece5;
   --color-surface: #e7e3da;
   --color-ink: #15140f;
@@ -48,7 +52,6 @@
   --color-accent-ink: #ffffff;
   --color-accent-soft: color-mix(in srgb, #586420 8%, transparent);
 
-  /* Blok kode di artikel jurnal (prose-pre:*) */
   --color-term: #faf7ef;
   --color-term-line: #dcd6c8;
   --color-term-text: #3a3830;
@@ -57,8 +60,6 @@
   --radius-md: 4px;
 }
 
-/* INK. Ground hampir netral, warna tinggal di aksen. Semua utility Tailwind
-   membaca var(--color-*), jadi override di sini mengalir ke seluruh halaman. */
 html[data-mode='ink'] {
   color-scheme: dark;
 
@@ -95,8 +96,6 @@ html[data-mode='ink'] {
     scroll-behavior: smooth;
   }
 
-  /* Dua petak saling prima (216 & 271px) memalsukan keacakan: pola gabungannya
-     baru berulang tiap 58.536px. */
   body {
     min-width: 320px;
     overflow-x: clip;
@@ -118,9 +117,6 @@ html[data-mode='ink'] {
     background: var(--color-accent-soft);
   }
 
-  /* Film-grain. Fixed + pointer-events-none supaya tidak memicu repaint saat
-     scroll dan tidak menghalangi klik. z-index 45: di bawah skip-link (50),
-     di atas header (30) dan menu mobile (40). */
   body::after {
     content: '';
     position: fixed;
@@ -131,7 +127,6 @@ html[data-mode='ink'] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Heading pakai `balance` (lihat .display), prose panjang `pretty`. */
   p {
     text-wrap: pretty;
   }
@@ -155,20 +150,15 @@ html[data-mode='ink'] {
 }
 
 @layer components {
-  /* Lembar solid di atas latar bertitik, membungkus header + main + footer. */
   .sheet {
     @apply mx-auto flex w-full max-w-[1440px] flex-grow flex-col bg-bg;
     border-inline: 1px solid var(--color-line-strong);
   }
 
-  /* Container tunggal untuk header, section, dan footer. Padding naik di lg
-     supaya isinya tidak menempel ke garis tepi .sheet. */
   .wrap {
     @apply mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12;
   }
 
-  /* Sakelar INK / PAPER. h-9 = tinggi .btn-sm dan tombol hamburger, jadi
-     seluruh isi navbar duduk di garis yang sama. */
   .mode {
     @apply flex h-9 shrink-0 items-stretch overflow-hidden rounded-md border border-line-strong;
   }
@@ -183,8 +173,6 @@ html[data-mode='ink'] {
     @apply bg-ink text-bg;
   }
 
-  /* Jarak vertikal baku antar section. Titik penanda di kedua ujung garis atas
-     digambar pakai pseudo-element biar tidak menambah markup tiap section. */
   .section {
     @apply relative border-t border-line py-20 md:py-24;
   }
@@ -206,8 +194,6 @@ html[data-mode='ink'] {
            font-sans text-[10px] font-medium uppercase tracking-[0.2em] text-muted;
   }
 
-  /* Leading 0.95, bukan 0.88 yang lazim untuk display sepadat ini: bahasa
-     Indonesia penuh descender (y g j p) yang bertabrakan di 0.88. */
   .display {
     @apply font-display font-black text-ink;
     letter-spacing: -0.045em;
@@ -215,34 +201,43 @@ html[data-mode='ink'] {
     text-wrap: balance;
   }
 
-  /* Tracking -0.015em, bukan -0.045em punya .display: kelas ini jalan di 0.98rem
-     sampai 1.5rem, dan tracking rapat bikin Archivo 800 menempel di ukuran itu. */
   .display-sm {
     @apply font-display font-extrabold text-ink;
     letter-spacing: -0.015em;
     line-height: 1.2;
   }
 
-  /* 15px, di bawah default browser. Pilihan desain, bukan kelalaian: lede perlu
-     jelas lebih kecil dari body prose supaya hierarkinya terbaca. */
+  .display i,
+  .display-sm i {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.06em;
+    letter-spacing: -0.01em;
+    padding-left: 0.08em;
+    margin-right: -0.07em;
+  }
+
+  .prose em,
+  .prose i {
+    font-family: var(--font-accent);
+    font-size: 1.08em;
+  }
+
   .lede {
     @apply text-ink-soft;
     font-size: 15px;
     line-height: 1.75;
   }
 
-  /* Kontrol interaktif pakai Inter, bukan mono, mono disimpan untuk label dan
-     tag. Ukuran 0.9rem/600 = ambang nyaman baca tombol. */
   .btn {
     @apply inline-flex min-h-[2.7rem] items-center justify-center gap-2 rounded-md border
            border-transparent px-[1.15rem] py-[0.6rem] text-center font-sans text-[0.9rem]
            font-semibold tracking-[-0.005em] transition duration-150;
   }
-  /* `transition` di atas, bukan transition-colors, supaya scale ini ikut halus */
   .btn:active {
     @apply scale-[0.98];
   }
-  /* Versi ramping untuk navbar. Tombol hero & CTA tetap ukuran penuh, tap target besar hanya penting di aksi utama halaman. */
   .btn-sm {
     @apply min-h-[2.25rem] px-[0.9rem] py-[0.4rem] text-[0.82rem];
   }
@@ -259,7 +254,6 @@ html[data-mode='ink'] {
     @apply border-accent bg-accent-soft text-accent;
   }
 
-  /* Kartu = sel bergaris, bukan kotak melayang. Tanpa shadow. */
   .card {
     @apply rounded-md border border-line bg-transparent transition-colors duration-150;
   }
@@ -268,14 +262,9 @@ html[data-mode='ink'] {
     @apply border-line-strong bg-surface;
   }
 
-  /* Garis digambar sebagai box-shadow kiri+atas milik tiap sel, bukan gap
-     berwarna: sel yang absen di baris terakhir jadi polos, bukan blok abu.
-     overflow-hidden memotong bayangan terluar, border-y menutup atas-bawah. */
   .cells {
     @apply grid overflow-hidden border-y border-line;
   }
-  /* Padding inline dikunci sama dengan .wrap supaya isi sel lurus dengan judul
-     section. Padding vertikal tetap di masing-masing halaman, beda per kisi. */
   .cells > * {
     @apply bg-bg px-5 transition-colors duration-150 md:px-8 lg:px-12;
     box-shadow:
@@ -287,10 +276,6 @@ html[data-mode='ink'] {
     @apply bg-surface;
   }
 
-  /* Melebarkan sel terakhir kalau barisnya tidak penuh (5 butir di 3 kolom).
-     grid-column-end:-1 tidak bisa dipakai: tanpa start eksplisit sel itu pindah,
-     bukan melebar. Span butuh jumlah kolom, jadi dipecah per breakpoint mengikuti
-     md:grid-cols-2 lg:grid-cols-3 di pemakainya. Ganti kolom, ganti aturan ini. */
   @media (min-width: 48rem) {
     .cells-fill > *:last-child:nth-child(odd) {
       grid-column: span 2;
@@ -305,7 +290,6 @@ html[data-mode='ink'] {
     }
   }
 
-  /* w-fit wajib: tanpa itu badge melar penuh saat jadi anak flex-column / grid */
   .tag {
     @apply inline-block w-fit rounded-sm bg-accent-soft px-2 py-[0.15rem]
            font-mono text-[0.68rem] font-bold tracking-[0.06em] text-accent;
@@ -315,13 +299,10 @@ html[data-mode='ink'] {
     @apply font-mono text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent;
   }
 
-  /* Logo sumbernya hitam solid, dibalik saat mode ink */
   html[data-mode='ink'] .logo-mark {
     filter: invert(1);
   }
 
-  /* Siluet logo raksasa sebagai latar hero. Sengaja dipotong tepi kanan,
-     disembunyikan di mobile karena bertabrakan dengan teks. */
   .logo-ghost {
     @apply pointer-events-none absolute right-[-8%] top-1/2 hidden h-[125%]
            w-auto max-w-none -translate-y-1/2 select-none opacity-[0.05] md:block;
@@ -336,13 +317,7 @@ html[data-mode='ink'] {
   }
 }
 
-/* JANGAN pindahkan blok ini ke dalam @layer components. Palet INK ditulis tanpa
-   layer, dan aturan tanpa layer selalu menang atas aturan berlayer. Di dalam
-   layer, override token di bawah tidak berlaku dan cetakan mode INK jadi teks
-   abu di atas kertas putih, tanpa error apa pun. */
 @media print {
-  /* Token yang ditimpa, bukan `body { color }`. Teks diwarnai lewat kelas
-     turunan token yang menang atas aturan di body. */
   html[data-mode="ink"],
   html[data-mode="paper"] {
     --color-bg: #ffffff;
@@ -362,9 +337,6 @@ html[data-mode='ink'] {
     border: 0 !important;
   }
 
-  /* `.sheet >` wajib: <header> juga dipakai untuk kepala artikel (judul,
-     kategori, tanggal, byline). Selektor `header` polos ikut membuangnya,
-     jadi halaman tercetak mulai dari subjudul tanpa judul sama sekali. */
   .sheet > header,
   .sheet > footer,
   .mode,
@@ -373,14 +345,10 @@ html[data-mode='ink'] {
     display: none !important;
   }
 
-  /* Blok ajakan tidak berguna di atas kertas, tidak bisa diklik. */
   .print-hide {
     display: none !important;
   }
 
-
-  /* Tujuan tautan dicetak, kalau tidak pembaca kertas kehilangan rujukannya.
-     Tautan internal dilewati: pathnya saja tidak menolong tanpa domain. */
   a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.75em;

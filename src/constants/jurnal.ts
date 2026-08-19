@@ -1,7 +1,3 @@
-// Kunci = slug layanan. Jangan tambah kunci tanpa menambah layanannya: chip
-// kategori berfungsi sebagai perutean, dan `astro check` tidak dipasang di sini
-// jadi kunci yang salah tidak menggagalkan build, cuma bikin chip kosong.
-//
 export const CATEGORY = {
   ecommerce: "E-Commerce",
   "profil-perusahaan": "Profil Perusahaan",
@@ -9,8 +5,6 @@ export const CATEGORY = {
   "ai-otomasi": "Otomasi Operasional",
 } as const;
 
-// Tiap angka wajib menautkan penerbit datanya, dan tautannya harus bisa dibuka
-// pembaca. Klaim yang cuma sampai blog vendor tidak dipakai.
 export const JURNAL = [
   {
     slug: "pph-marketplace-ditunda-1-november-2026",

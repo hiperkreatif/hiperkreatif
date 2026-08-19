@@ -9,7 +9,7 @@ import { SEO as DEFAULTS } from "../constants/seo.ts";
 import og from "../assets/og.webp";
 const ogUrl = new URL(og.src, Astro.site).toString();
 import ArchivoUrl from "../assets/fonts/Archivo-Variable.woff2?url";
-import InterUrl from "../assets/fonts/Inter-Variable.woff2?url";
+import SansUrl from "../assets/fonts/SchibstedGrotesk-Variable.woff2?url";
 import JetBrainsMonoUrl from "../assets/fonts/JetBrainsMono-Variable.woff2?url";
 
 const {
@@ -22,7 +22,6 @@ const {
   siteName = DEFAULTS.siteName,
 } = Astro.props;
 
-// Canonical per halaman, bukan hardcode:
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
 const year = new Date().getFullYear();
@@ -77,7 +76,6 @@ const SOCIALS = [
     <meta name="color-scheme" content="dark light" />
     <meta id="theme-color" name="theme-color" content="#efece5" />
 
-    {/* Harus sinkron & sebelum paint pertama, kalau tidak mode-nya berkedip */}
     <script is:inline>
       (() => {
         const saved = localStorage.getItem("hk-mode");
@@ -91,7 +89,6 @@ const SOCIALS = [
       })();
     </script>
 
-    {/* Open Graph */}
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content={siteName} />
@@ -104,7 +101,6 @@ const SOCIALS = [
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogImageAlt} />
 
-    {/* Twitter / X */}
     <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:site" content="@hiperkreatif" />
     <meta name="twitter:title" content={title} />
@@ -114,19 +110,14 @@ const SOCIALS = [
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    {/* Preload font: 3 file variable, satu per peran */}
     <link rel="preload" href={ArchivoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={InterUrl} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={SansUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={JetBrainsMonoUrl} as="font" type="font/woff2" crossorigin="anonymous" />
 
-    {/* Tanpa slot bernama ini, `slot="head"` di halaman dibuang diam-diam
-         oleh Astro, itu sebabnya JSON-LD tidak pernah terbit. */}
     <slot name="head" />
   </head>
 
   <body class="flex min-h-[100dvh] flex-col bg-bg text-ink">
-    {/* 100dvh, bukan 100vh: di iOS Safari 100vh melebihi viewport terlihat dan
-        menyisakan scroll semu di halaman pendek. */}
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-bg"
@@ -139,7 +130,6 @@ const SOCIALS = [
     >
       <nav class="wrap flex items-center justify-between gap-4 py-3" aria-label="Navigasi utama">
         <a href="/" class="group inline-flex items-center gap-2.5">
-          {/* Kotak logo dipatok setinggi .btn-sm (2.25rem) supaya sejajar CTA */}
           <span
             class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-line bg-surface transition-colors group-hover:border-line-strong"
           >
@@ -157,7 +147,6 @@ const SOCIALS = [
           </span>
         </a>
 
-        {/* Desktop */}
         <div class="hidden items-center gap-6 md:flex">
           {
             NAV_MENU.map((item) => (
@@ -201,7 +190,6 @@ const SOCIALS = [
           <a href={NAV_CTA.href} class="btn btn-primary btn-sm">{NAV_CTA.label}</a>
         </div>
 
-        {/* Mobile: sakelar mode di luar disclosure supaya selalu terjangkau */}
         <div class="flex items-center gap-2 md:hidden">
           <div class="mode" role="group" aria-label="Mode tampilan">
             {
@@ -270,7 +258,7 @@ const SOCIALS = [
         class="wrap flex flex-col items-center justify-between gap-5 py-7 text-center font-mono text-[0.8rem] text-muted md:flex-row md:text-left"
       >
         <p class="m-0">
-          &copy; {year} {DEFAULTS.legalName}
+          &copy; {year} {DEFAULTS.siteName}
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
@@ -323,7 +311,6 @@ const SOCIALS = [
           })
         );
 
-        // Ikuti OS selama pengguna belum pernah memilih sendiri
         matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
           if (!localStorage.getItem("hk-mode")) paint(e.matches ? "ink" : "paper");
         });
@@ -332,7 +319,6 @@ const SOCIALS = [
       })();
     </script>
 
-    {/* <details> tidak punya light-dismiss bawaan seperti popover. */}
     <script is:inline>
       (() => {
         const nav = document.getElementById("nav-mobile");

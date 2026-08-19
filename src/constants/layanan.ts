@@ -1,11 +1,5 @@
 import { FAKTA } from "./fakta";
 
-// `aliases` menampung bentuk Inggris yang dipakai orang saat mencari ("jasa
-// pembuatan company profile"). Terbit sebagai schema.org alternateName dan
-// Organization.knowsAbout, jadi tidak mengotori teks tampil.
-//
-// Tanggal dan tarif yang bisa berubah diambil dari FAKTA, jangan ditulis ulang
-// di dalam kalimat — lihat catatan di fakta.ts.
 export const LAYANAN = [
   {
     slug: "ecommerce",
@@ -31,9 +25,6 @@ export const LAYANAN = [
     cta: "/layanan/ecommerce",
     audience: [], outcomes: [], deliverables: [], includes: [], excludes: [], kpis: [],
     timeline: { minWeeks: 2, maxWeeks: 4, note: "" },
-    // `from: 0` berarti belum ditetapkan, bukan gratis: barisnya disembunyikan
-    // di halaman layanan dan tidak diterbitkan sebagai Offer. Isi angkanya
-    // untuk memunculkannya.
     price: { currency: "IDR", unit: "project", from: 0, note: "" },
     security: { features: [] },
     support: { warrantyDays: 30, slaHours: 24, channels: [] },

@@ -1,15 +1,3 @@
-// Fakta bertanggal yang dipakai copy penjualan di `layanan.ts`.
-//
-// Kenapa terpusat di sini: tarif dan tanggal berlaku aturan pajak/platform
-// bergeser, dan sebagian sudah bergeser lebih dari sekali. Kalau angkanya
-// tertanam di tengah kalimat panjang, menyegarkannya jadi penelusuran ke
-// seluruh repo. Di sini cukup satu berkas.
-//
-// Artikel di `jurnal.ts` TIDAK memakai ini. Artikel bertanggal terbit dan
-// dibaca sebagai catatan pada saat itu, jadi angkanya memang harus beku.
-//
-// `diperiksa` = kapan terakhir klaim ini dicocokkan ke sumbernya, bukan kapan
-// aturannya terbit.
 
 export const TINJAU_TIAP_HARI = 90;
 
@@ -42,7 +30,6 @@ export const FAKTA = {
   },
 } as const;
 
-/** Dipanggil sekali dari astro.config.mjs. Memperingatkan, tidak menggagalkan. */
 export function periksaKesegaran(hariIni = new Date()) {
   const basi: string[] = [];
   const tanpaSumber: string[] = [];

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LogoUrl from "../assets/logo-black.svg?url";
-// Aset, bukan "/og.webp": file itu tidak ada di public/, jadi URL literalnya 404.
 import og from "../assets/og.webp";
 import { SEO } from "../constants/seo";
 import { LAYANAN } from "../constants/layanan";
@@ -10,9 +9,6 @@ import { ids } from "../constants/schema";
 
 const S = ids(Astro.site);
 
-// Diturunkan dari layanan.ts, jangan diketik ulang: pernah melenceng dari angka
-// di halaman layanannya. Lini berlangganan dikeluarkan karena tidak punya
-// "versi pertama" maupun masa garansi.
 const sekaliJadi = LAYANAN.filter((s) => s.price.unit === "project");
 const mingguProyek = `${Math.min(...sekaliJadi.map((s) => s.timeline.minWeeks))}\u2013${Math.max(
   ...sekaliJadi.map((s) => s.timeline.maxWeeks)
@@ -48,18 +44,15 @@ const STEPS = [
 ---
 
 <BaseLayout>
-  {/* ══ HERO ══════════════════════════════════════════════ */}
   <section class="relative overflow-hidden">
     <img src={LogoUrl} alt="" aria-hidden="true" class="logo-ghost" />
 
     <div class="wrap relative py-10 md:py-20 lg:py-24">
       <p class="eyebrow m-0">toko online · profil perusahaan · media sosial · otomasi ai</p>
 
-      {/* Batas atas clamp dipatok 5.75rem: headline ini 54 karakter, di atas
-           itu pecah jadi dua baris raksasa. */}
       <h1 class="display mt-6 max-w-[27ch] text-[clamp(2.6rem,6vw,5.75rem)] tracking-[-0.055em]">
         Dirancang untuk masalah nyata.
-        <span class="text-accent block">Dibangun untuk profitabilitas.</span>
+        <span class="text-accent block"><i>Dibangun untuk profitabilitas.</i></span>
       </h1>
 
       <p class="lede mt-6 max-w-[64ch]">
@@ -69,9 +62,6 @@ const STEPS = [
 
       <div class="mt-9 flex flex-wrap gap-2.5">
         <a href="/konsultasi" class="btn btn-primary">Jadwalkan konsultasi</a>
-        {/* Label menyebut layanan, bukan karya: tautannya mendarat di daftar
-            layanan, dan belum ada halaman portofolio. Kalau nanti ada, ganti
-            tujuannya dulu, baru labelnya. */}
         <a href="#layanan" class="btn btn-secondary">Lihat layanannya</a>
       </div>
 
@@ -81,7 +71,6 @@ const STEPS = [
     </div>
   </section>
 
-  {/* ══ ANGKA ═════════════════════════════════════════════ */}
   <section class="cells grid-cols-2 md:grid-cols-4" aria-label="Angka">
     {
       STATS.map((s) => (
@@ -107,13 +96,12 @@ const STEPS = [
     }
   </section>
 
-  {/* ══ LAYANAN ═══════════════════════════════════════════ */}
   <section id="layanan" class="section" aria-labelledby="layanan-title">
     <div class="wrap mb-10 grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.46fr)] md:gap-12">
       <div>
         <p class="eyebrow m-0">yang kami kerjakan</p>
         <h2 id="layanan-title" class="display mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,3rem)]">
-          Empat lini yang saling menyambung.
+          Empat lini <i class="block">yang saling menyambung.</i>
         </h2>
       </div>
       <p class="m-0 text-muted">
@@ -156,15 +144,11 @@ const STEPS = [
     </div>
   </section>
 
-  {/* ══ CARA KERJA ════════════════════════════════════════ */}
   <section id="proses" class="section" aria-labelledby="proses-title">
-    {/* Satu kolom, bukan dua seperti LAYANAN: section ini menceritakan urutan,
-        jadi keterangannya dibaca setelah judul, bukan di sampingnya. Sekalian
-        memecah ritme — dua opener berturut yang identik terasa datar. */}
     <div class="wrap mb-10">
       <p class="eyebrow m-0">cara kerja</p>
       <h2 id="proses-title" class="display mt-4 max-w-[24ch] text-[clamp(1.8rem,4vw,3rem)]">
-        Empat langkah sampai sistemnya jalan.
+        Empat langkah <i class="block">sampai sistemnya jalan.</i>
       </h2>
       <p class="mt-5 mb-0 max-w-[56ch] text-muted">
         Tiap tahap ada keluaran yang bisa Anda pegang: catatan telepon, blueprint tertulis,
@@ -185,17 +169,13 @@ const STEPS = [
     </ol>
   </section>
 
-  {/* ══ GARANSI ═══════════════════════════════════════════ */}
   <section id="garansi" class="relative border-t border-line bg-surface" aria-labelledby="garansi-title">
     <span class="absolute inset-x-0 top-0 h-[3px] bg-accent" aria-hidden="true"></span>
     <div class="wrap py-16 md:py-20">
       <p class="label m-0">cakupan dan batas</p>
       <h2 id="garansi-title" class="display mt-4 max-w-[26ch] text-[clamp(1.6rem,3.4vw,2.4rem)]">
-        Yang kami janjikan ditulis. Yang tidak kami janjikan, juga.
+        Yang kami janjikan ditulis. Yang <i>tidak kami janjikan</i>, juga.
       </h2>
-      {/* Tiga klaim dipisah, bukan satu paragraf 481 karakter: yang dijamin,
-          yang tidak, dan kapan batasnya disebut. Dibaca terpisah karena
-          dipakai terpisah saat calon klien membandingkan penawaran. */}
       <dl class="mt-6 mb-0 grid max-w-[72ch] gap-5">
         <div class="grid gap-1.5">
           <dt class="label m-0">yang dijamin</dt>
@@ -222,12 +202,11 @@ const STEPS = [
     </div>
   </section>
 
-  {/* ══ FAQ ═══════════════════════════════════════════════ */}
   <section id="faq" class="section" aria-labelledby="faq-title">
     <div class="wrap">
       <p class="eyebrow m-0">pertanyaan umum</p>
       <h2 id="faq-title" class="display mt-4 max-w-[20ch] text-[clamp(1.8rem,4vw,3rem)]">
-        Yang paling sering ditanyakan.
+        Pertanyaan <i class="block">yang paling sering masuk.</i>
       </h2>
     </div>
 
@@ -246,8 +225,6 @@ const STEPS = [
                 </svg>
               </span>
             </summary>
-            {/* .wrap sudah mx-auto; max-w di elemen yang sama akan menimpanya
-                 dan bikin jawaban melayang ke tengah. Batasi lebar di anaknya. */}
             <div class="wrap">
               <p class="mb-6 mt-0 max-w-[75ch] text-[0.95rem] leading-relaxed text-muted">
                 {f.a}
@@ -259,12 +236,11 @@ const STEPS = [
     </div>
   </section>
 
-  {/* ══ CTA ═══════════════════════════════════════════════ */}
   <section class="print-hide border-t border-line">
     <div class="wrap py-16 text-center md:py-20">
       <p class="eyebrow m-0 justify-center">konsultasi</p>
       <h2 class="display mx-auto mt-4 max-w-[24ch] text-[clamp(1.8rem,4vw,2.8rem)]">
-        Mulai dari satu telepon.
+        Mulai dari <i class="block">satu telepon.</i>
       </h2>
       <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
         Gratis dan tanpa kewajiban lanjut. Anda keluar dengan gambaran solusi yang konkret, mau
@@ -282,7 +258,6 @@ const STEPS = [
     </div>
   </section>
 
-  {/* JSON-LD @graph tetap di head */}
   <script
     type="application/ld+json"
     slot="head"
@@ -293,10 +268,7 @@ const STEPS = [
           "@type": "Organization",
           "@id": S.org,
           name: "Hiperkreatif",
-          legalName: SEO.legalName,
           url: S.base,
-          // Bidang yang dikuasai, memakai istilah yang benar-benar diketik
-          // orang, termasuk bentuk Inggris yang tidak muncul di teks tampil.
           knowsAbout: [...new Set(LAYANAN.flatMap((s: any) => [s.name, ...s.aliases]))],
           logo: {
             "@type": "ImageObject",
@@ -388,8 +360,6 @@ const STEPS = [
           serviceType: s.badge,
           url: S.url(`/layanan/${s.slug}`),
           provider: { "@id": S.org },
-          // Bukan tagline: tagline kini sengaja dipendekkan untuk kartu, terlalu
-          // tipis sebagai deskripsi schema. Sama dengan halaman layanannya.
           description: s.desc,
         })),
       ],

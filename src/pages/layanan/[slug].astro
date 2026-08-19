@@ -15,6 +15,8 @@ const { service } = Astro.props;
 const encodedServiceName = encodeURIComponent(service.name);
 const whatsappLink = `https://wa.me/6285157445924?text=Halo%20Hiperkreatif,%20saya%20butuh%20bantuan%20terkait%20${encodedServiceName}.%20Boleh%20diskusi?`;
 
+const [peran, ...bidang] = service.name.split(" ");
+
 const others = LAYANAN.filter((s) => s.slug !== service.slug);
 const weeks = service.timeline;
 
@@ -27,8 +29,6 @@ const hargaMulai = service.price.from
     }).format(service.price.from)
   : "";
 
-// @id-nya sengaja sama dengan node Service di @graph beranda supaya dua-duanya
-// dibaca sebagai satu entitas, bukan dua layanan berbeda dengan nama sama.
 const S = ids(Astro.site);
 const serviceUrl = S.url(`/layanan/${service.slug}`);
 ---
@@ -38,7 +38,6 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
   description={service.desc}
   ogImageAlt={`${service.name} | Layanan Digital Hiperkreatif`}
 >
-  {/* ══ HERO ══════════════════════════════════════════════ */}
   <section class="border-b border-line bg-surface">
     <div class="wrap py-12 md:py-24">
       <nav class="mb-8 font-mono text-[0.75rem] text-muted" aria-label="Breadcrumb">
@@ -52,7 +51,7 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
       <p class="eyebrow m-0">{service.badge}</p>
 
       <h1 class="display mt-5 max-w-[18ch] text-[clamp(2.4rem,5.2vw,4rem)]">
-        {service.name}
+        <i>{peran}</i> {bidang.join(" ")}
       </h1>
 
       <p class="lede mt-5 max-w-[58ch]">{service.tagline}</p>
@@ -93,22 +92,20 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
     </div>
   </section>
 
-  {/* ══ KONTEKS ═══════════════════════════════════════════ */}
   <section class="wrap section" aria-labelledby="konteks-title">
     <div class="grid gap-8 md:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] md:gap-14">
       <h2 id="konteks-title" class="display m-0 text-[clamp(1.6rem,3.4vw,2.4rem)]">
-        Kenapa ini penting.
+        Kenapa ini <i class="block">perlu dibenahi.</i>
       </h2>
       <p class="lede m-0 max-w-[70ch]">{service.desc}</p>
     </div>
   </section>
 
-  {/* ══ NILAI EKSEKUSI ════════════════════════════════════ */}
   <section class="section" aria-labelledby="nilai-title">
     <div class="wrap mb-10">
       <p class="eyebrow m-0">nilai eksekusi</p>
       <h2 id="nilai-title" class="display mt-4 max-w-[22ch] text-[clamp(1.8rem,4vw,3rem)]">
-        Yang Anda dapatkan.
+        Rincian <i class="block">yang Anda dapatkan.</i>
       </h2>
     </div>
 
@@ -124,12 +121,11 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
     </div>
   </section>
 
-  {/* ══ LAYANAN LAIN ══════════════════════════════════════ */}
   <section class="section" aria-labelledby="lain-title">
     <div class="wrap mb-10">
       <p class="eyebrow m-0">layanan lain</p>
       <h2 id="lain-title" class="display mt-4 text-[clamp(1.6rem,3.4vw,2.4rem)]">
-        Sering dipasangkan dengan ini.
+        Biasanya <i class="block">diambil bersamaan.</i>
       </h2>
     </div>
 
@@ -157,12 +153,11 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
     </div>
   </section>
 
-  {/* ══ FAQ ═══════════════════════════════════════════════ */}
   <section class="section" aria-labelledby="faq-title">
     <div class="wrap mb-8">
       <p class="eyebrow m-0">pertanyaan umum</p>
       <h2 id="faq-title" class="display mt-4 max-w-[20ch] text-[clamp(1.6rem,3.4vw,2.4rem)]">
-        Yang biasanya ditanyakan.
+        Pertanyaan <i class="block">seputar layanan ini.</i>
       </h2>
     </div>
 
@@ -186,12 +181,11 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
     </div>
   </section>
 
-  {/* ══ CTA ═══════════════════════════════════════════════ */}
   <section class="print-hide border-t border-line">
     <div class="wrap py-16 text-center md:py-20">
       <p class="eyebrow m-0">langkah berikutnya</p>
       <h2 class="display mx-auto mt-4 max-w-[22ch] text-[clamp(1.8rem,4vw,2.8rem)]">
-        Cek dulu apakah ini masalah Anda.
+        Cocok atau tidak, <i class="block">kita bahas dulu.</i>
       </h2>
       <p class="mx-auto mt-4 mb-0 max-w-[54ch] text-muted">
         Kami petakan kendalanya dulu di panggilan awal, sebelum bicara angka.
@@ -220,8 +214,6 @@ const serviceUrl = S.url(`/layanan/${service.slug}`);
           provider: { "@id": S.org },
           areaServed: { "@type": "Country", name: "Indonesia" },
           inLanguage: "id-ID",
-          // minPrice, bukan price: yang tampil "mulai dari", jadi angka pasti
-          // akan salah untuk sebagian lingkup pekerjaan.
           ...(service.price.from && {
             offers: {
               "@type": "Offer",

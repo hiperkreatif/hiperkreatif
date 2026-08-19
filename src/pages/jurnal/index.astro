@@ -7,12 +7,11 @@ import { JURNAL, CATEGORY } from "../../constants/jurnal";
   title="Catatan dari Lapangan | Jurnal | Hiperkreatif"
   description="PPh marketplace yang ditunda ke November 2026, NIB yang kini tampil di profil toko, proyek agentic AI yang batal, dan komentar yang hampir sekuat iklan. Tiap angka menautkan sumbernya."
 >
-  {/* ══ HERO ══════════════════════════════════════════════ */}
   <section class="border-b border-line bg-surface">
     <div class="wrap py-12 md:py-20">
       <p class="eyebrow m-0">jurnal</p>
       <h1 class="display mt-5 max-w-[18ch] text-[clamp(2.4rem,5.2vw,3.8rem)]">
-        Catatan dari lapangan.
+        Catatan dari <i>lapangan</i>.
       </h1>
       <p class="lede mt-5 max-w-[60ch]">
         Apa yang berubah di 2026 dan angka mana yang perlu Anda hitung ulang. Tiap angka di sini
@@ -22,7 +21,6 @@ import { JURNAL, CATEGORY } from "../../constants/jurnal";
     </div>
   </section>
 
-  {/* ══ DAFTAR ════════════════════════════════════════════ */}
   <section class="wrap py-4">
     <ul class="m-0 list-none divide-y divide-line p-0">
       {
@@ -32,9 +30,6 @@ import { JURNAL, CATEGORY } from "../../constants/jurnal";
               href={`/jurnal/${artikel.slug}`}
               class="group grid gap-4 py-8 transition-colors md:grid-cols-[minmax(0,0.26fr)_minmax(0,1fr)] md:items-start md:gap-8"
             >
-              {/* flex-col, bukan flex-wrap: dengan wrap, tanggal yang pendek
-                   ikut naik sebaris dengan chip sementara yang panjang turun,
-                   jadi barisnya tidak rata antar item. */}
               <div class="flex flex-col items-start gap-2 font-mono text-[0.72rem]">
                 <span class="tag">{CATEGORY[artikel.service]}</span>
                 <time datetime={artikel.iso} class="text-muted">{artikel.date}</time>
@@ -63,11 +58,10 @@ import { JURNAL, CATEGORY } from "../../constants/jurnal";
     </ul>
   </section>
 
-  {/* ══ CTA ═══════════════════════════════════════════════ */}
   <section class="print-hide border-t border-line">
     <div class="wrap py-16 text-center md:py-20">
       <h2 class="display mx-auto max-w-[22ch] text-[clamp(1.5rem,3.2vw,2.2rem)]">
-        Kendala Anda belum ada artikelnya?
+        Belum ada artikel <i class="block">untuk kendala Anda?</i>
       </h2>
       <p class="mx-auto mt-4 mb-0 max-w-[50ch] text-muted">
         Ceritakan langsung saja, teleponnya gratis.
