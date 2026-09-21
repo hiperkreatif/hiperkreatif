@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy Policy - DiabeMate"
+  description="Privacy Policy for DiabeMate - Offline-first personal diabetes management companion."
+>
+  <main class="min-h-screen px-4 py-16 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="space-y-8">
+      <header class="border-b border-surface-border pb-8">
+        <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-semibold tracking-wider uppercase rounded-full bg-accent-primary/10 text-accent-primary">
+          DiabeMate Legal
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">
+          Privacy Policy for DiabeMate
+        </h1>
+        <p class="mt-2 text-sm text-text-secondary">
+          Last updated: September 2026
+        </p>
+      </header>
+
+      <div class="space-y-8 text-text-secondary leading-relaxed">
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">1. Overview</h2>
+          <p>
+            DiabeMate (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;app&rdquo;) is designed as a personal, offline-first health tracking companion for diabetes management. We respect your privacy and are committed to protecting your personal health data.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">2. 100% On-Device &amp; Local Storage</h2>
+          <p>
+            DiabeMate stores all user data—including blood glucose readings, meals, carbohydrate logs, medications, physical activities, weight, and sleep—exclusively on your local device using a secure SQLite database.
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li>We do NOT operate external database servers.</li>
+            <li>We do NOT transmit or upload your health data to any cloud service.</li>
+            <li>We do NOT sell, rent, or share your personal health information with third parties.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">3. No Account or Registration Required</h2>
+          <p>
+            You do not need to create an account, register an email address, or provide phone numbers to use DiabeMate. The app works completely offline without requiring an internet connection for tracking.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">4. Exporting Reports &amp; Data Sharing</h2>
+          <p>
+            When you choose to export a Doctor Consultation Report (PDF) or a JSON data backup, the file is generated entirely on your device. You maintain full ownership and control over where and with whom you share these exported files via your device's native sharing sheet.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">5. Data Retention and Deletion</h2>
+          <p>
+            Since all data resides on your device:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li>You can permanently wipe all records at any time directly in Settings via &ldquo;Delete All Health Data&rdquo;.</li>
+            <li>Uninstalling the application will immediately remove all locally stored database records unless you have manually saved an exported JSON backup file.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">6. In-App Purchases &amp; Subscriptions</h2>
+          <p>
+            Subscription billing is handled securely by Google Play In-App Billing (via RevenueCat SDK). We do not store or process your credit card or financial information.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">7. Medical Disclaimer</h2>
+          <p>
+            DiabeMate is an observational tracking tool and educational reference, not a medical diagnostic device. It does not calculate or adjust insulin dosages. Always consult your licensed physician or healthcare team for medical diagnosis, treatment plans, or dosage decisions.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-text-primary">8. Contact Us</h2>
+          <p>
+            If you have any questions regarding this Privacy Policy, you can reach us via our developer contact email on the Google Play Store listing.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
