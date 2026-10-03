@@ -3,80 +3,108 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Terms & Conditions - DiabeMate"
-  description="Terms and Conditions and Medical Disclaimer for DiabeMate - Personal health and blood sugar logging companion."
+  title="Ketentuan Layanan & Penafian Medis - DiabeMate | Hiperkreatif"
+  description="Ketentuan Layanan dan Penafian Medis resmi aplikasi DiabeMate oleh Hiperkreatif."
 >
-  <main class="min-h-screen px-4 py-16 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-    <div class="space-y-8">
-      <header class="border-b border-surface-border pb-8">
-        <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-semibold tracking-wider uppercase rounded-full bg-accent-primary/10 text-accent-primary">
-          DiabeMate Legal
-        </div>
-        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">
-          Terms &amp; Conditions
-        </h1>
-        <p class="mt-2 text-sm text-text-secondary">
-          Last updated: October 2026
-        </p>
-      </header>
+  <article class="wrap py-14 md:py-20 max-w-4xl mx-auto">
+    <nav class="mb-8 font-mono text-[0.75rem] text-muted" aria-label="Breadcrumb">
+      <a href="/" class="inline-block py-1 transition-colors hover:text-accent">beranda</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink-soft">diabemate</span>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink">syarat-ketentuan</span>
+    </nav>
 
-      <div class="space-y-8 text-text-secondary leading-relaxed">
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">1. Important Medical Disclaimer</h2>
-          <p>
-            DiabeMate is designed solely as a personal self-management tracking tool and informational companion for healthy lifestyle routines. DiabeMate is <strong>NOT a medical device (Software as a Medical Device / SaMD)</strong>, diagnostic system, or automated clinical decision service. This application does not diagnose, treat, cure, or prevent any disease, illness, or medical condition.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">2. No Medical Advice or Medication Dosage Calculations</h2>
-          <p>
-            DiabeMate will never calculate, recommend, or adjust prescription medication or insulin dosages. Never alter your insulin units, prescribed medications, dietary regimens, or physical activity limits without the express guidance and direct supervision of a licensed physician or qualified healthcare professional.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">3. Apple Health &amp; Health Connect Integration</h2>
-          <p>
-            Integration with Apple Health or Google Health Connect is provided purely for your personal self-monitoring convenience. Users remain responsible for verifying the accuracy of third-party synced readings originating from smartwatches, continuous glucose monitors (CGM), or smart scales.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">4. Emergency Medical Situations</h2>
-          <p>
-            If you experience severe hypoglycemia (&lt; 70 mg/dL), severe hyperglycemia (&gt; 250 mg/dL), ketones, shortness of breath, confusion, or any critical medical symptoms, immediately follow your clinician-provided emergency action plan or contact emergency medical services (such as 112 / 119 / 911 or your local emergency department).
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">5. User Responsibility &amp; Data Accuracy</h2>
-          <p>
-            You are solely responsible for verifying the accuracy of all values logged and for making informed health decisions in direct consultation with your healthcare provider. Any patterns or trends shown in the Insights engine are automated mathematical observations and do not represent clinical causation.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">6. In-App Purchases and Subscriptions</h2>
-          <p>
-            Certain advanced features (such as 90-day clinical reports and custom theme palettes) may require a Pro subscription. Subscriptions are billed through Apple App Store or Google Play Store and can be managed or canceled anytime in your store account settings.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">7. Limitation of Liability</h2>
-          <p>
-            The application is provided &ldquo;as is&rdquo; without warranty of any kind. Under no circumstances shall DiabeMate, its creators, or contributors be held liable for any health decisions, adverse events, or outcomes resulting from the use of or reliance upon this software.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">8. Contact Us</h2>
-          <p>
-            If you have questions regarding these Terms &amp; Conditions, please contact us via our developer support channel or official listing contact.
-          </p>
-        </section>
+    <header class="border-b border-line pb-10">
+      <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
+        <span class="tag">DiabeMate Legal</span>
+        <time datetime="2026-10-03" class="text-muted">Pembaruan: Oktober 2026</time>
       </div>
+
+      <h1 class="display mt-6 max-w-[24ch] text-[clamp(2rem,4.4vw,3.2rem)]">
+        Syarat & <i>Ketentuan</i> Layanan
+      </h1>
+
+      <p class="lede mt-5 max-w-[64ch]">
+        Ketentuan penggunaan, penafian medis penting, dan panduan keselamatan aplikasi pencatatan mandiri DiabeMate.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3 font-mono text-[0.75rem]">
+        <a href="/diabemate/privacy" class="inline-flex items-center gap-1.5 text-accent hover:underline">
+          Lihat Kebijakan Privasi &rarr;
+        </a>
+      </div>
+    </header>
+
+    <div class="mt-10 space-y-10 text-ink-soft leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">1. Penafian Medis Penting (Medical Disclaimer)</h2>
+        <p>
+          DiabeMate dirancang semata-mata sebagai sarana pencatatan mandiri (self-monitoring log) dan pendamping gaya hidup sehat harian. DiabeMate <strong>BUKAN merupakan perangkat medis (Software as a Medical Device / SaMD)</strong>, sistem diagnostik klinis, maupun layanan keputusan medis otomatis.
+        </p>
+        <p>
+          Aplikasi ini <strong>tidak mendiagnosis, mengobati, menyembuhkan, atau mencegah</strong> kondisi medis atau penyakit apa pun. Segala informasi, grafik visualisasi, dan estimasi angka (termasuk eA1c) adalah kalkulasi matematis observasional pribadi dan bukan pengganti saran, diagnosis, atau penanganan medis dari dokter berlisensi.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">2. Larangan Perhitungan atau Perubahan Dosis Obat / Insulin</h2>
+        <p>
+          DiabeMate <strong>tidak pernah dan tidak akan menghitung, menyarankan, merekomendasikan, atau mengubah</strong> dosis obat resep atau dosis terapi insulin Anda.
+        </p>
+        <p>
+          Jangan pernah menyesuaikan unit insulin, jadwal obat, terapi medis, pembatasan diet, atau intensitas fisik tanpa instruksi dan pengawasan langsung dari dokter spesialis atau tenaga medis profesional Anda.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">3. Integrasi Apple Health &amp; Google Health Connect</h2>
+        <p>
+          Jika Anda mengaktifkan sinkronisasi dengan <strong>Apple HealthKit (iOS)</strong> atau <strong>Google Health Connect (Android)</strong>:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-muted">
+          <li>Akses sepenuhnya bersifat <strong>Hanya Baca (Read-Only)</strong> untuk memudahkan pembacaan log mandiri Anda di satu tempat.</li>
+          <li>Pengguna bertanggung jawab penuh atas keakuratan data yang disinkronkan dari perangkat atau sensor pihak ketiga (seperti smartwatch, glukometer Bluetooth, CGM Dexcom/FreeStyle Libre, atau timbangan cerdas).</li>
+          <li>DiabeMate tidak memodifikasi, menulis ulang, atau menghapus riwayat kesehatan di platform Apple Health atau Google Health Connect Anda.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">4. Situasi Gawat Darurat Medis</h2>
+        <p>
+          Aplikasi ini tidak dirancang untuk pemantauan pasien kritis atau respons kegawatdaruratan. Jika Anda mengalami kondisi hipoglikemia berat (&lt; 70 mg/dL), hiperglikemia kritis (&gt; 250 mg/dL), ketonuria, sesak napas, keringat dingin ekstrem, atau disorientasi mental:
+        </p>
+        <div class="rounded-md border border-line bg-surface p-4 text-sm font-sans text-ink">
+          Segera ikuti protokol tindakan darurat yang diberikan oleh dokter Anda atau segera hubungi layanan panggilan darurat (<strong>112 / 119</strong>) dan kunjungi Instalasi Gawat Darurat (IGD) rumah sakit terdekat.
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">5. Tanggung Jawab Pengguna &amp; Integritas Data</h2>
+        <p>
+          Anda bertanggung jawab secara mandiri atas kebenaran nilai yang dicatat dan keputusan kesehatan yang diambil. Seluruh data riwayat disimpan secara lokal di perangkat Anda (offline-first). Anda bertanggung jawab untuk mencadangkan data Anda secara berkala melalui fitur ekspor cadangan JSON yang tersedia di aplikasi.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">6. Langganan &amp; Pembelian Dalam Aplikasi (In-App Purchases)</h2>
+        <p>
+          Fitur tambahan (seperti ekspor PDF laporan klinis 90 hari dan tema kustom) disediakan melalui langganan Pro. Seluruh transaksi penagihan diproses secara aman oleh Google Play Store atau Apple App Store melalui RevenueCat SDK. Ketentuan pengembalian dana (refund) dan pembatalan mengikuti kebijakan toko aplikasi masing-masing platform.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">7. Batasan Tanggung Jawab</h2>
+        <p>
+          Aplikasi ini disediakan &ldquo;sebagaimana adanya&rdquo; tanpa jaminan dalam bentuk apa pun. DiabeMate dan Hiperkreatif tidak bertanggung jawab atas kerugian, cedera, komplikasi kesehatan, atau konsekuensi apa pun yang timbul akibat penggunaan atau ketergantungan terhadap aplikasi ini.
+        </p>
+      </section>
+
+      <section class="space-y-3 border-t border-line pt-8 font-mono text-[0.8rem]">
+        <p class="text-muted">
+          Ada pertanyaan mengenai ketentuan ini? Hubungi kami melalui kanal resmi developer di Google Play Store atau email kontak Hiperkreatif.
+        </p>
+      </section>
     </div>
-  </main>
+  </article>
 </BaseLayout>

@@ -3,101 +3,115 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Privacy Policy - DiabeMate"
-  description="Privacy Policy for DiabeMate - Offline-first personal diabetes management companion."
+  title="Kebijakan Privasi - DiabeMate | Hiperkreatif"
+  description="Kebijakan Privasi DiabeMate - Aplikasi pencatatan gula darah mandiri berbasis 100% offline dan privat."
 >
-  <main class="min-h-screen px-4 py-16 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-    <div class="space-y-8">
-      <header class="border-b border-surface-border pb-8">
-        <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-semibold tracking-wider uppercase rounded-full bg-accent-primary/10 text-accent-primary">
-          DiabeMate Legal
-        </div>
-        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-text-primary">
-          Privacy Policy for DiabeMate
-        </h1>
-        <p class="mt-2 text-sm text-text-secondary">
-          Last updated: October 2026
-        </p>
-      </header>
+  <article class="wrap py-14 md:py-20 max-w-4xl mx-auto">
+    <nav class="mb-8 font-mono text-[0.75rem] text-muted" aria-label="Breadcrumb">
+      <a href="/" class="inline-block py-1 transition-colors hover:text-accent">beranda</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink-soft">diabemate</span>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-ink">kebijakan-privasi</span>
+    </nav>
 
-      <div class="space-y-8 text-text-secondary leading-relaxed">
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">1. Overview</h2>
-          <p>
-            DiabeMate (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;app&rdquo;) is designed as a personal, offline-first health tracking companion for daily glucose logging and wellness routines. We respect your privacy and are committed to protecting your personal health data.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">2. 100% On-Device &amp; Local Storage</h2>
-          <p>
-            DiabeMate stores all user data—including blood glucose readings, meals, carbohydrate logs, medications, physical activities, weight, and sleep—exclusively on your local device using a secure SQLite database.
-          </p>
-          <ul class="list-disc pl-5 space-y-1.5">
-            <li>We do NOT operate external database servers.</li>
-            <li>We do NOT transmit or upload your health data to any cloud service.</li>
-            <li>We do NOT sell, rent, or share your personal health information with third parties or advertisers.</li>
-          </ul>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">3. Apple Health &amp; Google Health Connect Integration</h2>
-          <p>
-            DiabeMate offers optional integration with Apple Health (iOS) and Google Health Connect (Android):
-          </p>
-          <ul class="list-disc pl-5 space-y-1.5">
-            <li><strong>Read-Only Access:</strong> DiabeMate only requests read-only permissions to import blood glucose readings, steps, active minutes, sleep sessions, weight, and dietary notes from your connected devices and platforms.</li>
-            <li><strong>Strict Local Processing:</strong> All data retrieved from Apple HealthKit or Health Connect is processed and saved entirely on your device's local database. None of this data is ever uploaded, cached, or transferred to any remote servers.</li>
-            <li><strong>User Control:</strong> You can grant, customize, or revoke these permissions at any time directly through your device's operating system settings (Settings &gt; Privacy &gt; Health on iOS, or Settings &gt; Apps &gt; Health Connect on Android).</li>
-          </ul>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">4. No Account or Registration Required</h2>
-          <p>
-            You do not need to create an account, register an email address, or provide phone numbers to use DiabeMate. The app works completely offline without requiring an internet connection for tracking.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">5. Exporting Reports &amp; Data Sharing</h2>
-          <p>
-            When you choose to export a Doctor Consultation Report (PDF) or a JSON data backup, the file is generated entirely on your device. You maintain full ownership and control over where and with whom you share these exported files via your device's native sharing sheet.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">6. Data Retention and Deletion</h2>
-          <p>
-            Since all data resides on your device:
-          </p>
-          <ul class="list-disc pl-5 space-y-1.5">
-            <li>You can permanently wipe all records at any time directly in Settings via &ldquo;Delete All Health Data&rdquo;.</li>
-            <li>Uninstalling the application will immediately remove all locally stored database records unless you have manually saved an exported JSON backup file.</li>
-          </ul>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">7. In-App Purchases &amp; Subscriptions</h2>
-          <p>
-            Subscription billing is handled securely by Google Play In-App Billing and Apple App Store StoreKit (via RevenueCat SDK). We do not store or process your credit card or financial information.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">8. Medical Disclaimer</h2>
-          <p>
-            DiabeMate is an observational tracking tool and wellness reference, not a medical diagnostic device. It does not calculate or adjust insulin dosages. Always consult your licensed physician or healthcare team for medical diagnosis, treatment plans, or dosage decisions.
-          </p>
-        </section>
-
-        <section class="space-y-3">
-          <h2 class="text-xl font-semibold text-text-primary">9. Contact Us</h2>
-          <p>
-            If you have any questions regarding this Privacy Policy, you can reach us via our developer contact email on the Google Play Store listing.
-          </p>
-        </section>
+    <header class="border-b border-line pb-10">
+      <div class="flex flex-wrap items-center gap-3 font-mono text-[0.72rem]">
+        <span class="tag">DiabeMate Legal</span>
+        <time datetime="2026-10-03" class="text-muted">Pembaruan: Oktober 2026</time>
       </div>
+
+      <h1 class="display mt-6 max-w-[24ch] text-[clamp(2rem,4.4vw,3.2rem)]">
+        Kebijakan <i>Privasi</i>
+      </h1>
+
+      <p class="lede mt-5 max-w-[64ch]">
+        Prinsip dasar privasi, penyimpanan lokal 100% offline di perangkat Anda, dan komitmen kami menjaga kerahasiaan data kesehatan Anda.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3 font-mono text-[0.75rem]">
+        <a href="/diabemate/terms" class="inline-flex items-center gap-1.5 text-accent hover:underline">
+          Lihat Syarat & Ketentuan Layanan &rarr;
+        </a>
+      </div>
+    </header>
+
+    <div class="mt-10 space-y-10 text-ink-soft leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">1. Ikhtisar &amp; Filosofi Offline-First</h2>
+        <p>
+          DiabeMate (&ldquo;kami&rdquo;, &ldquo;aplikasi&rdquo;) dibangun dengan prinsip fundamental bahwa data medis dan kesehatan Anda adalah milik pribadi yang paling sensitif. Kami berkomitmen untuk melindungi privasi Anda sepenuhnya dengan tidak mengumpulkan data Anda ke server cloud mana pun.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">2. Penyimpanan 100% Lokal di Perangkat (On-Device Storage)</h2>
+        <p>
+          Seluruh data yang Anda masukkan—termasuk catatan kadar gula darah, riwayat makanan, log karbohidrat, jadwal obat, durasi tidur, berat badan, serta aktivitas fisik—disimpan secara eksklusif di dalam database SQLite terisolasi di memori ponsel Anda sendiri.
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-muted">
+          <li>Kami <strong>TIDAK</strong> mengoperasikan server database eksternal untuk menyimpan catatan kesehatan Anda.</li>
+          <li>Kami <strong>TIDAK</strong> mengunggah data kesehatan Anda ke cloud, pihak ketiga, ataupun penyedia analitik.</li>
+          <li>Kami <strong>TIDAK</strong> memperjualbelikan, menyewakan, atau memonetisasi data pengguna dalam bentuk apa pun.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">3. Integrasi Apple Health &amp; Google Health Connect</h2>
+        <p>
+          DiabeMate menyediakan fitur integrasi opsional dengan <strong>Apple HealthKit (iOS)</strong> dan <strong>Google Health Connect (Android)</strong> untuk kenyamanan pencatatan harian Anda:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-muted">
+          <li><strong>Izin Hanya Baca (Read-Only):</strong> Aplikasi hanya meminta izin baca untuk mengambil data gula darah, langkah, menit aktif olahraga, waktu tidur, berat badan, dan ringkasan nutrisi yang disetor oleh perangkat terhubung Anda.</li>
+          <li><strong>Pemrosesan Lokal:</strong> Data yang diimpor dari Apple Health atau Google Health Connect diproses dan disimpan secara langsung ke database SQLite lokal di ponsel Anda. Data tersebut tidak pernah dikirimkan ke server kami atau pihak lain.</li>
+          <li><strong>Kendali Penuh:</strong> Anda dapat mengaktifkan, mengubah, atau mencabut izin akses ini sewaktu-waktu melalui pengaturan sistem operasi perangkat Anda (Pengaturan &gt; Privasi di iOS, atau Pengaturan &gt; Health Connect di Android).</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">4. Tanpa Kewajiban Akun atau Pendaftaran</h2>
+        <p>
+          Anda dapat menggunakan DiabeMate sepenuhnya tanpa membuat akun, tanpa registrasi email, dan tanpa memberikan nomor telepon pribadi. Aplikasi dapat berjalan sepenuhnya tanpa sambungan internet (offline).
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">5. Ekspor Dokumen PDF &amp; Pencadangan Data</h2>
+        <p>
+          Saat Anda membuat Laporan Ringkasan Dokter (PDF) atau mengekspor berkas cadangan JSON, seluruh berkas dikompilasi secara lokal di ponsel Anda. Anda memegang kendali penuh kapan, bagaimana, dan dengan siapa berkas tersebut Anda bagikan menggunakan fitur berbagi bawaan sistem operasi ponsel Anda.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">6. Hak &amp; Penghapusan Data (Data Deletion)</h2>
+        <p>
+          Karena data Anda tersimpan murni di perangkat Anda sendiri:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-muted">
+          <li>Anda dapat menghapus seluruh riwayat kapan saja secara permanen melalui tombol <em>&ldquo;Hapus Semua Data Kesehatan&rdquo;</em> di menu Pengaturan aplikasi.</li>
+          <li>Menghapus (uninstall) aplikasi dari perangkat akan langsung memusnahkan seluruh catatan lokal yang tersimpan, kecuali jika Anda telah mencadangkan file JSON secara manual sebelumnya.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">7. Transaksi Pembelian Dalam Aplikasi</h2>
+        <p>
+          Pembayaran langganan fitur Pro diproses secara aman oleh Google Play In-App Billing atau Apple App Store StoreKit melalui RevenueCat SDK. Kami tidak pernah melihat atau menyimpan nomor kartu kredit atau informasi finansial sensitif Anda.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="display-sm text-xl text-ink">8. Penafian Medis Wajib</h2>
+        <p>
+          DiabeMate adalah sarana pencatatan mandiri untuk pemantauan gaya hidup sehat, bukan perangkat medis diagnostik. Aplikasi ini tidak menghitung dosis terapi insulin. Selalu diskusikan rencana pengobatan Anda dengan dokter spesialis atau tenaga medis profesional.
+        </p>
+      </section>
+
+      <section class="space-y-3 border-t border-line pt-8 font-mono text-[0.8rem]">
+        <p class="text-muted">
+          Jika Anda memiliki pertanyaan seputar Kebijakan Privasi ini, silakan hubungi kami melalui kanal pengembang di Google Play Store atau email resmi Hiperkreatif.
+        </p>
+      </section>
     </div>
-  </main>
+  </article>
 </BaseLayout>
